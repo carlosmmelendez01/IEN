@@ -115,6 +115,61 @@ export default function Home() {
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">
+          See IEN in Action
+        </span>
+        <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
+      </div>
+
+      {/* Video Section — placed directly below hero/stats for maximum storytelling impact */}
+      <section className="py-8 container mx-auto px-4">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-3">
+            SEE IEN IN ACTION
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-xl mx-auto font-light">
+            Watch how Indiana schools are building esports programs — and why
+            it's changing lives for students statewide.
+          </p>
+        </div>
+
+        {/* 16:9 responsive video embed */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.2)] border-2 border-primary/40"
+          style={{ aspectRatio: "16/9" }}
+        >
+          {/* Gold glow backdrop */}
+          <div className="absolute -inset-1 bg-gradient-to-br from-primary/30 via-transparent to-primary/20 rounded-2xl blur-sm -z-10" />
+          {/* TODO: Replace the YouTube embed URL below with IEN's official video URL */}
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1&color=white"
+            title="Indiana Esports Network — See IEN in Action"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-full rounded-2xl"
+          />
+        </motion.div>
+
+        <div className="text-center mt-8">
+          <Button
+            asChild
+            variant="outline"
+            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest"
+          >
+            <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">
+              SCHEDULE YOUR ONBOARDING MEETING
+            </a>
+          </Button>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="flex items-center justify-center my-12 container mx-auto px-4">
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
+        <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">
           How It Works
         </span>
         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
@@ -170,61 +225,6 @@ export default function Home() {
             className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest"
           >
             <Link href="/start-a-program">GET DETAILED GUIDE</Link>
-          </Button>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="flex items-center justify-center my-12 container mx-auto px-4">
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-        <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">
-          See IEN in Action
-        </span>
-        <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
-      </div>
-
-      {/* Video Section */}
-      <section className="py-8 container mx-auto px-4">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-3">
-            SEE IEN IN ACTION
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto font-light">
-            Watch how Indiana schools are building esports programs — and why
-            it's changing lives for students statewide.
-          </p>
-        </div>
-
-        {/* 16:9 responsive video embed */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.2)] border-2 border-primary/40"
-          style={{ aspectRatio: "16/9" }}
-        >
-          {/* Gold glow backdrop */}
-          <div className="absolute -inset-1 bg-gradient-to-br from-primary/30 via-transparent to-primary/20 rounded-2xl blur-sm -z-10" />
-          {/* TODO: Replace the YouTube embed URL below with IEN's official video URL */}
-          <iframe
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1&color=white"
-            title="Indiana Esports Network — See IEN in Action"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full rounded-2xl"
-          />
-        </motion.div>
-
-        <div className="text-center mt-8">
-          <Button
-            asChild
-            variant="outline"
-            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest"
-          >
-            <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">
-              SCHEDULE YOUR ONBOARDING MEETING
-            </a>
           </Button>
         </div>
       </section>
