@@ -54,7 +54,7 @@ export default function Leagues() {
               Three Competitive Divisions of Scholastic Esports Since 2019
             </p>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              The Indiana Esports Network offers competitive esports leagues for middle school, high school, and collegiate programs across the state. Select your league below to learn more.
+              The Indiana Esports Network offers competitive esports leagues for middle school, high school, and unified programs across Indiana. Select your league below to learn more.
             </p>
           </motion.div>
         </div>
@@ -67,7 +67,7 @@ export default function Leagues() {
             {
               title: "IHSEN",
               subtitle: "Indiana High School Esports Network",
-              desc: "Our flagship division featuring varsity and junior varsity competition for high schools across the state. Compete for state championships and collegiate recruitment opportunities. Open to grades 9–12.",
+              desc: "Our flagship division featuring varsity and club competition for high schools across the state. Compete for Indiana state championships in 12 game titles. Open to grades 9–12.",
               link: "/leagues/ihsen",
               logo: ihsenLogo
             },
