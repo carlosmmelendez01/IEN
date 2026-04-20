@@ -7,13 +7,13 @@ import { ExternalLink, GraduationCap } from "lucide-react";
 const featuredPartners = [
   {
     name: "Stay Plugged In (SPIN)",
-    url: "/leagues/iuen",
-    external: false,
-    description: "IEN's Unified Esports initiative with Special Olympics Indiana — competitive gaming for students with and without intellectual disabilities.",
+    url: "https://www.staypluggedin.com",
+    external: true,
+    description: "A leading gaming organization providing academic roadmapping, STEM and esports competitions, college recruitment, and career pathways for IEN students.",
     display: (
       <div className="flex flex-col items-center justify-center w-full h-full gap-1">
         <span className="font-heading font-bold text-primary text-lg tracking-widest">STAY PLUGGED IN</span>
-        <span className="text-xs text-muted-foreground tracking-[0.25em] uppercase">× Special Olympics Indiana</span>
+        <span className="text-xs text-muted-foreground tracking-[0.25em] uppercase">SPIN</span>
       </div>
     ),
   },
@@ -234,12 +234,11 @@ export default function Partners() {
             transition={{ duration: 0.5 }}
             className="bg-card border border-primary/30 rounded-2xl p-8 md:p-12 text-center shadow-[0_0_30px_rgba(212,175,55,0.08)]"
           >
-            <div className="inline-flex items-center gap-3 mb-4">
+            <div className="inline-flex items-center gap-3 mb-6">
               <span className="font-heading font-bold text-2xl text-white">IEN</span>
               <span className="text-primary text-2xl font-bold">×</span>
               <span className="font-heading font-bold text-2xl text-white">Special Olympics Indiana</span>
             </div>
-            <p className="text-primary font-heading font-bold tracking-widest uppercase text-sm mb-4">Stay Plugged In (SPIN)</p>
             <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8">
               IEN proudly partners with Special Olympics Indiana to operate the Indiana Unified Esports
               Network — bringing together students with and without intellectual disabilities to compete as
