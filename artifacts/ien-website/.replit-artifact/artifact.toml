@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Indiana Esports Network"
+version = "1.0.0"
+id = "artifacts/ien-website"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19126
+
+[services.development]
+run = "pnpm --filter @workspace/ien-website run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/ien-website", "run", "build" ]
+publicDir = "artifacts/ien-website/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19126"
+BASE_PATH = "/"

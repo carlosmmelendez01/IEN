@@ -16,6 +16,15 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - **API codegen**: Orval (from OpenAPI spec)
 - **Build**: esbuild (CJS bundle)
 
+## Artifacts
+
+### Indiana Esports Network Website (ien-website)
+- **Type**: React + Vite frontend-only web app
+- **Preview path**: `/`
+- **Pages**: Home, Leagues, IUEN, Events, Schools, Partners, Partner With IEN, Start a Program, Why Esports, Contact
+- **Design**: Dark purple/maroon esports aesthetic with gold accents, Rajdhani font headings
+- **Notes**: Pure frontend/static site — no backend API calls, all data hardcoded
+
 ## Key Commands
 
 - `pnpm run typecheck` — full typecheck across all packages
