@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import ienShield from "@assets/IEN_Shield_1776709349969.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,11 +11,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-primary/20 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
-          <div className="relative w-10 h-10 flex items-center justify-center bg-primary rounded-md overflow-hidden shrink-0">
-             <div className="absolute inset-1 bg-background rounded-sm flex items-center justify-center">
-                <span className="text-primary font-heading font-bold text-xl leading-none">IEN</span>
-             </div>
-          </div>
+          <img src={ienShield} alt="IEN Shield Logo" className="w-12 h-12 object-contain shrink-0" />
           <span className="font-heading font-bold text-lg md:text-xl hidden sm:inline-block tracking-wider text-primary">INDIANA ESPORTS NETWORK</span>
         </Link>
         

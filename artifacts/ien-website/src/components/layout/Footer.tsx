@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import ienShield from "@assets/IEN_Shield_1776709349969.png";
 
 export function Footer() {
   return (
@@ -10,11 +11,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-4">
-               <div className="relative w-10 h-10 flex items-center justify-center bg-primary rounded-md overflow-hidden shrink-0">
-                 <div className="absolute inset-1 bg-background rounded-sm flex items-center justify-center">
-                    <span className="text-primary font-heading font-bold text-xl leading-none">IEN</span>
-                 </div>
-               </div>
+               <img src={ienShield} alt="IEN Shield Logo" className="w-14 h-14 object-contain shrink-0" />
                <span className="font-heading font-bold text-xl tracking-wider text-primary">INDIANA ESPORTS NETWORK</span>
             </Link>
             <p className="text-muted-foreground max-w-md text-sm leading-relaxed">

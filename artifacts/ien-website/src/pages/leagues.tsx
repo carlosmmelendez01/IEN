@@ -2,6 +2,9 @@ import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import ihsenLogo from "@assets/IEN-02_1776709337186.png";
+import imsenLogo from "@assets/IEN-03_1776709337186.png";
+import iuenLogo from "@assets/IEN-04_1776709327213.png";
 
 export default function Leagues() {
   return (
@@ -39,19 +42,22 @@ export default function Leagues() {
               title: "IHSEN",
               subtitle: "Indiana High School Esports Network",
               desc: "Our flagship division featuring varsity and junior varsity competition for high schools across the state. Compete for state championships and collegiate recruitment opportunities.",
-              link: "/leagues/ihsen"
+              link: "/leagues/ihsen",
+              logo: ihsenLogo
             },
             {
               title: "IMSEN",
               subtitle: "Indiana Middle School Esports Network",
               desc: "Building the foundation of scholastic esports. A developmental league focused on sportsmanship, digital citizenship, and competitive fundamentals.",
-              link: "/leagues/imsen"
+              link: "/leagues/imsen",
+              logo: imsenLogo
             },
             {
               title: "IUEN",
               subtitle: "Indiana University Esports Network",
               desc: "Premier collegiate competition featuring university programs. Bridging the gap between high school talent and collegiate scholarship opportunities.",
-              link: "/leagues/iuen"
+              link: "/leagues/iuen",
+              logo: iuenLogo
             }
           ].map((league, i) => (
             <motion.div 
@@ -61,9 +67,7 @@ export default function Leagues() {
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className="bg-card border border-primary/30 p-8 rounded-xl flex flex-col items-center text-center shadow-lg hover:border-primary transition-all hover:-translate-y-1"
             >
-              <div className="w-24 h-28 mb-6 bg-background border-2 border-primary flex items-center justify-center rounded-lg" style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}>
-                <span className="font-heading font-bold text-2xl text-primary">{league.title}</span>
-              </div>
+              <img src={league.logo} alt={`${league.title} logo`} className="w-48 h-20 object-contain mb-6" />
               <h3 className="font-heading font-bold text-xl mb-2 text-white">{league.title}</h3>
               <p className="text-primary text-sm font-medium mb-4">{league.subtitle}</p>
               <p className="text-muted-foreground text-sm mb-8 flex-grow">{league.desc}</p>

@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { GraduationCap, Users, Briefcase, Plane } from "lucide-react";
+import iuenLogo from "@assets/IEN-04_1776709327213.png";
 
 export default function IUEN() {
   return (
@@ -19,9 +20,11 @@ export default function IUEN() {
             transition={{ duration: 0.5 }}
             className="flex justify-center mb-8"
           >
-             <div className="w-32 h-40 bg-background border-4 border-primary flex items-center justify-center rounded-lg shadow-[0_0_30px_rgba(212,175,55,0.4)]" style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}>
-                <span className="font-heading font-bold text-4xl text-primary">IUEN</span>
-             </div>
+             <img 
+               src={iuenLogo} 
+               alt="IUEN Logo" 
+               className="h-32 w-auto object-contain drop-shadow-[0_0_30px_rgba(200,200,255,0.5)]"
+             />
           </motion.div>
           
           <motion.div 
