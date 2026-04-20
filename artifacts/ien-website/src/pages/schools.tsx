@@ -55,7 +55,7 @@ export default function Schools() {
             MEMBER <span className="text-primary">SCHOOLS</span>
           </h1>
           <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto">
-            {SCHOOLS.length}+ schools competing across Indiana in the Esports Network
+            214+ schools competing across Indiana in the Esports Network
           </p>
         </div>
       </section>
@@ -102,12 +102,12 @@ export default function Schools() {
             <div className="bg-card border border-primary/30 rounded-xl p-6 shadow-[0_0_20px_rgba(212,175,55,0.05)]">
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="text-center">
-                  <div className="text-4xl font-heading font-bold text-white">{SCHOOLS.length}+</div>
+                  <div className="text-4xl font-heading font-bold text-white">214+</div>
                   <div className="text-xs text-primary tracking-widest uppercase mt-1">Schools</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-heading font-bold text-white">4,000+</div>
-                  <div className="text-xs text-primary tracking-widest uppercase mt-1">Students</div>
+                  <div className="text-4xl font-heading font-bold text-white">7,000+</div>
+                  <div className="text-xs text-primary tracking-widest uppercase mt-1">Student Athletes</div>
                 </div>
               </div>
               <div className="space-y-2 text-sm">

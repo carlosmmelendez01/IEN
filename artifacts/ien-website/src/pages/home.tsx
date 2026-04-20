@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import { socialLinks, ONBOARDING_URL } from "@/lib/socialLinks";
 
 const stats = [
-  { value: "80+", label: "Schools Competing", live: true },
-  { value: "1,500+", label: "Student Athletes" },
+  { value: "214", label: "Schools Competing", live: true },
+  { value: "7,000+", label: "Student Athletes" },
   { value: "12", label: "Game Titles" },
   { value: "4", label: "Seasons Completed" },
 ];
