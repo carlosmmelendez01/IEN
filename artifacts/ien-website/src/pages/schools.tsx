@@ -62,7 +62,7 @@ export default function Schools() {
                      <option>All Divisions</option>
                      <option>High School (IHSEN)</option>
                      <option>Middle School (IMSEN)</option>
-                     <option>Collegiate (IUEN)</option>
+                     <option>Unified (IUEN)</option>
                   </select>
                </div>
 

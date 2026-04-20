@@ -65,7 +65,7 @@ export default function Contact() {
                   <Handshake className="w-8 h-8 text-primary" />
                </div>
                <h3 className="text-xl font-heading font-bold text-white mb-2">Sponsorship & Partnerships</h3>
-               <p className="text-sm text-muted-foreground mb-6 flex-grow">Event sponsorship, collegiate recruiting, or brand integration.</p>
+               <p className="text-sm text-muted-foreground mb-6 flex-grow">Event sponsorship, unified program support, or brand integration.</p>
                <Button variant="outline" className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
                   CONTACT PARTNERSHIPS
                </Button>

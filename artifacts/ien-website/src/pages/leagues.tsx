@@ -80,8 +80,8 @@ export default function Leagues() {
             },
             {
               title: "IUEN",
-              subtitle: "Indiana University Esports Network",
-              desc: "Premier collegiate competition featuring university programs. Bridging the gap between high school talent and collegiate scholarship opportunities.",
+              subtitle: "Indiana Unified Esports Network",
+              desc: "In partnership with Indiana Special Olympics, IUEN provides competitive esports for students with and without intellectual disabilities — competing together as teammates.",
               link: "/leagues/iuen",
               logo: iuenLogo
             }

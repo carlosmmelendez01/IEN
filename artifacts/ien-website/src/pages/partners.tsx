@@ -66,10 +66,10 @@ export default function Partners() {
 
       {/* Community Partners */}
       <section className="py-12 container mx-auto px-4 text-center mb-16">
-         <h2 className="text-sm font-heading font-bold text-primary mb-8 tracking-[0.2em] uppercase">University & Community Partners</h2>
+         <h2 className="text-sm font-heading font-bold text-primary mb-8 tracking-[0.2em] uppercase">Community & Nonprofit Partners</h2>
          <div className="flex flex-wrap justify-center gap-6">
-            {['Butler University', 'Indiana University', 'Purdue University', 'Ivy Tech', 'Vincennes'].map((partner, i) => (
-               <div key={i} className="w-40 h-20 bg-background border border-primary/10 rounded-lg flex items-center justify-center p-4">
+            {['Indiana Special Olympics', 'Indiana Interscholastic Athletic Administrators Assoc.', 'LeagueOS'].map((partner, i) => (
+               <div key={i} className="w-48 h-20 bg-background border border-primary/10 rounded-lg flex items-center justify-center p-4">
                   <span className="text-sm font-medium text-muted-foreground text-center">{partner}</span>
                </div>
             ))}

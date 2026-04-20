@@ -28,7 +28,7 @@ export default function Home() {
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto font-light">
-              Fostering community, competition, and career pathways for middle school, high school, and collegiate programs.
+              Fostering community, competition, and inclusion for middle school, high school, and unified programs across Indiana.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
