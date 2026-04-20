@@ -21,6 +21,7 @@ export function Navbar() {
           <Link href="/why-esports" className="text-sm font-medium hover:text-primary transition-colors">About IEN</Link>
           <Link href="/leagues" className="text-sm font-medium hover:text-primary transition-colors">Leagues</Link>
           <Link href="/events" className="text-sm font-medium hover:text-primary transition-colors">Events</Link>
+          <Link href="/news" className="text-sm font-medium hover:text-primary transition-colors">News</Link>
           <Link href="/schedule" className="text-sm font-medium hover:text-primary transition-colors">Schedule</Link>
           <Link href="/schools" className="text-sm font-medium hover:text-primary transition-colors">Schools</Link>
           <Link href="/partners" className="text-sm font-medium hover:text-primary transition-colors">Partners</Link>
@@ -41,6 +42,7 @@ export function Navbar() {
           <Link href="/why-esports" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>About IEN</Link>
           <Link href="/leagues" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>Leagues</Link>
           <Link href="/events" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>Events</Link>
+          <Link href="/news" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>News</Link>
           <Link href="/schedule" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>Schedule</Link>
           <Link href="/schools" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>Schools</Link>
           <Link href="/partners" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>Partners</Link>
