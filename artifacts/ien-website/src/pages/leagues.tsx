@@ -113,8 +113,8 @@ function GameTile({
       </div>
       <a
         href={rulebookHref}
-        target={isPlaceholder ? undefined : "_blank"}
-        rel={isPlaceholder ? undefined : "noopener noreferrer"}
+        target={!isPlaceholder && !rulebookHref.startsWith("#") ? "_blank" : undefined}
+        rel={!isPlaceholder && !rulebookHref.startsWith("#") ? "noopener noreferrer" : undefined}
         onClick={isPlaceholder ? (e) => e.preventDefault() : undefined}
         title={isPlaceholder ? "Rulebook coming soon" : `${name} rules`}
         className={`text-xs font-heading tracking-wide flex items-center gap-0.5 transition-colors ${
@@ -289,14 +289,14 @@ export default function Leagues() {
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {ihsenGames.map((game, i) => (
-            // TODO: Replace rulebookHref="#" with IHSEN per-game rulebook PDF URL when available
+            // TODO: Replace rulebookHref with IHSEN per-game rulebook PDF URL when available
             <GameTile
               key={i}
               index={i}
               name={game.name}
               type={game.type}
               color={game.color}
-              rulebookHref="#"
+              rulebookHref="#rules-resources"
             />
           ))}
         </div>
@@ -316,14 +316,14 @@ export default function Leagues() {
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
           {imsenGames.map((game, i) => (
-            // TODO: Replace rulebookHref="#" with IMSEN per-game rulebook PDF URL when available
+            // TODO: Replace rulebookHref with IMSEN per-game rulebook PDF URL when available
             <GameTile
               key={i}
               index={i}
               name={game.name}
               type={game.type}
               color={game.color}
-              rulebookHref="#"
+              rulebookHref="#rules-resources"
             />
           ))}
         </div>
@@ -359,13 +359,13 @@ export default function Leagues() {
                 </h4>
                 <div className="grid grid-cols-2 gap-3">
                   {iuenGames.map((game, i) => (
-                    // TODO: Replace rulebookHref="#" with IUEN rulebook PDF URL when available
+                    // TODO: Replace rulebookHref with IUEN rulebook PDF URL when available
                     <GameTile
                       key={i}
                       index={i}
                       name={game.name}
                       color={game.color}
-                      rulebookHref="#"
+                      rulebookHref="#rules-resources"
                     />
                   ))}
                 </div>
