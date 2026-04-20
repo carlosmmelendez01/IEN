@@ -63,7 +63,7 @@ export default function WhyEsports() {
         <div className="container mx-auto px-4 max-w-3xl text-center">
           <div className="flex items-center justify-center my-4 mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-sm">Our Mission</span>
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Our Mission</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
           </div>
           <motion.blockquote
@@ -85,7 +85,7 @@ export default function WhyEsports() {
       <section className="py-20 container mx-auto px-4">
         <div className="flex items-center justify-center mb-12">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-sm">Our Vision</span>
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Our Vision</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

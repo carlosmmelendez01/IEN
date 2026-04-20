@@ -63,7 +63,7 @@ export default function IUEN() {
       <section className="py-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-12">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-sm">How It Works</span>
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">How It Works</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -109,7 +109,7 @@ export default function IUEN() {
       <section className="py-8 pb-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-10">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-sm">Unified Game Titles</span>
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Unified Game Titles</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
         </div>
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-lg mx-auto">
@@ -133,7 +133,7 @@ export default function IUEN() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-12">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-sm">Why It Matters</span>
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Why It Matters</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

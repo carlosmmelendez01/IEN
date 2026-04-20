@@ -110,7 +110,7 @@ export default function Leagues() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-sm">Varsity vs Club</span>
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Varsity vs Club</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -144,7 +144,7 @@ export default function Leagues() {
       <section className="py-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-sm">IHSEN Game Titles</span>
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">IHSEN Game Titles</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
         </div>
         <p className="text-center text-muted-foreground text-sm mb-10">Games offered by the Indiana High School Esports Network (Grades 9–12)</p>
@@ -169,7 +169,7 @@ export default function Leagues() {
       <section className="py-4 pb-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-sm">IMSEN Game Titles</span>
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">IMSEN Game Titles</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
         </div>
         <p className="text-center text-muted-foreground text-sm mb-10">Games offered by the Indiana Middle School Esports Network (Grades 6–8)</p>
@@ -195,7 +195,7 @@ export default function Leagues() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-sm">Unified Program</span>
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Unified Program</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">

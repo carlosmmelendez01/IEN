@@ -88,7 +88,7 @@ export default function Contact() {
       {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-center max-w-[250px] md:max-w-none">MEET THE LEADERSHIP — Indiana Esports Network Board</span>
+         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl text-center">Meet The Leadership</span>
          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
       </div>
 

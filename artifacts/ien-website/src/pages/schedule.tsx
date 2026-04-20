@@ -182,7 +182,7 @@ function SectionDivider({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-4 pt-10 pb-2">
       <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-      <span className="font-heading font-bold text-primary tracking-widest uppercase text-xs px-2 whitespace-nowrap">
+      <span className="font-heading font-bold text-primary tracking-widest uppercase text-2xl px-4 whitespace-nowrap">
         {label}
       </span>
       <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />

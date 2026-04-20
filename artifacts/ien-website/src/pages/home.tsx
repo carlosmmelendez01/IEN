@@ -56,7 +56,7 @@ export default function Home() {
       {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase">How It Works</span>
+         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">How It Works</span>
          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
       </div>
 
@@ -94,7 +94,7 @@ export default function Home() {
       {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase">Upcoming Events</span>
+         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Upcoming Events</span>
          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
       </div>
 

@@ -147,7 +147,7 @@ export default function StartAProgram() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-sm">Player Eligibility</span>
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Player Eligibility</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
