@@ -13,6 +13,7 @@ import Partners from "@/pages/partners";
 import PartnerWithIEN from "@/pages/partner-with-ien";
 import StartAProgram from "@/pages/start-a-program";
 import WhyEsports from "@/pages/why-esports";
+import Schedule from "@/pages/schedule";
 import Contact from "@/pages/contact";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ function Router() {
       <Route path="/partner-with-ien" component={PartnerWithIEN} />
       <Route path="/start-a-program" component={StartAProgram} />
       <Route path="/why-esports" component={WhyEsports} />
+      <Route path="/schedule" component={Schedule} />
       <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>
