@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import ienShield from "@assets/IEN_Shield_1776709349969.png";
+import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,7 @@ export function Navbar() {
           <Link href="/schools" className="text-sm font-medium hover:text-primary transition-colors">Schools</Link>
           <Link href="/partners" className="text-sm font-medium hover:text-primary transition-colors">Partners</Link>
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-6 ml-4">
-             <a href="https://leagueos.gg" target="_blank" rel="noopener noreferrer">JOIN THE LEAGUE</a>
+             <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">JOIN THE LEAGUE</a>
           </Button>
         </nav>
 
@@ -44,7 +45,7 @@ export function Navbar() {
           <Link href="/schools" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>Schools</Link>
           <Link href="/partners" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>Partners</Link>
           <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest mt-4">
-             <a href="https://leagueos.gg" target="_blank" rel="noopener noreferrer">JOIN THE LEAGUE</a>
+             <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">JOIN THE LEAGUE</a>
           </Button>
         </div>
       )}

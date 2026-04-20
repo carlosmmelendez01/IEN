@@ -1,6 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Headphones, Shield, Handshake, Mic } from "lucide-react";
+import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 export default function Contact() {
   return (
@@ -17,8 +18,8 @@ export default function Contact() {
             Have questions about starting a program, joining a league, or partnering with us? We're here to help.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8 h-12">
-                SCHEDULE A MEETING
+             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8 h-12">
+                <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE A MEETING</a>
              </Button>
              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8 h-12" asChild>
                 <a href="mailto:info@indianaesportsnetwork.org">EMAIL US</a>
@@ -42,8 +43,8 @@ export default function Contact() {
                </div>
                <h3 className="text-xl font-heading font-bold text-white mb-2">Start an Esports Program</h3>
                <p className="text-sm text-muted-foreground mb-6 flex-grow">Questions about equipment, IT needs, or getting administrative approval.</p>
-               <Button variant="outline" className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
-                  SCHEDULE ONBOARDING CALL
+               <Button variant="outline" asChild className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
+                  <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE ONBOARDING CALL</a>
                </Button>
             </div>
             

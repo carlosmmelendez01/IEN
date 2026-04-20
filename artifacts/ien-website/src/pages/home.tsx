@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { socialLinks } from "@/lib/socialLinks";
+import { socialLinks, ONBOARDING_URL } from "@/lib/socialLinks";
 
 export default function Home() {
   return (
@@ -33,8 +33,8 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest text-lg h-14 px-8">
-                <a href="https://leagueos.gg" target="_blank" rel="noopener noreferrer">JOIN THE LEAGUE</a>
+              <Button size="lg" asChild className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest text-lg h-14 px-8">
+                <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">JOIN THE LEAGUE</a>
               </Button>
               <Button size="lg" variant="outline" className="w-full sm:w-auto border-primary text-primary hover:bg-primary/10 font-heading tracking-widest text-lg h-14 px-8" asChild>
                 <Link href="/start-a-program">START A PROGRAM</Link>
@@ -81,7 +81,7 @@ export default function Home() {
           <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-primary/20 -translate-y-1/2 z-0"></div>
           
           {[
-            { step: "01", title: "Join The League", desc: "Click the Join button to access LeagueOS." },
+            { step: "01", title: "Schedule Onboarding", desc: "Book a free onboarding meeting with the IEN team to get started." },
             { step: "02", title: "Register", desc: "Register your school and coaches." },
             { step: "03", title: "Select Titles", desc: "Choose your league and games." },
             { step: "04", title: "Compete", desc: "Begin competing in the next season!" }

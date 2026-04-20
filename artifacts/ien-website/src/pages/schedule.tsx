@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, School, DollarSign, Clock, ZoomIn, X, Download, ExternalLink } from "lucide-react";
+import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 import ihsenSeason from "@assets/1_1776711178450.jpg";
 import ihsenPlayoffs from "@assets/2_1776711178450.jpg";
@@ -171,6 +172,13 @@ function SeasonRow({
                 </Button>
               )}
             </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              New to IEN?{" "}
+              <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-primary/80">
+                Schedule your onboarding meeting first
+              </a>{" "}
+              — LeagueOS registration opens after onboarding is complete.
+            </p>
           </div>
         </div>
       </motion.div>
@@ -330,15 +338,28 @@ export default function Schedule() {
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
             IHSEN, IMSEN, and IUEN champions are crowned at the annual IEN State Finals — Indiana's premier in-person scholastic esports championship.
           </p>
-          <Button
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-10 shadow-[0_0_20px_rgba(212,175,55,0.3)]"
-            asChild
-          >
-            <a href="https://leagueos.gg" target="_blank" rel="noopener noreferrer">
-              REGISTER FOR THE SEASON
-            </a>
-          </Button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-10 shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+              asChild
+            >
+              <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">
+                SCHEDULE ONBOARDING
+              </a>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-14 px-10"
+              asChild
+            >
+              <a href="https://leagueos.gg" target="_blank" rel="noopener noreferrer">
+                REGISTER ON LEAGUEOS
+              </a>
+            </Button>
+          </div>
+          <p className="text-xs text-muted-foreground mt-4">New schools must complete an onboarding meeting before registering on LeagueOS.</p>
         </div>
       </section>
     </Layout>

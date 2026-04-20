@@ -2,6 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { GraduationCap, ClipboardCheck, Users } from "lucide-react";
+import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 export default function StartAProgram() {
   return (
@@ -18,8 +19,8 @@ export default function StartAProgram() {
           <p className="text-xl text-primary mb-8 font-light">
             Join the Indiana Esports Network and bring the benefits of competitive gaming to your students.
           </p>
-          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
-            SCHEDULE AN ONBOARDING MEETING
+          <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+            <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE AN ONBOARDING MEETING</a>
           </Button>
         </div>
       </section>
@@ -67,8 +68,8 @@ export default function StartAProgram() {
                      <span>Q&A with school administrators or coaches</span>
                   </li>
                </ul>
-               <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest mt-auto">
-                  SCHEDULE MEETING
+               <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest mt-auto">
+                  <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE MEETING</a>
                </Button>
             </motion.div>
             
@@ -188,8 +189,8 @@ export default function StartAProgram() {
       <section className="py-20 text-center mb-10 bg-gradient-to-b from-transparent to-primary/5 border-b border-primary/10">
          <h2 className="text-3xl font-heading font-bold text-white mb-4">Get Started with IEN Today!</h2>
          <p className="text-muted-foreground mb-8">Take the first step in bringing competitive gaming to your school.</p>
-         <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8">
-            SCHEDULE AN ONBOARDING MEETING
+         <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8">
+            <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE AN ONBOARDING MEETING</a>
          </Button>
       </section>
 

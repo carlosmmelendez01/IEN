@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Users, Heart, ShieldCheck, Scale, BookOpen } from "lucide-react";
+import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 const visionPillars = [
   {
@@ -51,8 +52,8 @@ export default function WhyEsports() {
              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8" asChild>
                <Link href="/start-a-program">START A PROGRAM</Link>
              </Button>
-             <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8">
-                SCHEDULE AN ONBOARDING MEETING
+             <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8">
+                <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE AN ONBOARDING MEETING</a>
              </Button>
           </div>
         </div>
@@ -216,8 +217,8 @@ export default function WhyEsports() {
       <section className="py-16 text-center border-t border-primary/20">
          <p className="text-primary font-heading tracking-widest uppercase mb-6 font-bold">Download the Indiana Scholastic Esports Program Guide</p>
          <div className="flex flex-wrap justify-center gap-4">
-             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8">
-                SCHEDULE AN ONBOARDING MEETING
+             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8">
+                <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE AN ONBOARDING MEETING</a>
              </Button>
              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8" asChild>
                <Link href="/start-a-program">START A PROGRAM</Link>
