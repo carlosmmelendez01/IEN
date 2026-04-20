@@ -7,6 +7,8 @@ import NotFound from "@/pages/not-found";
 
 import Home from "@/pages/home";
 import Leagues from "@/pages/leagues";
+import IHSEN from "@/pages/ihsen";
+import IMSEN from "@/pages/imsen";
 import IUEN from "@/pages/iuen";
 import Events from "@/pages/events";
 import Schools from "@/pages/schools";
@@ -33,6 +35,8 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/leagues" component={Leagues} />
+      <Route path="/leagues/ihsen" component={IHSEN} />
+      <Route path="/leagues/imsen" component={IMSEN} />
       <Route path="/leagues/iuen" component={IUEN} />
       <Route path="/events" component={Events} />
       <Route path="/schools" component={Schools} />
