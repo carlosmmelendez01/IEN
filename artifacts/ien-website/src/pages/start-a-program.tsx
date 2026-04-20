@@ -136,9 +136,10 @@ export default function StartAProgram() {
                      <span>New schools begin at Club level for the first semester</span>
                   </li>
                </ul>
-               <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest mt-auto">
+               <Button variant="outline" asChild className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest mt-auto">
                   <a href="https://leagueos.gg" target="_blank" rel="noopener noreferrer">REGISTER SCHOOL</a>
                </Button>
+               <p className="text-xs text-muted-foreground text-center mt-2">Available after your onboarding meeting is complete.</p>
             </motion.div>
          </div>
       </section>
