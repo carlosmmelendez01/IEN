@@ -18,7 +18,7 @@ export function Navbar() {
         
         <nav className="hidden md:flex items-center gap-6">
           <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">Home</Link>
-          <Link href="/why-esports" className="text-sm font-medium hover:text-primary transition-colors">About IEN</Link>
+          <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors">About IEN</Link>
           <Link href="/leagues" className="text-sm font-medium hover:text-primary transition-colors">Leagues</Link>
           <Link href="/events" className="text-sm font-medium hover:text-primary transition-colors">Events</Link>
           <Link href="/news" className="text-sm font-medium hover:text-primary transition-colors">News</Link>
@@ -39,7 +39,7 @@ export function Navbar() {
       {isOpen && (
         <div className="md:hidden border-t border-primary/20 bg-background/95 px-4 py-4 space-y-4">
           <Link href="/" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>Home</Link>
-          <Link href="/why-esports" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>About IEN</Link>
+          <Link href="/about" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>About IEN</Link>
           <Link href="/leagues" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>Leagues</Link>
           <Link href="/events" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>Events</Link>
           <Link href="/news" className="block text-sm font-medium hover:text-primary transition-colors" onClick={() => setIsOpen(false)}>News</Link>
