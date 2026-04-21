@@ -68,46 +68,35 @@ export default function About() {
         <div className="container relative z-20 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <img src={ienShield} alt="IEN Shield" className="w-36 h-36 object-contain mx-auto mb-8 drop-shadow-[0_0_24px_rgba(212,175,55,0.3)]" />
-            <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-8 tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 tracking-tight">
               ABOUT <span className="text-primary">IEN</span>
             </h1>
-            <div className="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
-              {["Scholastic Esports", "Indiana Nonprofit", "Educator-Led", "Student Athletes", "3 Leagues", "214+ Schools"].map((kw) => (
-                <span key={kw} className="px-4 py-1.5 rounded-full border border-primary/50 bg-primary/10 text-primary font-heading font-bold text-sm tracking-wide">
-                  {kw}
-                </span>
-              ))}
-            </div>
+            <p className="text-lg md:text-xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed">
+              "To prepare students for the future through{" "}
+              <span className="text-primary font-semibold">collaboration</span>,{" "}
+              <span className="text-primary font-semibold">communication</span>,{" "}
+              <span className="text-primary font-semibold">creativity</span>, and{" "}
+              <span className="text-primary font-semibold">critical thinking</span>{" "}
+              through video games and esports."
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="py-20 container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-sm font-heading font-bold text-primary tracking-[0.3em] uppercase mb-4">Our Mission</p>
-            <blockquote className="text-2xl md:text-3xl font-heading font-bold text-white leading-snug mb-8">
-              "To prepare students for the future through{" "}
-              <span className="text-primary">collaboration</span>,{" "}
-              <span className="text-primary">communication</span>,{" "}
-              <span className="text-primary">creativity</span>, and{" "}
-              <span className="text-primary">critical thinking</span>{" "}
-              through video games and esports."
-            </blockquote>
-            <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Indiana Esports Network (IEN) is a nonprofit organization founded and led by Indiana educators. We operate
-              three scholastic esports leagues — IHSEN, IMSEN, and IUEN — serving over 214 schools and 7,000+ student
-              athletes across the state. We believe esports is more than gaming; it's a platform for academic growth,
-              career exploration, and genuine human connection.
-            </p>
-          </motion.div>
-        </div>
+      {/* About blurb */}
+      <section className="py-16 container mx-auto px-4">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-muted-foreground leading-relaxed max-w-3xl mx-auto text-center text-lg"
+        >
+          Indiana Esports Network (IEN) is a nonprofit organization founded and led by Indiana educators. We operate
+          three scholastic esports leagues — IHSEN, IMSEN, and IUEN — serving over 214 schools and 7,000+ student
+          athletes across the state. We believe esports is more than gaming; it's a platform for academic growth,
+          career exploration, and genuine human connection.
+        </motion.p>
       </section>
 
       {/* Stats bar */}
