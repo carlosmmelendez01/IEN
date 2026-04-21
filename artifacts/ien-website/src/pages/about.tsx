@@ -67,13 +67,17 @@ export default function About() {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         <div className="container relative z-20 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <img src={ienShield} alt="IEN Shield" className="w-20 h-20 object-contain mx-auto mb-6 opacity-90" />
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4 tracking-tight">
+            <img src={ienShield} alt="IEN Shield" className="w-36 h-36 object-contain mx-auto mb-8 drop-shadow-[0_0_24px_rgba(212,175,55,0.3)]" />
+            <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-8 tracking-tight">
               ABOUT <span className="text-primary">IEN</span>
             </h1>
-            <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto">
-              Indiana's only scholastic esports nonprofit — built by educators, for students.
-            </p>
+            <div className="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
+              {["Scholastic Esports", "Indiana Nonprofit", "Educator-Led", "Student Athletes", "3 Leagues", "214+ Schools"].map((kw) => (
+                <span key={kw} className="px-4 py-1.5 rounded-full border border-primary/50 bg-primary/10 text-primary font-heading font-bold text-sm tracking-wide">
+                  {kw}
+                </span>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -87,7 +91,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-xs font-heading font-bold text-primary tracking-[0.3em] uppercase mb-4">Our Mission</p>
+            <p className="text-sm font-heading font-bold text-primary tracking-[0.3em] uppercase mb-4">Our Mission</p>
             <blockquote className="text-2xl md:text-3xl font-heading font-bold text-white leading-snug mb-8">
               "To prepare students for the future through{" "}
               <span className="text-primary">collaboration</span>,{" "}
@@ -134,8 +138,8 @@ export default function About() {
       {/* Core Values */}
       <section className="py-20 container mx-auto px-4">
         <div className="text-center mb-12">
-          <p className="text-xs font-heading font-bold text-primary tracking-[0.3em] uppercase mb-3">What We Stand For</p>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white">OUR CORE VALUES</h2>
+          <p className="text-sm font-heading font-bold text-primary tracking-[0.3em] uppercase mb-3">What We Stand For</p>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white">OUR CORE VALUES</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {values.map((v, i) => (
@@ -162,12 +166,9 @@ export default function About() {
       {/* Board of Directors */}
       <section className="py-20 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center mb-4">
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/40" />
-            <span className="px-4 font-heading text-primary font-bold tracking-[0.2em] uppercase text-sm">
-              Board of Directors
-            </span>
-            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/40" />
+          <div className="text-center mb-4">
+            <p className="text-sm font-heading font-bold text-primary tracking-[0.3em] uppercase mb-3">Leadership</p>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white">BOARD OF DIRECTORS</h2>
           </div>
           <p className="text-center text-muted-foreground text-sm mb-12 max-w-xl mx-auto">
             IEN is governed by a volunteer board of Indiana educators and esports professionals dedicated to advancing scholastic gaming statewide.
@@ -230,13 +231,13 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-heading font-bold text-white mb-4">READY TO JOIN THE NETWORK?</h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">READY TO JOIN <span className="text-primary">IEN?</span></h2>
           <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-            Whether you're a school looking to start a program or a student ready to compete, IEN has a path for you.
+            Schedule a meeting with our team and we'll help you find the right path — whether you're starting a program, joining a league, or exploring a partnership.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8 h-12">
-              <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">JOIN THE LEAGUE</a>
+              <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE A MEETING</a>
             </Button>
             <Link href="/contact">
               <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8 h-12">
