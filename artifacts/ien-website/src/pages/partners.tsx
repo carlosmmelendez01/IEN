@@ -4,6 +4,13 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ExternalLink, GraduationCap } from "lucide-react";
 
+import spinLogo from "@assets/White_SPIN_Icon_1776776398973.png";
+import gravityLogo from "@assets/Gravity_Gaming_Logo_1776776398973.png";
+import leagueOSLogo from "@assets/LeagueOS_1776776398973.jpg";
+import mcdonaldsLogo from "@assets/McDonald's_Golden_Arches_1776776398973.png";
+import zotacLogo from "@assets/Zotac_Vertical_Logo_1776776398973.png";
+import starfallLogo from "@assets/Sponsor_Logo_01_1776776398973.png";
+
 const featuredPartners = [
   {
     name: "Stay Plugged In (SPIN)",
@@ -11,9 +18,12 @@ const featuredPartners = [
     external: true,
     description: "A leading gaming organization providing academic roadmapping, STEM and esports competitions, college recruitment, and career pathways for IEN students.",
     display: (
-      <div className="flex flex-col items-center justify-center w-full h-full gap-1">
-        <span className="font-heading font-bold text-primary text-lg tracking-widest">STAY PLUGGED IN</span>
-        <span className="text-xs text-muted-foreground tracking-[0.25em] uppercase">SPIN</span>
+      <div className="flex items-center justify-center w-full h-full">
+        <img
+          src={spinLogo}
+          alt="Stay Plugged In (SPIN)"
+          className="h-14 w-auto object-contain mix-blend-screen"
+        />
       </div>
     ),
   },
@@ -23,9 +33,14 @@ const featuredPartners = [
     external: true,
     description: "Hardware solutions and gaming rigs supporting IEN competition and events.",
     display: (
-      <div className="flex flex-col items-center justify-center w-full h-full gap-1">
-        <span className="font-heading font-bold text-white text-base tracking-wider">GRAVITY GAMING</span>
-        <span className="text-xs text-muted-foreground tracking-widest">by ByteSpeed</span>
+      <div className="flex items-center justify-center w-full h-full">
+        <div className="bg-white rounded-xl px-4 py-2 flex items-center justify-center">
+          <img
+            src={gravityLogo}
+            alt="Gravity Gaming by ByteSpeed"
+            className="h-10 w-auto object-contain"
+          />
+        </div>
       </div>
     ),
   },
@@ -36,9 +51,13 @@ const featuredPartners = [
     description: "The official league management platform for IEN scheduling, rosters, and standings.",
     display: (
       <div className="flex items-center justify-center w-full h-full">
-        <span className="font-heading font-bold text-white text-xl tracking-tight">
-          League<span className="text-[#00b4d8]">OS</span>
-        </span>
+        <div className="bg-white rounded-xl px-4 py-2 flex items-center justify-center">
+          <img
+            src={leagueOSLogo}
+            alt="LeagueOS"
+            className="h-10 w-auto object-contain"
+          />
+        </div>
       </div>
     ),
   },
@@ -49,21 +68,26 @@ const featuredPartners = [
     description: "Community sponsor supporting IEN events and student-athletes across Indiana.",
     display: (
       <div className="flex items-center justify-center w-full h-full">
-        <span className="text-5xl font-black text-[#FFC72C]">M</span>
+        <img
+          src={mcdonaldsLogo}
+          alt="McDonald's"
+          className="h-14 w-auto object-contain"
+        />
       </div>
     ),
   },
   {
-    name: "Spectrum Industries",
-    url: "https://www.spectrumindustriesinc.com",
+    name: "Zotac Gaming",
+    url: "https://www.zotacgaming.com",
     external: true,
-    description: "Providing ergonomic esports furniture and workstations for IEN program schools.",
+    description: "High-performance gaming hardware partner providing tournament-grade equipment for IEN events.",
     display: (
-      <div className="flex flex-col items-center justify-center w-full h-full gap-1">
-        <span className="font-heading font-bold text-white text-sm tracking-wider text-center leading-tight">
-          SPECTRUM<br />INDUSTRIES
-        </span>
-        <span className="text-xs text-[#4db6e8] font-bold tracking-widest">ESPORTS</span>
+      <div className="flex items-center justify-center w-full h-full">
+        <img
+          src={zotacLogo}
+          alt="Zotac Gaming"
+          className="h-16 w-auto object-contain mix-blend-screen"
+        />
       </div>
     ),
   },
@@ -73,39 +97,39 @@ const featuredPartners = [
     external: true,
     description: "Public relations and communications partner amplifying IEN's mission statewide.",
     display: (
-      <div className="flex flex-col items-center justify-center w-full h-full gap-0.5">
-        <span className="font-heading font-bold text-[#3b9edd] text-base tracking-widest">STARFALL</span>
-        <span className="font-heading font-bold text-white text-sm tracking-[0.3em]">PR</span>
+      <div className="flex items-center justify-center w-full h-full">
+        <img
+          src={starfallLogo}
+          alt="Starfall PR"
+          className="h-16 w-auto object-contain mix-blend-screen"
+        />
       </div>
     ),
   },
 ];
 
 const collegiatePartners = [
-  // Screen 1
-  { name: "Purdue Northwest",             subtitle: "Esports",          state: "IN" },
-  { name: "Indiana Wesleyan University",  subtitle: "IWU Esports",      state: "IN" },
-  { name: "Indiana Tech",                 subtitle: "Esports",          state: "IN" },
-  { name: "CHC Cougars",                  subtitle: "Esports",          state: "IN" },
-  { name: "IU Indianapolis",              subtitle: "IU Indy Esports",  state: "IN" },
-  { name: "Illinois Wesleyan University", subtitle: "Esports",          state: "IL" },
-  { name: "Valparaiso University",        subtitle: "Valpo Esports",    state: "IN" },
-  { name: "Trine University",             subtitle: "Esports",          state: "IN" },
-  // Screen 2
+  { name: "Purdue Northwest",             subtitle: "Esports",             state: "IN" },
+  { name: "Indiana Wesleyan University",  subtitle: "IWU Esports",         state: "IN" },
+  { name: "Indiana Tech",                 subtitle: "Esports",             state: "IN" },
+  { name: "CHC Cougars",                  subtitle: "Esports",             state: "IN" },
+  { name: "IU Indianapolis",              subtitle: "IU Indy Esports",     state: "IN" },
+  { name: "Illinois Wesleyan University", subtitle: "Esports",             state: "IL" },
+  { name: "Valparaiso University",        subtitle: "Valpo Esports",       state: "IN" },
+  { name: "Trine University",             subtitle: "Esports",             state: "IN" },
   { name: "Oakland City University",      subtitle: "Mighty Oaks Esports", state: "IN" },
-  { name: "University of Indianapolis",   subtitle: "Esports",          state: "IN" },
-  { name: "IU East",                      subtitle: "Red Wolves Esports", state: "IN" },
-  { name: "Bellarmine University",        subtitle: "Esports",          state: "KY" },
-  { name: "Indiana State University",     subtitle: "Esports",          state: "IN" },
-  { name: "Marian University",            subtitle: "Esports",          state: "IN" },
-  { name: "Adrian College",               subtitle: "Esports",          state: "MI" },
-  { name: "IU Southeast",                 subtitle: "Esports",          state: "IN" },
-  // Screen 3
-  { name: "University of Southern Indiana", subtitle: "USI Esports",   state: "IN" },
-  { name: "Ohio Northern University",     subtitle: "ONU Esports",      state: "OH" },
-  { name: "Otterbein University",         subtitle: "Esports",          state: "OH" },
-  { name: "IU Kokomo",                    subtitle: "Cougars Esports",  state: "IN" },
-  { name: "Bethel University",            subtitle: "Esports",          state: "IN" },
+  { name: "University of Indianapolis",   subtitle: "Esports",             state: "IN" },
+  { name: "IU East",                      subtitle: "Red Wolves Esports",  state: "IN" },
+  { name: "Bellarmine University",        subtitle: "Esports",             state: "KY" },
+  { name: "Indiana State University",     subtitle: "Esports",             state: "IN" },
+  { name: "Marian University",            subtitle: "Esports",             state: "IN" },
+  { name: "Adrian College",               subtitle: "Esports",             state: "MI" },
+  { name: "IU Southeast",                 subtitle: "Esports",             state: "IN" },
+  { name: "Univ. of Southern Indiana",    subtitle: "USI Esports",         state: "IN" },
+  { name: "Ohio Northern University",     subtitle: "ONU Esports",         state: "OH" },
+  { name: "Otterbein University",         subtitle: "Esports",             state: "OH" },
+  { name: "IU Kokomo",                    subtitle: "Cougars Esports",     state: "IN" },
+  { name: "Bethel University",            subtitle: "Esports",             state: "IN" },
 ];
 
 export default function Partners() {
@@ -149,9 +173,7 @@ export default function Partners() {
                 </div>
                 <div className="flex items-center gap-1 text-xs text-primary/60 group-hover:text-primary transition-colors mt-auto">
                   <ExternalLink className="w-3 h-3" />
-                  <span className="font-heading tracking-wide">
-                    {partner.external ? `Visit ${partner.name}` : "Learn More"}
-                  </span>
+                  <span className="font-heading tracking-wide">Visit {partner.name}</span>
                 </div>
               </>
             );
