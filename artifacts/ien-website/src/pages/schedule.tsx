@@ -108,7 +108,7 @@ function SeasonRow({
               <div className="inline-block px-3 py-1 bg-primary/10 border border-primary/30 text-primary text-xs font-bold tracking-widest rounded-full uppercase mb-3">
                 {badge}
               </div>
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-2 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-2 leading-tight">
                 {title}
               </h2>
               <p className="text-muted-foreground text-sm leading-relaxed">{subtitle}</p>
@@ -190,7 +190,7 @@ function SectionDivider({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-4 pt-10 pb-2">
       <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-      <span className="font-heading font-bold text-primary tracking-widest uppercase text-2xl px-4 whitespace-nowrap">
+      <span className="font-heading font-bold text-primary tracking-widest uppercase text-3xl px-4 whitespace-nowrap">
         {label}
       </span>
       <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
@@ -331,7 +331,7 @@ export default function Schedule() {
           <div className="inline-block px-4 py-1 bg-primary/10 border border-primary/30 text-primary text-xs font-bold tracking-widest rounded-full uppercase mb-6">
             Season Finale
           </div>
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-3">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-3">
             IEN STATE FINALS 2027
           </h2>
           <p className="text-xl text-primary font-heading tracking-wider mb-5">April 24, 2027</p>

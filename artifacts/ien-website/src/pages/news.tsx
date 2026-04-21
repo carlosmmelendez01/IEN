@@ -415,7 +415,7 @@ export default function News() {
         <p className="text-primary font-heading tracking-widest uppercase font-bold mb-3">
           Stay in the Loop
         </p>
-        <h2 className="text-2xl font-heading font-bold text-white mb-6">
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
           Follow IEN for Live Updates
         </h2>
         <div className="flex flex-wrap justify-center gap-4">

@@ -53,7 +53,7 @@ export default function Contact() {
       {/* Contact by Topic */}
       <section className="py-20 container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-2xl font-heading font-bold text-white tracking-widest uppercase">CONTACT BY TOPIC</h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white tracking-widest uppercase">CONTACT BY TOPIC</h2>
           <div className="w-16 h-1 bg-primary mx-auto mt-4" />
         </div>
 

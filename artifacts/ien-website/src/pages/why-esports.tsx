@@ -64,7 +64,7 @@ export default function WhyEsports() {
         <div className="container mx-auto px-4 max-w-3xl text-center">
           <div className="flex items-center justify-center my-4 mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Our Mission</span>
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Our Mission</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
           </div>
           <motion.blockquote
@@ -86,7 +86,7 @@ export default function WhyEsports() {
       <section className="py-20 container mx-auto px-4">
         <div className="flex items-center justify-center mb-12">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Our Vision</span>
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Our Vision</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -111,7 +111,7 @@ export default function WhyEsports() {
       <section className="py-20 container mx-auto px-4 border-t border-primary/10">
          <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
-               <h2 className="text-3xl font-heading font-bold text-white mb-6 uppercase">Reach students traditional activities may miss</h2>
+               <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6 uppercase">Reach students traditional activities may miss</h2>
                <p className="text-muted-foreground mb-4 leading-relaxed">
                   Research shows that up to 80% of students who join an esports team have never participated in another extracurricular activity at their school. 
                </p>
@@ -133,7 +133,7 @@ export default function WhyEsports() {
       {/* Academic Benefits */}
       <section className="py-20 bg-card border-y border-primary/20">
          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-heading font-bold text-center text-white mb-12 uppercase tracking-widest">Academic and Career Benefits</h2>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-center text-white mb-12 uppercase tracking-widest">Academic and Career Benefits</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                <div className="bg-background border border-primary/20 p-8 rounded-xl hover:border-primary transition-colors">
@@ -162,7 +162,7 @@ export default function WhyEsports() {
       <section className="py-20 container mx-auto px-4 mb-10">
          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-               <h2 className="text-3xl font-heading font-bold text-white mb-8 uppercase">Why Schools Are Investing in Esports</h2>
+               <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-8 uppercase">Why Schools Are Investing in Esports</h2>
                <ul className="space-y-4">
                   {[
                      "Improves student attendance and engagement",
@@ -182,7 +182,7 @@ export default function WhyEsports() {
             
             <div className="bg-card border-2 border-primary rounded-xl p-8 shadow-[0_0_20px_rgba(212,175,55,0.15)] relative overflow-hidden">
                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-full"></div>
-               <h2 className="text-2xl font-heading font-bold text-white mb-6 uppercase relative z-10">What Schools Receive When They Join IEN</h2>
+               <h2 className="text-3xl font-heading font-bold text-white mb-6 uppercase relative z-10">What Schools Receive When They Join IEN</h2>
                <ul className="space-y-4 text-muted-foreground relative z-10">
                   <li className="flex items-start gap-2">
                      <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>

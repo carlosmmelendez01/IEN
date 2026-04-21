@@ -219,7 +219,7 @@ export default function Leagues() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
               Varsity vs Club
             </span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
@@ -279,7 +279,7 @@ export default function Leagues() {
       <section className="py-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
             IHSEN Game Titles
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
@@ -306,7 +306,7 @@ export default function Leagues() {
       <section className="py-4 pb-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
             IMSEN Game Titles
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
@@ -334,14 +334,14 @@ export default function Leagues() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
               Unified Program
             </span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
             <div>
-              <h2 className="text-3xl font-heading font-bold text-white mb-6">
+              <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
                 Esports for Everyone
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
@@ -405,7 +405,7 @@ export default function Leagues() {
       <section className="py-16 container mx-auto px-4" id="rules-resources">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
             Rules &amp; Resources
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />

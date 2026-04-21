@@ -114,7 +114,7 @@ export default function Home() {
       {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-        <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">
+        <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
           See IEN in Action
         </span>
         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
@@ -123,7 +123,7 @@ export default function Home() {
       {/* Video Section — placed directly below hero/stats for maximum storytelling impact */}
       <section className="py-8 container mx-auto px-4">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-3">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-3">
             SEE IEN IN ACTION
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto font-light">
@@ -169,7 +169,7 @@ export default function Home() {
       {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-        <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">
+        <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
           How It Works
         </span>
         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
@@ -177,7 +177,7 @@ export default function Home() {
 
       {/* How It Works Steps */}
       <section className="py-16 container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-12">
           HOW TO START AN ESPORTS PROGRAM
         </h2>
 
@@ -232,7 +232,7 @@ export default function Home() {
       {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-        <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">
+        <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
           Upcoming Events
         </span>
         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />

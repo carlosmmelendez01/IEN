@@ -97,7 +97,7 @@ export default function IHSEN() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Competition Tiers</span>
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Competition Tiers</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -135,7 +135,7 @@ export default function IHSEN() {
       <section className="py-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Game Titles</span>
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Game Titles</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
         </div>
         <p className="text-center text-muted-foreground text-sm mb-10">
@@ -177,7 +177,7 @@ export default function IHSEN() {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Season Structure</span>
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Season Structure</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -210,7 +210,7 @@ export default function IHSEN() {
 
       {/* CTA */}
       <section className="py-20 container mx-auto px-4 max-w-3xl text-center">
-        <h2 className="text-3xl font-heading font-bold text-white mb-4">Ready to Compete?</h2>
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Ready to Compete?</h2>
         <p className="text-muted-foreground mb-10 leading-relaxed">
           Register your school for IHSEN on LeagueOS or start a new program — we're here to help every step of the way.
         </p>

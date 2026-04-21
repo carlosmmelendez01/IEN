@@ -93,12 +93,12 @@ export default function IMSEN() {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">About IMSEN</span>
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">About IMSEN</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
-              <h2 className="text-2xl font-heading font-bold text-white mb-4">Where Esports Careers Begin</h2>
+              <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Where Esports Careers Begin</h2>
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                 IMSEN is designed to be a gateway — introducing middle schoolers to the world of competitive esports in a structured, adult-supervised, and school-supported environment. Students learn what it means to compete, collaborate, and communicate as a team.
               </p>
@@ -131,7 +131,7 @@ export default function IMSEN() {
       <section className="py-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Game Titles</span>
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Game Titles</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
         </div>
         <p className="text-center text-muted-foreground text-sm mb-10">
@@ -171,7 +171,7 @@ export default function IMSEN() {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Season Structure</span>
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Season Structure</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -204,7 +204,7 @@ export default function IMSEN() {
 
       {/* CTA */}
       <section className="py-20 container mx-auto px-4 max-w-3xl text-center">
-        <h2 className="text-3xl font-heading font-bold text-white mb-4">Start Your Middle School Program</h2>
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Start Your Middle School Program</h2>
         <p className="text-muted-foreground mb-10 leading-relaxed">
           Any Indiana middle school can join IMSEN. Register on LeagueOS or reach out — we'll walk you through everything from forming a roster to scheduling your first match.
         </p>

@@ -216,7 +216,7 @@ export default function Schools() {
       {/* Featured Programs */}
       <section className="py-16 bg-card border-y border-primary/20 mb-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-heading font-bold text-center text-white mb-10 tracking-widest uppercase">Featured Programs</h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center text-white mb-10 tracking-widest uppercase">Featured Programs</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="relative h-64 rounded-xl overflow-hidden border border-primary/30 group">
               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity"></div>

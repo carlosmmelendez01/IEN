@@ -50,7 +50,7 @@ export default function IUEN() {
       <section className="py-10 bg-primary/10 border-y border-primary/30">
         <div className="container mx-auto px-4 text-center">
           <p className="text-primary font-heading font-bold tracking-widest uppercase text-sm mb-2">Official Partnership</p>
-          <h2 className="text-2xl md:text-3xl font-heading font-bold text-white">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white">
             Indiana Esports Network × Indiana Special Olympics
           </h2>
           <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
@@ -63,7 +63,7 @@ export default function IUEN() {
       <section className="py-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-12">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">How It Works</span>
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">How It Works</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -109,7 +109,7 @@ export default function IUEN() {
       <section className="py-8 pb-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-10">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Unified Game Titles</span>
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Unified Game Titles</span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
         </div>
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-lg mx-auto">
@@ -133,7 +133,7 @@ export default function IUEN() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-12">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Why It Matters</span>
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Why It Matters</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -187,7 +187,7 @@ export default function IUEN() {
 
       {/* Get Involved */}
       <section className="py-16 container mx-auto px-4 mb-12 max-w-3xl text-center">
-        <h2 className="text-3xl font-heading font-bold text-white mb-4">Add Unified Esports to Your School</h2>
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Add Unified Esports to Your School</h2>
         <p className="text-muted-foreground mb-8 leading-relaxed">
           Any school already participating in IHSEN or IMSEN can add a Unified team at no extra cost. All you need is a coach, willing students, and a desire to compete inclusively. Contact IEN to learn how to get started.
         </p>

@@ -71,7 +71,7 @@ export default function Events() {
       {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Upcoming Events</span>
+         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Upcoming Events</span>
          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
       </div>
 
@@ -107,7 +107,7 @@ export default function Events() {
       {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Past Events</span>
+         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Past Events</span>
          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
       </div>
 
@@ -136,7 +136,7 @@ export default function Events() {
       {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Champions</span>
+         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Champions</span>
          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
       </div>
       

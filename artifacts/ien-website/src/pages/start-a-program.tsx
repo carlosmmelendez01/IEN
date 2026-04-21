@@ -28,7 +28,7 @@ export default function StartAProgram() {
       {/* Steps Section */}
       <section className="py-20 container mx-auto px-4">
          <div className="text-center mb-16">
-            <h2 className="text-3xl font-heading font-bold text-white mb-4 uppercase tracking-wider">Get Your School Connected</h2>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4 uppercase tracking-wider">Get Your School Connected</h2>
             <p className="text-muted-foreground text-lg">Three Steps to Starting Your Esports Club or Team</p>
          </div>
          
@@ -149,7 +149,7 @@ export default function StartAProgram() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">Player Eligibility</span>
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Player Eligibility</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -188,7 +188,7 @@ export default function StartAProgram() {
 
       {/* Closing CTA */}
       <section className="py-20 text-center mb-10 bg-gradient-to-b from-transparent to-primary/5 border-b border-primary/10">
-         <h2 className="text-3xl font-heading font-bold text-white mb-4">Get Started with IEN Today!</h2>
+         <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Get Started with IEN Today!</h2>
          <p className="text-muted-foreground mb-8">Take the first step in bringing competitive gaming to your school.</p>
          <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8">
             <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE AN ONBOARDING MEETING</a>

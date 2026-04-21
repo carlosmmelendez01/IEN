@@ -50,7 +50,7 @@ export default function PartnerWithIEN() {
       {/* Sponsorship Opportunities */}
       <section className="py-20 container mx-auto px-4">
          <div className="text-center mb-16">
-            <h2 className="text-3xl font-heading font-bold text-white mb-4 uppercase tracking-wider">Sponsorship Opportunities</h2>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4 uppercase tracking-wider">Sponsorship Opportunities</h2>
             <div className="w-24 h-1 bg-primary mx-auto"></div>
          </div>
          
@@ -89,7 +89,7 @@ export default function PartnerWithIEN() {
       <section className="py-24 bg-card text-center border-t border-primary/20 relative overflow-hidden mb-20">
          <div className="absolute inset-0 bg-primary/5"></div>
          <div className="container relative z-10 mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">Help Shape the Future of Scholastic Esports in Indiana</h2>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">Help Shape the Future of Scholastic Esports in Indiana</h2>
             <div className="flex flex-wrap justify-center gap-4 mt-8">
                <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8">
                   CONTACT PARTNERSHIPS

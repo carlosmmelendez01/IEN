@@ -279,7 +279,7 @@ export default function Partners() {
       <section className="py-20 bg-card border-t border-primary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-heading font-bold text-white mb-4">BECOME A SPONSOR</h2>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">BECOME A SPONSOR</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Support the growth of scholastic esports in Indiana while reaching thousands of highly
               engaged students, parents, and educators.
