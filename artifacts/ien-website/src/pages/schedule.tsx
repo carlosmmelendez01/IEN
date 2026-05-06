@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, School, DollarSign, Clock, ZoomIn, X, Download, ExternalLink } from "lucide-react";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 
-import ihsenSeason from "@assets/1_1776711178450.jpg";
-import ihsenPlayoffs from "@assets/2_1776711178450.jpg";
-import imsenFall from "@assets/3_1776711178450.jpg";
-import iuenFall from "@assets/4_1776711178450.jpg";
-import imsenSpring from "@assets/5_1776711178450.jpg";
-import iuenSpring from "@assets/6_1776711178450.jpg";
+import ihsenSeason from "@assets/IHEN_26-27 Season.jpg";
+import ihsenPlayoffs from "@assets/IHEN_26-27 Playoffs.jpg";
+import imsenFall from "@assets/IMSEN 26 Fall.jpg";
+import iuenFall from "@assets/IUEN 26 Fall.jpg";
+import imsenSpring from "@assets/IMSEN 27 Spring.jpg";
+import iuenSpring from "@assets/IUEN 27 Spring.jpg";
 
 function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
   return (
@@ -233,7 +233,7 @@ export default function Schedule() {
           alt="IHSEN 2026-2027 Regular Season Schedule"
           badge="IHSEN · Fall / Winter 2026"
           title="IHSEN Regular Season"
-          subtitle="High school competition across Valorant, Rocket League, League of Legends, Marvel Rivals, Smash Bros., Overwatch 2, Fortnite, Chess, Minecraft, Mario Kart, Tetris, and iRacing. Varsity teams earn playoff seeding. Preseason begins October 12."
+          subtitle="High school competition across Valorant, Rocket League, League of Legends, Marvel Rivals, Smash Bros., Overwatch 2, Apex Legends, Chess, Minecraft, Mario Kart, Tetris, and iRacing. Varsity teams earn playoff seeding. Preseason begins October 12."
           dateRange="Oct 12, 2026 – Feb 8, 2027 (Registration opens Aug 10)"
           level="High School (Grades 9–12)"
           cost="$100 / school for Varsity · Free for Club"
