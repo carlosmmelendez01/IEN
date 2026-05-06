@@ -10,7 +10,7 @@ import iuenLogo from "@assets/IUEN_Wordmark.png";
 
 const ihsenGames = [
   { name: "Valorant", type: "Varsity + Club", color: "border-red-500/60 text-red-400" },
-  { name: "Fortnite", type: "Varsity + Club", color: "border-purple-500/60 text-purple-400" },
+  { name: "Apex Legends", type: "Varsity + Club", color: "border-purple-500/60 text-purple-400" },
   { name: "Rocket League", type: "Varsity + Club", color: "border-blue-500/60 text-blue-400" },
   { name: "League of Legends", type: "Varsity + Club", color: "border-yellow-500/60 text-yellow-400" },
   { name: "Overwatch 2", type: "Varsity + Club", color: "border-orange-500/60 text-orange-400" },
