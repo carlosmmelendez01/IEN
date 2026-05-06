@@ -10,7 +10,7 @@ import gridTrophies from "@assets/state-finals/03-marvel-rivals-1200.jpg";
 import gridCoach from "@assets/state-finals/04-drew-rhoda-1200.jpg";
 
 const stats = [
-  { value: "214", label: "Schools Competing", live: true },
+  { value: "180", label: "Schools Competing", live: true },
   { value: "7,000+", label: "Student Athletes" },
   { value: "12", label: "Game Titles" },
 ];

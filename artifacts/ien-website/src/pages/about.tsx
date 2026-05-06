@@ -105,7 +105,7 @@ export default function About() {
           className="text-muted-foreground leading-relaxed max-w-3xl mx-auto text-center text-lg"
         >
           Indiana Esports Network (IEN) is a nonprofit organization founded and led by Indiana educators. We operate
-          three scholastic esports leagues, IHSEN, IMSEN, and IUEN, serving over 214 schools and 7,000+ student
+          three scholastic esports leagues, IHSEN, IMSEN, and IUEN, serving over 180 schools and 7,000+ student
           athletes across the state. We believe esports is more than gaming; it's a platform for academic growth,
           career exploration, and genuine human connection.
         </motion.p>
@@ -116,7 +116,7 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-4xl mx-auto">
             {[
-              { value: "214+", label: "Member Schools" },
+              { value: "180+", label: "Member Schools" },
               { value: "7,000+", label: "Student Athletes" },
               { value: "3", label: "Active Leagues" },
               { value: "100%", label: "Indiana Nonprofit" },

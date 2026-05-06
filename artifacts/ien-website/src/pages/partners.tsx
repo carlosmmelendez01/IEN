@@ -227,7 +227,7 @@ export default function Partners() {
             </p>
             <div className="flex flex-wrap justify-center gap-8 mt-8 text-sm">
               <div className="text-center">
-                <div className="text-3xl font-heading font-bold text-primary">214+</div>
+                <div className="text-3xl font-heading font-bold text-primary">180+</div>
                 <div className="text-xs text-muted-foreground uppercase tracking-widest mt-1">Member Schools</div>
               </div>
               <div className="text-center">
