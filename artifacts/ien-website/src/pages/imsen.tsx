@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Trophy, Users, Gamepad2, Star, Calendar, FileText } from "lucide-react";
-import imsenLogo from "@assets/IEN-03_1776709337186.png";
+import imsenLogo from "@assets/IMSEN_Wordmark.png";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 const games = [
@@ -18,7 +18,7 @@ const games = [
 ];
 
 const highlights = [
-  { icon: Star,     title: "Grades 6–8",           desc: "Purpose-built for middle schoolers — building fundamentals and sportsmanship from the start." },
+  { icon: Star,     title: "Grades 6–8",           desc: "Purpose-built for middle schoolers, building fundamentals and sportsmanship from the start." },
   { icon: Gamepad2, title: "8 Game Titles",         desc: "A focused selection of titles that are accessible and competitive at the middle school level." },
   { icon: Users,    title: "Varsity & Club",        desc: "Multiple tiers of competition so every school can participate regardless of experience." },
   { icon: Trophy,   title: "Championship Play",     desc: "Varsity teams compete in playoffs and postseason events to crown Indiana's best middle school programs." },
@@ -59,7 +59,7 @@ export default function IMSEN() {
               INDIANA MIDDLE SCHOOL ESPORTS NETWORK · GRADES 6–8
             </p>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
-              Building the foundation of scholastic esports in Indiana — a developmental league focused on sportsmanship, digital citizenship, and competitive growth for middle schoolers.
+              Building the foundation of scholastic esports in Indiana: a developmental league focused on sportsmanship, digital citizenship, and competitive growth for middle schoolers.
             </p>
           </motion.div>
         </div>
@@ -88,40 +88,40 @@ export default function IMSEN() {
         </div>
       </section>
 
-      {/* About IMSEN */}
+      {/* Varsity vs Club */}
       <section className="py-8 pb-16 bg-card border-y border-primary/20">
-        <div className="container mx-auto px-4 max-w-4xl">
+        <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">About IMSEN</span>
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Competition Tiers</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Where Esports Careers Begin</h2>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                IMSEN is designed to be a gateway — introducing middle schoolers to the world of competitive esports in a structured, adult-supervised, and school-supported environment. Students learn what it means to compete, collaborate, and communicate as a team.
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-background border-2 border-primary p-8 rounded-xl shadow-[0_0_20px_rgba(212,175,55,0.1)]">
+              <h3 className="font-heading font-bold text-2xl text-primary mb-4">Varsity</h3>
+              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                The school's top team in each title. Varsity teams compete for playoff seeding and earn the right to play for IMSEN championships at Fall and Spring Finals.
               </p>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                Many of Indiana's top IHSEN competitors got their start in IMSEN. The skills developed here — strategic thinking, time management, digital citizenship — carry players forward as they advance to high school programs.
-              </p>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Schools can field multiple club teams and one varsity team per game title. New IMSEN schools begin at the club level for their first semester before competing at the varsity tier.
-              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground mb-6">
+                <li className="flex gap-2"><span className="text-primary">✓</span> Eligible for playoffs and IMSEN Finals</li>
+                <li className="flex gap-2"><span className="text-primary">✓</span> One varsity team per game title per school</li>
+                <li className="flex gap-2"><span className="text-primary">✓</span> New schools must play Club for 1 semester first</li>
+              </ul>
+              <div className="bg-primary/10 border border-primary/30 rounded-lg p-3 text-sm text-primary font-medium">
+                School registration through LeagueOS, contact IEN for middle school pricing
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-background border border-primary/20 p-6 rounded-xl text-center hover:border-primary transition-colors">
-                <div className="text-3xl font-heading font-bold text-primary mb-1">6–8</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-widest">Grade Range</div>
-              </div>
-              <div className="bg-background border border-primary/20 p-6 rounded-xl text-center hover:border-primary transition-colors">
-                <div className="text-3xl font-heading font-bold text-primary mb-1">8</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-widest">Game Titles</div>
-              </div>
-              <div className="col-span-2 bg-background border border-primary/20 p-6 rounded-xl text-center hover:border-primary transition-colors">
-                <div className="text-2xl font-heading font-bold text-primary mb-1">Varsity + Club</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-widest">Competition Tiers</div>
-              </div>
+            <div className="bg-background border border-primary/30 p-8 rounded-xl">
+              <h3 className="font-heading font-bold text-2xl text-white mb-4">Club</h3>
+              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                Lower-stakes competition with no limit on the number of club teams per school. Club+ titles run their own spring championship bracket.
+              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex gap-2"><span className="text-primary">✓</span> Unlimited club teams per title</li>
+                <li className="flex gap-2"><span className="text-primary">✓</span> Required for all new schools' first semester</li>
+                <li className="flex gap-2"><span className="text-primary">✓</span> Club players can sub for varsity during regular season</li>
+                <li className="flex gap-2"><span className="text-primary">✓</span> Club+ divisions have their own spring championship</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -135,7 +135,7 @@ export default function IMSEN() {
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
         </div>
         <p className="text-center text-muted-foreground text-sm mb-10">
-          All 8 IMSEN titles — selected for accessibility and competitive depth at the middle school level
+          All 8 IMSEN titles, selected for accessibility and competitive depth at the middle school level
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-4xl mx-auto">
           {games.map((game, i) => (
@@ -174,11 +174,12 @@ export default function IMSEN() {
             <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Season Structure</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { phase: "Fall Season", dates: "Oct – Dec", desc: "Weekly regular season matches managed through LeagueOS. New schools play at club level to build experience and confidence." },
-              { phase: "Spring Season", dates: "Jan – Apr", desc: "Playoff brackets for varsity teams begin. Club+ titles run their own championship series. Varsity playoff seeding determined by regular season record." },
-              { phase: "Postseason",   dates: "May",       desc: "Top teams from each title compete for IMSEN championships. An in-person event brings middle schoolers together to crown Indiana's best." },
+              { phase: "Fall Season", dates: "Aug – Dec", desc: "Registration opens in August. Weekly regular season matches run through the fall, managed through LeagueOS. New schools play at club level to build experience." },
+              { phase: "Fall Finals", dates: "December", desc: "Fall postseason concludes the semester. Top teams from the fall regular season compete in a championship bracket to crown Fall Finals champions." },
+              { phase: "Spring Season", dates: "Jan – Apr", desc: "Season resumes in January with a new slate of regular season matches. Varsity playoff seeding is determined by regular season record." },
+              { phase: "Spring Finals", dates: "April", desc: "Top middle school teams compete for IMSEN Spring championships across each game title, crowning Indiana's best at an in-person finals event." },
             ].map((s, i) => (
               <motion.div
                 key={i}
@@ -206,7 +207,7 @@ export default function IMSEN() {
       <section className="py-20 container mx-auto px-4 max-w-3xl text-center">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Start Your Middle School Program</h2>
         <p className="text-muted-foreground mb-10 leading-relaxed">
-          Any Indiana middle school can join IMSEN. Register on LeagueOS or reach out — we'll walk you through everything from forming a roster to scheduling your first match.
+          Any Indiana middle school can join IMSEN. Register on LeagueOS or reach out, we'll walk you through everything from forming a roster to scheduling your first match.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Button

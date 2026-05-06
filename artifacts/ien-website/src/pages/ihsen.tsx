@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Trophy, Users, Gamepad2, Star, Calendar, FileText } from "lucide-react";
-import ihsenLogo from "@assets/IEN-02_1776709337186.png";
+import ihsenLogo from "@assets/IHSEN_Wordmark.png";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 const games = [
@@ -63,7 +63,7 @@ export default function IHSEN() {
               INDIANA HIGH SCHOOL ESPORTS NETWORK · GRADES 9–12
             </p>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
-              IEN's flagship division — bringing varsity and club esports competition to high schools across Indiana with 12 game titles and a season-ending State Finals championship.
+              IEN's flagship division, bringing varsity and club esports competition to high schools across Indiana with 12 game titles and a season-ending State Finals championship.
             </p>
           </motion.div>
         </div>
@@ -112,7 +112,7 @@ export default function IHSEN() {
                 <li className="flex gap-2"><span className="text-primary">✓</span> New schools must play Club for 1 semester first</li>
               </ul>
               <div className="bg-primary/10 border border-primary/30 rounded-lg p-3 text-sm text-primary font-medium">
-                $100 annual fee per school — covers all varsity teams
+                $100 annual fee per school, covers all varsity teams
               </div>
             </div>
             <div className="bg-background border border-primary/30 p-8 rounded-xl">
@@ -139,7 +139,7 @@ export default function IHSEN() {
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
         </div>
         <p className="text-center text-muted-foreground text-sm mb-10">
-          All 12 IHSEN titles — Varsity, Club, and Club+ divisions
+          All 12 IHSEN titles, Varsity, Club, and Club+ divisions
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {games.map((game, i) => (
@@ -182,9 +182,9 @@ export default function IHSEN() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { phase: "Fall Season", dates: "Oct – Dec", desc: "Regular season matches across all titles. New schools begin at club level. Weekly match scheduling through LeagueOS." },
+              { phase: "Fall Season", dates: "Aug – Dec", desc: "Registration opens in August. Regular season matches kick off in October and run weekly through December. New schools begin at club level." },
               { phase: "Spring Season", dates: "Jan – Apr", desc: "Varsity teams enter playoff brackets. Club+ championships run concurrently. Top varsity teams qualify for State Finals." },
-              { phase: "State Finals", dates: "May", desc: "Top varsity teams compete in-person for Indiana state championships across each game title." },
+              { phase: "State Finals", dates: "April", desc: "Top varsity teams compete in-person for Indiana state championships across each game title." },
             ].map((s, i) => (
               <motion.div
                 key={i}
@@ -212,7 +212,7 @@ export default function IHSEN() {
       <section className="py-20 container mx-auto px-4 max-w-3xl text-center">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Ready to Compete?</h2>
         <p className="text-muted-foreground mb-10 leading-relaxed">
-          Register your school for IHSEN on LeagueOS or start a new program — we're here to help every step of the way.
+          Register your school for IHSEN on LeagueOS or start a new program, we're here to help every step of the way.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Button

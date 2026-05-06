@@ -50,7 +50,7 @@ export interface School {
   name: string;
   city: string;
   teams: number;
-  division: string;
+  divisions: string[];
   lat: number;
   lng: number;
 }
@@ -61,13 +61,22 @@ interface SchoolMapProps {
 }
 
 export default function SchoolMap({ schools, selectedDivision }: SchoolMapProps) {
-  const filtered = selectedDivision === "All Divisions"
+  // Which division key is currently selected (or null = all)
+  const selectedKey =
+    selectedDivision === "High School (IHSEN)" ? "IHSEN"
+    : selectedDivision === "Middle School (IMSEN)" ? "IMSEN"
+    : selectedDivision === "Unified (IUEN)" ? "IUEN"
+    : null;
+
+  const filtered = selectedKey === null
     ? schools
-    : schools.filter(s =>
-        selectedDivision === "High School (IHSEN)" ? s.division === "IHSEN"
-        : selectedDivision === "Middle School (IMSEN)" ? s.division === "IMSEN"
-        : s.division === "IUEN"
-      );
+    : schools.filter(s => s.divisions.includes(selectedKey));
+
+  // Marker color rule:
+  //   - If a specific division is selected, color by that division (so filtered view is consistent).
+  //   - Otherwise, use the school's first/primary division.
+  const markerDivisionFor = (s: School) =>
+    selectedKey && s.divisions.includes(selectedKey) ? selectedKey : s.divisions[0];
 
   return (
     <MapContainer
@@ -89,7 +98,7 @@ export default function SchoolMap({ schools, selectedDivision }: SchoolMapProps)
           <Marker
             key={i}
             position={[school.lat, school.lng]}
-            icon={createCustomIcon(school.division)}
+            icon={createCustomIcon(markerDivisionFor(school))}
           >
             <Popup>
               <div style={{ fontFamily: "Rajdhani, sans-serif", minWidth: 160 }}>
@@ -98,7 +107,7 @@ export default function SchoolMap({ schools, selectedDivision }: SchoolMapProps)
                 <span style={{ color: "#888", fontSize: 12 }}>{school.city}</span>
                 <br />
                 <span style={{ color: "#c9a227", fontSize: 12, fontWeight: "bold" }}>
-                  {school.division} &nbsp;·&nbsp; {school.teams} Teams
+                  {school.divisions.join(" · ")} &nbsp;·&nbsp; {school.teams} Teams
                 </span>
               </div>
             </Popup>

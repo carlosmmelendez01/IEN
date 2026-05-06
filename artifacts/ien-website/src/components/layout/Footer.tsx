@@ -1,6 +1,6 @@
 import { Link } from "wouter";
-import ienShield from "@assets/IEN_Shield_1776709349969.png";
-import { socialLinks, ONBOARDING_URL, DONATE_URL } from "@/lib/socialLinks";
+import ienLogo from "@assets/IEN_Transparent.png";
+import { socialLinks, ONBOARDING_URL } from "@/lib/socialLinks";
 
 export function Footer() {
   return (
@@ -27,14 +27,12 @@ export function Footer() {
               </a>
             ))}
           </div>
-          <a
-            href={DONATE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/partners#ways-to-support"
             className="font-heading font-bold tracking-widest text-sm uppercase px-5 py-2 border border-primary/40 text-primary rounded-lg hover:bg-primary/10 hover:border-primary transition-all"
           >
             ♥ Donate
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -43,14 +41,15 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-10">
           {/* Brand */}
           <div className="sm:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-4">
-              <img src={ienShield} alt="IEN Shield Logo" className="w-12 h-12 object-contain shrink-0" />
-              <span className="font-heading font-bold text-lg tracking-wider text-primary leading-tight">
-                INDIANA ESPORTS<br />NETWORK
-              </span>
+            <Link href="/" className="flex items-center mb-4" aria-label="Indiana Esports Network home">
+              <img
+                src={ienLogo}
+                alt="Indiana Esports Network"
+                className="h-20 w-auto object-contain shrink-0"
+              />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mb-5">
-              Indiana's official scholastic esports league — fostering community, competition, and career pathways through gaming since 2019.
+              Indiana's official scholastic esports league, fostering community, competition, and career pathways through gaming since 2019.
             </p>
             <a
               href="mailto:info@indianaesportsnetwork.org"
@@ -118,14 +117,12 @@ export function Footer() {
           <div className="flex items-center gap-4 text-xs text-muted-foreground">
             <a href="#" className="hover:text-primary transition-colors">Terms</a>
             <a href="#" className="hover:text-primary transition-colors">Privacy</a>
-            <a
-              href={DONATE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/partners#ways-to-support"
               className="hover:text-primary transition-colors"
             >
               Donate
-            </a>
+            </Link>
           </div>
         </div>
       </div>

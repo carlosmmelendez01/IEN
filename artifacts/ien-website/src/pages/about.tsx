@@ -1,23 +1,34 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import { Users, Target, Shield, Heart, Star, Scale } from "lucide-react";
-import ienShield from "@assets/IEN_Shield_1776709349969.png";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
+import { useState } from "react";
 
-const boardMembers = [
-  { name: "Nick Parcell",     title: "President",                          initials: "NP" },
-  { name: "Ryan Dunfee",      title: "Vice President",                     initials: "RD" },
-  { name: "Chris King",       title: "Treasurer",                          initials: "CK" },
-  { name: "Matt Mills",       title: "Secretary",                          initials: "MM" },
-  { name: "Shaun Doyle",      title: "Director of Governance",             initials: "SD" },
-  { name: "Konnor Powell",    title: "Director of League Management",      initials: "KP" },
-  { name: "Jonathan Morgan",  title: "Director of Technology Operations",  initials: "JM" },
-  { name: "Trevor Smith",     title: "Director of Support",                initials: "TS" },
-  { name: "Carlos Melendez",  title: "Director of Marketing",              initials: "CM" },
-  { name: "Dylan Gentilcore", title: "Director At Large",                  initials: "DG" },
+const placeholderBio = "Short bio coming soon. Replace this with a paragraph about this board member's background, role at IEN, and what they bring to scholastic esports in Indiana.";
+
+const boardMembers: {
+  name: string;
+  title: string;
+  initials: string;
+  bio: string;
+  photo?: string;
+}[] = [
+  { name: "Nick Parcell",     title: "President",                          initials: "NP", bio: placeholderBio, photo: "/board/Nick.jpg" },
+  { name: "Ryan Dunfee",      title: "Vice President",                     initials: "RD", bio: placeholderBio, photo: "/board/Ryan.jpg" },
+  { name: "Chris King",       title: "Treasurer",                          initials: "CK", bio: placeholderBio, photo: "/board/Chris.png" },
+  { name: "Matt Mills",       title: "Secretary",                          initials: "MM", bio: placeholderBio, photo: "/board/Matt.png" },
+  { name: "Shaun Doyle",      title: "Director of Governance",             initials: "SD", bio: placeholderBio },
+  { name: "Konnor Powell",    title: "Director of League Management",      initials: "KP", bio: placeholderBio, photo: "/board/Konnor.jpg" },
+  { name: "Jonathan Morgan",  title: "Director of Technology Operations",  initials: "JM", bio: placeholderBio, photo: "/board/Jonathan.png" },
+  { name: "Trevor Smith",     title: "Director of Support",                initials: "TS", bio: placeholderBio, photo: "/board/Trevor.jpg" },
+  { name: "Carlos Melendez",  title: "Director of Marketing",              initials: "CM", bio: placeholderBio, photo: "/board/Carlos.png" },
+  { name: "Dylan Gentilcore", title: "Director At Large",                  initials: "DG", bio: placeholderBio, photo: "/board/Dylan.jpg" },
 ];
+
+type BoardMember = (typeof boardMembers)[number];
 
 const developmentCommittee = [
   { name: "Kristen Ritter", org: "Brebeuf High School", initials: "KR" },
@@ -34,7 +45,7 @@ const values = [
   {
     icon: Heart,
     title: "Positivity in the Community",
-    description: "We set the standard for scholastic esports in Indiana — fostering a culture of sportsmanship, respect, and genuine community.",
+    description: "We set the standard for scholastic esports in Indiana, fostering a culture of sportsmanship, respect, and genuine community.",
   },
   {
     icon: Users,
@@ -44,7 +55,7 @@ const values = [
   {
     icon: Scale,
     title: "Fair Play",
-    description: "Consistent rules and a level playing field — no matter the school size or resources. Every team gets a fair shot.",
+    description: "Consistent rules and a level playing field, no matter the school size or resources. Every team gets a fair shot.",
   },
   {
     icon: Shield,
@@ -59,6 +70,8 @@ const values = [
 ];
 
 export default function About() {
+  const [selectedMember, setSelectedMember] = useState<BoardMember | null>(null);
+
   return (
     <Layout>
       {/* Hero */}
@@ -67,7 +80,6 @@ export default function About() {
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         <div className="container relative z-20 mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <img src={ienShield} alt="IEN Shield" className="w-36 h-36 object-contain mx-auto mb-8 drop-shadow-[0_0_24px_rgba(212,175,55,0.3)]" />
             <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 tracking-tight">
               ABOUT <span className="text-primary">IEN</span>
             </h1>
@@ -93,7 +105,7 @@ export default function About() {
           className="text-muted-foreground leading-relaxed max-w-3xl mx-auto text-center text-lg"
         >
           Indiana Esports Network (IEN) is a nonprofit organization founded and led by Indiana educators. We operate
-          three scholastic esports leagues — IHSEN, IMSEN, and IUEN — serving over 214 schools and 7,000+ student
+          three scholastic esports leagues, IHSEN, IMSEN, and IUEN, serving over 214 schools and 7,000+ student
           athletes across the state. We believe esports is more than gaming; it's a platform for academic growth,
           career exploration, and genuine human connection.
         </motion.p>
@@ -127,7 +139,8 @@ export default function About() {
       {/* Core Values */}
       <section className="py-20 container mx-auto px-4">
         <div className="text-center mb-12">
-          <p className="text-sm font-heading font-bold text-primary tracking-[0.3em] uppercase mb-3">What We Stand For</p>
+          <p className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">What We Stand For</p>
+          <br></br>
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-white">OUR CORE VALUES</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -156,7 +169,7 @@ export default function About() {
       <section className="py-20 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-4">
-            <p className="text-sm font-heading font-bold text-primary tracking-[0.3em] uppercase mb-3">Leadership</p>
+            <p className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Leadership</p>
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-white">BOARD OF DIRECTORS</h2>
           </div>
           <p className="text-center text-muted-foreground text-sm mb-12 max-w-xl mx-auto">
@@ -165,27 +178,38 @@ export default function About() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-5xl mx-auto mb-16">
             {boardMembers.map((person, i) => (
-              <motion.div
+              <motion.button
                 key={i}
+                type="button"
+                onClick={() => setSelectedMember(person)}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05, duration: 0.35 }}
-                className="flex flex-col items-center text-center group"
+                className="flex flex-col items-center text-center group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-2 -m-2 hover:bg-primary/5 transition-colors"
+                aria-label={`View bio for ${person.name}`}
               >
-                <div className="w-20 h-20 rounded-full bg-background border-2 border-primary/40 group-hover:border-primary flex items-center justify-center mb-3 shadow-[0_0_15px_rgba(212,175,55,0.1)] transition-colors">
-                  <span className="font-heading font-bold text-primary text-lg">{person.initials}</span>
+                <div className="w-20 h-20 rounded-full overflow-hidden bg-background border-2 border-primary/40 group-hover:border-primary flex items-center justify-center mb-3 shadow-[0_0_15px_rgba(212,175,55,0.1)] transition-colors">
+                  {person.photo ? (
+                    <img
+                      src={person.photo}
+                      alt={person.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span className="font-heading font-bold text-primary text-lg">{person.initials}</span>
+                  )}
                 </div>
-                <h4 className="font-heading font-bold text-white text-sm leading-tight">{person.name}</h4>
-                <p className="text-xs text-muted-foreground mt-1 leading-tight">{person.title}</p>
-              </motion.div>
+                <h4 className="font-heading font-bold text-white text-base md:text-lg leading-tight">{person.name}</h4>
+                <p className="text-sm text-muted-foreground mt-1 leading-tight">{person.title}</p>
+              </motion.button>
             ))}
           </div>
 
           {/* Development Committee */}
           <div className="flex items-center justify-center mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/20" />
-            <span className="px-4 font-heading text-muted-foreground font-bold tracking-[0.2em] uppercase text-xs">
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
               Development Committee
             </span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/20" />
@@ -204,8 +228,8 @@ export default function About() {
                 <div className="w-16 h-16 rounded-full bg-background border border-primary/30 group-hover:border-primary/60 flex items-center justify-center mb-3 transition-colors">
                   <span className="font-heading font-bold text-primary/80 text-base">{person.initials}</span>
                 </div>
-                <h4 className="font-heading font-bold text-white text-sm">{person.name}</h4>
-                <p className="text-xs text-primary/60 mt-0.5">{person.org}</p>
+                <h4 className="font-heading font-bold text-white text-base md:text-lg">{person.name}</h4>
+                <p className="text-sm text-primary/60 mt-0.5">{person.org}</p>
               </motion.div>
             ))}
           </div>
@@ -222,7 +246,7 @@ export default function About() {
         >
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">READY TO JOIN <span className="text-primary">IEN?</span></h2>
           <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-            Schedule a meeting with our team and we'll help you find the right path — whether you're starting a program, joining a league, or exploring a partnership.
+            Schedule a meeting with our team and we'll help you find the right path, whether you're starting a program, joining a league, or exploring a partnership.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8 h-12">
@@ -236,6 +260,37 @@ export default function About() {
           </div>
         </motion.div>
       </section>
+
+      <Dialog open={selectedMember !== null} onOpenChange={(open) => !open && setSelectedMember(null)}>
+        <DialogContent className="bg-card border-primary/30 max-w-lg">
+          {selectedMember && (
+            <>
+              <DialogHeader>
+                <div className="flex items-center gap-4 mb-2">
+                  <div className="w-16 h-16 rounded-full overflow-hidden bg-background border-2 border-primary/40 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+                    {selectedMember.photo ? (
+                      <img
+                        src={selectedMember.photo}
+                        alt={selectedMember.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="font-heading font-bold text-primary text-lg">{selectedMember.initials}</span>
+                    )}
+                  </div>
+                  <div className="text-left">
+                    <DialogTitle className="font-heading text-white text-2xl">{selectedMember.name}</DialogTitle>
+                    <DialogDescription className="text-primary font-semibold mt-1">{selectedMember.title}</DialogDescription>
+                  </div>
+                </div>
+              </DialogHeader>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {selectedMember.bio}
+              </p>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </Layout>
   );
 }

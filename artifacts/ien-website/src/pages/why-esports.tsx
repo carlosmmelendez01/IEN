@@ -9,7 +9,7 @@ const visionPillars = [
   {
     icon: Users,
     title: "Students Are #1",
-    desc: "Students are the priority — they are the reason we built this program. Every decision we make centers around their growth, safety, and success."
+    desc: "Students are the priority; they are the reason we built this program. Every decision we make centers around their growth, safety, and success."
   },
   {
     icon: Heart,
@@ -78,7 +78,7 @@ export default function WhyEsports() {
             <span className="text-primary">collaboration, communication, creativity,</span>{" "}
             and <span className="text-primary">critical thinking</span> through video games and esports."
           </motion.blockquote>
-          <p className="mt-6 text-muted-foreground">— Indiana Esports Network</p>
+          <p className="mt-6 text-muted-foreground">Indiana Esports Network</p>
         </div>
       </section>
 
@@ -119,7 +119,7 @@ export default function WhyEsports() {
                   By bringing these students into a structured, adult-supervised environment, schools see increased attendance, higher GPAs, and improved behavioral outcomes among participants. Esports creates a sense of belonging and school pride for gamers.
                </p>
                <p className="text-muted-foreground mt-4 leading-relaxed font-medium text-white/80">
-                  IEN's Unified program also creates opportunities for students with intellectual disabilities to compete alongside their peers — making esports one of the most inclusive extracurricular programs available.
+                  IEN's Unified program also creates opportunities for students with intellectual disabilities to compete alongside their peers, making esports one of the most inclusive extracurricular programs available.
                </p>
             </div>
             <div className="md:w-1/2">
@@ -145,13 +145,13 @@ export default function WhyEsports() {
                <div className="bg-background border border-primary/20 p-8 rounded-xl hover:border-primary transition-colors">
                   <h3 className="text-xl font-heading font-bold text-primary mb-4">Communication & Teamwork</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                     Competitive esports requires split-second decision making, clear communication under pressure, and the ability to work cohesively as a unit — critical soft skills for any career.
+                     Competitive esports requires split-second decision making, clear communication under pressure, and the ability to work cohesively as a unit. These are critical soft skills for any career.
                   </p>
                </div>
                <div className="bg-background border border-primary/20 p-8 rounded-xl hover:border-primary transition-colors">
                   <h3 className="text-xl font-heading font-bold text-primary mb-4">Career Pathways</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                     Beyond playing, esports programs need shoutcasters, stream managers, graphic designers, team managers, and data analysts — opening doors to modern media and tech careers.
+                     Beyond playing, esports programs need shoutcasters, stream managers, graphic designers, team managers, and data analysts, opening doors to modern media and tech careers.
                   </p>
                </div>
             </div>
@@ -186,7 +186,7 @@ export default function WhyEsports() {
                <ul className="space-y-4 text-muted-foreground relative z-10">
                   <li className="flex items-start gap-2">
                      <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>
-                     <span>Structured competition seasons — Fall & Spring</span>
+                     <span>Structured competition seasons (Fall & Spring)</span>
                   </li>
                   <li className="flex items-start gap-2">
                      <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>

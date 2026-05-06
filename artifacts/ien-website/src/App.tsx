@@ -20,6 +20,7 @@ import WhyEsports from "@/pages/why-esports";
 import Schedule from "@/pages/schedule";
 import Contact from "@/pages/contact";
 import News from "@/pages/news";
+import BrandGuidelines from "@/pages/brand-guidelines";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +50,7 @@ function Router() {
       <Route path="/schedule" component={Schedule} />
       <Route path="/contact" component={Contact} />
       <Route path="/news" component={News} />
+      <Route path="/brand-guidelines" component={BrandGuidelines} />
       <Route component={NotFound} />
     </Switch>
   );

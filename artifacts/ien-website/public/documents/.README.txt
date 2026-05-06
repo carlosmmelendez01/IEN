@@ -1,0 +1,24 @@
+IEN Public Documents
+====================
+
+Drop any file here that should be downloadable from the live site:
+  - Game rulebooks (e.g. IHSEN_Rulebook.pdf)
+  - Bylaws (e.g. IEN_Bylaws_2025-26.pdf)
+  - Code of Conduct
+  - Player/parent waiver forms
+  - Onboarding guides
+  - Anything else schools, coaches, or partners need to download
+
+Once a file is in this folder, it will be available at:
+  https://<your-domain>/documents/<filename>
+
+Naming conventions
+------------------
+- Use underscores or hyphens, not spaces, in filenames
+- Include the season/year when relevant: IHSEN_Rulebook_2025-26.pdf
+- Use clear, predictable names — these become public URLs
+
+After dropping a file in here, tell Claude (or your developer) the
+filename and where on the site it should be linked from. Example:
+  "I added IHSEN_Rulebook_2025-26.pdf — link it on the Leagues page
+  next to the IHSEN rulebook button."

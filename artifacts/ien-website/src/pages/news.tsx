@@ -34,10 +34,10 @@ IMSEN registration opens the same day with Fall titles including Fortnite, Mario
 New schools must schedule an onboarding meeting before registering. Visit our Start a Program page or click the JOIN THE LEAGUE button to book your session today.
 
 Key Dates:
-• Aug 10 — Registration opens (IHSEN, IMSEN, IUEN)
-• Oct 12 — Fall season begins (IHSEN)
-• Dec 12 — IMSEN & IUEN Fall Finals
-• Apr 24 — IEN State Finals 2027`,
+• Aug 10: Registration opens (IHSEN, IMSEN, IUEN)
+• Oct 12: Fall season begins (IHSEN)
+• Dec 12: IMSEN & IUEN Fall Finals
+• Apr 24: IEN State Finals 2027`,
     image:
       "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80",
     featured: true,
@@ -55,12 +55,12 @@ Key Dates:
 More than 400 students from 80+ schools participated across six title championships. The energy in the arena was electric as teams that had competed online all season finally faced off in person.
 
 2026 State Champions:
-• Valorant (IHSEN) — Penn High School
-• Rocket League (IHSEN) — Zionsville High School  
-• Smash Bros. Ultimate (IHSEN) — Carmel High School
-• Overwatch 2 (IHSEN) — Cathedral High School
-• Fortnite (IMSEN) — Hamilton Southeastern Middle School
-• Smash Bros. Ultimate (IUEN) — Warren Central / United Athletes
+• Valorant (IHSEN): Penn High School
+• Rocket League (IHSEN): Zionsville High School
+• Smash Bros. Ultimate (IHSEN): Carmel High School
+• Overwatch 2 (IHSEN): Cathedral High School
+• Fortnite (IMSEN): Hamilton Southeastern Middle School
+• Smash Bros. Ultimate (IUEN): Warren Central / United Athletes
 
 A huge thank you to our volunteers, coaches, and the Ball State University campus for hosting such an incredible event. We can't wait to see everyone at the 2027 State Finals on April 24!`,
     image:
@@ -73,13 +73,13 @@ A huge thank you to our volunteers, coaches, and the Ball State University campu
     category: "Program Spotlight",
     headline: "IUEN Spotlight: How Unified Esports Is Changing Lives",
     excerpt:
-      "IEN's Unified Esports Network (IUEN) — a Special Olympics Indiana partnership — is giving students with intellectual disabilities a place to compete, connect, and belong.",
+      "IEN's Unified Esports Network (IUEN), a Special Olympics Indiana partnership, is giving students with intellectual disabilities a place to compete, connect, and belong.",
     body: `The Indiana Unified Esports Network (IUEN) launched as a Special Olympics Indiana partnership to create competitive esports opportunities for students with intellectual disabilities alongside their peers.
 
 In its second full season, IUEN now serves over 30 schools and 200 Unified Athletes and Partners competing together in Super Smash Bros. Ultimate and Rocket League.
 
-Coach Testimonial — Brownsburg High School:
-"Before IUEN, several of our Unified Athletes had never participated in any extracurricular activity. Now they show up every Tuesday with teammates who genuinely care about them. The growth we've seen — in confidence, communication, and school pride — has been remarkable."
+Coach Testimonial, Brownsburg High School:
+"Before IUEN, several of our Unified Athletes had never participated in any extracurricular activity. Now they show up every Tuesday with teammates who genuinely care about them. The growth we've seen, in confidence, communication, and school pride, has been remarkable."
 
 IUEN is completely free for all participating schools and students, supported by Special Olympics Indiana and IEN's nonprofit mission.
 
@@ -126,19 +126,19 @@ To apply, send your resume and a brief cover letter to info@indianaesportsnetwor
     category: "Event Recap",
     headline: "Fall 2025 Season Wraps with IMSEN & IUEN Finals",
     excerpt:
-      "The Fall 2025 season concluded with the IMSEN and IUEN Finals on December 13. Congratulations to all competing teams — Spring registration opens January 15.",
+      "The Fall 2025 season concluded with the IMSEN and IUEN Finals on December 13. Congratulations to all competing teams. Spring registration opens January 15.",
     body: `The Fall 2025 season came to a close on December 13 with the IMSEN and IUEN Finals, wrapping up a tremendous semester of scholastic esports competition across Indiana.
 
 IMSEN Fall 2025 Champions:
-• Fortnite — Noblesville West Middle School
-• Mario Kart 8 Deluxe — Carmel Middle School
-• Minecraft — Plainfield Middle School
-• Tetris — Brownsburg East Middle School
+• Fortnite: Noblesville West Middle School
+• Mario Kart 8 Deluxe: Carmel Middle School
+• Minecraft: Plainfield Middle School
+• Tetris: Brownsburg East Middle School
 
 IUEN Fall 2025 Champions:
-• Smash Bros. Ultimate — Perry Meridian High School / United Athletes
+• Smash Bros. Ultimate: Perry Meridian High School / United Athletes
 
-This fall season saw a record 68 schools compete across all IEN programs — a 25% increase from Fall 2024. We are incredibly proud of every student, coach, and administrator who made this season possible.
+This fall season saw a record 68 schools compete across all IEN programs, a 25% increase from Fall 2024. We are incredibly proud of every student, coach, and administrator who made this season possible.
 
 Spring registration for IMSEN and IUEN opens January 15, 2026. Spring titles will include Marvel Rivals, Rocket League, Super Smash Bros. Ultimate, and Chess. Reach out to info@indianaesportsnetwork.org with any questions.`,
     image:
@@ -152,7 +152,7 @@ Spring registration for IMSEN and IUEN opens January 15, 2026. Spring titles wil
     headline: "Welcome to the 2025–26 Season: 12 New Partner Schools Join IEN",
     excerpt:
       "IEN is proud to welcome 12 new schools to the network for the 2025–26 school year, including the first schools from the Wabash Valley and Calumet regions.",
-    body: `Indiana Esports Network is thrilled to welcome 12 new schools to the network for the 2025–26 school year — our largest single-season expansion to date.
+    body: `Indiana Esports Network is thrilled to welcome 12 new schools to the network for the 2025–26 school year, our largest single-season expansion to date.
 
 New schools joining IEN for 2025–26 include programs from the Wabash Valley and Calumet regions, areas that had not previously had IEN representation. This geographic growth brings IEN coverage to 29 of Indiana's 92 counties.
 
@@ -424,11 +424,11 @@ export default function News() {
             className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest"
           >
             <a
-              href="https://discord.gg/indianaesports"
+              href="https://www.facebook.com/indianaesportsnetwork"
               target="_blank"
               rel="noopener noreferrer"
             >
-              JOIN OUR DISCORD
+              FOLLOW ON FACEBOOK
             </a>
           </Button>
           <Button

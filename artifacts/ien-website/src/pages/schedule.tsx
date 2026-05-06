@@ -84,7 +84,7 @@ function SeasonRow({
       >
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 items-start">
 
-          {/* Left: thumbnail — click to enlarge */}
+          {/* Left: thumbnail (click to enlarge) */}
           <button
             onClick={() => setLightboxOpen(true)}
             className="group relative rounded-xl overflow-hidden border border-primary/20 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary w-full lg:w-[280px] shrink-0"
@@ -177,7 +177,7 @@ function SeasonRow({
               <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-primary/80">
                 Schedule your onboarding meeting first
               </a>{" "}
-              — LeagueOS registration opens after onboarding is complete.
+              LeagueOS registration opens after onboarding is complete.
             </p>
           </div>
         </div>
@@ -188,12 +188,13 @@ function SeasonRow({
 
 function SectionDivider({ label }: { label: string }) {
   return (
-    <div className="flex items-center gap-4 pt-10 pb-2">
-      <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-      <span className="font-heading font-bold text-primary tracking-widest uppercase text-3xl px-4 whitespace-nowrap">
+    <div className="flex items-center gap-2 md:gap-4 pt-10 pb-2">
+      {/* Side lines hide on mobile so the label can use full width without overflow */}
+      <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50 hidden md:block" />
+      <span className="font-heading font-bold text-primary tracking-widest uppercase text-lg md:text-3xl px-2 md:px-4 text-center md:whitespace-nowrap">
         {label}
       </span>
-      <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
+      <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50 hidden md:block" />
     </div>
   );
 }
@@ -336,7 +337,7 @@ export default function Schedule() {
           </h2>
           <p className="text-xl text-primary font-heading tracking-wider mb-5">April 24, 2027</p>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-            IHSEN, IMSEN, and IUEN champions are crowned at the annual IEN State Finals — Indiana's premier in-person scholastic esports championship.
+            IHSEN, IMSEN, and IUEN champions are crowned at the annual IEN State Finals, Indiana's premier in-person scholastic esports championship.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button

@@ -1,11 +1,12 @@
-import { Link } from "wouter";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { FileText, Download, ExternalLink } from "lucide-react";
-import ihsenLogo from "@assets/IEN-02_1776709337186.png";
-import imsenLogo from "@assets/IEN-03_1776709337186.png";
-import iuenLogo from "@assets/IEN-04_1776709327213.png";
+import ihsenLogo from "@assets/IHSEN_Wordmark.png";
+import imsenLogo from "@assets/IMSEN_Wordmark.png";
+import iuenLogo from "@assets/IUEN_Wordmark.png";
 
 const ihsenGames = [
   { name: "Valorant", type: "Varsity + Club", color: "border-red-500/60 text-red-400" },
@@ -17,9 +18,9 @@ const ihsenGames = [
   { name: "Mario Kart 8 Deluxe", type: "Varsity + Club", color: "border-red-600/60 text-red-300" },
   { name: "Minecraft", type: "Varsity", color: "border-green-500/60 text-green-400" },
   { name: "Marvel Rivals", type: "Varsity + Club", color: "border-rose-500/60 text-rose-400" },
-  { name: "Chess", type: "Club+", color: "border-gray-400/60 text-gray-300" },
-  { name: "Tetris", type: "Club+", color: "border-cyan-500/60 text-cyan-400" },
-  { name: "iRacing", type: "Club+", color: "border-amber-500/60 text-amber-400" },
+  { name: "Chess", type: "Tournament", color: "border-gray-400/60 text-gray-300" },
+  { name: "Tetris", type: "Tournament", color: "border-cyan-500/60 text-cyan-400" },
+  { name: "iRacing", type: "Tournament", color: "border-amber-500/60 text-amber-400" },
 ];
 
 const imsenGames = [
@@ -28,9 +29,9 @@ const imsenGames = [
   { name: "Fortnite", type: "Varsity + Club", color: "border-purple-500/60 text-purple-400" },
   { name: "Minecraft", type: "Varsity", color: "border-green-500/60 text-green-400" },
   { name: "Marvel Rivals", type: "Varsity + Club", color: "border-rose-500/60 text-rose-400" },
-  { name: "Mario Kart 8 Deluxe", type: "Club", color: "border-red-600/60 text-red-300" },
-  { name: "Chess", type: "Club+", color: "border-gray-400/60 text-gray-300" },
-  { name: "Tetris", type: "Club+", color: "border-cyan-500/60 text-cyan-400" },
+  { name: "Mario Kart 8 Deluxe", type: "Varsity + Club", color: "border-red-600/60 text-red-300" },
+  { name: "Chess", type: "Tournament", color: "border-gray-400/60 text-gray-300" },
+  { name: "Tetris", type: "Tournament", color: "border-cyan-500/60 text-cyan-400" },
 ];
 
 const iuenGames = [
@@ -108,8 +109,8 @@ function GameTile({
       className={`bg-card border ${borderClass} p-4 rounded-xl flex flex-col items-center justify-between text-center shadow-lg hover:bg-background transition-colors gap-2`}
     >
       <div className="flex flex-col items-center gap-1">
-        <span className={`font-heading font-bold text-sm ${textClass} leading-tight`}>{name}</span>
-        {type && <span className="text-xs text-muted-foreground">{type}</span>}
+        <span className={`font-heading font-bold text-base md:text-lg ${textClass} leading-tight`}>{name}</span>
+        {type && <span className="text-sm text-muted-foreground">{type}</span>}
       </div>
       <a
         href={rulebookHref}
@@ -117,7 +118,7 @@ function GameTile({
         rel={!isPlaceholder && !rulebookHref.startsWith("#") ? "noopener noreferrer" : undefined}
         onClick={isPlaceholder ? (e) => e.preventDefault() : undefined}
         title={isPlaceholder ? "Rulebook coming soon" : `${name} rules`}
-        className={`text-xs font-heading tracking-wide flex items-center gap-0.5 transition-colors ${
+        className={`text-sm font-heading tracking-wide flex items-center gap-0.5 transition-colors ${
           isPlaceholder
             ? "text-muted-foreground/40 cursor-default"
             : "text-primary hover:text-primary/80"
@@ -130,6 +131,35 @@ function GameTile({
 }
 
 export default function Leagues() {
+  const [location] = useLocation();
+  // Track the hash ourselves so hash-only changes (e.g. clicking Games in the navbar
+  // while already on /leagues) re-trigger the scroll effect below. Wouter's useLocation
+  // only tracks pathname, so without this a hash-only navigation wouldn't re-run the effect.
+  const [hash, setHash] = useState<string>(() =>
+    typeof window !== "undefined" ? window.location.hash : "",
+  );
+  useEffect(() => {
+    const onHashChange = () => setHash(window.location.hash);
+    window.addEventListener("hashchange", onHashChange);
+    // Also re-read on mount / route change in case wouter updated the hash without
+    // the browser firing a hashchange event.
+    onHashChange();
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, [location]);
+
+  // Scroll to #hash anchor whenever the route or hash changes
+  // (e.g. /leagues#game-titles from clicking Games in the navbar).
+  useEffect(() => {
+    if (!hash) return;
+    const id = hash.slice(1);
+    // Defer to next tick to ensure the target element is mounted.
+    const t = setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+    return () => clearTimeout(t);
+  }, [location, hash]);
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -182,7 +212,7 @@ export default function Leagues() {
             {
               title: "IUEN",
               subtitle: "Indiana Unified Esports Network",
-              desc: "In partnership with Indiana Special Olympics, IUEN provides competitive esports for students with and without intellectual disabilities — competing together as teammates.",
+              desc: "In partnership with Indiana Special Olympics, IUEN provides competitive esports for students with and without intellectual disabilities, competing together as teammates.",
               link: "/leagues/iuen",
               logo: iuenLogo,
             },
@@ -197,9 +227,8 @@ export default function Leagues() {
               <img
                 src={league.logo}
                 alt={`${league.title} logo`}
-                className="w-48 h-20 object-contain mb-6"
+                className="w-full max-w-xs h-16 object-contain mb-6 drop-shadow-[0_0_20px_rgba(212,175,55,0.25)]"
               />
-              <h3 className="font-heading font-bold text-xl mb-2 text-white">{league.title}</h3>
               <p className="text-primary text-sm font-medium mb-4">{league.subtitle}</p>
               <p className="text-muted-foreground text-sm mb-8 flex-grow">{league.desc}</p>
               <Button
@@ -214,17 +243,17 @@ export default function Leagues() {
         </div>
       </section>
 
-      {/* Varsity vs Club */}
+      {/* Competition Formats */}
       <section className="py-16 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
             <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
-              Varsity vs Club
+              Competition Formats
             </span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <div className="bg-background border-2 border-primary p-8 rounded-xl shadow-[0_0_20px_rgba(212,175,55,0.1)]">
               <h3 className="font-heading font-bold text-2xl text-primary mb-4">Varsity</h3>
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
@@ -251,8 +280,7 @@ export default function Leagues() {
               <h3 className="font-heading font-bold text-2xl text-white mb-4">Club</h3>
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                 Any school team that wants to compete but is not the varsity team. Schools may enter
-                multiple club teams. Club+ titles also have playoff and championship events in the
-                spring.
+                multiple club teams to give more students a chance to play.
               </p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex gap-2">
@@ -265,9 +293,29 @@ export default function Leagues() {
                   <span className="text-primary">✓</span> Club players can sub for varsity during
                   regular season
                 </li>
+              </ul>
+            </div>
+            <div className="bg-background border border-primary/30 p-8 rounded-xl">
+              <h3 className="font-heading font-bold text-2xl text-white mb-4">Tournament</h3>
+              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                Individual head-to-head titles with weekly match days. Players check in on LeagueOS during
+                the match window and are paired with an available opponent. No fixed team rosters required.
+              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex gap-2">
-                  <span className="text-primary">✓</span> Club+ divisions have their own spring
-                  championship
+                  <span className="text-primary">✓</span> Individual play, not team-based
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-primary">✓</span> Weekly match days throughout the season
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-primary">✓</span> LeagueOS check-in pairs you with an opponent
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-primary">✓</span> IHSEN: Chess · Tetris · iRacing
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-primary">✓</span> IMSEN: Chess · Tetris
                 </li>
               </ul>
             </div>
@@ -276,7 +324,7 @@ export default function Leagues() {
       </section>
 
       {/* IHSEN Game Titles */}
-      <section className="py-16 container mx-auto px-4">
+      <section id="game-titles" className="py-16 container mx-auto px-4 scroll-mt-20">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
           <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
@@ -346,7 +394,7 @@ export default function Leagues() {
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 IEN's Unified program creates competitive gaming opportunities for students with
-                intellectual disabilities, competing alongside Unified partners — students without
+                intellectual disabilities, competing alongside Unified partners, students without
                 intellectual disabilities who participate in a fun and meaningful way.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-8">
@@ -392,7 +440,7 @@ export default function Leagues() {
                   True Inclusion in Competitive Gaming
                 </h4>
                 <p className="text-xs text-muted-foreground">
-                  Unified teams compete in official IEN matches with structured rules — just like
+                  Unified teams compete in official IEN matches with structured rules, just like
                   every other team in the league
                 </p>
               </div>
@@ -440,7 +488,7 @@ export default function Leagues() {
 
                 {isPlaceholder ? (
                   <div className="mt-auto text-xs text-muted-foreground/50 italic font-medium">
-                    Coming soon — contact{" "}
+                    Coming soon, contact{" "}
                     <a
                       href="mailto:info@indianaesportsnetwork.org"
                       className="text-primary/60 hover:text-primary underline underline-offset-2"
@@ -474,11 +522,15 @@ export default function Leagues() {
           })}
         </div>
 
-        {/* Season Calendar downloads — real PDFs */}
-        <div className="mt-10 max-w-5xl mx-auto">
-          <h3 className="font-heading font-bold text-primary uppercase tracking-widest text-sm mb-4 text-center">
-            Season Calendars
-          </h3>
+        {/* Season Calendar downloads */}
+        <div className="mt-16 max-w-5xl mx-auto">
+          <div className="flex items-center justify-center mb-8">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
+              Season Calendars
+            </span>
+            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               { label: "IHSEN 2026–27 Calendar", href: "/IHSEN_Calendar_2026-2027.pdf" },
@@ -502,42 +554,6 @@ export default function Leagues() {
         </div>
       </section>
 
-      {/* Season Format */}
-      <section className="py-16 container mx-auto px-4 mb-20">
-        <div className="flex items-center justify-center mb-12">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-sm">
-            Season Format
-          </span>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
-        </div>
-        <p className="text-center text-muted-foreground text-sm mb-10">
-          Fall and Spring seasons concluding with live LAN events
-        </p>
-        <div className="relative">
-          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-primary/20 -translate-y-1/2 rounded-full" />
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              { title: "Fall Season", subtitle: "Online Competition", date: "Oct – Dec" },
-              { title: "Spring Season", subtitle: "Online Competition", date: "Feb – Apr" },
-              { title: "Regional LANs", subtitle: "In-Person Qualifiers", date: "Late April" },
-              { title: "IEN State Finals", subtitle: "Live Championship Event", date: "Mid May" },
-            ].map((step, i) => (
-              <div
-                key={i}
-                className="relative z-10 bg-card border border-primary/30 p-6 rounded-xl text-center shadow-lg hover:border-primary transition-colors group"
-              >
-                <div className="absolute -top-3 -right-3 w-8 h-8 bg-primary text-primary-foreground flex items-center justify-center rounded-full font-bold font-heading">
-                  {i + 1}
-                </div>
-                <div className="text-primary text-sm font-bold mb-2">{step.date}</div>
-                <h3 className="font-heading font-bold text-xl text-white mb-1">{step.title}</h3>
-                <p className="text-muted-foreground text-sm">{step.subtitle}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </Layout>
   );
 }

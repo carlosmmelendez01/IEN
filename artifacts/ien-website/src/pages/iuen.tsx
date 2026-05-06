@@ -2,8 +2,8 @@ import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Heart, Users, Gamepad2, Star } from "lucide-react";
-import iuenLogo from "@assets/IEN-04_1776709327213.png";
+import { Heart, Users, Gamepad2, Star, Calendar } from "lucide-react";
+import iuenLogo from "@assets/IUEN_Wordmark.png";
 
 export default function IUEN() {
   return (
@@ -20,10 +20,10 @@ export default function IUEN() {
             transition={{ duration: 0.5 }}
             className="flex justify-center mb-8"
           >
-             <img 
-               src={iuenLogo} 
-               alt="IUEN Logo" 
-               className="h-32 w-auto object-contain drop-shadow-[0_0_30px_rgba(200,200,255,0.5)]"
+             <img
+               src={iuenLogo}
+               alt="IUEN Logo"
+               className="h-32 w-auto object-contain drop-shadow-[0_0_30px_rgba(212,175,55,0.4)]"
              />
           </motion.div>
           
@@ -54,7 +54,7 @@ export default function IUEN() {
             Indiana Esports Network × Indiana Special Olympics
           </h2>
           <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
-            Together, we're bringing inclusive competitive gaming to Indiana schools — creating an esports environment where every student has a place to compete, grow, and belong.
+            Together, we're bringing inclusive competitive gaming to Indiana schools, creating an esports environment where every student has a place to compete, grow, and belong.
           </p>
         </div>
       </section>
@@ -81,7 +81,7 @@ export default function IUEN() {
               <h3 className="font-heading font-bold text-xl text-white">Unified Athletes</h3>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              A Unified Athlete is a student with an intellectual disability who actively participates in training and competition. Athletes are full competitors — not spectators — and are placed on rosters just like any other player.
+              A Unified Athlete is a student with an intellectual disability who actively participates in training and competition. Athletes are full competitors, not spectators, and are placed on rosters just like any other player.
             </p>
           </motion.div>
 
@@ -99,7 +99,7 @@ export default function IUEN() {
               <h3 className="font-heading font-bold text-xl text-white">Unified Partners</h3>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              A Unified Partner is a student without an intellectual disability who competes alongside athletes in a meaningful, supportive way. Partners are not coaches or helpers — they are teammates competing in official matches.
+              A Unified Partner is a student without an intellectual disability who competes alongside athletes in a meaningful, supportive way. Partners are not coaches or helpers, they are teammates competing in official matches.
             </p>
           </motion.div>
         </div>
@@ -146,7 +146,7 @@ export default function IUEN() {
             >
               <Heart className="w-10 h-10 text-primary mx-auto mb-4" />
               <h4 className="font-heading font-bold text-lg text-white mb-2">True Inclusion</h4>
-              <p className="text-xs text-muted-foreground">Athletes compete as equals — not observers. Unified teams play in official IEN matches with the same rules as every other team.</p>
+              <p className="text-xs text-muted-foreground">Athletes compete as equals, not observers. Unified teams play in official IEN matches with the same rules as every other team.</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -179,8 +179,44 @@ export default function IUEN() {
             >
               <Gamepad2 className="w-10 h-10 text-primary mx-auto mb-4" />
               <h4 className="font-heading font-bold text-lg text-white mb-2">Accessible Gaming</h4>
-              <p className="text-xs text-muted-foreground">Game titles are chosen specifically for their accessibility — games that are fun and competitive for athletes and partners alike.</p>
+              <p className="text-xs text-muted-foreground">Game titles are chosen specifically for their accessibility, games that are fun and competitive for athletes and partners alike.</p>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Season Structure */}
+      <section className="py-16 bg-card border-y border-primary/20">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="flex items-center justify-center mb-10">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
+            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Season Structure</span>
+            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { phase: "Fall Season", dates: "Oct – Dec", desc: "Unified rosters practice and play exhibition matches through LeagueOS. New teams ease into competition at club level alongside their IHSEN and IMSEN programs." },
+              { phase: "Spring Season", dates: "Jan – Apr", desc: "Regular season matches run league-wide across Rocket League and Super Smash Bros. Athletes and partners compete as full teammates in every match." },
+              { phase: "State Finals", dates: "May", desc: "Top Unified teams compete for Indiana state championships alongside IHSEN and IMSEN. An in-person finals event celebrates inclusive competition at its highest level." },
+            ].map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.4 }}
+                className="bg-background border border-primary/20 p-6 rounded-xl hover:border-primary transition-colors"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <Calendar className="w-5 h-5 text-primary shrink-0" />
+                  <div>
+                    <h4 className="font-heading font-bold text-white">{s.phase}</h4>
+                    <span className="text-xs text-primary">{s.dates}</span>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

@@ -71,15 +71,15 @@
   --elevate-1: rgba(255,255,255, .04);
   --elevate-2: rgba(255,255,255, .09);
 
-  /* IEN Brand Palette — derived from Shield logo & IHSEN/IMSEN/IUEN logos */
-  /* Deep midnight navy (shield body) + warm gold (shield accents) + chrome silver (sub-logos) */
+  /* IEN Brand Palette - matches the official IEN logo and the IHSEN/IMSEN/IUEN
+     wordmarks. Deep midnight navy + warm gold are the two anchor colors. */
 
-  --background: 218 58% 8%;   /* #080f1e — deepest navy, matches schedule card bg */
+  --background: 218 58% 8%;   /* #080f1e - deepest navy, matches schedule card bg */
   --foreground: 0 0% 95%;
 
   --border: 218 40% 20%;      /* muted navy border */
 
-  --card: 218 50% 11%;        /* #0d1828 — slightly lifted navy for cards */
+  --card: 218 50% 11%;        /* #0d1828 - slightly lifted navy for cards */
   --card-foreground: 0 0% 95%;
   --card-border: 45 74% 45%; /* gold border */
 
@@ -96,10 +96,10 @@
   --popover-foreground: 0 0% 95%;
   --popover-border: 218 40% 20%;
 
-  --primary: 45 74% 50%;      /* #d4af37 — warm gold from shield star & accents */
+  --primary: 45 74% 50%;      /* #d4af37 - warm gold from logo accents */
   --primary-foreground: 218 58% 6%;
 
-  --secondary: 218 30% 22%;   /* steel navy — secondary surfaces */
+  --secondary: 218 30% 22%;   /* steel navy - secondary surfaces */
   --secondary-foreground: 215 20% 85%;
 
   --muted: 218 35% 16%;       /* slightly lighter than card */
@@ -169,4 +169,32 @@
 }
 
 @layer utilities {
+  /* Subtle Ken Burns zoom for the homepage hero photo. Slow-cycling scale gives a
+     static image a sense of motion without the bandwidth cost of a hero video.
+     Uses motion-safe variant so users with reduced-motion preference get a still image. */
+  @keyframes hero-zoom {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.06); }
+    100% { transform: scale(1); }
+  }
+  .animate-hero-zoom {
+    animation: hero-zoom 24s ease-in-out infinite;
+    transform-origin: center 40%;
+  }
+
+  /* Keep Leaflet map layers below the sticky navbar (which is z-50).
+     Leaflet defaults go up to 1000 (.leaflet-top/.leaflet-bottom) and 700 (popups),
+     which would otherwise cover the header on scroll. */
+  .leaflet-pane         { z-index: 1 !important; }
+  .leaflet-tile-pane    { z-index: 2 !important; }
+  .leaflet-overlay-pane { z-index: 3 !important; }
+  .leaflet-shadow-pane  { z-index: 4 !important; }
+  .leaflet-marker-pane  { z-index: 5 !important; }
+  .leaflet-tooltip-pane { z-index: 6 !important; }
+  .leaflet-popup-pane   { z-index: 7 !important; }
+  .leaflet-control      { z-index: 8 !important; }
+  .leaflet-top,
+  .leaflet-bottom       { z-index: 9 !important; }
+  /* Also isolate the container itself so nothing escapes its stacking context. */
+  .leaflet-container    { isolation: isolate; }
 }

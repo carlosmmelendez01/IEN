@@ -1,8 +1,8 @@
-import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, Clock, FileText, MapPin, Newspaper, Trophy } from "lucide-react";
+import drewRhodaPhoto from "@assets/state-finals/04-drew-rhoda-1200.jpg";
 
 export default function Events() {
   return (
@@ -29,79 +29,100 @@ export default function Events() {
         </div>
       </section>
 
-      {/* Featured Event */}
+      {/* Featured Event: Spring Finals 2026 */}
       <section className="py-12 container mx-auto px-4">
          <div className="relative rounded-2xl overflow-hidden border-2 border-primary/50 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-transparent"></div>
-            
+
             <div className="relative z-10 p-8 md:p-12 md:w-2/3">
                <div className="inline-block mb-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-bold tracking-widest rounded-full uppercase">
                  Featured Event
                </div>
-               <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">IEN STATE FINALS</h2>
-               
+               <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">IEN SPRING FINALS 2026</h2>
+
                <div className="flex flex-col gap-3 mb-8">
                   <div className="flex items-center gap-3 text-primary">
                      <Calendar className="w-5 h-5" />
-                     <span className="font-medium text-lg">May 18-19, 2024</span>
+                     <span className="font-medium text-lg">April 25, 2026</span>
                   </div>
-                  <div className="flex items-center gap-3 text-gray-300">
-                     <MapPin className="w-5 h-5" />
-                     <span className="font-medium text-lg">Ball State University Arena</span>
+                  <div className="flex items-center gap-3 text-primary">
+                     <Clock className="w-5 h-5" />
+                     <span className="font-medium text-lg">8:00 AM – 6:00 PM</span>
+                  </div>
+                  <div className="flex items-start gap-3 text-gray-300">
+                     <MapPin className="w-5 h-5 mt-1" />
+                     <span className="font-medium text-lg">
+                        Riverview Health Arena at Innovation Mile<br />
+                        <span className="text-sm text-muted-foreground">14157 CJ Way, Noblesville, IN 46060</span>
+                     </span>
                   </div>
                </div>
-               
+
                <p className="text-muted-foreground mb-8 max-w-xl">
-                  The culmination of the spring season. Watch the top high school and middle school teams from across Indiana compete for the state championship titles in Valorant, Rocket League, Overwatch 2, and Super Smash Bros.
+                  The largest esports event in Indiana is back. Join us at Riverview Health Arena as we crown 28 state champions and runners-up across middle and high school. The event is <span className="text-primary font-semibold">FREE</span> and open to the public, though all attendees must register for a free general admission ticket. Plus: a college/career fair, US Army Esports, cybersecurity competition, open play, and more.
                </p>
-               
+
                <div className="flex flex-wrap gap-4">
-                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest">
-                     VIEW EVENT DETAILS
+                  <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest">
+                     <a href="https://www.universe.com/events/ien-spring-finals-tickets-NSZ9K3" target="_blank" rel="noopener noreferrer">
+                        GET FREE TICKETS
+                     </a>
                   </Button>
-                  <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
-                     REGISTER NOW
+                  <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
+                     <a href="/events/spring-finals-2026-schedule.pdf" target="_blank" rel="noopener noreferrer">
+                        <FileText className="w-4 h-4 mr-2" /> VIEW SCHEDULE
+                     </a>
+                  </Button>
+                  <Button asChild variant="outline" className="border-primary/50 text-primary/80 hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
+                     <a href="/events/spring-finals-2026-announcement.pdf" target="_blank" rel="noopener noreferrer">
+                        <FileText className="w-4 h-4 mr-2" /> EVENT FLYER
+                     </a>
                   </Button>
                </div>
             </div>
          </div>
       </section>
 
-      {/* Divider */}
-      <div className="flex items-center justify-center my-12 container mx-auto px-4">
-         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Upcoming Events</span>
-         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
-      </div>
-
-      {/* Upcoming Events List */}
+      {/* Coach of the Year — Drew Rhoda was named the 2025-26 winner at State Finals on
+          April 25, 2026. Updated from the pre-announcement teaser to the post-announcement
+          recognition card with his actual photo. */}
       <section className="py-8 container mx-auto px-4">
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-               { title: "North Region LAN", date: "May 4, 2024", location: "Mishawaka High School", image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80" },
-               { title: "Central Region LAN", date: "April 27, 2024", location: "Park Tudor School, Indianapolis", image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&q=80" },
-               { title: "South Region LAN", date: "April 27, 2024", location: "East Washington MS, Pekin IN", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80" }
-            ].map((event, i) => (
-               <div key={i} className="bg-card border border-primary/20 rounded-xl overflow-hidden group hover:border-primary transition-all">
-                  <div className="h-48 relative overflow-hidden">
-                     <img src={event.image} alt={event.title} className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity group-hover:scale-105 duration-500" />
-                     <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
-                  </div>
-                  <div className="p-6 relative -mt-12 z-10">
-                     <div className="bg-background border border-primary/50 px-3 py-1 inline-block rounded text-primary text-xs font-bold mb-3">{event.date}</div>
-                     <h3 className="font-heading font-bold text-xl text-white mb-2">{event.title}</h3>
-                     <div className="flex items-start gap-2 text-muted-foreground text-sm mb-6">
-                        <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-                        <span>{event.location}</span>
-                     </div>
-                     <Button variant="outline" className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest text-sm">
-                        VIEW EVENT
-                     </Button>
-                  </div>
+         <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center max-w-5xl mx-auto"
+         >
+            {/* Photo: portrait crop kept intact via constrained max-width column. */}
+            <div className="md:col-span-2 rounded-2xl overflow-hidden border border-primary/30 shadow-[0_0_30px_rgba(212,175,55,0.15)] bg-card">
+               <img
+                  src={drewRhodaPhoto}
+                  alt="Drew Rhoda holding the IEN Coach of the Year 2025-26 trophy at State Finals"
+                  loading="lazy"
+                  className="w-full h-auto object-cover"
+               />
+            </div>
+            {/* Citation. */}
+            <div className="md:col-span-3 flex flex-col gap-4 text-center md:text-left">
+               <div className="inline-flex items-center justify-center md:justify-start gap-2 text-primary font-heading font-bold tracking-widest uppercase text-sm">
+                  <Trophy className="w-4 h-4" /> 2025–26 Coach of the Year
                </div>
-            ))}
-         </div>
+               <h3 className="text-3xl md:text-4xl font-heading font-bold text-white leading-tight">
+                  Drew Rhoda
+               </h3>
+               <p className="text-muted-foreground leading-relaxed">
+                  IEN's Coach of the Year recognizes the educator who has had the biggest impact
+                  on Indiana scholastic esports. Drew was honored on stage at the 2026 State
+                  Finals on April 25 for his leadership, mentorship, and dedication to building
+                  programs that put students first.
+               </p>
+               <p className="text-primary text-sm font-medium tracking-wide">
+                  Congratulations to Drew Rhoda and the entire coaching community.
+               </p>
+            </div>
+         </motion.div>
       </section>
 
       {/* Divider */}
@@ -113,22 +134,55 @@ export default function Events() {
 
       {/* Past Events */}
       <section className="py-8 container mx-auto px-4 mb-20">
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <a
+               href="/events/ien-x-pacers-graphic.pdf"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="relative h-64 rounded-xl overflow-hidden border border-primary/20 group hover:border-primary transition-colors md:col-span-2"
+            >
+               <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&q=80" alt="IEN Esports Night with the Indiana Pacers" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity mix-blend-luminosity" />
+               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
+               <div className="absolute bottom-6 left-6 right-6">
+                  <div className="text-primary font-bold text-sm tracking-widest mb-1">March 29, 2026</div>
+                  <h3 className="text-2xl font-heading font-bold text-white mb-1">IEN ESPORTS NIGHT WITH THE INDIANA PACERS</h3>
+                  <p className="text-sm text-muted-foreground">Gainbridge Fieldhouse · NBA 2K Final Four · Pacers vs Miami Heat · Career Fair</p>
+               </div>
+            </a>
             <div className="relative h-64 rounded-xl overflow-hidden border border-primary/20 group">
-               <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80" alt="2023 State Finals" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity mix-blend-luminosity" />
+               <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80" alt="2025 State Finals" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity mix-blend-luminosity" />
                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent/50"></div>
                <div className="absolute bottom-6 left-6">
-                  <div className="text-primary font-bold text-sm tracking-widest mb-1">2023</div>
+                  <div className="text-primary font-bold text-sm tracking-widest mb-1">2025</div>
                   <h3 className="text-2xl font-heading font-bold text-white">IEN STATE FINALS</h3>
                </div>
             </div>
-            <div className="relative h-64 rounded-xl overflow-hidden border border-primary/20 group">
-               <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80" alt="2022 State Finals" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity mix-blend-luminosity" />
-               <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent/50"></div>
-               <div className="absolute bottom-6 left-6">
-                  <div className="text-primary font-bold text-sm tracking-widest mb-1">2022</div>
-                  <h3 className="text-2xl font-heading font-bold text-white">IEN STATE FINALS</h3>
-               </div>
+         </div>
+      </section>
+
+      {/* Divider */}
+      <div className="flex items-center justify-center my-12 container mx-auto px-4">
+         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
+         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Newsletter</span>
+         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
+      </div>
+
+      {/* Newsletter */}
+      <section className="py-8 container mx-auto px-4 mb-20">
+         <div className="max-w-3xl mx-auto bg-card border border-primary/30 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8">
+            <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0">
+               <Newspaper className="w-10 h-10 text-primary" />
+            </div>
+            <div className="flex-1 text-center md:text-left">
+               <h3 className="text-2xl font-heading font-bold text-white mb-2">IEN Newsletter</h3>
+               <p className="text-muted-foreground mb-4">
+                  Catch up on the latest from IEN: league updates, featured schools, tournament results, and what's next for Indiana scholastic esports.
+               </p>
+               <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest">
+                  <a href="/events/ien-newsletter.pdf" target="_blank" rel="noopener noreferrer">
+                     <FileText className="w-4 h-4 mr-2" /> READ LATEST ISSUE
+                  </a>
+               </Button>
             </div>
          </div>
       </section>
