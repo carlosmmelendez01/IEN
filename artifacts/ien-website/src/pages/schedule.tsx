@@ -238,7 +238,7 @@ export default function Schedule() {
           level="High School (Grades 9–12)"
           cost="$100 / school for Varsity · Free for Club"
           matchTime="Mon–Thu · Varsity 4:00 PM CT / 5:00 PM ET"
-          pdfHref="/IHSEN 2026-2027 Calendar.pdf"
+          pdfHref="/IHSEN_Calendar_2026-2027.pdf"
           pdfLabel="VIEW IHSEN CALENDAR"
         />
 
@@ -253,7 +253,7 @@ export default function Schedule() {
           level="High School Varsity Teams"
           cost="Included with regular season registration"
           matchTime="Same days as regular season · Mon–Thu"
-          pdfHref="/IHSEN 2026-2027 Calendar.pdf"
+          pdfHref="/IHSEN_Calendar_2026-2027.pdf"
           pdfLabel="VIEW IHSEN CALENDAR"
           registerLabel="VIEW LEAGUEOS"
         />
@@ -272,7 +272,7 @@ export default function Schedule() {
           level="Middle School (Grades 6–8)"
           cost="$100 / school for Varsity · Free for Club"
           matchTime="Mon–Thu · Varsity 3:30 PM CT / 4:30 PM ET"
-          pdfHref="/IMSEN 26-27 Calendar.pdf"
+          pdfHref="/IMSEN_Calendar_2026-2027.pdf"
           pdfLabel="VIEW IMSEN CALENDAR"
         />
 
@@ -287,7 +287,7 @@ export default function Schedule() {
           level="Middle School (Grades 6–8)"
           cost="$100 / school for Varsity · Free for Club"
           matchTime="Mon–Thu · Varsity 3:30 PM CT / 4:30 PM ET"
-          pdfHref="/IMSEN 26-27 Calendar.pdf"
+          pdfHref="/IMSEN_Calendar_2026-2027.pdf"
           pdfLabel="VIEW IMSEN CALENDAR"
         />
 
@@ -305,7 +305,7 @@ export default function Schedule() {
           level="High School & Middle School · Unified"
           cost="Free to all schools and students"
           matchTime="Tuesdays · 3:30 PM CT / 4:30 PM ET"
-          pdfHref="/IUEN 26-27 Calendar.pdf"
+          pdfHref="/IUEN_Calendar_2026-2027.pdf"
           pdfLabel="VIEW IUEN CALENDAR"
         />
 
@@ -320,7 +320,7 @@ export default function Schedule() {
           level="High School & Middle School · Unified"
           cost="Free to all schools and students"
           matchTime="Tuesdays · 3:30 PM CT / 4:30 PM ET"
-          pdfHref="/IUEN 26-27 Calendar.pdf"
+          pdfHref="/IUEN_Calendar_2026-2027.pdf"
           pdfLabel="VIEW IUEN CALENDAR"
         />
 
