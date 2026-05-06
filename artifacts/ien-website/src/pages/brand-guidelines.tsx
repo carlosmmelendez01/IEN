@@ -1,19 +1,68 @@
 import { Layout } from "@/components/layout/Layout";
 import { motion } from "framer-motion";
 import { Download, Check, X, Palette, Type, ImageIcon, FileText } from "lucide-react";
-import ienLockup from "@assets/IEN_Transparent.png";
-import torchlineUpper from "@assets/brand/torchline-uppercase-numerals.png";
-import torchlineLower from "@assets/brand/torchline-lowercase-numerals.png";
+import ienPrimary from "@assets/IEN_LogoNavbar.png";
+import ienHorizontal from "@assets/IEN_LogoFooter.png";
+import ihsenCurrent from "@assets/IHSEN Current.png";
+import imsenCurrent from "@assets/IMSEN Current.png";
+import iuenCurrent from "@assets/IUEN Current.png";
+
+type LogoEntry = {
+  name: string;
+  image: string;
+  alt: string;
+  blurb: string;
+  // Square aspect for the primary mark; wider aspect for horizontal lockups.
+  aspect: "square" | "wide";
+};
+
+const LOGOS: LogoEntry[] = [
+  {
+    name: "IEN — Primary",
+    image: ienPrimary,
+    alt: "Indiana Esports Network primary logo",
+    blurb: "The full IEN brand mark. Use this as the default representation of the network.",
+    aspect: "square",
+  },
+  {
+    name: "IEN — Horizontal",
+    image: ienHorizontal,
+    alt: "Indiana Esports Network horizontal lockup",
+    blurb: "Horizontal lockup for navigation bars, footers, signage strips, and other wide formats.",
+    aspect: "wide",
+  },
+  {
+    name: "IHSEN",
+    image: ihsenCurrent,
+    alt: "Indiana High School Esports Network logo",
+    blurb: "Indiana High School Esports Network. Use whenever IHSEN is referenced as a distinct league.",
+    aspect: "wide",
+  },
+  {
+    name: "IMSEN",
+    image: imsenCurrent,
+    alt: "Indiana Middle School Esports Network logo",
+    blurb: "Indiana Middle School Esports Network. Use whenever IMSEN is referenced as a distinct league.",
+    aspect: "wide",
+  },
+  {
+    name: "IUEN",
+    image: iuenCurrent,
+    alt: "Indiana Unified Esports Network logo",
+    blurb: "Indiana Unified Esports Network. Use whenever IUEN is referenced as a distinct league.",
+    aspect: "wide",
+  },
+];
 
 // Color palette — mirrors the actual values used in src/index.css so this page is the source
 // of truth for what designers should specify when producing IEN-branded materials.
 const PALETTE = [
-  { name: "IEN Navy",       hex: "#080F1E", hsl: "218, 58%, 8%",  rgb: "8, 15, 30",    role: "Primary background" },
-  { name: "IEN Gold",       hex: "#D4AF37", hsl: "45, 74%, 50%",  rgb: "212, 175, 55", role: "Primary accent / brand mark" },
-  { name: "Card Navy",      hex: "#0D1828", hsl: "218, 50%, 11%", rgb: "13, 24, 40",   role: "Card / panel surfaces" },
-  { name: "Border Navy",    hex: "#1F2C44", hsl: "218, 40%, 20%", rgb: "31, 44, 68",   role: "Subtle borders & dividers" },
-  { name: "Text Light",     hex: "#F2F2F2", hsl: "0, 0%, 95%",    rgb: "242, 242, 242", role: "Primary body text" },
-  { name: "Text Muted",     hex: "#8A95AA", hsl: "215, 18%, 62%", rgb: "138, 149, 170", role: "Secondary / supporting text" },
+  { name: "IEN Navy",       hex: "#000F5D", hsl: "230, 100%, 18%", rgb: "0, 15, 93",     role: "Primary background / brand navy" },
+  { name: "White",          hex: "#FFFFFF", hsl: "0, 0%, 100%",    rgb: "255, 255, 255", role: "Type on dark · negative space" },
+  { name: "Lavender",       hex: "#A9A9D9", hsl: "240, 38%, 76%",  rgb: "169, 169, 217", role: "Soft accent · supporting tone" },
+  { name: "IEN Gold",       hex: "#D69F0E", hsl: "43, 88%, 45%",   rgb: "214, 159, 14",  role: "Primary accent / brand mark" },
+  { name: "Highlight Yellow", hex: "#FCE438", hsl: "54, 97%, 60%", rgb: "252, 228, 56",  role: "Highlights · energetic accents" },
+  { name: "Olive",          hex: "#6B5735", hsl: "38, 34%, 31%",   rgb: "107, 87, 53",   role: "Deep supporting tone · shadows" },
 ];
 
 // Anything in /public/brand/ is served at /brand/<filename> at runtime.
@@ -55,23 +104,37 @@ export default function BrandGuidelines() {
         </div>
       </section>
 
-      {/* The IEN logo is one indivisible mark. We don't expose any internal terminology
-          (icon vs. wordmark vs. tagline) because partners, schools, and the public
-          should treat the logo as one complete brand mark. */}
       <section className="py-16 container mx-auto px-4">
-        <SectionHeader icon={<ImageIcon className="w-4 h-4" />} eyebrow="Identity" title="The IEN Logo" />
+        <SectionHeader icon={<ImageIcon className="w-4 h-4" />} eyebrow="Identity" title="IEN Logos" />
 
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-card border-2 border-primary rounded-xl p-10 shadow-[0_0_30px_rgba(212,175,55,0.1)]">
-            <div className="aspect-[16/7] flex items-center justify-center bg-background rounded-lg border border-primary/10 mb-6 p-8">
-              <img src={ienLockup} alt="Indiana Esports Network logo" className="max-w-full max-h-full object-contain" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          {LOGOS.map((logo) => (
+            <div
+              key={logo.name}
+              className="bg-card border-2 border-primary rounded-xl p-6 shadow-[0_0_30px_rgba(212,175,55,0.1)] flex flex-col"
+            >
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-heading font-bold text-lg text-white tracking-wide">
+                  {logo.name}
+                </h3>
+                <span className="text-[10px] font-heading font-bold tracking-widest uppercase px-2 py-0.5 rounded-full border border-primary/60 bg-primary/10 text-primary">
+                  Current
+                </span>
+              </div>
+              <div
+                className={`${logo.aspect === "square" ? "aspect-square" : "aspect-[16/7]"} flex items-center justify-center bg-background rounded-lg border border-primary/10 p-6 mb-4`}
+              >
+                <img
+                  src={logo.image}
+                  alt={logo.alt}
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {logo.blurb}
+              </p>
             </div>
-            <p className="text-muted-foreground leading-relaxed">
-              This is the official Indiana Esports Network logo. Use it as a single,
-              complete brand mark in all communications. Do not crop, modify, recolor,
-              or recreate any part of it.
-            </p>
-          </div>
+          ))}
         </div>
 
         {/* Do / Don't */}
@@ -133,60 +196,38 @@ export default function BrandGuidelines() {
       <section className="py-16 container mx-auto px-4">
         <SectionHeader icon={<Type className="w-4 h-4" />} eyebrow="Typography" title="Type System" />
 
-        {/* Torchline (heading) */}
-        <div className="bg-card border-2 border-primary rounded-xl p-8 max-w-5xl mx-auto mb-6 shadow-[0_0_30px_rgba(212,175,55,0.1)]">
+        <div className="bg-card border-2 border-primary rounded-xl p-8 max-w-5xl mx-auto shadow-[0_0_30px_rgba(214,159,14,0.12)]">
           <div className="flex flex-wrap items-baseline gap-4 mb-2">
-            <h3 className="font-heading font-bold text-3xl text-primary tracking-wide">TORCHLINE</h3>
+            <h3 className="font-heading font-bold text-3xl text-primary tracking-wide">GOTHAM</h3>
             <span className="text-xs font-medium text-muted-foreground tracking-widest uppercase">
-              Display · Headings
+              Headings · Subheadings · Body
             </span>
           </div>
-          <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-2xl">
-            The official IEN typeface. Designed in-house to carry the energy of the
-            torch mark into our headlines, signage, jerseys, and event branding.
-            Currently shipping in <strong className="text-white">Bold</strong>;
-            a Regular weight is in active design.
+          <p className="text-muted-foreground text-sm leading-relaxed mb-8 max-w-2xl">
+            Gotham is the official IEN typeface across all communications — print,
+            social, presentations, and partner materials. Use the size hierarchy below
+            for consistent voice and rhythm.
           </p>
-          <div className="bg-white rounded-lg p-6 mb-3">
-            <img src={torchlineUpper} alt="Torchline Bold uppercase A through Z and numerals 0–9" className="w-full h-auto" />
-          </div>
-          <div className="bg-white rounded-lg p-6">
-            <img src={torchlineLower} alt="Torchline Bold lowercase a through z and numerals" className="w-full h-auto" />
-          </div>
-          <p className="text-xs text-muted-foreground mt-4 italic">
-            Note: site headings currently render in Rajdhani as a temporary web fallback
-            while Torchline is being prepared for web. When the web font ships,
-            every heading on this site will inherit Torchline automatically.
-          </p>
-        </div>
 
-        {/* Inter (body) */}
-        <div className="bg-card border border-primary/30 rounded-xl p-8 max-w-5xl mx-auto">
-          <div className="flex flex-wrap items-baseline gap-4 mb-2">
-            <h3 className="font-sans font-bold text-3xl text-white tracking-tight">Inter</h3>
-            <span className="text-xs font-medium text-muted-foreground tracking-widest uppercase">
-              Body · Supporting Text
-            </span>
-          </div>
-          <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-2xl">
-            Inter is our supporting typeface for body copy, captions, navigation, and
-            any sustained reading. Open-source, hosted via Google Fonts.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white">
-            <div>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Regular 400</p>
-              <p className="font-sans text-base leading-relaxed">
-                Indiana's official scholastic esports league, fostering community,
-                competition, and career pathways through gaming.
-              </p>
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Bold 700</p>
-              <p className="font-sans font-bold text-base leading-relaxed">
-                Indiana's official scholastic esports league, fostering community,
-                competition, and career pathways through gaming.
-              </p>
-            </div>
+          <div className="space-y-6">
+            <TypeSpec
+              label="Heading"
+              spec="Gotham · 32 pt"
+              sample="Indiana Esports Network"
+              sampleClass="text-[32px] leading-tight font-bold text-white"
+            />
+            <TypeSpec
+              label="Subheading"
+              spec="Gotham · 24 pt"
+              sample="Indiana's Official Scholastic Esports League"
+              sampleClass="text-[24px] leading-snug font-semibold text-white"
+            />
+            <TypeSpec
+              label="Body"
+              spec="Gotham · 16 pt"
+              sample="Indiana's official scholastic esports league, fostering community, competition, and career pathways through gaming since 2019."
+              sampleClass="text-[16px] leading-relaxed text-white"
+            />
           </div>
         </div>
       </section>
@@ -308,6 +349,30 @@ function DosList({
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+function TypeSpec({
+  label,
+  spec,
+  sample,
+  sampleClass,
+}: {
+  label: string;
+  spec: string;
+  sample: string;
+  sampleClass: string;
+}) {
+  return (
+    <div className="border-t border-primary/15 pt-5 first:border-t-0 first:pt-0">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
+        <span className="text-xs uppercase tracking-widest text-muted-foreground">
+          {label}
+        </span>
+        <span className="font-mono text-xs text-primary">{spec}</span>
+      </div>
+      <p className={sampleClass}>{sample}</p>
     </div>
   );
 }
