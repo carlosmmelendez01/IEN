@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import ienLogo from "@assets/IEN_Transparent.png";
+import ienLogo from "@assets/IEN_LogoFooter.png";
 import { socialLinks, ONBOARDING_URL } from "@/lib/socialLinks";
 
 export function Footer() {

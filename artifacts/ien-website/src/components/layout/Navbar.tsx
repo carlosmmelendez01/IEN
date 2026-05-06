@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
-import ienLogo from "@assets/IEN_Transparent.png";
+import ienLogo from "@assets/IEN_LogoNavbar.png";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 type NavItem = {
