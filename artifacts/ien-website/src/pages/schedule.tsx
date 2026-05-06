@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, School, DollarSign, Clock, ZoomIn, X, Download, ExternalLink } from "lucide-react";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 
-import ihsenSeason from "@assets/IHEN_26-27 Season.jpg";
-import ihsenPlayoffs from "@assets/IHEN_26-27 Playoffs.jpg";
+import ihsenSeason from "@assets/IHSEN_26-27 Season.jpg";
+import ihsenPlayoffs from "@assets/IHSEN_26-27 Playoffs.jpg";
 import imsenFall from "@assets/IMSEN 26 Fall.jpg";
 import iuenFall from "@assets/IUEN 26 Fall.jpg";
 import imsenSpring from "@assets/IMSEN 27 Spring.jpg";
