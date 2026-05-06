@@ -24,7 +24,7 @@ const boardMembers: {
   { name: "Konnor Powell",    title: "Director of League Management",      initials: "KP", bio: placeholderBio, photo: "/board/Konnor.jpg" },
   { name: "Jonathan Morgan",  title: "Director of Technology Operations",  initials: "JM", bio: placeholderBio, photo: "/board/Jonathan.png" },
   { name: "Trevor Smith",     title: "Director of Support",                initials: "TS", bio: placeholderBio, photo: "/board/Trevor.jpg" },
-  { name: "Carlos Melendez",  title: "Director of Marketing",              initials: "CM", bio: placeholderBio, photo: "/board/Carlos.png" },
+  { name: "Carlos Melendez",  title: "Director of Marketing",              initials: "CM", bio: "Carlos Melendez is the Head Coach of Wolves Esports at Michigan City High School and is part of the Indiana Esports Network's board of directors. Coming from an educational and competitive gaming background with a degree in computer science and digital media, Carlos is devoted to the development of scholastic esports across Indiana and creating avenues for high schoolers across the state. With a specialization in building scholastic esports programs that nurture teamwork, leadership, communication skills, and career ready development both in and outside of games, Carlos works tirelessly to manage events, create broadcast content, develop players, and broaden initiatives across the state, driven by a mission to influence the future of esports and provide a space for student to compete, belong, and develop.", photo: "/board/Carlos.png" },
   { name: "Dylan Gentilcore", title: "Director At Large",                  initials: "DG", bio: placeholderBio, photo: "/board/Dylan.jpg" },
 ];
 
