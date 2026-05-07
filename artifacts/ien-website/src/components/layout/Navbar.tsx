@@ -29,9 +29,10 @@ const NAV_ITEMS: NavItem[] = [
     label: "Community",
     href: "/news",
     children: [
-      { label: "News",              href: "/news" },
-      { label: "Events",            href: "/events" },
-      { label: "Brand Guidelines",  href: "/brand-guidelines" },
+      { label: "News",                href: "/news" },
+      { label: "Events",              href: "/events" },
+      { label: "Hall of Champions",   href: "/hall-of-champions" },
+      { label: "Brand Guidelines",    href: "/brand-guidelines" },
     ],
   },
   { label: "Schedule",  href: "/schedule" },
