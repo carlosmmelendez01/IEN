@@ -50,16 +50,6 @@ export const COLLEGES: College[] = [
     website: "https://www.bsu.edu",
   },
   {
-    name: "Bethel University",
-    city: "Mishawaka, IN",
-    state: "IN",
-    isPartner: true,
-    program: "Bethel Esports",
-    lat: 41.6628,
-    lng: -86.1525,
-    website: "https://www.betheluniversity.edu",
-  },
-  {
     name: "Butler University",
     city: "Indianapolis, IN",
     state: "IN",
@@ -167,7 +157,7 @@ export const COLLEGES: College[] = [
     program: "Purdue Esports",
     lat: 40.4237,
     lng: -86.9212,
-    website: "https://www.purdue.edu",
+    website: "https://esports.purdue.edu/",
   },
   {
     name: "Purdue University Fort Wayne",
@@ -187,7 +177,7 @@ export const COLLEGES: College[] = [
     program: "Esports",
     lat: 41.584,
     lng: -87.473,
-    website: "https://www.pnw.edu",
+    website: "https://pnwathletics.com/sports/esports",
   },
   {
     name: "Trine University",
