@@ -107,7 +107,7 @@ export default function SchoolMap({ schools, selectedDivision }: SchoolMapProps)
                 <span style={{ color: "#888", fontSize: 12 }}>{school.city}</span>
                 <br />
                 <span style={{ color: "#c9a227", fontSize: 12, fontWeight: "bold" }}>
-                  {school.divisions.join(" · ")} &nbsp;·&nbsp; {school.teams} Teams
+                  {school.divisions.join(" · ")}
                 </span>
               </div>
             </Popup>

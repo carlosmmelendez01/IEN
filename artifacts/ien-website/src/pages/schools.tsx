@@ -2,35 +2,23 @@ import { useState, lazy, Suspense } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
-import { Search, MapPin, Users, Trophy, Gamepad2, ExternalLink, UserCheck, Calendar, GraduationCap, School as SchoolIcon } from "lucide-react";
-import { SCHOOLS, type School } from "@/data/schools";
-import { COLLEGES } from "@/data/colleges";
+import { Search, MapPin, Users, ExternalLink, GraduationCap, School as SchoolIcon, Sparkles } from "lucide-react";
+import { SCHOOLS } from "@/data/schools";
+import { COLLEGES, type College } from "@/data/colleges";
 
 const SchoolMap = lazy(() => import("@/components/schools/SchoolMap"));
-const CollegeMap = lazy(() => import("@/components/schools/CollegeMap"));
+// CollegeMap (Indiana-only) was retired in favor of the unified RegionalCollegeMap,
+// which auto-fits its bounds to whatever subset is passed in.
+const RegionalCollegeMap = lazy(() => import("@/components/schools/RegionalCollegeMap"));
 
 const DIVISIONS = ["All Divisions", "High School (IHSEN)", "Middle School (IMSEN)", "Unified (IUEN)"];
 const PAGE_SIZE = 12;
 
-const PLACEHOLDER_DESCRIPTION =
-  "Program details coming soon. Check back for more information about this school's esports program, including roster highlights, competition history, and how to get involved.";
-
-const divisionLabel = (d: string) => {
-  if (d === "IHSEN") return "High School";
-  if (d === "IMSEN") return "Middle School";
-  return "Unified";
-};
 const divisionColor = (d: string) => {
   if (d === "IHSEN") return "text-primary";
   if (d === "IMSEN") return "text-violet-400";
   return "text-emerald-400";
-};
-const divisionBadge = (d: string) => {
-  if (d === "IHSEN") return "bg-primary/20 text-primary border-primary/40";
-  if (d === "IMSEN") return "bg-violet-500/20 text-violet-300 border-violet-500/40";
-  return "bg-emerald-500/20 text-emerald-300 border-emerald-500/40";
 };
 
 export default function Schools() {
@@ -38,10 +26,24 @@ export default function Schools() {
   const [query, setQuery] = useState("");
   const [division, setDivision] = useState("All Divisions");
   const [showAll, setShowAll] = useState(false);
-  const [selectedSchool, setSelectedSchool] = useState<School | null>(null);
 
-  // Partnered Colleges search state (separate from Member Schools)
-  const [collegeQuery, setCollegeQuery] = useState("");
+  // Collegiate Esports Programs section: state filter (drives map + directory)
+  // and a search query within the current state's subset. "ALL" surfaces every
+  // college — Indiana partners + regional Midwest programs — in one view.
+  const [regionalState, setRegionalState] = useState<string>("ALL");
+  const [regionalQuery, setRegionalQuery] = useState("");
+  // Directory pagination — keep the visible list short by default so the section
+  // doesn't run on. User can expand to see every result.
+  const [showAllRegional, setShowAllRegional] = useState(false);
+  const COLLEGE_PAGE_SIZE = 12;
+
+  // Helper used by every chip / "back" button so changing scope always resets
+  // the search box AND collapses the list back to the truncated view.
+  const setRegionalScope = (state: string) => {
+    setRegionalState(state);
+    setRegionalQuery("");
+    setShowAllRegional(false);
+  };
 
   const filtered = SCHOOLS.filter((s) => {
     const matchDiv =
@@ -62,9 +64,31 @@ export default function Schools() {
   const centralCount = SCHOOLS.filter(s => s.lat >= 39.4 && s.lat <= 40.9).length;
   const southCount = SCHOOLS.filter(s => s.lat < 39.4).length;
 
-  // Collegiate directory filter + region breakdown (same lat bands as Member Schools)
-  const filteredColleges = COLLEGES.filter((c) => {
-    const q = collegeQuery.toLowerCase();
+  // State name lookup for the chip + directory headings. "IN" is listed first so
+  // Indiana (where IEN partners live) anchors the selector visually.
+  const STATE_NAMES: Record<string, string> = {
+    IN: "Indiana",
+    IL: "Illinois", MI: "Michigan", OH: "Ohio", WI: "Wisconsin",
+    MN: "Minnesota", IA: "Iowa", MO: "Missouri", NE: "Nebraska",
+  };
+  const ALL_STATES: Array<[string, College[]]> = Object.keys(STATE_NAMES)
+    .map(code => [code, COLLEGES.filter(c => c.state === code)] as [string, College[]])
+    .filter(([, list]) => list.length > 0);
+
+  // Subset that drives the map + directory based on the selected scope chip.
+  // "ALL" → every college. "PARTNERS" → IEN partners regardless of state
+  // (so future out-of-state partners surface here too). Anything else is a
+  // two-letter state code.
+  const PARTNERS_SCOPE = "PARTNERS";
+  const regionalScoped =
+    regionalState === "ALL"
+      ? COLLEGES
+      : regionalState === PARTNERS_SCOPE
+      ? COLLEGES.filter(c => c.isPartner === true)
+      : COLLEGES.filter(c => c.state === regionalState);
+  const partnerCount = COLLEGES.filter(c => c.isPartner === true).length;
+  const filteredRegional = regionalScoped.filter((c) => {
+    const q = regionalQuery.toLowerCase();
     return (
       q === "" ||
       c.name.toLowerCase().includes(q) ||
@@ -72,9 +96,9 @@ export default function Schools() {
       c.program.toLowerCase().includes(q)
     );
   });
-  const collegeNorth   = COLLEGES.filter(c => c.lat > 40.9).length;
-  const collegeCentral = COLLEGES.filter(c => c.lat >= 39.4 && c.lat <= 40.9).length;
-  const collegeSouth   = COLLEGES.filter(c => c.lat < 39.4).length;
+  const visibleRegional = showAllRegional
+    ? filteredRegional
+    : filteredRegional.slice(0, COLLEGE_PAGE_SIZE);
 
   return (
     <Layout>
@@ -107,7 +131,7 @@ export default function Schools() {
             >
               <a href="#partnered-colleges">
                 <GraduationCap className="w-4 h-4 mr-2" />
-                PARTNERED COLLEGES
+                BROWSE IEN PARTNERS &amp; COLLEGIATE PROGRAMS
               </a>
             </Button>
           </div>
@@ -204,7 +228,6 @@ export default function Schools() {
             {/* Results count */}
             <p className="text-xs text-muted-foreground mb-4">
               Showing <span className="text-primary font-bold">{visible.length}</span> of <span className="text-primary font-bold">{filtered.length}</span> schools
-              <span className="ml-2 text-muted-foreground/70">· click a school for details</span>
             </p>
 
             {/* School List */}
@@ -215,12 +238,9 @@ export default function Schools() {
                 </div>
               ) : (
                 visible.map((school, i) => (
-                  <button
+                  <div
                     key={i}
-                    type="button"
-                    onClick={() => setSelectedSchool(school)}
-                    className="w-full bg-card border border-primary/15 p-4 rounded-lg flex items-center hover:border-primary/50 hover:bg-card/80 transition-all group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
-                    aria-label={`View details for ${school.name}`}
+                    className="w-full bg-card border border-primary/15 p-4 rounded-lg flex items-center"
                   >
                     <div className="flex items-center gap-3 min-w-0 w-full">
                       <div className="w-10 h-10 shrink-0 bg-background border border-primary/20 rounded-full flex items-center justify-center overflow-hidden">
@@ -235,7 +255,7 @@ export default function Schools() {
                         )}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h4 className="font-bold text-white text-sm leading-tight truncate group-hover:text-primary transition-colors">{school.name}</h4>
+                        <h4 className="font-bold text-white text-sm leading-tight truncate">{school.name}</h4>
                         <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                           <MapPin className="w-3 h-3 text-muted-foreground shrink-0" />
                           <span className="text-xs text-muted-foreground truncate">{school.city}</span>
@@ -245,7 +265,7 @@ export default function Schools() {
                         </div>
                       </div>
                     </div>
-                  </button>
+                  </div>
                 ))
               )}
             </div>
@@ -277,25 +297,79 @@ export default function Schools() {
         </div>
       </section>
 
-      {/* Partnered Colleges - mirrors the Member Schools Map + Directory layout.
-          Reachable from the hero "PARTNERED COLLEGES" CTA. */}
+      {/* Collegiate Esports Programs — unified directory of every Indiana partner
+          + Midwest regional program. Indiana programs surface a "PARTNERED" badge
+          so the IEN-aligned schools stand out. State selector drives the shared
+          map + directory below. */}
       <section id="partnered-colleges" className="py-16 mb-20 container mx-auto px-4 scroll-mt-20">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/40" />
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
-            Partnered Colleges
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl text-center">
+            Collegiate Esports Programs
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/40" />
         </div>
-        <p className="text-center text-muted-foreground text-sm mb-10 max-w-2xl mx-auto">
-          Indiana colleges and universities with esports programs that recruit from IEN. A direct pathway from scholastic esports to collegiate competition, scholarships, and varsity programs.
+        <p className="text-center text-muted-foreground text-sm mb-8 max-w-2xl mx-auto">
+          Every Indiana partner and Midwest regional program in one place.
+          {" "}<span className="text-primary font-bold">IEN Partners</span> are
+          Indiana colleges that recruit directly from the league. Pick a state to
+          focus the map and directory.
         </p>
 
+        {/* Scope selector — All Programs, IEN Partners (state-agnostic), then per-state chips. */}
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+          <button
+            type="button"
+            onClick={() => setRegionalScope("ALL")}
+            className={`inline-flex items-center h-9 px-4 rounded-full text-xs font-heading font-bold tracking-[0.18em] uppercase border transition-colors ${
+              regionalState === "ALL"
+                ? "bg-primary text-primary-foreground border-primary"
+                : "bg-card/60 text-muted-foreground border-primary/20 hover:text-primary hover:border-primary/50"
+            }`}
+          >
+            All Programs · {COLLEGES.length}
+          </button>
+
+          {/* IEN Partners — filters by isPartner flag, not state, so partners
+              outside Indiana surface here once they're added to the data. */}
+          <button
+            type="button"
+            onClick={() => setRegionalScope(PARTNERS_SCOPE)}
+            className={`inline-flex items-center gap-1.5 h-9 px-4 rounded-full text-xs font-heading font-bold tracking-[0.18em] uppercase border transition-colors ${
+              regionalState === PARTNERS_SCOPE
+                ? "bg-primary text-primary-foreground border-primary"
+                : "bg-primary/15 text-primary border-primary/60 hover:bg-primary/25"
+            }`}
+          >
+            <Sparkles className="w-3 h-3" />
+            IEN Partners · {partnerCount}
+          </button>
+
+          {/* Per-state chips — neutral styling now that partner status lives on its own chip. */}
+          {ALL_STATES.map(([code, list]) => {
+            const active = regionalState === code;
+            return (
+              <button
+                key={code}
+                type="button"
+                onClick={() => setRegionalScope(code)}
+                className={`inline-flex items-center h-9 px-4 rounded-full text-xs font-heading font-bold tracking-[0.18em] uppercase border transition-colors ${
+                  active
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "bg-card/60 text-muted-foreground border-primary/20 hover:text-primary hover:border-primary/50"
+                }`}
+              >
+                {STATE_NAMES[code]} · {list.length}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Map + Directory */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
 
-          {/* Left: College Map */}
+          {/* Left: Map */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Map */}
             <div className="bg-card border border-primary/30 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.1)]">
               <div style={{ height: 480 }}>
                 <Suspense fallback={
@@ -306,15 +380,24 @@ export default function Schools() {
                     </div>
                   </div>
                 }>
-                  <CollegeMap colleges={COLLEGES} />
+                  <RegionalCollegeMap colleges={regionalScoped} />
                 </Suspense>
               </div>
 
               {/* Legend */}
-              <div className="px-4 py-3 border-t border-primary/20 flex flex-wrap gap-4 text-xs">
-                <span className="flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-primary inline-block"></span>
-                  Collegiate Esports Program
+              <div className="px-4 py-3 border-t border-primary/20 flex flex-wrap items-center justify-between gap-3 text-xs">
+                <div className="flex items-center gap-4">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-3.5 h-3.5 rounded-full inline-block ring-1 ring-primary/50" style={{ background: "#f5d062", boxShadow: "0 0 6px rgba(245,208,98,0.6)" }} />
+                    <span className="text-foreground/90 font-bold">IEN Partner</span>
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-primary inline-block" />
+                    <span className="text-muted-foreground">Regional</span>
+                  </span>
+                </div>
+                <span className="text-muted-foreground">
+                  <span className="text-primary font-bold">{regionalScoped.length}</span> on map
                 </span>
               </div>
             </div>
@@ -323,113 +406,182 @@ export default function Schools() {
             <div className="bg-card border border-primary/30 rounded-xl p-6 shadow-[0_0_20px_rgba(212,175,55,0.05)]">
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="text-center">
-                  <div className="text-4xl font-heading font-bold text-white">{COLLEGES.length}</div>
-                  <div className="text-xs text-primary tracking-widest uppercase mt-1">Colleges</div>
+                  <div className="text-4xl font-heading font-bold text-white">{regionalScoped.length}</div>
+                  <div className="text-xs text-primary tracking-widest uppercase mt-1">
+                    {regionalState === "ALL"
+                      ? "Programs"
+                      : regionalState === PARTNERS_SCOPE
+                      ? "IEN Partners"
+                      : `${regionalState} Programs`}
+                  </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-heading font-bold text-white">IN</div>
-                  <div className="text-xs text-primary tracking-widest uppercase mt-1">Hoosier State</div>
+                  <div className="text-4xl font-heading font-bold text-white">
+                    {regionalScoped.filter(c => c.isPartner === true).length}
+                  </div>
+                  <div className="text-xs text-primary tracking-widest uppercase mt-1">In Scope</div>
                 </div>
               </div>
-              <div className="space-y-2 text-sm">
-                {[
-                  { label: "North Region", count: collegeNorth },
-                  { label: "Central Region", count: collegeCentral },
-                  { label: "South Region", count: collegeSouth },
-                ].map(r => (
-                  <div key={r.label} className="flex items-center justify-between bg-background/60 px-3 py-2 rounded-lg">
-                    <span className="text-muted-foreground">{r.label}</span>
-                    <span className="font-heading font-bold text-primary">{r.count}</span>
-                  </div>
-                ))}
-              </div>
+              {regionalState === "ALL" ? (
+                <div className="space-y-2 text-sm">
+                  {/* Quick-pick: IEN Partners always sits at the top of the jump list. */}
+                  <button
+                    type="button"
+                    onClick={() => setRegionalScope(PARTNERS_SCOPE)}
+                    className="w-full flex items-center justify-between border bg-primary/10 border-primary/30 hover:bg-primary/20 px-3 py-2 rounded-lg transition-colors"
+                  >
+                    <span className="flex items-center gap-2 text-primary font-bold">
+                      <Sparkles className="w-3.5 h-3.5" /> IEN Partners
+                    </span>
+                    <span className="font-heading font-bold text-primary">{partnerCount}</span>
+                  </button>
+                  {ALL_STATES.map(([code, list]) => (
+                    <button
+                      key={code}
+                      type="button"
+                      onClick={() => setRegionalScope(code)}
+                      className="w-full flex items-center justify-between bg-background/60 border-transparent hover:bg-background hover:border-primary/40 border px-3 py-2 rounded-lg transition-colors group"
+                    >
+                      <span className="text-muted-foreground group-hover:text-foreground">{STATE_NAMES[code]}</span>
+                      <span className="font-heading font-bold text-primary">{list.length}</span>
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setRegionalScope("ALL")}
+                  className="w-full text-center text-xs font-heading font-bold tracking-[0.18em] uppercase text-primary hover:text-yellow-200 transition-colors py-2 border border-primary/30 rounded-lg hover:bg-primary/10"
+                >
+                  ← Back to All Programs
+                </button>
+              )}
             </div>
           </div>
 
-          {/* Right: College Directory */}
+          {/* Right: Directory */}
           <div className="lg:col-span-3">
-            {/* Search */}
-            <div className="flex flex-col sm:flex-row gap-3 mb-6">
-              <div className="relative flex-1">
+            {/* Header + Search */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-4">
+              <div>
+                <div className="text-xs font-heading font-bold tracking-[0.18em] uppercase text-primary">
+                  {regionalState === "ALL"
+                    ? "Region · Midwest + Indiana"
+                    : regionalState === PARTNERS_SCOPE
+                    ? "Scope · IEN Partners"
+                    : `Region · ${regionalState}`}
+                </div>
+                <h3 className="font-heading font-bold text-2xl text-white tracking-tight mt-1">
+                  {regionalState === "ALL"
+                    ? "All Programs"
+                    : regionalState === PARTNERS_SCOPE
+                    ? "IEN Partner Programs"
+                    : STATE_NAMES[regionalState]}
+                </h3>
+              </div>
+              <div className="relative w-full sm:w-72">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
-                  placeholder="Search colleges, cities, or programs…"
-                  value={collegeQuery}
-                  onChange={e => setCollegeQuery(e.target.value)}
-                  className="pl-10 bg-card border-primary/30 focus-visible:ring-primary h-11"
+                  placeholder="Search this list…"
+                  value={regionalQuery}
+                  onChange={e => { setRegionalQuery(e.target.value); setShowAllRegional(false); }}
+                  className="pl-10 bg-card border-primary/30 focus-visible:ring-primary h-10 text-sm"
                 />
               </div>
             </div>
 
-            {/* Results count */}
             <p className="text-xs text-muted-foreground mb-4">
-              Showing <span className="text-primary font-bold">{filteredColleges.length}</span> of <span className="text-primary font-bold">{COLLEGES.length}</span> Indiana colleges
-              <span className="ml-2 text-muted-foreground/70">· click a college for more</span>
+              Showing <span className="text-primary font-bold">{visibleRegional.length}</span> of <span className="text-primary font-bold">{filteredRegional.length}</span>
+              {regionalQuery !== "" && <> matching</>}{" "}
+              {filteredRegional.length === 1 ? "program" : "programs"}
+              {filteredRegional.length !== regionalScoped.length && (
+                <span className="text-muted-foreground/70"> · {regionalScoped.length} total in scope</span>
+              )}
             </p>
 
-            {/* College list */}
-            <div className="space-y-2 mb-6">
-              {filteredColleges.length === 0 ? (
-                <div className="text-center py-12 text-muted-foreground">
-                  No colleges found matching your search.
-                </div>
-              ) : (
-                filteredColleges.map((college, i) => {
-                  const card = (
-                    <div className="flex items-center gap-3 min-w-0 w-full">
-                      <div className="w-10 h-10 shrink-0 bg-background border border-primary/20 rounded-full flex items-center justify-center overflow-hidden">
-                        {college.logo ? (
-                          <img
-                            src={college.logo}
-                            alt={`${college.name} logo`}
-                            className="w-full h-full object-contain"
-                          />
-                        ) : (
-                          <GraduationCap className="w-4 h-4 text-primary/60" />
-                        )}
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <h4 className="font-bold text-white text-sm leading-tight truncate group-hover:text-primary transition-colors">
-                          {college.name}
-                        </h4>
-                        <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-                          <MapPin className="w-3 h-3 text-muted-foreground shrink-0" />
-                          <span className="text-xs text-muted-foreground truncate">{college.city}</span>
-                          <span className="text-xs font-bold text-primary">{college.program}</span>
-                        </div>
-                      </div>
-                      {college.website && (
-                        <ExternalLink className="w-3.5 h-3.5 text-primary/60 group-hover:text-primary transition-colors shrink-0" />
-                      )}
-                    </div>
-                  );
-
-                  const sharedClass =
-                    "w-full bg-card border border-primary/15 p-4 rounded-lg flex items-center hover:border-primary/50 hover:bg-card/80 transition-all group text-left";
-
-                  return college.website ? (
+            {filteredRegional.length === 0 ? (
+              <div className="py-12 text-center text-muted-foreground border border-dashed border-primary/20 rounded-lg">
+                No programs match your search.
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {visibleRegional.map((college, i) => {
+                  const isPartner = college.isPartner === true;
+                  const baseCls = "group block rounded-lg p-4 transition-all";
+                  const cls = isPartner
+                    ? `${baseCls} bg-card border border-primary/40 hover:border-primary hover:bg-card/90 shadow-[0_0_15px_rgba(212,175,55,0.06)] hover:shadow-[0_0_20px_rgba(212,175,55,0.18)]`
+                    : `${baseCls} bg-card border border-primary/15 hover:border-primary/50 hover:bg-card/80`;
+                  return (
                     <a
                       key={i}
                       href={college.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={sharedClass}
-                      aria-label={`Visit ${college.name} website`}
+                      className={cls}
+                      aria-label={`Visit ${college.name} esports page`}
                     >
-                      {card}
+                      <div className="flex items-start gap-3">
+                        <div className={`w-10 h-10 shrink-0 bg-background border rounded-full flex items-center justify-center overflow-hidden ${isPartner ? "border-primary/60" : "border-primary/20"}`}>
+                          {college.logo ? (
+                            <img src={college.logo} alt={`${college.name} logo`} className="w-full h-full object-contain" />
+                          ) : (
+                            <GraduationCap className={`w-4 h-4 ${isPartner ? "text-primary" : "text-primary/60"}`} />
+                          )}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-start justify-between gap-2">
+                            <h4 className="font-bold text-white text-sm leading-tight group-hover:text-primary transition-colors">
+                              {college.name}
+                            </h4>
+                            {isPartner && (
+                              <span className="shrink-0 inline-flex items-center gap-1 h-5 px-2 rounded-full bg-primary text-primary-foreground text-[0.55rem] font-heading font-bold tracking-[0.18em] uppercase">
+                                <Sparkles className="w-2.5 h-2.5" /> Partner
+                              </span>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-1.5 mt-1 text-xs text-muted-foreground min-w-0">
+                            <MapPin className="w-3 h-3 shrink-0" />
+                            <span className="truncate">{college.city}</span>
+                          </div>
+                          <div className="mt-1.5 text-[0.65rem] tracking-[0.15em] uppercase font-heading font-bold text-primary">
+                            {college.program}
+                          </div>
+                        </div>
+                        <ExternalLink className="w-3.5 h-3.5 text-primary/60 group-hover:text-primary transition-colors shrink-0 mt-1" />
+                      </div>
                     </a>
-                  ) : (
-                    <div key={i} className={sharedClass + " cursor-default"}>
-                      {card}
-                    </div>
                   );
-                })
-              )}
-            </div>
+                })}
+              </div>
+            )}
 
-            <p className="text-xs text-muted-foreground/60 mt-4">
-              A growing network of collegiate programs recruiting Hoosier esports talent.
-              {" "}Know a program we're missing?{" "}
+            {/* View All / Show Less toggle — only when there's more than the default page can hold */}
+            {filteredRegional.length > COLLEGE_PAGE_SIZE && (
+              <div className="text-center mt-6">
+                {!showAllRegional ? (
+                  <Button
+                    variant="outline"
+                    onClick={() => setShowAllRegional(true)}
+                    className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8"
+                  >
+                    VIEW ALL {filteredRegional.length} PROGRAMS
+                  </Button>
+                ) : (
+                  <Button
+                    variant="outline"
+                    onClick={() => setShowAllRegional(false)}
+                    className="border-primary/50 text-muted-foreground hover:border-primary hover:text-primary font-heading tracking-widest px-8"
+                  >
+                    SHOW LESS
+                  </Button>
+                )}
+              </div>
+            )}
+
+            <p className="text-xs text-muted-foreground/60 mt-6">
+              IEN Partner status reflects Indiana colleges that recruit directly from
+              the league. Click any program to visit its official page.
+              {" "}Know a program we should add?{" "}
               <a
                 href="mailto:info@indianaesportsnetwork.org?subject=Collegiate%20Program%20Addition"
                 className="text-primary hover:text-primary/80 underline-offset-2 hover:underline"
@@ -441,123 +593,6 @@ export default function Schools() {
 
         </div>
       </section>
-
-      {/* School Detail Modal */}
-      <Dialog open={selectedSchool !== null} onOpenChange={(open) => !open && setSelectedSchool(null)}>
-        <DialogContent className="bg-card border-primary/30 max-w-lg">
-          {selectedSchool && (
-            <>
-              <DialogHeader>
-                <div className="flex items-center gap-4 mb-2">
-                  <div className="w-16 h-16 rounded-full overflow-hidden bg-background border-2 border-primary/40 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
-                    {selectedSchool.logo ? (
-                      <img
-                        src={selectedSchool.logo}
-                        alt={`${selectedSchool.name} logo`}
-                        className="w-full h-full object-contain p-1"
-                      />
-                    ) : (
-                      <Users className="w-7 h-7 text-primary/60" />
-                    )}
-                  </div>
-                  <div className="text-left min-w-0">
-                    <DialogTitle className="font-heading text-white text-xl md:text-2xl leading-tight">
-                      {selectedSchool.name}
-                    </DialogTitle>
-                    <DialogDescription asChild>
-                      <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-                        <span className="flex items-center gap-1 text-sm text-muted-foreground">
-                          <MapPin className="w-3.5 h-3.5" />
-                          {selectedSchool.city}
-                        </span>
-                        {selectedSchool.divisions.map((d) => (
-                          <span key={d} className={`text-xs font-bold px-2 py-0.5 rounded border ${divisionBadge(d)}`}>
-                            {d} · {divisionLabel(d)}
-                          </span>
-                        ))}
-                      </div>
-                    </DialogDescription>
-                  </div>
-                </div>
-              </DialogHeader>
-
-              {/* Description */}
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {selectedSchool.description ?? PLACEHOLDER_DESCRIPTION}
-              </p>
-
-              {/* Quick facts grid */}
-              <div className="grid grid-cols-2 gap-3 mt-2">
-                <div className="bg-background/60 border border-primary/20 rounded-lg px-3 py-2.5">
-                  <div className="text-xs text-muted-foreground uppercase tracking-widest mb-0.5">Teams</div>
-                  <div className="font-heading font-bold text-primary text-lg leading-none">{selectedSchool.teams}</div>
-                </div>
-                {selectedSchool.established && (
-                  <div className="bg-background/60 border border-primary/20 rounded-lg px-3 py-2.5">
-                    <div className="text-xs text-muted-foreground uppercase tracking-widest mb-0.5 flex items-center gap-1">
-                      <Calendar className="w-3 h-3" /> Established
-                    </div>
-                    <div className="font-heading font-bold text-primary text-lg leading-none">{selectedSchool.established}</div>
-                  </div>
-                )}
-                {selectedSchool.coach && (
-                  <div className="bg-background/60 border border-primary/20 rounded-lg px-3 py-2.5 col-span-2">
-                    <div className="text-xs text-muted-foreground uppercase tracking-widest mb-0.5 flex items-center gap-1">
-                      <UserCheck className="w-3 h-3" /> Head Coach
-                    </div>
-                    <div className="font-heading font-bold text-white text-base leading-none">{selectedSchool.coach}</div>
-                  </div>
-                )}
-              </div>
-
-              {/* Games */}
-              {selectedSchool.games && selectedSchool.games.length > 0 && (
-                <div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-widest mb-2 flex items-center gap-1.5">
-                    <Gamepad2 className="w-3.5 h-3.5 text-primary" /> Games Competing In
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedSchool.games.map((g) => (
-                      <span key={g} className="text-xs bg-primary/10 border border-primary/30 text-primary px-2.5 py-1 rounded-full">
-                        {g}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Achievements */}
-              {selectedSchool.achievements && selectedSchool.achievements.length > 0 && (
-                <div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-widest mb-2 flex items-center gap-1.5">
-                    <Trophy className="w-3.5 h-3.5 text-primary" /> Achievements
-                  </div>
-                  <ul className="space-y-1.5">
-                    {selectedSchool.achievements.map((a, i) => (
-                      <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                        <span className="text-primary mt-0.5">•</span>
-                        <span>{a}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Website link */}
-              {selectedSchool.website && (
-                <a
-                  href={selectedSchool.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 font-semibold mt-1"
-                >
-                  Visit School Website <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              )}
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
 
     </Layout>
   );
