@@ -140,7 +140,7 @@ export function Navbar() {
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
+        <nav aria-label="Primary" className="hidden md:flex items-center gap-6">
           {NAV_ITEMS.map((item) => {
             const active = isActive(location, hash, item, NAV_ITEMS);
 
@@ -191,14 +191,26 @@ export function Navbar() {
           </Button>
         </nav>
 
-        <button className="md:hidden text-foreground" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        <button
+          type="button"
+          className="md:hidden text-foreground"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isOpen}
+          aria-controls="primary-mobile-navigation"
+        >
+          {isOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden border-t border-primary/20 bg-background/95 px-4 py-4 space-y-4">
+        <div
+          id="primary-mobile-navigation"
+          role="navigation"
+          aria-label="Primary mobile navigation"
+          className="md:hidden border-t border-primary/20 bg-background/95 px-4 py-4 space-y-4"
+        >
           {NAV_ITEMS.map((item) => {
             const active = isActive(location, hash, item, NAV_ITEMS);
 

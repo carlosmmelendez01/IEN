@@ -96,14 +96,22 @@
   --popover-foreground: 0 0% 95%;
   --popover-border: 218 40% 20%;
 
-  --primary: 45 74% 50%;      /* #d4af37 - warm gold from logo accents */
+  /* WCAG 1.4.3 / 1.4.6: lifted from the original #d4af37 brand gold to
+     #e8c456 so all gold-on-navy text comfortably clears 4.5:1 contrast
+     (audit flagged hero stats / section headers at the original luminance).
+     The unlifted gold lives on as `--primary-brand` for ornamental fills
+     (badges, borders, button surfaces) where contrast isn't text-driven. */
+  --primary: 45 78% 62%;          /* #e8c456 - readable gold for TEXT */
+  --primary-brand: 45 74% 50%;    /* #d4af37 - original brand gold (decorative) */
   --primary-foreground: 218 58% 6%;
 
   --secondary: 218 30% 22%;   /* steel navy - secondary surfaces */
   --secondary-foreground: 215 20% 85%;
 
   --muted: 218 35% 16%;       /* slightly lighter than card */
-  --muted-foreground: 215 18% 62%; /* blue-gray, like chrome shadow tone */
+  /* WCAG 1.4.3: bumped from 62% lightness so muted captions over busy
+     hero photos still clear the 4.5:1 threshold. */
+  --muted-foreground: 215 22% 75%; /* readable blue-gray */
 
   --accent: 45 74% 50%;       /* gold accent stays */
   --accent-foreground: 218 58% 6%;

@@ -100,27 +100,35 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Stats bar */}
+          {/* Stats bar — wrapped in a frosted-glass scrim so text contrast
+              isn't dependent on the photo behind it (WCAG 1.4.3 / 1.4.6). */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="mt-16 flex flex-wrap items-center justify-center gap-3 md:gap-0 md:divide-x md:divide-primary/20"
+            className="mt-16 mx-auto inline-flex flex-wrap items-center justify-center gap-3 md:gap-0 md:divide-x md:divide-primary/30 rounded-2xl bg-background/80 backdrop-blur-md border border-primary/25 px-4 py-3 shadow-[0_0_30px_rgba(0,0,0,0.4)]"
+            role="list"
+            aria-label="IEN at a glance"
           >
             {stats.map((stat, i) => (
               <div
                 key={i}
-                className="flex flex-col items-center px-8 py-3"
+                role="listitem"
+                className="flex flex-col items-center px-6 py-2"
               >
                 <div className="flex items-center gap-2">
                   {stat.live && (
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse shrink-0" />
+                    <span
+                      className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse shrink-0"
+                      aria-hidden="true"
+                    />
                   )}
-                  <span className="font-heading font-bold text-3xl md:text-4xl text-primary leading-none">
+                  <span className="font-heading font-bold text-3xl md:text-4xl text-yellow-300 leading-none">
                     {stat.value}
                   </span>
+                  {stat.live && <span className="sr-only">(currently active)</span>}
                 </div>
-                <span className="text-xs text-muted-foreground tracking-widest uppercase mt-1 font-medium">
+                <span className="text-xs text-gray-200 tracking-widest uppercase mt-1.5 font-semibold">
                   {stat.label}
                 </span>
               </div>
