@@ -178,32 +178,41 @@ export default function Home() {
               alt: "Drew Rhoda accepting the IEN Coach of the Year trophy",
               caption: "Coach of the Year",
               sub: "Drew Rhoda named 2025–26 IEN Coach of the Year",
+              href: "/news#post-3",
             },
-          ].map((tile, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="group rounded-2xl overflow-hidden border border-primary/30 hover:border-primary/70 bg-card shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all"
-            >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={tile.src}
-                  alt={tile.alt}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="p-5 text-center">
-                <div className="font-heading font-bold tracking-widest uppercase text-primary text-sm mb-1">
-                  {tile.caption}
+          ].map((tile, i) => {
+            const card = (
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
+                className="group rounded-2xl overflow-hidden border border-primary/30 hover:border-primary/70 bg-card shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all h-full"
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={tile.src}
+                    alt={tile.alt}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
                 </div>
-                <p className="text-muted-foreground text-sm">{tile.sub}</p>
-              </div>
-            </motion.div>
-          ))}
+                <div className="p-5 text-center">
+                  <div className="font-heading font-bold tracking-widest uppercase text-primary text-sm mb-1">
+                    {tile.caption}
+                  </div>
+                  <p className="text-muted-foreground text-sm">{tile.sub}</p>
+                </div>
+              </motion.div>
+            );
+            return tile.href ? (
+              <Link key={i} href={tile.href} className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl">
+                {card}
+              </Link>
+            ) : (
+              <div key={i}>{card}</div>
+            );
+          })}
         </div>
 
         <div className="text-center mt-10">

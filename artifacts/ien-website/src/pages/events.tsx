@@ -1,7 +1,8 @@
+import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Calendar, Clock, FileText, MapPin, Newspaper, Trophy } from "lucide-react";
+import { ArrowRight, Calendar, Clock, FileText, MapPin, Newspaper, Trophy } from "lucide-react";
 import drewRhodaPhoto from "@assets/state-finals/04-drew-rhoda-1200.jpg";
 
 export default function Events() {
@@ -121,6 +122,12 @@ export default function Events() {
                <p className="text-primary text-sm font-medium tracking-wide">
                   Congratulations to Drew Rhoda and the entire coaching community.
                </p>
+               <Link
+                  href="/news#post-3"
+                  className="inline-flex items-center gap-2 self-center md:self-start mt-2 px-5 py-2.5 border border-primary text-primary font-heading tracking-widest text-sm uppercase rounded-lg hover:bg-primary hover:text-primary-foreground transition-all"
+               >
+                  Read the Story <ArrowRight className="w-4 h-4" />
+               </Link>
             </div>
          </motion.div>
       </section>

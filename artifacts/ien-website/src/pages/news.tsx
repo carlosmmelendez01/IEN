@@ -20,7 +20,7 @@ import {
   Sparkles,
   Briefcase,
 } from "lucide-react";
-import drewRhodaPhoto from "@assets/state-finals/04-drew-rhoda-coach-of-year.jpg";
+import drewRhodaPhoto from "@assets/state-finals/04-drew-rhoda-1200.jpg";
 
 // =============================================================================
 // CATEGORY DESIGN SYSTEM
@@ -156,7 +156,11 @@ Across multiple seasons, Drew has built one of the most consistent and student-c
 
 In his own words:
 
-"Esports gives students a place to belong, compete, and grow together. Watching students gain confidence, build friendships, and discover opportunities through this activity has been one of the most rewarding experiences of my career."
+"This is a huge honor for me, and I am very grateful to all the coaches and league admins for this opportunity. The Indiana Esports Network is an outstanding organization comprised of incredible volunteers, working to help our Indiana kids succeed in competition, school and life. The fact that this incredible group of people would think of what I am doing as valuable, means the world to me. Not just that I received an award, but that this award was voted on by some of the hardest working, dedicated and driven educators I have ever met.
+
+"I was on my spring break when the voting came out, and didn't see the voting link until it had already closed. I didn't even know I was on the ballot to be honest. Just after the awards presentation for iRacing, I looked up and saw my face on the big screen and knew something was up. If you have never seen your face 60 feet in the air at the Riverview Health Arena at Innovation Mile, it is quite the experience, let me tell you.
+
+"This award is incredibly meaningful to me and I am very thankful for all of our outstanding coaches and volunteers throughout the league for everything you do for our Indiana students."
 
 Drew was officially recognized at the 2026 IEN State Finals in front of more than 400 students, coaches, and families.
 
@@ -275,7 +279,7 @@ const POSTS: NewsPost[] = [
       "IEN recognizes Drew Rhoda as its first Coach of the Year, honoring leadership, mentorship, and impact on student competitors.",
     body: COACH_BODY,
     image: drewRhodaPhoto,
-    imageFocal: "50% 8%", // anchor the crop high so his full head sits in frame
+    imageFocal: "50% 25%", // anchor slightly above center so his face stays in frame on landscape crops
   },
   {
     id: 4,
@@ -364,6 +368,21 @@ export default function News() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [activePost]);
+
+  // Deep-link support: visiting /news#post-<id> opens that article's modal on mount.
+  // Also re-runs on hashchange so internal links can update the open article.
+  useEffect(() => {
+    const openFromHash = () => {
+      const match = window.location.hash.match(/^#post-(\d+)$/);
+      if (!match) return;
+      const id = Number(match[1]);
+      const target = POSTS.find((p) => p.id === id);
+      if (target) setActivePost(target);
+    };
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+    return () => window.removeEventListener("hashchange", openFromHash);
+  }, []);
 
   return (
     <Layout>
