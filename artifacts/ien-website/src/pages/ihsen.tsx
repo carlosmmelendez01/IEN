@@ -8,7 +8,7 @@ import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 const games = [
   { name: "Valorant",            type: "Varsity A/AA + Club", color: "text-red-400",    border: "border-red-500/50",    roster: "5 starters | 2 subs",    platform: "PC" },
-  { name: "Fortnite",            type: "Varsity A/AA + Club", color: "text-purple-400", border: "border-purple-500/50", roster: "3 starters | 2 subs",    platform: "Cross-platform" },
+  { name: "Apex Legends",        type: "Varsity A/AA + Club", color: "text-purple-400", border: "border-purple-500/50", roster: "3 starters | 2 subs",    platform: "PC" },
   { name: "Rocket League",       type: "Varsity A/AA + Club", color: "text-blue-400",   border: "border-blue-500/50",   roster: "3 starters | 2 subs",    platform: "Cross-platform" },
   { name: "League of Legends",   type: "Varsity A/AA + Club", color: "text-yellow-400", border: "border-yellow-500/50", roster: "5 starters | 2 subs",    platform: "PC" },
   { name: "Overwatch 2",         type: "Varsity A/AA + Club", color: "text-orange-400", border: "border-orange-500/50", roster: "5 starters | 2 subs",    platform: "Cross-platform" },
