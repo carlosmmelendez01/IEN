@@ -113,8 +113,9 @@ GAMES
 • Marvel Rivals and iRacing return after strong inaugural seasons
 
 DIVISIONS
-• IEN is exploring a move from three IHSEN divisions (A / AA / AAA) to a streamlined two-division structure
-• The goal: tighter, more competitive playoff brackets and clearer pathways from the regular season into State Finals
+• IHSEN Varsity moves from three divisions (previously A / AA / AAA) to a two-division structure: A and AA
+• Placement is set per title each season — smaller schools generally in A, larger in AA — with the line adjusted to keep brackets competitive
+• The result: tighter, more competitive playoff brackets and clearer pathways from the regular season into State Finals
 
 REGISTRATION
 • A redesigned, Google Forms-based registration experience launches before Fall season opens
@@ -146,7 +147,7 @@ ROLLOUT TIMELINE
 • August 2026: Registration opens with Apex as a default IHSEN title
 • October 2026: Inaugural Apex Legends season begins
 
-Coaches with questions about transitioning Fortnite rosters into Apex teams can reach out at info@indianaesportsnetwork.org.`;
+Coaches with questions about transitioning Fortnite rosters into Apex teams can reach out at board@indianaesportsnetwork.org.`;
 
 const COACH_BODY = `The Indiana Esports Network is proud to recognize Drew Rhoda as its first-ever Coach of the Year, honoring his leadership, mentorship, and lasting impact on the student competitors who pass through his program.
 
@@ -166,27 +167,30 @@ Drew was officially recognized at the 2026 IEN State Finals in front of more tha
 
 The Coach of the Year award becomes a permanent IEN tradition, with future honorees selected each spring through a combination of peer nominations and IEN leadership review. Coaches interested in nominating a colleague for the 2026–27 season can submit nominations beginning January 2027.`;
 
-const DIVISION_BODY = `The Indiana Esports Network is evaluating a move from three IHSEN divisions to two divisions for the 2026–27 season — a structural change designed to improve competitive balance, simplify scheduling, and create a cleaner playoff bracket from the regular season through State Finals.
+const DIVISION_BODY = `The Indiana Esports Network has announced a new IHSEN Varsity division structure for the 2026–27 season: a two-division model — Division A and Division AA — replacing the prior three-division alignment. The change is designed to improve competitive balance, simplify scheduling, and create a cleaner playoff bracket from the regular season through State Finals.
 
-THE CURRENT STATE
-IHSEN currently runs three divisions — A, AA, and AAA — based on school enrollment and program experience. While this structure has produced excellent competition at the top, regular-season data shows that bracket sizes within each division can vary significantly between Fall and Spring, leading to uneven match volume and inconsistent playoff seeding pressure.
+THE NEW STRUCTURE
+IHSEN Varsity will compete across two divisions:
+• Division A — generally smaller-enrollment programs
+• Division AA — generally larger-enrollment programs
 
-WHAT'S BEING CONSIDERED
-A simpler two-division model — likely framed as Open and Premier (working titles) — would consolidate similarly-skilled teams into deeper, more competitive brackets. Programs would be placed using a combination of:
-• Multi-season win/loss history
-• Roster experience and returning starters
-• School enrollment as a baseline tiebreaker
+Placement is set per title each season. Smaller schools generally land in A and larger schools in AA, but the exact dividing line is adjusted by IEN league operations based on which schools register for that title — keeping each bracket competitive instead of locking a school into a fixed division across every game.
+
+WHAT THIS CHANGES
+• Three divisions (previously A, AA, AAA) consolidate into two: A and AA
+• Per-title placement replaces a single school-wide division assignment
+• Club tier is unchanged — new schools still play one semester of Club before moving up to Varsity
+• IMSEN and IUEN are not affected by this change
 
 WHY IT MATTERS
-The IEN coaching council has been clear: the best esports seasons are the ones where every match feels meaningful. A two-division model is intended to deliver that more consistently — fewer lopsided matchups in the regular season, tighter playoff races, and a more legible path to State Finals for new programs.
+The IEN coaching council has been clear: the best esports seasons are the ones where every match feels meaningful. A two-division model delivers that more consistently — fewer lopsided matchups in the regular season, tighter playoff races, and a more legible path to State Finals for new programs.
 
 WHAT'S NEXT
-• May–June 2026: Coach feedback window
-• July 2026: Final structure announced
 • August 2026: 2026–27 registration opens with the new model
+• September 2026: Per-title A/AA placements published
 • October 2026: First competitive matches under the new structure
 
-This is a working proposal, not a final decision. Coach feedback during the May–June window will be a major input into the final call.`;
+Coaches with questions about how their program will be placed under the new model can reach out at board@indianaesportsnetwork.org.`;
 
 const REGISTRATION_BODY = `Registration for the 2026–27 season will move to a redesigned, Google Forms-based intake process — a streamlined experience built around the realities of how Indiana schools, coaches, and athletic departments actually work.
 
@@ -227,7 +231,7 @@ The Hall of Champions deserves a special call-out. For the first time, every IEN
 ROLLOUT
 The new IEN website goes live this summer ahead of the 2026–27 registration window. All existing URLs will redirect to their new homes; coaches and schools should not need to update bookmarks.
 
-Feedback is welcome. Coaches and partners noticing anything that should be improved can reach out at info@indianaesportsnetwork.org.`;
+Feedback is welcome. Coaches and partners noticing anything that should be improved can reach out at board@indianaesportsnetwork.org.`;
 
 const HECC_BODY = `The Indiana Esports Network is returning to the HECC Conference this year with a permanent booth presence, expanded community programming, and a possible Apex Legends live demonstration.
 
@@ -286,9 +290,9 @@ const POSTS: NewsPost[] = [
     date: "May 2026",
     author: "IEN Staff",
     category: "League Operations",
-    headline: "IHSEN Exploring New Division Structure for 2026–27",
+    headline: "IHSEN Announces New A & AA Division Structure for 2026–27",
     excerpt:
-      "IEN is evaluating a move from three divisions to two divisions to improve competitive balance across high school competition.",
+      "IHSEN Varsity moves from three divisions to two — A and AA — with per-title placement to keep brackets competitive.",
     body: DIVISION_BODY,
     image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=1600",
   },
@@ -529,7 +533,7 @@ export default function News() {
               asChild
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-6"
             >
-              <a href="mailto:info@indianaesportsnetwork.org">EMAIL US</a>
+              <a href="mailto:board@indianaesportsnetwork.org">EMAIL US</a>
             </Button>
           </div>
         </div>

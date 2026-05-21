@@ -9,15 +9,15 @@ import imsenLogo from "@assets/IMSEN_Wordmark.png";
 import iuenLogo from "@assets/IUEN_Wordmark.png";
 
 const ihsenGames = [
-  { name: "Valorant", type: "Varsity + Club", color: "border-red-500/60 text-red-400" },
-  { name: "Apex Legends", type: "Varsity + Club", color: "border-purple-500/60 text-purple-400" },
-  { name: "Rocket League", type: "Varsity + Club", color: "border-blue-500/60 text-blue-400" },
-  { name: "League of Legends", type: "Varsity + Club", color: "border-yellow-500/60 text-yellow-400" },
-  { name: "Overwatch 2", type: "Varsity + Club", color: "border-orange-500/60 text-orange-400" },
-  { name: "Super Smash Bros.", type: "Varsity + Club", color: "border-pink-500/60 text-pink-400" },
-  { name: "Mario Kart 8 Deluxe", type: "Varsity + Club", color: "border-red-600/60 text-red-300" },
-  { name: "Minecraft", type: "Varsity", color: "border-green-500/60 text-green-400" },
-  { name: "Marvel Rivals", type: "Varsity + Club", color: "border-rose-500/60 text-rose-400" },
+  { name: "Valorant", type: "Varsity A/AA + Club", color: "border-red-500/60 text-red-400" },
+  { name: "Apex Legends", type: "Varsity A/AA + Club", color: "border-purple-500/60 text-purple-400" },
+  { name: "Rocket League", type: "Varsity A/AA + Club", color: "border-blue-500/60 text-blue-400" },
+  { name: "League of Legends", type: "Varsity A/AA + Club", color: "border-yellow-500/60 text-yellow-400" },
+  { name: "Overwatch 2", type: "Varsity A/AA + Club", color: "border-orange-500/60 text-orange-400" },
+  { name: "Super Smash Bros.", type: "Varsity A/AA + Club", color: "border-pink-500/60 text-pink-400" },
+  { name: "Mario Kart 8 Deluxe", type: "Varsity A/AA + Club", color: "border-red-600/60 text-red-300" },
+  { name: "Minecraft", type: "Varsity A/AA", color: "border-green-500/60 text-green-400" },
+  { name: "Marvel Rivals", type: "Varsity A/AA + Club", color: "border-rose-500/60 text-rose-400" },
   { name: "Chess", type: "Tournament", color: "border-gray-400/60 text-gray-300" },
   { name: "Tetris", type: "Tournament", color: "border-cyan-500/60 text-cyan-400" },
   { name: "iRacing", type: "Tournament", color: "border-amber-500/60 text-amber-400" },
@@ -490,10 +490,10 @@ export default function Leagues() {
                   <div className="mt-auto text-xs text-muted-foreground/50 italic font-medium">
                     Coming soon, contact{" "}
                     <a
-                      href="mailto:info@indianaesportsnetwork.org"
+                      href="mailto:board@indianaesportsnetwork.org"
                       className="text-primary/60 hover:text-primary underline underline-offset-2"
                     >
-                      info@indianaesportsnetwork.org
+                      board@indianaesportsnetwork.org
                     </a>{" "}
                     for current rules
                   </div>

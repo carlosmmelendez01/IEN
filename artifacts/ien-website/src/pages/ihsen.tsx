@@ -7,15 +7,15 @@ import ihsenLogo from "@assets/IHSEN_Wordmark.png";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 const games = [
-  { name: "Valorant",            type: "Varsity + Club", color: "text-red-400",    border: "border-red-500/50",    roster: "5 starters | 2 subs",    platform: "PC" },
-  { name: "Fortnite",            type: "Varsity + Club", color: "text-purple-400", border: "border-purple-500/50", roster: "3 starters | 2 subs",    platform: "Cross-platform" },
-  { name: "Rocket League",       type: "Varsity + Club", color: "text-blue-400",   border: "border-blue-500/50",   roster: "3 starters | 2 subs",    platform: "Cross-platform" },
-  { name: "League of Legends",   type: "Varsity + Club", color: "text-yellow-400", border: "border-yellow-500/50", roster: "5 starters | 2 subs",    platform: "PC" },
-  { name: "Overwatch 2",         type: "Varsity + Club", color: "text-orange-400", border: "border-orange-500/50", roster: "5 starters | 2 subs",    platform: "Cross-platform" },
-  { name: "Super Smash Bros.",   type: "Varsity + Club", color: "text-pink-400",   border: "border-pink-500/50",   roster: "4 starters | 2 subs",    platform: "Nintendo Switch" },
-  { name: "Mario Kart 8 Deluxe", type: "Varsity + Club", color: "text-red-300",    border: "border-red-600/50",    roster: "4 starters | 2 subs",    platform: "Nintendo Switch" },
-  { name: "Minecraft",           type: "Varsity",        color: "text-green-400",  border: "border-green-500/50",  roster: "Varies by format",       platform: "PC" },
-  { name: "Marvel Rivals",       type: "Varsity + Club", color: "text-rose-400",   border: "border-rose-500/50",   roster: "6 starters | 2 subs",    platform: "PC" },
+  { name: "Valorant",            type: "Varsity A/AA + Club", color: "text-red-400",    border: "border-red-500/50",    roster: "5 starters | 2 subs",    platform: "PC" },
+  { name: "Fortnite",            type: "Varsity A/AA + Club", color: "text-purple-400", border: "border-purple-500/50", roster: "3 starters | 2 subs",    platform: "Cross-platform" },
+  { name: "Rocket League",       type: "Varsity A/AA + Club", color: "text-blue-400",   border: "border-blue-500/50",   roster: "3 starters | 2 subs",    platform: "Cross-platform" },
+  { name: "League of Legends",   type: "Varsity A/AA + Club", color: "text-yellow-400", border: "border-yellow-500/50", roster: "5 starters | 2 subs",    platform: "PC" },
+  { name: "Overwatch 2",         type: "Varsity A/AA + Club", color: "text-orange-400", border: "border-orange-500/50", roster: "5 starters | 2 subs",    platform: "Cross-platform" },
+  { name: "Super Smash Bros.",   type: "Varsity A/AA + Club", color: "text-pink-400",   border: "border-pink-500/50",   roster: "4 starters | 2 subs",    platform: "Nintendo Switch" },
+  { name: "Mario Kart 8 Deluxe", type: "Varsity A/AA + Club", color: "text-red-300",    border: "border-red-600/50",    roster: "4 starters | 2 subs",    platform: "Nintendo Switch" },
+  { name: "Minecraft",           type: "Varsity A/AA",        color: "text-green-400",  border: "border-green-500/50",  roster: "Varies by format",       platform: "PC" },
+  { name: "Marvel Rivals",       type: "Varsity A/AA + Club", color: "text-rose-400",   border: "border-rose-500/50",   roster: "6 starters | 2 subs",    platform: "PC" },
   { name: "Chess",               type: "Club+",          color: "text-gray-300",   border: "border-gray-400/50",   roster: "Board-style format",     platform: "Chess.com" },
   { name: "Tetris",              type: "Club+",          color: "text-cyan-400",   border: "border-cyan-500/50",   roster: "Individual / team",      platform: "Jstris / TETR.IO" },
   { name: "iRacing",             type: "Club+",          color: "text-amber-400",  border: "border-amber-500/50",  roster: "Individual / team",      platform: "PC" },
@@ -102,12 +102,13 @@ export default function IHSEN() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="bg-background border-2 border-primary p-8 rounded-xl shadow-[0_0_20px_rgba(212,175,55,0.1)]">
-              <h3 className="font-heading font-bold text-2xl text-primary mb-4">Varsity</h3>
+              <h3 className="font-heading font-bold text-2xl text-primary mb-4">Varsity — Divisions A &amp; AA</h3>
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                The school's top team in each title. Varsity teams compete for playoff seeding and earn the right to attend the IEN State Finals in person.
+                The school's top team in each title. Varsity teams compete for playoff seeding and earn the right to attend the IEN State Finals in person. Each title is split into two divisions — <strong className="text-white">A</strong> and <strong className="text-white">AA</strong> — to keep competition balanced. Smaller-enrollment schools generally play in A and larger schools in AA, with the dividing line adjusted each season per title based on registrations.
               </p>
               <ul className="space-y-2 text-sm text-muted-foreground mb-6">
                 <li className="flex gap-2"><span className="text-primary">✓</span> Eligible for playoffs and State Finals</li>
+                <li className="flex gap-2"><span className="text-primary">✓</span> Placed in Division A or AA per title based on enrollment and balance</li>
                 <li className="flex gap-2"><span className="text-primary">✓</span> One varsity team per game title per school</li>
                 <li className="flex gap-2"><span className="text-primary">✓</span> New schools must play Club for 1 semester first</li>
               </ul>
@@ -139,7 +140,7 @@ export default function IHSEN() {
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
         </div>
         <p className="text-center text-muted-foreground text-sm mb-10">
-          All 12 IHSEN titles, Varsity, Club, and Club+ divisions
+          All 12 IHSEN titles, across Varsity (A &amp; AA), Club, and Club+ divisions
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {games.map((game, i) => (

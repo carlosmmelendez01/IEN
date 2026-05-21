@@ -20,7 +20,7 @@ const boardMembers: {
   { name: "Ryan Dunfee",      title: "Vice President",                     initials: "RD", bio: placeholderBio, photo: "/board/Ryan.jpg" },
   { name: "Chris King",       title: "Treasurer",                          initials: "CK", bio: placeholderBio, photo: "/board/Chris.png" },
   { name: "Matt Mills",       title: "Secretary",                          initials: "MM", bio: placeholderBio, photo: "/board/Matt.png" },
-  { name: "Shaun Doyle",      title: "Director of Governance",             initials: "SD", bio: placeholderBio },
+  { name: "Shaun Doyle",      title: "Director of Governance",             initials: "SD", bio: placeholderBio, photo: "/board/Shaun.jpg" },
   { name: "Konnor Powell",    title: "Director of League Management",      initials: "KP", bio: placeholderBio, photo: "/board/Konnor.jpg" },
   { name: "Jonathan Morgan",  title: "Director of Technology Operations",  initials: "JM", bio: placeholderBio, photo: "/board/Jonathan.png" },
   { name: "Trevor Smith",     title: "Director of Support",                initials: "TS", bio: placeholderBio, photo: "/board/Trevor.jpg" },

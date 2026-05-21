@@ -71,7 +71,7 @@ function buildMailtoFallback(state: FormState): string {
     `Role:      ${ROLE_OPTIONS.find((r) => r.value === state.role)?.label ?? "(not provided)"}`,
     `Interests: ${selectedInterests || "(none selected)"}`,
   ].join("\n");
-  return `mailto:info@indianaesportsnetwork.org?subject=${encodeURIComponent(
+  return `mailto:board@indianaesportsnetwork.org?subject=${encodeURIComponent(
     "Newsletter signup"
   )}&body=${encodeURIComponent(body)}`;
 }
@@ -101,7 +101,7 @@ export default function NewsletterSignup() {
     try {
       // TODO: Point this at the real newsletter endpoint (Mailchimp, ConvertKit, Beehiiv,
       // or an internal /api/newsletter route). Until that's wired up, we fall back to mailto:
-      // so every submission still reaches info@indianaesportsnetwork.org.
+      // so every submission still reaches board@indianaesportsnetwork.org.
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -240,7 +240,7 @@ export default function NewsletterSignup() {
 
       {status === "error" && (
         <div className="mb-4 rounded-md border border-red-500/40 bg-red-500/10 p-3 text-sm text-red-300">
-          {errorMsg || "Something went wrong. Please try again or email info@indianaesportsnetwork.org."}
+          {errorMsg || "Something went wrong. Please try again or email board@indianaesportsnetwork.org."}
         </div>
       )}
 

@@ -24,7 +24,7 @@ export default function Contact() {
                 <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE A MEETING</a>
               </Button>
               <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8 h-12" asChild>
-                <a href="mailto:info@indianaesportsnetwork.org">EMAIL US</a>
+                <a href="mailto:board@indianaesportsnetwork.org">EMAIL US</a>
               </Button>
             </div>
           </motion.div>
@@ -57,7 +57,7 @@ export default function Contact() {
             <h3 className="text-xl font-heading font-bold text-white mb-2">League Competition Questions</h3>
             <p className="text-sm text-muted-foreground mb-6 flex-grow">Rules, scheduling, disputes, or LeagueOS platform assistance.</p>
             <Button variant="outline" asChild className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
-              <a href="mailto:league@indianaesportsnetwork.org">EMAIL LEAGUE OPERATIONS</a>
+              <a href="mailto:board@indianaesportsnetwork.org">EMAIL LEAGUE OPERATIONS</a>
             </Button>
           </div>
 
@@ -68,7 +68,7 @@ export default function Contact() {
             <h3 className="text-xl font-heading font-bold text-white mb-2">Sponsorship & Partnerships</h3>
             <p className="text-sm text-muted-foreground mb-6 flex-grow">Event sponsorship, unified program support, or brand integration.</p>
             <Button variant="outline" asChild className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
-              <a href="mailto:partners@indianaesportsnetwork.org">CONTACT PARTNERSHIPS</a>
+              <a href="mailto:board@indianaesportsnetwork.org">CONTACT PARTNERSHIPS</a>
             </Button>
           </div>
 
@@ -79,7 +79,7 @@ export default function Contact() {
             <h3 className="text-xl font-heading font-bold text-white mb-2">Media / Press</h3>
             <p className="text-sm text-muted-foreground mb-6 flex-grow">Interview requests, event coverage, or asset usage permission.</p>
             <Button variant="outline" asChild className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
-              <a href="mailto:media@indianaesportsnetwork.org">CONTACT MARKETING</a>
+              <a href="mailto:board@indianaesportsnetwork.org">CONTACT MARKETING</a>
             </Button>
           </div>
         </div>
@@ -117,8 +117,8 @@ export default function Contact() {
       <section className="py-14 container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-muted-foreground text-sm mb-2">General inquiries</p>
-          <a href="mailto:info@indianaesportsnetwork.org" className="font-heading font-bold text-primary text-lg hover:underline tracking-wide">
-            info@indianaesportsnetwork.org
+          <a href="mailto:board@indianaesportsnetwork.org" className="font-heading font-bold text-primary text-lg hover:underline tracking-wide">
+            board@indianaesportsnetwork.org
           </a>
         </div>
       </section>

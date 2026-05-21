@@ -583,7 +583,7 @@ export default function Schools() {
               the league. Click any program to visit its official page.
               {" "}Know a program we should add?{" "}
               <a
-                href="mailto:info@indianaesportsnetwork.org?subject=Collegiate%20Program%20Addition"
+                href="mailto:board@indianaesportsnetwork.org?subject=Collegiate%20Program%20Addition"
                 className="text-primary hover:text-primary/80 underline-offset-2 hover:underline"
               >
                 Let us know

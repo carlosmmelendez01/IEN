@@ -271,8 +271,8 @@ export default function BrandGuidelines() {
               <strong className="text-white">SVG / vector files coming soon.</strong>{" "}
               For print, signage, or large-format applications that require vector
               artwork, contact{" "}
-              <a href="mailto:info@indianaesportsnetwork.org" className="text-primary hover:underline">
-                info@indianaesportsnetwork.org
+              <a href="mailto:board@indianaesportsnetwork.org" className="text-primary hover:underline">
+                board@indianaesportsnetwork.org
               </a>{" "}
               and we&rsquo;ll send the source files directly while we finalize the public
               vector exports.
@@ -293,10 +293,10 @@ export default function BrandGuidelines() {
             extra set of eyes on how IEN is represented.
           </p>
           <a
-            href="mailto:info@indianaesportsnetwork.org"
+            href="mailto:board@indianaesportsnetwork.org"
             className="inline-block px-6 py-3 border border-primary text-primary font-heading tracking-widest text-sm uppercase rounded-lg hover:bg-primary hover:text-primary-foreground transition-all"
           >
-            info@indianaesportsnetwork.org
+            board@indianaesportsnetwork.org
           </a>
         </div>
       </section>

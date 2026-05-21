@@ -273,7 +273,7 @@ export default function Partners() {
                 </li>
               </ul>
               <Button variant="outline" asChild className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
-                <a href="mailto:partners@indianaesportsnetwork.org?subject=Community%20Sponsor%20Inquiry%20(Tier%203)">
+                <a href="mailto:board@indianaesportsnetwork.org?subject=Community%20Sponsor%20Inquiry%20(Tier%203)">
                   INQUIRE
                 </a>
               </Button>
@@ -317,7 +317,7 @@ export default function Partners() {
                 </li>
               </ul>
               <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest">
-                <a href="mailto:partners@indianaesportsnetwork.org?subject=State%20Finals%20Sponsor%20Inquiry%20(Tier%201)">
+                <a href="mailto:board@indianaesportsnetwork.org?subject=State%20Finals%20Sponsor%20Inquiry%20(Tier%201)">
                   INQUIRE
                 </a>
               </Button>
@@ -354,7 +354,7 @@ export default function Partners() {
                 </li>
               </ul>
               <Button variant="outline" asChild className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
-                <a href="mailto:partners@indianaesportsnetwork.org?subject=Regional%20Sponsor%20Inquiry%20(Tier%202)">
+                <a href="mailto:board@indianaesportsnetwork.org?subject=Regional%20Sponsor%20Inquiry%20(Tier%202)">
                   INQUIRE
                 </a>
               </Button>
@@ -393,13 +393,13 @@ export default function Partners() {
 
           <div className="text-center">
             <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8 h-12">
-              <a href="mailto:partners@indianaesportsnetwork.org?subject=IEN%20Sponsorship%20Inquiry">
+              <a href="mailto:board@indianaesportsnetwork.org?subject=IEN%20Sponsorship%20Inquiry">
                 <Mail className="w-4 h-4 mr-2" />
                 CONTACT PARTNERSHIPS
               </a>
             </Button>
             <p className="text-xs text-muted-foreground mt-3">
-              partners@indianaesportsnetwork.org
+              board@indianaesportsnetwork.org
             </p>
           </div>
         </div>
