@@ -18,6 +18,12 @@ export interface Champion {
   thirdPlayer?: string;
   finalist?: string;
   finalistPlayer?: string;
+  /**
+   * Optional path or URL to the school's esports/athletics logo, used by the
+   * Hall of Champions featured cards. When absent, the UI renders a polished
+   * shield + initials fallback. Files can live in /public/schools/<slug>.png.
+   */
+  logoUrl?: string;
 }
 
 export const CHAMPIONS: Champion[] = [

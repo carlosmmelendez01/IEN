@@ -100,13 +100,14 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Stats bar — wrapped in a frosted-glass scrim so text contrast
-              isn't dependent on the photo behind it (WCAG 1.4.3 / 1.4.6). */}
+          {/* Stats bar — no chrome; numbers sit directly over the hero gradient.
+              The hero already runs a heavy bottom-to-top dark gradient, so the
+              gold numbers and gray-200 labels stay readable. */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="mt-16 mx-auto inline-flex flex-wrap items-center justify-center gap-3 md:gap-0 md:divide-x md:divide-primary/30 rounded-2xl bg-background/80 backdrop-blur-md border border-primary/25 px-4 py-3 shadow-[0_0_30px_rgba(0,0,0,0.4)]"
+            className="mt-16 mx-auto inline-flex flex-wrap items-center justify-center gap-3 md:gap-0 md:divide-x md:divide-primary/30"
             role="list"
             aria-label="IEN at a glance"
           >
@@ -166,12 +167,14 @@ export default function Home() {
               alt: "Central HS players competing at IEN State Finals",
               caption: "Live Competition",
               sub: "Central HS at the 2026 State Finals stage",
+              href: "/schedule",
             },
             {
               src: gridTrophies,
               alt: "State Runner-Up trophies for Marvel Rivals at IEN State Finals",
               caption: "State Champions",
               sub: "Hardware on the line — Marvel Rivals 2026 podium",
+              href: "/hall-of-champions",
             },
             {
               src: gridCoach,

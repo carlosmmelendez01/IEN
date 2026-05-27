@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "wouter";
+import { useMemo, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -10,11 +9,7 @@ import {
   Crown,
   Medal,
   Flame,
-  Sparkles,
-  Star,
   Play,
-  ChevronLeft,
-  ChevronRight,
   ChevronDown,
   ArrowUpRight,
   X,
@@ -29,14 +24,13 @@ import {
   Gauge,
   Flag,
   LayoutGrid,
+  Archive,
 } from "lucide-react";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
+import { findSchoolLogo } from "@/lib/schoolLogos";
 import { CHAMPIONS, type Champion, type League, type Tier } from "@/data/champions";
 import heroBackdrop from "@assets/state-finals/03-marvel-rivals-trophies.jpg";
-import featuredImg1 from "@assets/state-finals/01-greencastle-celebration.jpg";
-import featuredImg2 from "@assets/state-finals/02-central-hs-competing.jpg";
-import featuredImg3 from "@assets/state-finals/03-marvel-rivals-1200.jpg";
-import featuredImg4 from "@assets/state-finals/04-drew-rhoda-1200.jpg";
+import championshipMomentsImg from "@assets/state-finals/01-greencastle-celebration.jpg";
 
 // =============================================================================
 // Game design system — color + icon per title. Drives the chip strip on each
@@ -72,17 +66,16 @@ const FALLBACK_STYLE: GameStyle = {
 const styleFor = (game: string): GameStyle => GAME_STYLES[game] ?? FALLBACK_STYLE;
 
 // =============================================================================
-// Featured Champions — hand-picked headlines from the most recent IHSEN AAA
-// brackets (the marquee titles). Photos are reused from the State Finals reel.
+// Featured Champions — four marquee headlines from the most recent IHSEN AAA
+// brackets. Cards are logo-driven (no stock photography) so they feel like
+// official championship plaques.
 // =============================================================================
 
-const FEATURED_PICKS = [
-  { game: "Valorant",      tier: "AAA" as Tier, photo: featuredImg2 },
-  { game: "Rocket League", tier: "AAA" as Tier, photo: featuredImg1 },
-  { game: "Smash Bros.",   tier: "AAA" as Tier, photo: featuredImg3 },
-  { game: "Fortnite",      tier: "AAA" as Tier, photo: featuredImg4 },
-  { game: "Overwatch",     tier: "AAA" as Tier, photo: featuredImg2 },
-  { game: "Marvel Rivals", tier: "AAA" as Tier, photo: featuredImg3 },
+const FEATURED_PICKS: Array<{ game: string; tier: Tier }> = [
+  { game: "Valorant",      tier: "AAA" },
+  { game: "Rocket League", tier: "AAA" },
+  { game: "Marvel Rivals", tier: "AAA" },
+  { game: "Overwatch",     tier: "AAA" },
 ];
 
 const LATEST_SEASON = "2025-2026";
@@ -145,14 +138,15 @@ export default function HallOfChampions() {
         );
         return winner ? { ...pick, winner } : null;
       })
-      .filter(Boolean) as Array<{ game: string; tier: Tier; photo: string; winner: Champion }>;
+      .filter(Boolean) as Array<{ game: string; tier: Tier; winner: Champion }>;
   }, []);
 
-  // Stats — straight from the data
+  // Stats — straight from the data. Each stat carries a "Since 2019" sub-label
+  // so visitors immediately understand the dataset's timeframe.
   const heroStats = [
-    { value: CHAMPIONS.length.toString(),                     label: "STATE TITLES",   icon: <Trophy   className="w-5 h-5" /> },
-    { value: new Set(CHAMPIONS.map(c => c.school)).size.toString(), label: "TEAMS CROWNED",  icon: <Shield   className="w-5 h-5" /> },
-    { value: `${new Set(CHAMPIONS.map(c => c.game)).size}+`,  label: "ESPORTS TITLES", icon: <Gamepad2 className="w-5 h-5" /> },
+    { value: CHAMPIONS.length.toString(),                           label: "STATE TITLES",      icon: <Trophy   className="w-5 h-5" /> },
+    { value: new Set(CHAMPIONS.map(c => c.school)).size.toString(), label: "CHAMPIONS CROWNED", icon: <Shield   className="w-5 h-5" /> },
+    { value: `${new Set(CHAMPIONS.map(c => c.game)).size}+`,        label: "ESPORTS TITLES",    icon: <Gamepad2 className="w-5 h-5" /> },
   ];
 
   // Dynasty leaderboards — computed PER LEAGUE from the data.
@@ -210,10 +204,23 @@ export default function HallOfChampions() {
       <HeroSection stats={heroStats} backdrop={heroBackdrop} />
 
       {/* ===================================================================
-          FILTER BAR
+          FILTER BAR — styled like a sports-database archive console
       =================================================================== */}
-      <section className="sticky top-20 z-30 border-y border-primary/15 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <section className="sticky top-20 z-30 border-y border-primary/20 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 py-4">
+          {/* Archive header strip */}
+          <div className="flex items-center justify-between gap-4 mb-3 pb-3 border-b border-primary/10">
+            <div className="flex items-center gap-2 text-[0.6rem] font-heading font-bold tracking-[0.3em] uppercase text-primary/80">
+              <Archive className="w-3.5 h-3.5" />
+              <span>Champions Archive</span>
+              <span className="text-muted-foreground/60">·</span>
+              <span className="text-muted-foreground">Search the record book</span>
+            </div>
+            <span className="text-[0.7rem] text-muted-foreground hidden sm:inline tabular-nums">
+              <span className="text-primary font-heading font-bold">{filtered.length}</span> {filtered.length === 1 ? "title" : "titles"} match
+            </span>
+          </div>
+
           <div className="grid grid-cols-2 md:grid-cols-4 lg:flex lg:items-end gap-3 lg:gap-4">
             <FilterField label="YEAR"     value={year}     options={[ANY, ...SEASONS]}                   onChange={setYear}     anyLabel="All Years" />
             <FilterField label="GAME"     value={game}     options={[ANY, ...GAMES]}                     onChange={setGame}     anyLabel="All Games" />
@@ -221,7 +228,7 @@ export default function HallOfChampions() {
             <FilterField label="SCHOOL"   value={school}   options={[ANY, ...SCHOOLS]}                   onChange={setSchool}   anyLabel="All Schools" />
 
             <div className="col-span-2 md:col-span-4 lg:ml-auto flex items-center justify-between gap-3">
-              <span className="text-xs text-muted-foreground hidden lg:inline">
+              <span className="text-xs text-muted-foreground sm:hidden">
                 <span className="text-primary font-bold">{filtered.length}</span> {filtered.length === 1 ? "title" : "titles"} match
               </span>
               <button
@@ -238,11 +245,12 @@ export default function HallOfChampions() {
       </section>
 
       {/* ===================================================================
-          FEATURED CHAMPIONS — full-width carousel
+          FEATURED CHAMPIONS — 4-card responsive grid (4 / 2 / 1)
       =================================================================== */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <SectionHeader
+            eyebrow="Marquee Titles · 2025–2026"
             title="Featured Champions"
             action={
               <button
@@ -257,7 +265,7 @@ export default function HallOfChampions() {
               </button>
             }
           />
-          <FeaturedCarousel cards={featuredCards} />
+          <FeaturedGrid cards={featuredCards} />
         </div>
       </section>
 
@@ -332,16 +340,34 @@ function HeroSection({ stats, backdrop }: { stats: Array<{ value: string; label:
       <img src={backdrop} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-30 motion-safe:animate-hero-zoom" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(212,175,55,0.22),transparent_60%)]" />
       <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/85 to-background" />
+      {/* Diagonal gold weave + subtle archival grid texture */}
       <div className="absolute inset-0 opacity-[0.05] [background:repeating-linear-gradient(45deg,transparent_0_22px,rgba(212,175,55,0.6)_22px_23px)]" />
+      <div className="absolute inset-0 opacity-[0.04] [background:linear-gradient(rgba(212,175,55,0.6)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.6)_1px,transparent_1px)] [background-size:64px_64px]" />
+      {/* Trophy silhouettes for atmosphere — pure decoration */}
+      <Trophy aria-hidden className="hidden md:block absolute -right-10 top-10 w-72 h-72 lg:w-96 lg:h-96 text-primary/[0.06] rotate-12" />
+      <Trophy aria-hidden className="hidden lg:block absolute right-1/3 -bottom-16 w-64 h-64 text-primary/[0.04] -rotate-12" />
       <Particles />
 
       <div className="container relative z-10 mx-auto px-4 pt-16 pb-12 md:pt-24 md:pb-16">
+        {/* Archival eyebrow — "this is the permanent record" */}
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-3 text-[0.65rem] font-heading font-bold tracking-[0.3em] uppercase text-primary/80 mb-6"
+        >
+          <Archive className="w-3.5 h-3.5" />
+          <span>Indiana Esports Network</span>
+          <span className="h-px w-10 bg-primary/40" />
+          <span className="text-primary">2019 — Present</span>
+        </motion.div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7"
+            className="lg:col-span-8"
           >
             <h1 className="font-heading font-bold text-white tracking-tight leading-[0.92] text-6xl sm:text-7xl md:text-8xl lg:text-[7rem]">
               <span className="block">HALL OF</span>
@@ -354,24 +380,48 @@ function HeroSection({ stats, backdrop }: { stats: Array<{ value: string; label:
               Honoring the schools, teams, and players who have reached the pinnacle of Indiana scholastic esports.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-10 gap-y-5">
-              {stats.map((s) => (
-                <div key={s.label} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/15 border border-primary/40 flex items-center justify-center text-primary">
+            {/* Premium "since" badge */}
+            <div className="mt-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/50 bg-primary/10 backdrop-blur shadow-[0_0_25px_rgba(212,175,55,0.15)]">
+              <Trophy className="w-3.5 h-3.5 text-primary" />
+              <span className="text-[0.65rem] font-heading font-bold tracking-[0.25em] uppercase text-primary">
+                Celebrating Champions Since 2019
+              </span>
+            </div>
+
+            {/* Stat row */}
+            <div className="mt-8 grid grid-cols-3 sm:flex sm:flex-wrap items-stretch gap-x-8 gap-y-6 max-w-2xl">
+              {stats.map((s, i) => (
+                <div key={s.label} className="flex items-center gap-3 relative">
+                  {i > 0 && (
+                    <span aria-hidden className="hidden sm:block absolute -left-4 top-1/2 -translate-y-1/2 h-10 w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
+                  )}
+                  <div className="w-11 h-11 rounded-lg bg-primary/15 border border-primary/40 flex items-center justify-center text-primary shadow-[inset_0_0_15px_rgba(212,175,55,0.15)]">
                     {s.icon}
                   </div>
                   <div>
-                    <div className="font-heading font-bold text-3xl md:text-4xl text-white leading-none">{s.value}</div>
-                    <div className="text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground font-heading font-bold mt-1">{s.label}</div>
+                    <div className="font-heading font-bold text-3xl md:text-4xl text-white leading-none drop-shadow-[0_0_18px_rgba(212,175,55,0.45)]">
+                      {s.value}
+                    </div>
+                    <div className="text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground font-heading font-bold mt-1.5">
+                      {s.label}
+                    </div>
+                    <div className="text-[0.6rem] tracking-[0.22em] uppercase text-primary/80 font-heading font-bold mt-0.5">
+                      Since 2019
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Right column intentionally left blank for now. */}
-          <div className="hidden lg:block lg:col-span-5" />
+          {/* Right column intentionally left blank — trophy silhouettes fill the space */}
+          <div className="hidden lg:block lg:col-span-4" />
         </div>
+      </div>
+
+      {/* Gold divider out to the next section */}
+      <div className="relative z-10 container mx-auto px-4">
+        <div className="h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
       </div>
     </section>
   );
@@ -418,206 +468,212 @@ function FilterField({
 // SECTION HEADER — small title + optional right-side action
 // =============================================================================
 
-function SectionHeader({ title, action }: { title: string; action?: React.ReactNode }) {
+function SectionHeader({
+  title,
+  eyebrow,
+  action,
+}: {
+  title: string;
+  eyebrow?: string;
+  action?: React.ReactNode;
+}) {
   return (
     <div className="flex items-end justify-between gap-4 mb-6">
-      <h2 className="font-heading font-bold text-2xl md:text-3xl text-white tracking-tight">
-        {title}
-      </h2>
+      <div>
+        {eyebrow && (
+          <div className="text-[0.65rem] font-heading font-bold tracking-[0.3em] uppercase text-primary/80 mb-2">
+            {eyebrow}
+          </div>
+        )}
+        <h2 className="font-heading font-bold text-2xl md:text-3xl text-white tracking-tight">
+          {title}
+        </h2>
+      </div>
       {action}
     </div>
   );
 }
 
 // =============================================================================
-// FEATURED CHAMPIONS CAROUSEL
+// FEATURED CHAMPIONS — 4-card responsive grid of championship plaques.
+// Mobile: 1 col · Tablet: 2 cols · Desktop: 4 cols
 // =============================================================================
 
-function FeaturedCarousel({
+function FeaturedGrid({
   cards,
 }: {
-  cards: Array<{ game: string; tier: Tier; photo: string; winner: Champion }>;
+  cards: Array<{ game: string; tier: Tier; winner: Champion }>;
 }) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [scrollState, setScrollState] = useState({
-    pages: 1, page: 0, atStart: true, atEnd: cards.length <= 1,
-  });
-
-  // Recompute pagination from the actual rendered widths. Driven by scroll
-  // events + window resize so it stays correct across breakpoints.
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const update = () => {
-      const { scrollLeft, scrollWidth, clientWidth } = el;
-      // Cards are uniformly sized; measure the first child to derive a "page" step.
-      const firstCard = el.querySelector<HTMLElement>("[data-carousel-item]");
-      const cardWidth = firstCard?.offsetWidth ?? clientWidth;
-      const gap = 20; // matches gap-5 = 1.25rem
-      const step = cardWidth + gap;
-      const visible = Math.max(1, Math.round(clientWidth / step));
-      const maxScroll = Math.max(0, scrollWidth - clientWidth);
-      const pages = Math.max(1, Math.ceil((cards.length - visible) / 1) + 1);
-      // Page index = how many "single-card" steps from the start
-      const page = Math.min(pages - 1, Math.round(scrollLeft / step));
-      setScrollState({
-        pages,
-        page,
-        atStart: scrollLeft <= 4,
-        atEnd: scrollLeft >= maxScroll - 4,
-      });
-    };
-
-    update();
-    el.addEventListener("scroll", update, { passive: true });
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
-    return () => {
-      el.removeEventListener("scroll", update);
-      ro.disconnect();
-    };
-  }, [cards.length]);
-
-  const scrollByCard = (dir: 1 | -1) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const firstCard = el.querySelector<HTMLElement>("[data-carousel-item]");
-    const cardWidth = firstCard?.offsetWidth ?? el.clientWidth;
-    el.scrollBy({ left: dir * (cardWidth + 20), behavior: "smooth" });
-  };
-
-  const goToPage = (i: number) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const firstCard = el.querySelector<HTMLElement>("[data-carousel-item]");
-    const cardWidth = firstCard?.offsetWidth ?? el.clientWidth;
-    el.scrollTo({ left: i * (cardWidth + 20), behavior: "smooth" });
-  };
-
-  return (
-    <div className="relative group/carousel">
-      {/* Track */}
-      <div
-        ref={scrollRef}
-        className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 -mx-1 px-1
-                   [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {cards.map((c, i) => (
-          <div
-            key={i}
-            data-carousel-item
-            className="snap-start shrink-0 w-[calc(85%-0.625rem)] sm:w-[calc(50%-0.625rem)] md:w-[calc(33.333%-0.834rem)] lg:w-[calc(25%-0.9375rem)]"
-          >
-            <FeaturedCard card={c} />
-          </div>
-        ))}
+  if (cards.length === 0) {
+    return (
+      <div className="py-16 text-center border border-dashed border-primary/20 rounded-lg text-muted-foreground">
+        No featured champions for the current season yet.
       </div>
-
-      {/* Prev / Next buttons (hidden on touch / when at edge) */}
-      <button
-        type="button"
-        aria-label="Previous champion"
-        onClick={() => scrollByCard(-1)}
-        disabled={scrollState.atStart}
-        className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 w-11 h-11 items-center justify-center rounded-full bg-background/90 backdrop-blur border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary disabled:opacity-0 disabled:pointer-events-none transition-all shadow-[0_0_25px_rgba(0,0,0,0.5)]"
-      >
-        <ChevronLeft className="w-5 h-5" />
-      </button>
-      <button
-        type="button"
-        aria-label="Next champion"
-        onClick={() => scrollByCard(1)}
-        disabled={scrollState.atEnd}
-        className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 w-11 h-11 items-center justify-center rounded-full bg-background/90 backdrop-blur border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary disabled:opacity-0 disabled:pointer-events-none transition-all shadow-[0_0_25px_rgba(0,0,0,0.5)]"
-      >
-        <ChevronRight className="w-5 h-5" />
-      </button>
-
-      {/* Page dots */}
-      {scrollState.pages > 1 && (
-        <div className="flex items-center justify-center gap-2 mt-6">
-          {Array.from({ length: scrollState.pages }).map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => goToPage(i)}
-              aria-label={`Go to slide ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all ${
-                i === scrollState.page
-                  ? "w-8 bg-primary"
-                  : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/60"
-              }`}
-            />
-          ))}
-        </div>
-      )}
+    );
+  }
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+      {cards.map((c, i) => (
+        <FeaturedCard key={i} card={c} index={i} />
+      ))}
     </div>
   );
 }
 
-function FeaturedCard({ card }: { card: { game: string; tier: Tier; photo: string; winner: Champion } }) {
+/**
+ * Championship plaque card.
+ * - School esports logo dominates the top half (with polished fallback).
+ * - Year badge anchors the top corner.
+ * - Body lists School, Game | State Champions, optional Division.
+ * - "View Champion" micro-CTA scrolls to the matching season block.
+ */
+function FeaturedCard({
+  card,
+  index,
+}: {
+  card: { game: string; tier: Tier; winner: Champion };
+  index: number;
+}) {
   const style = styleFor(card.game);
   const Icon = style.icon;
   const tierLabel = card.tier || "OPEN";
+  const seasonYear = card.winner.season.split("-").pop() ?? card.winner.season;
+
+  const handleClick = () => {
+    const el = document.getElementById("all-seasons");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
-    <div className="group relative bg-card border border-primary/20 rounded-xl overflow-hidden hover:border-primary/70 hover:-translate-y-1 hover:shadow-[0_20px_50px_-12px_rgba(212,175,55,0.4)] transition-all duration-300 h-full flex flex-col">
-      {/* Photo with game-themed gradient */}
-      <div className="relative h-48 md:h-56 overflow-hidden">
-        <img src={card.photo} alt="" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-        <div className={`absolute inset-0 bg-gradient-to-br ${tailwindGameOverlay(card.game)} mix-blend-multiply opacity-80`} />
-        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
-        {/* Season pill */}
-        <div className="absolute bottom-3 right-3 px-2.5 py-1 bg-background/85 backdrop-blur border border-primary/40 text-[0.65rem] font-heading font-bold tracking-[0.2em] rounded text-primary">
-          {card.winner.season}
-        </div>
+    <motion.button
+      type="button"
+      onClick={handleClick}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.06, duration: 0.4 }}
+      aria-label={`View ${card.winner.school} — ${card.game} ${tierLabel} champion, ${card.winner.season}`}
+      className="group text-left bg-gradient-to-br from-card via-card to-background/80 border border-primary/30 rounded-xl overflow-hidden hover:border-primary hover:-translate-y-1 hover:shadow-[0_25px_55px_-15px_rgba(212,175,55,0.45)] transition-all duration-300 h-full flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+    >
+      {/* Logo plate */}
+      <div className="relative aspect-[5/4] flex items-center justify-center bg-[radial-gradient(circle_at_50%_45%,rgba(212,175,55,0.10),transparent_70%)] border-b border-primary/15 p-6 overflow-hidden">
+        {/* Subtle plaque grid */}
+        <div aria-hidden className="absolute inset-0 opacity-[0.05] [background:linear-gradient(rgba(212,175,55,0.7)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.7)_1px,transparent_1px)] [background-size:32px_32px]" />
+        {/* Corner shield ornaments */}
+        <Shield aria-hidden className="absolute top-3 left-3 w-3.5 h-3.5 text-primary/30" />
+        <Shield aria-hidden className="absolute top-3 right-3 w-3.5 h-3.5 text-primary/30" />
+
+        <SchoolLogo school={card.winner.school} logoUrl={card.winner.logoUrl} />
+
+        {/* Year badge */}
+        <span className="absolute bottom-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 bg-background/90 backdrop-blur border border-primary/50 text-[0.65rem] font-heading font-bold tracking-[0.2em] rounded text-primary shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+          <Trophy className="w-3 h-3" /> {seasonYear}
+        </span>
       </div>
 
       {/* Body */}
       <div className="p-5 flex-1 flex flex-col">
-        <div className="flex items-start gap-3">
-          <div className={`w-10 h-10 shrink-0 rounded-full ${style.bg} ${style.border} border flex items-center justify-center ${style.color}`}>
-            <Icon className="w-5 h-5" />
-          </div>
-          <div className="min-w-0 flex-1">
-            <div className="font-heading font-bold text-white text-lg leading-tight tracking-wide line-clamp-2">
-              {card.winner.school}
-            </div>
-            <div className={`mt-1 inline-flex items-center gap-1.5 text-[0.7rem] font-heading font-bold tracking-[0.18em] uppercase ${style.color}`}>
-              {card.game} <span className="text-muted-foreground/60">•</span> <span>{tierLabel}</span>
-            </div>
-          </div>
+        <h3 className="font-heading font-bold text-white text-lg leading-tight tracking-wide line-clamp-2">
+          {card.winner.school}
+        </h3>
+
+        <div className="mt-2 flex items-center gap-2 text-[0.7rem] font-heading font-bold tracking-[0.18em] uppercase">
+          <span className={`inline-flex items-center justify-center w-6 h-6 rounded ${style.bg} ${style.border} border ${style.color} shrink-0`}>
+            <Icon className="w-3.5 h-3.5" />
+          </span>
+          <span className={style.color}>{card.game}</span>
+          <span className="text-muted-foreground/60">|</span>
+          <span className="text-primary">State Champions</span>
         </div>
 
-        {/* Champions banner */}
-        <div className="mt-auto pt-5 flex items-center gap-3">
-          <span className="flex-1 h-px bg-gradient-to-r from-transparent to-primary/40" />
-          <div className="inline-flex items-center gap-1.5 text-primary font-heading font-bold tracking-[0.25em] text-[0.65rem] uppercase">
-            <Crown className="w-3.5 h-3.5" /> State Champions
+        {tierLabel && (
+          <div className="mt-1.5 text-[0.65rem] tracking-[0.22em] uppercase text-muted-foreground font-heading font-bold">
+            Division {tierLabel}
           </div>
+        )}
+
+        {/* Champions banner divider */}
+        <div className="mt-4 flex items-center gap-3">
+          <span className="flex-1 h-px bg-gradient-to-r from-transparent to-primary/40" />
+          <Crown className="w-3.5 h-3.5 text-primary/80 shrink-0" />
           <span className="flex-1 h-px bg-gradient-to-l from-transparent to-primary/40" />
+        </div>
+
+        {/* Micro CTA */}
+        <div className="mt-4 inline-flex items-center gap-1 text-[0.7rem] font-heading font-bold tracking-[0.22em] uppercase text-primary/80 group-hover:text-primary transition-colors">
+          View Champion <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </div>
       </div>
 
       {/* hover glow */}
       <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.18),transparent_60%)]" />
-    </div>
+    </motion.button>
   );
 }
 
-// Returns a tailwind gradient class string per game (multiplied with the photo).
-function tailwindGameOverlay(game: string): string {
-  switch (game) {
-    case "Valorant":          return "from-red-900/80 via-red-950/60 to-rose-950/70";
-    case "Rocket League":     return "from-sky-900/80 via-blue-950/60 to-indigo-950/70";
-    case "Smash Bros.":       return "from-rose-900/70 via-purple-950/70 to-slate-950/70";
-    case "Fortnite":          return "from-emerald-900/80 via-teal-950/70 to-slate-950/70";
-    case "Overwatch":         return "from-orange-900/80 via-amber-950/70 to-slate-950/70";
-    case "Marvel Rivals":     return "from-rose-900/80 via-fuchsia-950/60 to-slate-950/70";
-    case "League of Legends": return "from-yellow-900/80 via-amber-950/70 to-slate-950/70";
-    default:                  return "from-slate-900/80 via-slate-950/70 to-black/70";
+/**
+ * SchoolLogo — renders the school's esports logo (when provided) or a polished
+ * gold-outlined shield with initials and "Logo Coming Soon" subtext. The
+ * fallback is intentional: no generic stock imagery should ever appear here.
+ */
+function SchoolLogo({ school, logoUrl }: { school: string; logoUrl?: string }) {
+  // Explicit override > auto-match against src/data/schools.ts > shield fallback.
+  const resolved = logoUrl ?? findSchoolLogo(school);
+  if (resolved) {
+    return (
+      <img
+        src={resolved}
+        alt={`${school} esports logo`}
+        loading="lazy"
+        className="relative z-10 max-h-32 max-w-[80%] object-contain group-hover:scale-[1.06] transition-transform duration-500 drop-shadow-[0_4px_18px_rgba(0,0,0,0.5)]"
+      />
+    );
   }
+  const initials = school
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((w) => w[0])
+    .join("")
+    .toUpperCase()
+    .replace(/[^A-Z]/g, "")
+    .slice(0, 3) || "—";
+
+  return (
+    <div
+      className="relative z-10 flex flex-col items-center justify-center gap-2 group-hover:scale-[1.06] transition-transform duration-500"
+      role="img"
+      aria-label={`${school} logo placeholder`}
+    >
+      <div className="relative w-24 h-28 flex items-center justify-center">
+        <svg viewBox="0 0 100 110" className="absolute inset-0 w-full h-full" aria-hidden="true">
+          <defs>
+            <linearGradient id="shieldFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="rgba(13,24,40,0.95)" />
+              <stop offset="100%" stopColor="rgba(8,15,30,0.95)" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M50 4 L92 18 L92 60 Q92 92 50 106 Q8 92 8 60 L8 18 Z"
+            fill="url(#shieldFill)"
+            stroke="rgba(212,175,55,0.7)"
+            strokeWidth="2"
+          />
+          <path
+            d="M50 12 L84 22 L84 60 Q84 86 50 98 Q16 86 16 60 L16 22 Z"
+            fill="none"
+            stroke="rgba(212,175,55,0.25)"
+            strokeWidth="1"
+          />
+        </svg>
+        <span className="relative font-heading font-bold text-2xl text-primary tracking-widest drop-shadow-[0_0_12px_rgba(212,175,55,0.45)]">
+          {initials}
+        </span>
+      </div>
+      <span className="text-[0.55rem] tracking-[0.22em] uppercase text-muted-foreground/70 font-heading font-bold">
+        Logo Coming Soon
+      </span>
+    </div>
+  );
 }
 
 // =============================================================================
@@ -961,7 +1017,7 @@ function ChampionshipMoments() {
         className="group block bg-card border border-primary/20 rounded-xl overflow-hidden hover:border-primary/60 hover:shadow-[0_20px_50px_-12px_rgba(212,175,55,0.3)] transition-all"
       >
         <div className="relative h-48 overflow-hidden">
-          <img src={featuredImg1} alt="2025–2026 IEN State Finals highlights" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
+          <img src={championshipMomentsImg} alt="2025–2026 IEN State Finals highlights" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
           <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-16 h-16 rounded-full bg-primary/95 text-primary-foreground flex items-center justify-center shadow-[0_0_40px_rgba(212,175,55,0.6)] group-hover:scale-110 transition-transform">
