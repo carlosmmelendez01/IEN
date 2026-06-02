@@ -115,8 +115,8 @@ export function Footer() {
             <span>EIN: 86-3091103</span>
           </div>
           <div className="flex items-center gap-4 text-xs text-muted-foreground">
-            <a href="#" className="hover:text-primary transition-colors">Terms</a>
-            <a href="#" className="hover:text-primary transition-colors">Privacy</a>
+            <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>
+            <Link href="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
             <Link
               href="/partners#ways-to-support"
               className="hover:text-primary transition-colors"

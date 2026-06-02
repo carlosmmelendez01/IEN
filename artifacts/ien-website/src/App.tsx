@@ -21,6 +21,8 @@ import Schedule from "@/pages/schedule";
 import Contact from "@/pages/contact";
 import News from "@/pages/news";
 import HallOfChampions from "@/pages/hall-of-champions";
+import Privacy from "@/pages/privacy";
+import Terms from "@/pages/terms";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +53,8 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/news" component={News} />
       <Route path="/hall-of-champions" component={HallOfChampions} />
+      <Route path="/privacy" component={Privacy} />
+      <Route path="/terms" component={Terms} />
       <Route component={NotFound} />
     </Switch>
   );
