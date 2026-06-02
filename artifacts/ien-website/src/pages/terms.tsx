@@ -35,7 +35,7 @@ export default function Terms() {
               Terms of Use
             </h1>
             <p className="text-muted-foreground">
-              Effective {EFFECTIVE_DATE} · Indiana Esports Network · EIN 86-3091103
+              Effective {EFFECTIVE_DATE} · Indiana Esports Network · EIN 86-3901103
             </p>
           </motion.div>
         </div>

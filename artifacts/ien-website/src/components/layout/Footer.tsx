@@ -29,9 +29,10 @@ export function Footer() {
           </div>
           <Link
             href="/partners#ways-to-support"
-            className="font-heading font-bold tracking-widest text-sm uppercase px-5 py-2 border border-primary/40 text-primary rounded-lg hover:bg-primary/10 hover:border-primary transition-all"
+            className="inline-flex items-center gap-2 font-heading font-bold tracking-widest text-sm uppercase px-5 py-2 border border-primary/40 text-primary rounded-lg hover:bg-primary/10 hover:border-primary transition-all"
           >
-            ♥ Donate
+            <span>♥ Donate</span>
+            <span className="text-[0.6rem] tracking-[0.18em] text-primary/70 normal-case font-medium">Tax-Deductible</span>
           </Link>
         </div>
       </div>
@@ -112,7 +113,7 @@ export function Footer() {
           <div className="text-xs text-muted-foreground text-center sm:text-left">
             <span>&copy; {new Date().getFullYear()} Indiana Esports Network. All rights reserved.</span>
             <span className="mx-2 opacity-40">|</span>
-            <span>EIN: 86-3091103</span>
+            <span>501(c)(3) · EIN 86-3901103 · Donations tax-deductible</span>
           </div>
           <div className="flex items-center gap-4 text-xs text-muted-foreground">
             <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>

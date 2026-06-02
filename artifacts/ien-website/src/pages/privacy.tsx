@@ -37,7 +37,7 @@ export default function Privacy() {
               Your Privacy at IEN
             </h1>
             <p className="text-muted-foreground">
-              Effective {EFFECTIVE_DATE} · Indiana Esports Network · EIN 86-3091103
+              Effective {EFFECTIVE_DATE} · Indiana Esports Network · EIN 86-3901103
             </p>
           </motion.div>
         </div>
@@ -48,7 +48,7 @@ export default function Privacy() {
         <article className="max-w-3xl mx-auto prose prose-invert prose-headings:font-heading prose-headings:tracking-tight prose-h2:text-white prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-3 prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-strong:text-white prose-li:text-muted-foreground">
           <p>
             The Indiana Esports Network (&ldquo;IEN,&rdquo; &ldquo;we,&rdquo; &ldquo;our&rdquo;) is an Indiana nonprofit
-            organization (EIN 86-3091103). This Privacy Policy explains what information we collect
+            organization (EIN 86-3901103). This Privacy Policy explains what information we collect
             on indianaesportsnetwork.org (the &ldquo;Site&rdquo;), how we use it, and the choices you have.
             We aim to collect as little as possible — and to be specific about what we do collect.
           </p>
