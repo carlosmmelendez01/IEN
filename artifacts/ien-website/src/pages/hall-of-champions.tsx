@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   Trophy,
   Shield,
@@ -376,7 +376,7 @@ function HeroSection({ stats, backdrop }: { stats: Array<{ value: string; label:
               </span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-base md:text-lg text-gray-300/90 leading-relaxed">
+            <p className="mt-6 max-w-xl text-base md:text-lg text-gray-200 leading-relaxed">
               Honoring the schools, teams, and players who have reached the pinnacle of Indiana scholastic esports.
             </p>
 
@@ -1086,6 +1086,9 @@ function AlumniCard({ alum }: { alum: typeof ALUMNI[number] }) {
 }
 
 function Particles({ count = 22 }: { count?: number }) {
+  // WCAG 2.3.3 / 2.2.2 — honor prefers-reduced-motion. If the user opted out
+  // of motion at the OS level, render static dots instead of the floating loop.
+  const prefersReducedMotion = useReducedMotion();
   const seeds = Array.from({ length: count }, (_, i) => i);
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -1095,6 +1098,15 @@ function Particles({ count = 22 }: { count?: number }) {
         const size = 2 + (i % 4);
         const delay = (i % 7) * 0.7;
         const dur   = 8 + (i % 5) * 1.5;
+        if (prefersReducedMotion) {
+          return (
+            <span
+              key={i}
+              className="absolute rounded-full bg-primary/40 shadow-[0_0_8px_rgba(212,175,55,0.3)]"
+              style={{ left: `${left}%`, top: `${top}%`, width: size, height: size, opacity: 0.5 }}
+            />
+          );
+        }
         return (
           <motion.span
             key={i}

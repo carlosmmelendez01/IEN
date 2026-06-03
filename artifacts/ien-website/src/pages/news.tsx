@@ -426,7 +426,7 @@ export default function News() {
                 UPDATES
               </span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-gray-300/90 max-w-2xl leading-relaxed">
+            <p className="mt-6 text-lg md:text-xl text-gray-200 max-w-2xl leading-relaxed">
               Season announcements, league operations, coach spotlights, and the stories driving Indiana scholastic esports forward.
             </p>
 
