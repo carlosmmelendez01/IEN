@@ -51,7 +51,7 @@ export default function Terms() {
             not agree, please do not use the Site.
           </p>
 
-          <h2>1. About IEN</h2>
+          <h2>ABOUT IEN</h2>
           <p>
             The Indiana Esports Network is Indiana&rsquo;s scholastic esports organization, operating the
             Indiana High School Esports Network (IHSEN), Indiana Middle School Esports Network
@@ -59,7 +59,7 @@ export default function Terms() {
             resource for schools, coaches, students, families, sponsors, and the public.
           </p>
 
-          <h2>2. Use of the Site</h2>
+          <h2>USE OF THE SITE</h2>
           <p>You agree to use the Site only for lawful purposes. You agree not to:</p>
           <ul>
             <li>Use the Site in any way that violates federal, state, or local law.</li>
@@ -69,7 +69,7 @@ export default function Terms() {
             <li>Use the IEN name, logos, or branding in any way that suggests endorsement or affiliation without our written permission.</li>
           </ul>
 
-          <h2>3. Intellectual Property</h2>
+          <h2>INTELLECTUAL PROPERTY</h2>
           <p>
             The Site, including its design, text, graphics, the IEN, IHSEN, IMSEN, and IUEN names
             and logos, and the overall &ldquo;look and feel&rdquo;, is the property of the Indiana Esports
@@ -80,7 +80,7 @@ export default function Terms() {
             non-commercial use such as printing a page for reference or sharing a link.
           </p>
 
-          <h2>4. Information You Submit</h2>
+          <h2>INFORMATION YOU SUBMIT</h2>
           <p>
             When you submit information through the Site (for example, the newsletter signup form or
             an email link), you confirm that the information is yours to submit and that we may
@@ -89,7 +89,7 @@ export default function Terms() {
             records, or any information you are not authorized to share.
           </p>
 
-          <h2>5. External Links &amp; Third-Party Services</h2>
+          <h2>EXTERNAL LINKS &amp; THIRD-PARTY SERVICES</h2>
           <p>
             The Site links to external websites and tools, including LeagueOS, partner organizations,
             sponsors, member schools, and social media platforms. We do not control those sites and
@@ -98,7 +98,7 @@ export default function Terms() {
             privacy policy.
           </p>
 
-          <h2>6. Information Is Provided &ldquo;As Is&rdquo;</h2>
+          <h2>INFORMATION IS PROVIDED &ldquo;AS IS&rdquo;</h2>
           <p>
             We work hard to keep the Site accurate and current, but the information here is provided
             for general informational purposes only and on an &ldquo;as is&rdquo; and &ldquo;as available&rdquo; basis.
@@ -108,7 +108,7 @@ export default function Terms() {
             details, and program information are subject to change.
           </p>
 
-          <h2>7. Limitation of Liability</h2>
+          <h2>LIMITATION OF LIABILITY</h2>
           <p>
             To the fullest extent permitted by law, IEN, its directors, officers, volunteers, and
             affiliates shall not be liable for any indirect, incidental, special, consequential, or
@@ -116,14 +116,14 @@ export default function Terms() {
             even if we have been advised of the possibility of such damages.
           </p>
 
-          <h2>8. Changes to These Terms</h2>
+          <h2>CHANGES TO THESE TERMS</h2>
           <p>
             We may update these Terms of Use from time to time. When we do, we will update the
             &ldquo;Effective&rdquo; date at the top of this page. Continued use of the Site after a change
             constitutes acceptance of the updated terms.
           </p>
 
-          <h2>9. Governing Law</h2>
+          <h2>GOVERNING LAW</h2>
           <p>
             These Terms of Use are governed by the laws of the State of Indiana, without regard to
             its conflict-of-laws principles. Any dispute arising out of or relating to the Site or
@@ -131,7 +131,7 @@ export default function Terms() {
             consent to the jurisdiction of those courts.
           </p>
 
-          <h2>10. Contact</h2>
+          <h2>CONTACT</h2>
           <p>
             Questions about these Terms? Email{" "}
             <a href="mailto:board@indianaesportsnetwork.org" className="inline-flex items-center gap-1.5">

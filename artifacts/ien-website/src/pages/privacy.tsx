@@ -53,7 +53,7 @@ export default function Privacy() {
             We aim to collect as little as possible — and to be specific about what we do collect.
           </p>
 
-          <h2>Information We Collect</h2>
+          <h2>INFORMATION WE COLLECT</h2>
           <p>We only collect information you actively give us. Specifically:</p>
           <ul>
             <li>
@@ -77,7 +77,7 @@ export default function Privacy() {
             </li>
           </ul>
 
-          <h2>Information We Don&rsquo;t Collect</h2>
+          <h2>INFORMATION WE DON&rsquo;T COLLECT</h2>
           <ul>
             <li>
               <strong>No analytics, no tracking.</strong> The Site does not load Google Analytics,
@@ -85,15 +85,15 @@ export default function Privacy() {
             </li>
             <li>
               <strong>No cookies are set by IEN.</strong> The Site itself does not write cookies to
-              your browser. Some third-party services we load (see below) may use their own client-side
-              storage as part of normal functionality.
+              your browser. Some third-party services we load may use their own client-side storage
+              as part of normal functionality.
             </li>
             <li>
               <strong>We do not sell or rent your data</strong> to anyone, ever.
             </li>
           </ul>
 
-          <h2>How We Use Your Information</h2>
+          <h2>HOW WE USE YOUR INFORMATION</h2>
           <p>Information you provide is used only to:</p>
           <ul>
             <li>Respond to your message or inquiry.</li>
@@ -102,15 +102,14 @@ export default function Privacy() {
             <li>Comply with applicable law.</li>
           </ul>
 
-          <h2>Third-Party Services</h2>
+          <h2>THIRD-PARTY SERVICES</h2>
           <p>
             Loading a normal page on the Site causes your browser to contact a small number of
             third-party services. You should review their privacy practices directly:
           </p>
           <ul>
             <li>
-              <strong>Google Fonts</strong> serves the typefaces used across the Site. Google may log
-              IP addresses as part of this request.{" "}
+              <strong>Google Fonts</strong> serves the typefaces used across the Site.{" "}
               <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
                 Google Privacy Policy
               </a>
@@ -129,13 +128,12 @@ export default function Privacy() {
               </a>
             </li>
             <li>
-              <strong>External destinations</strong> linked from the Site (LeagueOS, our social
-              channels, sponsor websites, school websites, calendar PDFs) are operated by their
-              respective organizations and are governed by their own privacy policies.
+              <strong>External destinations</strong> linked from the Site are governed by their own
+              privacy policies.
             </li>
           </ul>
 
-          <h2>Children&rsquo;s Privacy</h2>
+          <h2>CHILDREN&rsquo;S PRIVACY</h2>
           <p>
             IEN serves Indiana scholastic esports programs in grades 6&ndash;12. The Site itself is an
             informational resource intended primarily for school staff, parents, and adult supporters.
@@ -150,7 +148,7 @@ export default function Privacy() {
             student-privacy law (including FERPA).
           </p>
 
-          <h2>Your Choices &amp; Rights</h2>
+          <h2>YOUR CHOICES &amp; RIGHTS</h2>
           <ul>
             <li>
               <strong>Unsubscribe.</strong> Every newsletter we send includes an unsubscribe link.
@@ -169,21 +167,20 @@ export default function Privacy() {
             </li>
           </ul>
 
-          <h2>Data Security</h2>
+          <h2>DATA SECURITY</h2>
           <p>
             We use reasonable administrative and technical safeguards to protect the information we
             hold. No internet transmission or electronic storage is ever 100% secure, so we cannot
             guarantee absolute security.
           </p>
 
-          <h2>Changes to This Policy</h2>
+          <h2>CHANGES TO THIS POLICY</h2>
           <p>
-            We may update this Privacy Policy as the Site evolves — for example, when we add a
-            newsletter service provider or, eventually, privacy-friendly analytics. The &ldquo;Effective&rdquo;
-            date at the top will change whenever we do.
+            We may update this Privacy Policy as the Site evolves. The &ldquo;Effective&rdquo; date at the top
+            will change whenever we do.
           </p>
 
-          <h2>Contact</h2>
+          <h2>CONTACT</h2>
           <p>
             For any privacy question or request, email{" "}
             <a href="mailto:board@indianaesportsnetwork.org" className="inline-flex items-center gap-1.5">
