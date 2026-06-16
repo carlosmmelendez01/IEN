@@ -1,10 +1,16 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 
 export default function PartnerWithIEN() {
   return (
     <Layout>
+      <SEO
+        title="Partner with IEN"
+        description="Sponsorship and partnership opportunities for businesses and organizations supporting Indiana scholastic esports."
+        path="/partner-with-ien"
+      />
       {/* Hero Section */}
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 mix-blend-luminosity" />

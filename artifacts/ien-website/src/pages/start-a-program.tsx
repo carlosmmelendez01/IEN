@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { GraduationCap, ClipboardCheck, Users } from "lucide-react";
@@ -7,6 +8,11 @@ import { ONBOARDING_URL } from "@/lib/socialLinks";
 export default function StartAProgram() {
   return (
     <Layout>
+      <SEO
+        title="Start a Program"
+        description="Bring competitive esports to your Indiana school. Step-by-step guide to launching an IEN program at your school."
+        path="/start-a-program"
+      />
       {/* Hero Section */}
       <section className="relative py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />

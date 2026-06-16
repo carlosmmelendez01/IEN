@@ -1,5 +1,6 @@
 import { useState, lazy, Suspense } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
@@ -102,6 +103,11 @@ export default function Schools() {
 
   return (
     <Layout>
+      <SEO
+        title="Member Schools"
+        description="180+ schools competing across Indiana in the Indiana Esports Network's scholastic leagues."
+        path="/schools"
+      />
       {/* Hero */}
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />

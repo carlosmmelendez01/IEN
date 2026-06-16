@@ -5,11 +5,48 @@
     <!-- WCAG 1.4.4: Do NOT set maximum-scale or user-scalable=no — users with
          low vision must be able to zoom up to 200%+. -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Indiana Esports Network — Indiana's Official Scholastic Esports League</title>
-    <meta
-      name="description"
-      content="Indiana Esports Network (IEN) is Indiana's official scholastic esports league — IHSEN high school, IMSEN middle school, and IUEN unified. Education first. Esports always."
-    />
+    <!--
+      Per-page <title>, <meta name="description">, <link rel="canonical">,
+      and Open Graph / Twitter Card tags are managed by react-helmet-async
+      via src/components/SEO.tsx. The build-time pre-renderer (scripts/
+      prerender.ts) bakes Helmet's output into each route's index.html so
+      social-share crawlers see the correct preview for every page.
+
+      Do NOT add static <title> or <meta name="description"> tags here —
+      Helmet doesn't remove pre-existing head elements, and duplicates
+      confuse crawlers.
+    -->
+
+    <!-- Site-wide structured data: Organization. Same on every page, so
+         it stays in the static shell instead of being managed by Helmet. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsOrganization",
+        "name": "Indiana Esports Network",
+        "alternateName": "IEN",
+        "url": "https://indianaesportsnetwork.org",
+        "logo": "https://indianaesportsnetwork.org/android-chrome-512x512.png",
+        "description": "Indiana's official scholastic esports league — IHSEN high school, IMSEN middle school, and IUEN unified.",
+        "foundingDate": "2019",
+        "sport": "Esports",
+        "areaServed": { "@type": "State", "name": "Indiana" },
+        "sameAs": [
+          "https://www.facebook.com/indianaesportsnetwork",
+          "https://www.instagram.com/esportsindiana",
+          "https://x.com/EsportsIndiana",
+          "https://www.youtube.com/@EsportsIndiana"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "board@indianaesportsnetwork.org",
+          "contactType": "general"
+        },
+        "taxID": "86-3901103",
+        "nonprofitStatus": "Nonprofit501c3"
+      }
+    </script>
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />

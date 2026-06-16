@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ExternalLink, Check, ShoppingCart, Heart, Gift, Mail } from "lucide-react";
@@ -126,6 +127,11 @@ export default function Partners() {
 
   return (
     <Layout>
+      <SEO
+        title="Our Partners"
+        description="Featured partners and sponsors supporting the Indiana Esports Network and Indiana scholastic esports."
+        path="/partners"
+      />
       {/* Hero */}
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />

@@ -1,0 +1,5 @@
+# Indiana Esports Network — robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://indianaesportsnetwork.org/sitemap.xml

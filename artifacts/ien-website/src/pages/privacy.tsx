@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Shield, Mail } from "lucide-react";
 
@@ -20,6 +21,11 @@ const EFFECTIVE_DATE = "June 2026";
 export default function Privacy() {
   return (
     <Layout>
+      <SEO
+        title="Privacy Policy"
+        description="Privacy policy for indianaesportsnetwork.org — the Indiana Esports Network."
+        path="/privacy"
+      />
       {/* Hero */}
       <section className="relative py-20 bg-card border-b border-primary/20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />

@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Trophy, Users, Gamepad2, Star, Calendar, FileText } from "lucide-react";
@@ -31,6 +32,11 @@ const highlights = [
 export default function IHSEN() {
   return (
     <Layout>
+      <SEO
+        title="IHSEN — High School"
+        description="Indiana High School Esports Network. 12 game titles, Varsity Divisions A and AA plus Club, season-ending State Finals championship."
+        path="/leagues/ihsen"
+      />
       {/* Hero */}
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />

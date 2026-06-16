@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion, useReducedMotion } from "framer-motion";
 import {
@@ -198,6 +199,11 @@ export default function HallOfChampions() {
 
   return (
     <Layout>
+      <SEO
+        title="Hall of Champions"
+        description="Indiana scholastic esports champions since 2019. 93+ state titles across 12+ game titles in IHSEN, IMSEN, and IUEN."
+        path="/hall-of-champions"
+      />
       {/* ===================================================================
           HERO
       =================================================================== */}
@@ -210,14 +216,14 @@ export default function HallOfChampions() {
         <div className="container mx-auto px-4 py-4">
           {/* Archive header strip */}
           <div className="flex items-center justify-between gap-4 mb-3 pb-3 border-b border-primary/10">
-            <div className="flex items-center gap-2 text-[0.6rem] font-heading font-bold tracking-[0.3em] uppercase text-primary/80">
-              <Archive className="w-3.5 h-3.5" />
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold tracking-[0.2em] uppercase text-primary/90">
+              <Archive className="w-4 h-4" />
               <span>Champions Archive</span>
               <span className="text-muted-foreground/60">·</span>
-              <span className="text-muted-foreground">Search the record book</span>
+              <span className="text-muted-foreground hidden sm:inline">Search the record book</span>
             </div>
-            <span className="text-[0.7rem] text-muted-foreground hidden sm:inline tabular-nums">
-              <span className="text-primary font-heading font-bold">{filtered.length}</span> {filtered.length === 1 ? "title" : "titles"} match
+            <span className="text-sm text-muted-foreground hidden sm:inline tabular-nums">
+              <span className="text-primary font-heading font-bold text-base">{filtered.length}</span> {filtered.length === 1 ? "title" : "titles"} match
             </span>
           </div>
 

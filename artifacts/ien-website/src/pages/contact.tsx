@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Headphones, Shield, Handshake, Mic, Mail } from "lucide-react";
@@ -8,6 +9,11 @@ import NewsletterSignup from "@/components/contact/NewsletterSignup";
 export default function Contact() {
   return (
     <Layout>
+      <SEO
+        title="Contact"
+        description="Contact the Indiana Esports Network. Email board@indianaesportsnetwork.org or join the IEN newsletter."
+        path="/contact"
+      />
       {/* Hero */}
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />

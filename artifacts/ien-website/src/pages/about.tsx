@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
@@ -74,6 +75,11 @@ export default function About() {
 
   return (
     <Layout>
+      <SEO
+        title="About IEN"
+        description="Learn about the Indiana Esports Network — a nonprofit serving Indiana's scholastic esports programs through IHSEN, IMSEN, and IUEN since 2019."
+        path="/about"
+      />
       {/* Hero */}
       <section className="relative py-28 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />

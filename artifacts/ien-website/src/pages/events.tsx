@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Clock, FileText, MapPin, Newspaper, Trophy } from "lucide-react";
@@ -8,6 +9,11 @@ import drewRhodaPhoto from "@assets/state-finals/04-drew-rhoda-1200.jpg";
 export default function Events() {
   return (
     <Layout>
+      <SEO
+        title="Events"
+        description="Upcoming Indiana Esports Network events including State Finals, regular-season tournaments, and community gatherings."
+        path="/events"
+      />
       {/* Hero Section */}
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 mix-blend-luminosity" />

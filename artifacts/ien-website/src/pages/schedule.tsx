@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, School, DollarSign, Clock, ZoomIn, X, Download, ExternalLink } from "lucide-react";
@@ -202,6 +203,11 @@ function SectionDivider({ label }: { label: string }) {
 export default function Schedule() {
   return (
     <Layout>
+      <SEO
+        title="Schedule"
+        description="2026–2027 season schedule for IHSEN, IMSEN, and IUEN — registration dates, season calendars, and downloadable PDFs."
+        path="/schedule"
+      />
       {/* Hero */}
       <section className="relative py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />

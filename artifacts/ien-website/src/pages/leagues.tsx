@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { FileText, Download, ExternalLink } from "lucide-react";
@@ -162,6 +163,11 @@ export default function Leagues() {
 
   return (
     <Layout>
+      <SEO
+        title="Leagues"
+        description="IEN operates three scholastic esports leagues: IHSEN (high school), IMSEN (middle school), and IUEN (unified). 12+ game titles across Indiana."
+        path="/leagues"
+      />
       {/* Hero Section */}
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 mix-blend-luminosity" />

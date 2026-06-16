@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
+  <url><loc>https://indianaesportsnetwork.org/</loc>                  <changefreq>weekly</changefreq>  <priority>1.0</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/about</loc>             <changefreq>monthly</changefreq> <priority>0.8</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/why-esports</loc>       <changefreq>monthly</changefreq> <priority>0.7</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/leagues</loc>           <changefreq>monthly</changefreq> <priority>0.9</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/leagues/ihsen</loc>     <changefreq>monthly</changefreq> <priority>0.9</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/leagues/imsen</loc>     <changefreq>monthly</changefreq> <priority>0.9</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/leagues/iuen</loc>      <changefreq>monthly</changefreq> <priority>0.9</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/schedule</loc>          <changefreq>weekly</changefreq>  <priority>0.9</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/events</loc>            <changefreq>weekly</changefreq>  <priority>0.8</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/news</loc>              <changefreq>weekly</changefreq>  <priority>0.8</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/hall-of-champions</loc> <changefreq>monthly</changefreq> <priority>0.8</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/schools</loc>           <changefreq>monthly</changefreq> <priority>0.7</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/partners</loc>          <changefreq>monthly</changefreq> <priority>0.7</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/partner-with-ien</loc>  <changefreq>monthly</changefreq> <priority>0.6</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/start-a-program</loc>   <changefreq>monthly</changefreq> <priority>0.7</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/contact</loc>           <changefreq>yearly</changefreq>  <priority>0.5</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/privacy</loc>           <changefreq>yearly</changefreq>  <priority>0.3</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/terms</loc>             <changefreq>yearly</changefreq>  <priority>0.3</priority></url>
+</urlset>

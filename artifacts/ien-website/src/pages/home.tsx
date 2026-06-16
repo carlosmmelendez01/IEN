@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { socialLinks, ONBOARDING_URL } from "@/lib/socialLinks";
@@ -18,6 +19,11 @@ const stats = [
 export default function Home() {
   return (
     <Layout>
+      <SEO
+        title="Home"
+        description="Indiana's official scholastic esports league. IHSEN high school, IMSEN middle school, and IUEN unified — serving 180+ Indiana schools and 7,000+ student athletes since 2019."
+        path="/"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         {/* Real photo from IEN State Finals: Greencastle celebrates a Rocket League win.

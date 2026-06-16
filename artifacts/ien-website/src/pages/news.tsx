@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -390,6 +391,11 @@ export default function News() {
 
   return (
     <Layout>
+      <SEO
+        title="News"
+        description="Latest news from the Indiana Esports Network — game announcements, coach spotlights, league operations, and event recaps."
+        path="/news"
+      />
       <AnimatePresence>
         {activePost && (
           <NewsModal

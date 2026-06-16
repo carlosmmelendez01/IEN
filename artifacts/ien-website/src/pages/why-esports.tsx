@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Users, Heart, ShieldCheck, Scale, BookOpen } from "lucide-react";
@@ -36,6 +37,11 @@ const visionPillars = [
 export default function WhyEsports() {
   return (
     <Layout>
+      <SEO
+        title="Why Esports"
+        description="Why scholastic esports matters: academic growth, career pathways, and student community through gaming."
+        path="/why-esports"
+      />
       {/* Hero Section */}
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
