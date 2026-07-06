@@ -107,9 +107,9 @@ async function prerenderRoute(browser: Browser, route: string): Promise<void> {
   const page = await browser.newPage();
   try {
     const url = `http://localhost:${PORT}${route}`;
-    await page.goto(url, { waitUntil: "networkidle0", timeout: 30_000 });
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45_000 });
 
-    await new Promise((r) => setTimeout(r, 100));
+    await new Promise((r) => setTimeout(r, 250));
 
     let html = await page.content();
     html = dedupeHelmetTags(html);

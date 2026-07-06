@@ -1,0 +1,12 @@
+{
+  "buildCommand": "pnpm --filter @workspace/ien-website build",
+  "installCommand": "pnpm install",
+  "outputDirectory": "artifacts/ien-website/dist/public",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
