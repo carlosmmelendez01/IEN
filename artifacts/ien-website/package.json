@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "vite build --config vite.config.ts && tsx scripts/prerender.ts",
+    "build": "vite build --config vite.config.ts && PUPPETEER_CACHE_DIR=.cache/puppeteer puppeteer browsers install chrome && PUPPETEER_CACHE_DIR=.cache/puppeteer tsx scripts/prerender.ts",
     "build:spa": "vite build --config vite.config.ts",
     "prerender": "tsx scripts/prerender.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
