@@ -7,6 +7,8 @@ import { Trophy, Users, Gamepad2, Star, Calendar, FileText } from "lucide-react"
 import imsenLogo from "@assets/IMSEN_Wordmark.png";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 
+const GAME_RULESETS_HREF = "/documents/ien-bylaws-general-rules-2025-26.pdf#page=24";
+
 const games = [
   { name: "Rocket League",       type: "Varsity + Club", color: "text-blue-400",   border: "border-blue-500/50",   roster: "3 starters | 2 subs",  platform: "Cross-platform" },
   { name: "Super Smash Bros.",   type: "Varsity + Club", color: "text-pink-400",   border: "border-pink-500/50",   roster: "4 starters | 2 subs",  platform: "Nintendo Switch" },
@@ -164,6 +166,15 @@ export default function IMSEN() {
                   <span className="text-white/70">{game.platform}</span>
                 </div>
               </div>
+              <a
+                href={GAME_RULESETS_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+              >
+                <FileText className="w-3.5 h-3.5" aria-hidden />
+                VIEW RULESET
+              </a>
             </motion.div>
           ))}
         </div>

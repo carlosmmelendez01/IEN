@@ -40,7 +40,22 @@ const iuenGames = [
   { name: "Super Smash Bros.", color: "border-pink-500/60 text-pink-400" },
 ];
 
+const RULEBOOK_HREF = "/documents/ien-bylaws-general-rules-2025-26.pdf";
+const GAME_RULESETS_HREF = `${RULEBOOK_HREF}#page=24`;
+
 const resources = [
+  {
+    title: "IEN Bylaws & General Rules",
+    desc: "Official IEN bylaws, competition policies, and general league rules for the 2025-26 season.",
+    href: RULEBOOK_HREF,
+    external: false,
+  },
+  {
+    title: "IEN Game Rulesets",
+    desc: "Game-specific rulesets for IHSEN, IMSEN, and IUEN titles in the official rules document.",
+    href: GAME_RULESETS_HREF,
+    external: false,
+  },
   {
     title: "LeagueOS Platform Guide",
     desc: "How to register, manage rosters, and navigate the LeagueOS platform.",
@@ -54,11 +69,13 @@ function GameTile({
   type,
   color,
   index,
+  rulebookHref,
 }: {
   name: string;
   type?: string;
   color: string;
   index: number;
+  rulebookHref?: string;
 }) {
   const [borderClass, textClass] = color.split(" ");
 
@@ -74,6 +91,17 @@ function GameTile({
         <span className={`font-heading font-bold text-base md:text-lg ${textClass} leading-tight`}>{name}</span>
         {type && <span className="text-sm text-muted-foreground">{type}</span>}
       </div>
+      {rulebookHref && (
+        <a
+          href={rulebookHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-1 inline-flex items-center gap-1.5 rounded-md border border-primary/30 px-2.5 py-1.5 text-[0.65rem] font-heading font-bold tracking-[0.16em] text-primary hover:bg-primary hover:text-primary-foreground transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        >
+          <FileText className="w-3.5 h-3.5" aria-hidden />
+          RULESET
+        </a>
+      )}
     </motion.div>
   );
 }
@@ -284,6 +312,7 @@ export default function Leagues() {
               name={game.name}
               type={game.type}
               color={game.color}
+              rulebookHref={GAME_RULESETS_HREF}
             />
           ))}
         </div>
@@ -308,6 +337,7 @@ export default function Leagues() {
               name={game.name}
               type={game.type}
               color={game.color}
+              rulebookHref={GAME_RULESETS_HREF}
             />
           ))}
         </div>
@@ -347,6 +377,7 @@ export default function Leagues() {
                       index={i}
                       name={game.name}
                       color={game.color}
+                      rulebookHref={GAME_RULESETS_HREF}
                     />
                   ))}
                 </div>

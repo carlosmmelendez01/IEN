@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, School, DollarSign, Clock, ZoomIn, X, Download, ExternalLink } from "lucide-react";
+import { Calendar, School, DollarSign, Clock, ZoomIn, X, Download, ExternalLink, FileText } from "lucide-react";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 import ihsenSeason from "@assets/IHSEN_26-27 Season.jpg";
@@ -12,6 +12,8 @@ import imsenFall from "@assets/IMSEN 26 Fall.jpg";
 import iuenFall from "@assets/IUEN 26 Fall.jpg";
 import imsenSpring from "@assets/IMSEN 27 Spring.jpg";
 import iuenSpring from "@assets/IUEN 27 Spring.jpg";
+
+const GAME_RULESETS_HREF = "/documents/ien-bylaws-general-rules-2025-26.pdf#page=24";
 
 function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
   return (
@@ -170,6 +172,18 @@ function SeasonRow({
                   </a>
                 </Button>
               )}
+
+              <Button
+                size="sm"
+                variant="outline"
+                className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest gap-2"
+                asChild
+              >
+                <a href={GAME_RULESETS_HREF} target="_blank" rel="noopener noreferrer">
+                  <FileText className="w-4 h-4" />
+                  VIEW GAME RULESETS
+                </a>
+              </Button>
             </div>
             <p className="text-xs text-muted-foreground mt-2">
               New to IEN?{" "}

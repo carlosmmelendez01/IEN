@@ -7,6 +7,8 @@ import { Trophy, Users, Gamepad2, Star, Calendar, FileText } from "lucide-react"
 import ihsenLogo from "@assets/IHSEN_Wordmark.png";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 
+const GAME_RULESETS_HREF = "/documents/ien-bylaws-general-rules-2025-26.pdf#page=24";
+
 const games = [
   { name: "Valorant",            type: "Varsity A/AA + Club", color: "text-red-400",    border: "border-red-500/50",    roster: "5 starters | 2 subs",    platform: "PC" },
   { name: "Apex Legends",        type: "Varsity A/AA + Club", color: "text-purple-400", border: "border-purple-500/50", roster: "3 starters | 2 subs",    platform: "PC" },
@@ -171,6 +173,15 @@ export default function IHSEN() {
                   <span className="text-white/70">{game.platform}</span>
                 </div>
               </div>
+              <a
+                href={GAME_RULESETS_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+              >
+                <FileText className="w-3.5 h-3.5" aria-hidden />
+                VIEW RULESET
+              </a>
             </motion.div>
           ))}
         </div>
