@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
@@ -22,11 +23,11 @@ import {
   ExternalLink,
   FileText,
 } from "lucide-react";
+import { RulesDialog, defaultTabForGame } from "@/components/rulesets/RulesetQuickView";
+import { getRulesetGame, type RulesTab, type RulesetGame } from "@/data/gameRules";
 import iuenLogo from "@assets/IUEN_Wordmark.png";
 import { CHAMPIONS, type Champion } from "@/data/champions";
 import { findSchoolLogo } from "@/lib/schoolLogos";
-
-const GAME_RULESETS_HREF = "/documents/ien-bylaws-general-rules-2025-26.pdf#page=24";
 
 const IUEN_CHAMPIONS: Champion[] = CHAMPIONS.filter((c) => c.league === "IUEN")
 
@@ -118,6 +119,14 @@ const ADMIN_VALUE_PROPS: Array<{ title: string; desc: string; icon: React.ReactN
 ];
 
 export default function IUEN() {
+  const [selectedRuleset, setSelectedRuleset] = useState<RulesetGame | null>(null);
+  const [activeRulesTab, setActiveRulesTab] = useState<RulesTab>("quick");
+  const openRuleset = (gameName: string) => {
+    const game = getRulesetGame(gameName, "iuen");
+    setSelectedRuleset(game);
+    setActiveRulesTab(defaultTabForGame(game));
+  };
+
   return (
     <Layout>
       <SEO
@@ -377,30 +386,30 @@ export default function IUEN() {
             <h4 className="font-heading font-bold text-xl text-blue-300 mb-1">Rocket League</h4>
             <p className="text-xs text-muted-foreground">3 starters | 2 subs</p>
             <p className="text-xs text-primary mt-2">Crossplay</p>
-            <a
-              href={GAME_RULESETS_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => openRuleset("Rocket League")}
               className="mt-5 inline-flex items-center justify-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+              aria-haspopup="dialog"
             >
               <FileText className="w-3.5 h-3.5" aria-hidden />
               VIEW RULESET
-            </a>
+            </button>
           </div>
           <div className="bg-card border border-pink-500/40 p-8 rounded-xl text-center flex-1 hover:border-pink-400 transition-colors shadow-lg">
             <Gamepad2 className="w-10 h-10 text-pink-400 mx-auto mb-3" />
             <h4 className="font-heading font-bold text-xl text-pink-300 mb-1">Super Smash Bros.</h4>
             <p className="text-xs text-muted-foreground">4 starters | 2 subs</p>
             <p className="text-xs text-primary mt-2">Nintendo Switch</p>
-            <a
-              href={GAME_RULESETS_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => openRuleset("Super Smash Bros.")}
               className="mt-5 inline-flex items-center justify-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+              aria-haspopup="dialog"
             >
               <FileText className="w-3.5 h-3.5" aria-hidden />
               VIEW RULESET
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -572,6 +581,14 @@ export default function IUEN() {
           </Button>
         </div>
       </section>
+      {selectedRuleset && (
+        <RulesDialog
+          activeTab={activeRulesTab}
+          game={selectedRuleset}
+          onClose={() => setSelectedRuleset(null)}
+          onTabChange={setActiveRulesTab}
+        />
+      )}
     </Layout>
   );
 }

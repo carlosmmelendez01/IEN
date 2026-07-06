@@ -5,6 +5,19 @@ import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { FileText, Download, ExternalLink } from "lucide-react";
+import {
+  RulesDialog,
+  RulesetLibrary,
+  defaultTabForGame,
+} from "@/components/rulesets/RulesetQuickView";
+import {
+  RULEBOOK_HREF,
+  getRulesetGame,
+  rulesetGames,
+  type LeagueKey,
+  type RulesTab,
+  type RulesetGame,
+} from "@/data/gameRules";
 import ihsenLogo from "@assets/IHSEN_Wordmark.png";
 import imsenLogo from "@assets/IMSEN_Wordmark.png";
 import iuenLogo from "@assets/IUEN_Wordmark.png";
@@ -40,20 +53,11 @@ const iuenGames = [
   { name: "Super Smash Bros.", color: "border-pink-500/60 text-pink-400" },
 ];
 
-const RULEBOOK_HREF = "/documents/ien-bylaws-general-rules-2025-26.pdf";
-const GAME_RULESETS_HREF = `${RULEBOOK_HREF}#page=24`;
-
 const resources = [
   {
     title: "IEN Bylaws & General Rules",
     desc: "Official IEN bylaws, competition policies, and general league rules for the 2025-26 season.",
     href: RULEBOOK_HREF,
-    external: false,
-  },
-  {
-    title: "IEN Game Rulesets",
-    desc: "Game-specific rulesets for IHSEN, IMSEN, and IUEN titles in the official rules document.",
-    href: GAME_RULESETS_HREF,
     external: false,
   },
   {
@@ -69,13 +73,13 @@ function GameTile({
   type,
   color,
   index,
-  rulebookHref,
+  onRulesClick,
 }: {
   name: string;
   type?: string;
   color: string;
   index: number;
-  rulebookHref?: string;
+  onRulesClick?: () => void;
 }) {
   const [borderClass, textClass] = color.split(" ");
 
@@ -91,16 +95,16 @@ function GameTile({
         <span className={`font-heading font-bold text-base md:text-lg ${textClass} leading-tight`}>{name}</span>
         {type && <span className="text-sm text-muted-foreground">{type}</span>}
       </div>
-      {rulebookHref && (
-        <a
-          href={rulebookHref}
-          target="_blank"
-          rel="noopener noreferrer"
+      {onRulesClick && (
+        <button
+          type="button"
+          onClick={onRulesClick}
           className="mt-1 inline-flex items-center gap-1.5 rounded-md border border-primary/30 px-2.5 py-1.5 text-[0.65rem] font-heading font-bold tracking-[0.16em] text-primary hover:bg-primary hover:text-primary-foreground transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          aria-haspopup="dialog"
         >
           <FileText className="w-3.5 h-3.5" aria-hidden />
           RULESET
-        </a>
+        </button>
       )}
     </motion.div>
   );
@@ -108,9 +112,19 @@ function GameTile({
 
 export default function Leagues() {
   const [location] = useLocation();
+  const [selectedRuleset, setSelectedRuleset] = useState<RulesetGame | null>(null);
+  const [activeRulesTab, setActiveRulesTab] = useState<RulesTab>("quick");
   const [hash, setHash] = useState<string>(() =>
     typeof window !== "undefined" ? window.location.hash : "",
   );
+  const openRuleset = (gameNameOrRuleset: string | RulesetGame, league: LeagueKey = "ihsen") => {
+    const game =
+      typeof gameNameOrRuleset === "string"
+        ? getRulesetGame(gameNameOrRuleset, league)
+        : gameNameOrRuleset;
+    setSelectedRuleset(game);
+    setActiveRulesTab(defaultTabForGame(game));
+  };
   useEffect(() => {
     const onHashChange = () => setHash(window.location.hash);
     window.addEventListener("hashchange", onHashChange);
@@ -312,7 +326,7 @@ export default function Leagues() {
               name={game.name}
               type={game.type}
               color={game.color}
-              rulebookHref={GAME_RULESETS_HREF}
+              onRulesClick={() => openRuleset(game.name, "ihsen")}
             />
           ))}
         </div>
@@ -337,7 +351,7 @@ export default function Leagues() {
               name={game.name}
               type={game.type}
               color={game.color}
-              rulebookHref={GAME_RULESETS_HREF}
+              onRulesClick={() => openRuleset(game.name, "imsen")}
             />
           ))}
         </div>
@@ -377,7 +391,7 @@ export default function Leagues() {
                       index={i}
                       name={game.name}
                       color={game.color}
-                      rulebookHref={GAME_RULESETS_HREF}
+                      onRulesClick={() => openRuleset(game.name, "iuen")}
                     />
                   ))}
                 </div>
@@ -424,6 +438,31 @@ export default function Leagues() {
         <p className="text-center text-muted-foreground text-sm mb-10">
           Official rulebooks, platform guides, and policy documents for coaches, administrators, and players
         </p>
+
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary">
+                Game Rulesets
+              </p>
+              <h3 className="mt-2 text-2xl md:text-3xl font-heading font-bold text-white">
+                Title Rules Quick View
+              </h3>
+            </div>
+            <p className="max-w-xl text-sm text-muted-foreground md:text-right">
+              Open the coach quick guide for a title, then jump to the official rules document when needed.
+            </p>
+          </div>
+          <RulesetLibrary games={rulesetGames} onOpenRules={(game) => openRuleset(game)} />
+        </div>
+
+        <div className="mb-6 flex items-center justify-center">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
+          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">
+            League Resources
+          </span>
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {resources.map((res, i) => (
@@ -500,6 +539,14 @@ export default function Leagues() {
         </div>
       </section>
 
+      {selectedRuleset && (
+        <RulesDialog
+          activeTab={activeRulesTab}
+          game={selectedRuleset}
+          onClose={() => setSelectedRuleset(null)}
+          onTabChange={setActiveRulesTab}
+        />
+      )}
     </Layout>
   );
 }

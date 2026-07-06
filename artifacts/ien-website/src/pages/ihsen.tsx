@@ -1,13 +1,14 @@
+import { useState } from "react";
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Trophy, Users, Gamepad2, Star, Calendar, FileText } from "lucide-react";
+import { RulesDialog, defaultTabForGame } from "@/components/rulesets/RulesetQuickView";
+import { getRulesetGame, type RulesTab, type RulesetGame } from "@/data/gameRules";
 import ihsenLogo from "@assets/IHSEN_Wordmark.png";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
-
-const GAME_RULESETS_HREF = "/documents/ien-bylaws-general-rules-2025-26.pdf#page=24";
 
 const games = [
   { name: "Valorant",            type: "Varsity A/AA + Club", color: "text-red-400",    border: "border-red-500/50",    roster: "5 starters | 2 subs",    platform: "PC" },
@@ -32,6 +33,14 @@ const highlights = [
 ];
 
 export default function IHSEN() {
+  const [selectedRuleset, setSelectedRuleset] = useState<RulesetGame | null>(null);
+  const [activeRulesTab, setActiveRulesTab] = useState<RulesTab>("quick");
+  const openRuleset = (gameName: string) => {
+    const game = getRulesetGame(gameName, "ihsen");
+    setSelectedRuleset(game);
+    setActiveRulesTab(defaultTabForGame(game));
+  };
+
   return (
     <Layout>
       <SEO
@@ -173,15 +182,15 @@ export default function IHSEN() {
                   <span className="text-white/70">{game.platform}</span>
                 </div>
               </div>
-              <a
-                href={GAME_RULESETS_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={() => openRuleset(game.name)}
                 className="mt-4 inline-flex items-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                aria-haspopup="dialog"
               >
                 <FileText className="w-3.5 h-3.5" aria-hidden />
                 VIEW RULESET
-              </a>
+              </button>
             </motion.div>
           ))}
         </div>
@@ -248,6 +257,14 @@ export default function IHSEN() {
           </Button>
         </div>
       </section>
+      {selectedRuleset && (
+        <RulesDialog
+          activeTab={activeRulesTab}
+          game={selectedRuleset}
+          onClose={() => setSelectedRuleset(null)}
+          onTabChange={setActiveRulesTab}
+        />
+      )}
     </Layout>
   );
 }
