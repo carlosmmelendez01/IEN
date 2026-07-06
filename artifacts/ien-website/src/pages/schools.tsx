@@ -9,8 +9,7 @@ import { SCHOOLS } from "@/data/schools";
 import { COLLEGES, type College } from "@/data/colleges";
 
 const SchoolMap = lazy(() => import("@/components/schools/SchoolMap"));
-// CollegeMap (Indiana-only) was retired in favor of the unified RegionalCollegeMap,
-// which auto-fits its bounds to whatever subset is passed in.
+
 const RegionalCollegeMap = lazy(() => import("@/components/schools/RegionalCollegeMap"));
 
 const DIVISIONS = ["All Divisions", "High School (IHSEN)", "Middle School (IMSEN)", "Unified (IUEN)"];
@@ -23,23 +22,17 @@ const divisionColor = (d: string) => {
 };
 
 export default function Schools() {
-  // Member Schools (K-12) search/filter state
+
   const [query, setQuery] = useState("");
   const [division, setDivision] = useState("All Divisions");
   const [showAll, setShowAll] = useState(false);
 
-  // Collegiate Esports Programs section: state filter (drives map + directory)
-  // and a search query within the current state's subset. "ALL" surfaces every
-  // college — Indiana partners + regional Midwest programs — in one view.
   const [regionalState, setRegionalState] = useState<string>("ALL");
   const [regionalQuery, setRegionalQuery] = useState("");
-  // Directory pagination — keep the visible list short by default so the section
-  // doesn't run on. User can expand to see every result.
+
   const [showAllRegional, setShowAllRegional] = useState(false);
   const COLLEGE_PAGE_SIZE = 12;
 
-  // Helper used by every chip / "back" button so changing scope always resets
-  // the search box AND collapses the list back to the truncated view.
   const setRegionalScope = (state: string) => {
     setRegionalState(state);
     setRegionalQuery("");
@@ -65,8 +58,6 @@ export default function Schools() {
   const centralCount = SCHOOLS.filter(s => s.lat >= 39.4 && s.lat <= 40.9).length;
   const southCount = SCHOOLS.filter(s => s.lat < 39.4).length;
 
-  // State name lookup for the chip + directory headings. "IN" is listed first so
-  // Indiana (where IEN partners live) anchors the selector visually.
   const STATE_NAMES: Record<string, string> = {
     IN: "Indiana",
     IL: "Illinois", MI: "Michigan", OH: "Ohio", WI: "Wisconsin",
@@ -76,10 +67,6 @@ export default function Schools() {
     .map(code => [code, COLLEGES.filter(c => c.state === code)] as [string, College[]])
     .filter(([, list]) => list.length > 0);
 
-  // Subset that drives the map + directory based on the selected scope chip.
-  // "ALL" → every college. "PARTNERS" → IEN partners regardless of state
-  // (so future out-of-state partners surface here too). Anything else is a
-  // two-letter state code.
   const PARTNERS_SCOPE = "PARTNERS";
   const regionalScoped =
     regionalState === "ALL"
@@ -108,7 +95,7 @@ export default function Schools() {
         description="180+ schools competing across Indiana in the Indiana Esports Network's scholastic leagues."
         path="/schools"
       />
-      {/* Hero */}
+
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
         <div className="container relative z-20 mx-auto px-4 text-center">
@@ -144,13 +131,11 @@ export default function Schools() {
         </div>
       </section>
 
-      {/* Map + Directory */}
       <section id="member-directory" className="py-12 container mx-auto px-4 scroll-mt-20">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
 
-          {/* Left: Map */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Map */}
+
             <div className="bg-card border border-primary/30 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.1)]">
               <div style={{ height: 480 }}>
                 <Suspense fallback={
@@ -165,7 +150,6 @@ export default function Schools() {
                 </Suspense>
               </div>
 
-              {/* Legend */}
               <div className="px-4 py-3 border-t border-primary/20 flex flex-wrap gap-4 text-xs">
                 <span className="flex items-center gap-1.5">
                   <span className="w-3 h-3 rounded-full bg-primary inline-block"></span>
@@ -182,7 +166,6 @@ export default function Schools() {
               </div>
             </div>
 
-            {/* Stats */}
             <div className="bg-card border border-primary/30 rounded-xl p-6 shadow-[0_0_20px_rgba(212,175,55,0.05)]">
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="text-center">
@@ -209,9 +192,8 @@ export default function Schools() {
             </div>
           </div>
 
-          {/* Right: Directory */}
           <div className="lg:col-span-3">
-            {/* Search + Filter */}
+
             <div className="flex flex-col sm:flex-row gap-3 mb-6">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
@@ -231,12 +213,10 @@ export default function Schools() {
               </select>
             </div>
 
-            {/* Results count */}
             <p className="text-xs text-muted-foreground mb-4">
               Showing <span className="text-primary font-bold">{visible.length}</span> of <span className="text-primary font-bold">{filtered.length}</span> schools
             </p>
 
-            {/* School List */}
             <div className="space-y-2 mb-6">
               {visible.length === 0 ? (
                 <div className="text-center py-12 text-muted-foreground">
@@ -276,7 +256,6 @@ export default function Schools() {
               )}
             </div>
 
-            {/* Load More / Collapse */}
             {filtered.length > PAGE_SIZE && (
               <div className="text-center">
                 {!showAll ? (
@@ -303,10 +282,6 @@ export default function Schools() {
         </div>
       </section>
 
-      {/* Collegiate Esports Programs — unified directory of every Indiana partner
-          + Midwest regional program. Indiana programs surface a "PARTNERED" badge
-          so the IEN-aligned schools stand out. State selector drives the shared
-          map + directory below. */}
       <section id="partnered-colleges" className="py-16 mb-20 container mx-auto px-4 scroll-mt-20">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/40" />
@@ -322,7 +297,6 @@ export default function Schools() {
           focus the map and directory.
         </p>
 
-        {/* Scope selector — All Programs, IEN Partners (state-agnostic), then per-state chips. */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
           <button
             type="button"
@@ -336,8 +310,6 @@ export default function Schools() {
             All Programs · {COLLEGES.length}
           </button>
 
-          {/* IEN Partners — filters by isPartner flag, not state, so partners
-              outside Indiana surface here once they're added to the data. */}
           <button
             type="button"
             onClick={() => setRegionalScope(PARTNERS_SCOPE)}
@@ -351,7 +323,6 @@ export default function Schools() {
             IEN Partners · {partnerCount}
           </button>
 
-          {/* Per-state chips — neutral styling now that partner status lives on its own chip. */}
           {ALL_STATES.map(([code, list]) => {
             const active = regionalState === code;
             return (
@@ -371,10 +342,8 @@ export default function Schools() {
           })}
         </div>
 
-        {/* Map + Directory */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
 
-          {/* Left: Map */}
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-card border border-primary/30 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.1)]">
               <div style={{ height: 480 }}>
@@ -390,7 +359,6 @@ export default function Schools() {
                 </Suspense>
               </div>
 
-              {/* Legend */}
               <div className="px-4 py-3 border-t border-primary/20 flex flex-wrap items-center justify-between gap-3 text-xs">
                 <div className="flex items-center gap-4">
                   <span className="flex items-center gap-1.5">
@@ -408,7 +376,6 @@ export default function Schools() {
               </div>
             </div>
 
-            {/* Stats */}
             <div className="bg-card border border-primary/30 rounded-xl p-6 shadow-[0_0_20px_rgba(212,175,55,0.05)]">
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="text-center">
@@ -430,7 +397,7 @@ export default function Schools() {
               </div>
               {regionalState === "ALL" ? (
                 <div className="space-y-2 text-sm">
-                  {/* Quick-pick: IEN Partners always sits at the top of the jump list. */}
+
                   <button
                     type="button"
                     onClick={() => setRegionalScope(PARTNERS_SCOPE)}
@@ -465,9 +432,8 @@ export default function Schools() {
             </div>
           </div>
 
-          {/* Right: Directory */}
           <div className="lg:col-span-3">
-            {/* Header + Search */}
+
             <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-4">
               <div>
                 <div className="text-xs font-heading font-bold tracking-[0.18em] uppercase text-primary">
@@ -561,7 +527,6 @@ export default function Schools() {
               </div>
             )}
 
-            {/* View All / Show Less toggle — only when there's more than the default page can hold */}
             {filteredRegional.length > COLLEGE_PAGE_SIZE && (
               <div className="text-center mt-6">
                 {!showAllRegional ? (

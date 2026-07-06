@@ -5,17 +5,6 @@ import { FileText, Mail } from "lucide-react";
 
 const EFFECTIVE_DATE = "June 2026";
 
-/**
- * Terms of Use.
- *
- * Standard scholastic-nonprofit terms tailored to what the Site actually does:
- * publishes information about IEN leagues, lists schools and partners, accepts
- * a newsletter signup, and links out to LeagueOS and external partners. No
- * paid services, accounts, or user-generated content are hosted directly on
- * the Site, which keeps these terms simple.
- *
- * Working draft — should be reviewed by counsel before publication.
- */
 export default function Terms() {
   return (
     <Layout>
@@ -24,7 +13,7 @@ export default function Terms() {
         description="Terms of Use for indianaesportsnetwork.org — the Indiana Esports Network."
         path="/terms"
       />
-      {/* Hero */}
+
       <section className="relative py-20 bg-card border-b border-primary/20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
         <div className="container relative mx-auto px-4">
@@ -47,7 +36,6 @@ export default function Terms() {
         </div>
       </section>
 
-      {/* Body */}
       <section className="py-14 container mx-auto px-4">
         <article className="max-w-3xl mx-auto prose prose-invert prose-headings:font-heading prose-headings:tracking-tight prose-h2:text-white prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-3 prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-strong:text-white prose-li:text-muted-foreground">
           <p>

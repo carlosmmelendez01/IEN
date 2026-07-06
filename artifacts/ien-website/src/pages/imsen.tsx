@@ -33,7 +33,7 @@ export default function IMSEN() {
         description="Indiana Middle School Esports Network. Competitive scholastic esports for grades 6–8 across multiple titles, finishing at IMSEN State Finals."
         path="/leagues/imsen"
       />
-      {/* Hero */}
+
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
@@ -71,7 +71,6 @@ export default function IMSEN() {
         </div>
       </section>
 
-      {/* Highlights */}
       <section className="py-16 container mx-auto px-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {highlights.map((h, i) => {
@@ -94,7 +93,6 @@ export default function IMSEN() {
         </div>
       </section>
 
-      {/* Varsity vs Club */}
       <section className="py-8 pb-16 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
@@ -133,7 +131,6 @@ export default function IMSEN() {
         </div>
       </section>
 
-      {/* Game Titles */}
       <section className="py-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
@@ -172,7 +169,6 @@ export default function IMSEN() {
         </div>
       </section>
 
-      {/* Season Structure */}
       <section className="py-16 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="flex items-center justify-center mb-10">
@@ -209,7 +205,6 @@ export default function IMSEN() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-20 container mx-auto px-4 max-w-3xl text-center">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Start Your Middle School Program</h2>
         <p className="text-muted-foreground mb-10 leading-relaxed">

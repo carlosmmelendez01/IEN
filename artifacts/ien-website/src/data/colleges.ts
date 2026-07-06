@@ -1,30 +1,19 @@
-// Indiana colleges and universities with varsity or officially-supported esports
-// programs that recruit from IEN, plus regional Midwest programs that pull
-// Hoosier scholastic talent. `state === "IN"` denotes IEN partner programs and
-// is rendered with a partner badge + brighter map marker on the schools page.
-//
-// `website` is required on every entry — cards link directly out so users can
-// reach each program. Where a verified esports page URL is known we link to it
-// directly (e.g. esports.osu.edu); otherwise we fall back to the institution's
-// main domain.
-//
-// Coordinates are approximate campus center for each institution.
-// Add new entries alphabetically within their state block.
+
 
 export interface College {
   name: string;
   city: string;
-  /** Two-letter state code: "IN" for Indiana partners, otherwise the Midwest regional state. */
+
   state: string;
-  /** Program name, e.g. "Esports" or "Valpo Esports". */
+
   program: string;
   lat: number;
   lng: number;
-  /** Required: link to the program page or university site. */
+
   website: string;
-  /** Optional: path to university/program logo. */
+
   logo?: string;
-  /** True for IEN partner programs (recruit directly from IEN). State-independent — partners may live outside IN. */
+
   isPartner?: boolean;
 }
 
@@ -220,7 +209,6 @@ export const COLLEGES: College[] = [
     website: "https://www.valpo.edu",
   },
 
-  // IL
   {
     name: "Illinois Wesleyan University",
     city: "Bloomington, IL",
@@ -321,7 +309,6 @@ export const COLLEGES: College[] = [
     website: "https://www.roosevelt.edu",
   },
 
-  // MI
   {
     name: "Michigan State University",
     city: "East Lansing, MI",
@@ -458,7 +445,6 @@ export const COLLEGES: College[] = [
     website: "https://wmich.edu",
   },
 
-  // OH
   {
     name: "Miami University",
     city: "Oxford, OH",
@@ -541,7 +527,6 @@ export const COLLEGES: College[] = [
     website: "https://www.cedarville.edu",
   },
 
-  // WI
   {
     name: "University of Wisconsin–River Falls",
     city: "River Falls, WI",
@@ -588,7 +573,6 @@ export const COLLEGES: College[] = [
     website: "https://www.carthage.edu",
   },
 
-  // MN
   {
     name: "Concordia University–St. Paul",
     city: "Saint Paul, MN",
@@ -635,7 +619,6 @@ export const COLLEGES: College[] = [
     website: "https://www.blc.edu",
   },
 
-  // IA
   {
     name: "University of Northern Iowa",
     city: "Cedar Falls, IA",
@@ -700,7 +683,6 @@ export const COLLEGES: College[] = [
     website: "https://www.hawkeyecollege.edu",
   },
 
-  // MO
   {
     name: "Maryville University",
     city: "St. Louis, MO",
@@ -738,7 +720,6 @@ export const COLLEGES: College[] = [
     website: "https://www.centralmethodist.edu",
   },
 
-  // NE
   {
     name: "Bellevue University",
     city: "Bellevue, NE",

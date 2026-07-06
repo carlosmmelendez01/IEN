@@ -23,12 +23,6 @@ import {
 } from "lucide-react";
 import drewRhodaPhoto from "@assets/state-finals/04-drew-rhoda-1200.jpg";
 
-// =============================================================================
-// CATEGORY DESIGN SYSTEM
-// Reusable gold-pill badges with subtle variation per category. Each carries
-// an icon and a tone hint so the editorial grid stays scannable at a glance.
-// =============================================================================
-
 type Category =
   | "Season Announcement"
   | "Game Announcement"
@@ -83,10 +77,6 @@ function CategoryBadge({
   );
 }
 
-// =============================================================================
-// CONTENT
-// =============================================================================
-
 interface NewsPost {
   id: number;
   date: string;
@@ -96,9 +86,7 @@ interface NewsPost {
   excerpt: string;
   body: string;
   image: string;
-  /** CSS object-position value applied to the image. Defaults to "center"; set
-   *  to "top", "30% 20%", etc. when the subject's face/focus isn't centered. */
-  imageFocal?: string;
+imageFocal?: string;
   featured?: boolean;
 }
 
@@ -284,7 +272,7 @@ const POSTS: NewsPost[] = [
       "IEN recognizes Drew Rhoda as its first Coach of the Year, honoring leadership, mentorship, and impact on student competitors.",
     body: COACH_BODY,
     image: drewRhodaPhoto,
-    imageFocal: "50% 25%", // anchor slightly above center so his face stays in frame on landscape crops
+    imageFocal: "50% 25%",
   },
   {
     id: 4,
@@ -332,16 +320,11 @@ const POSTS: NewsPost[] = [
   },
 ];
 
-// Estimate read time from word count, ~220 wpm.
 function readTime(body: string): string {
   const words = body.trim().split(/\s+/).length;
   const minutes = Math.max(1, Math.round(words / 220));
   return `${minutes} min read`;
 }
-
-// =============================================================================
-// PAGE
-// =============================================================================
 
 const ALL = "All Stories";
 
@@ -357,25 +340,18 @@ export default function News() {
     [],
   );
   const visible = filter === ALL ? rest : rest.filter((p) => p.category === filter);
-
-  // Lock body scroll while modal is open
   useEffect(() => {
     if (!activePost) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = prev; };
   }, [activePost]);
-
-  // Esc to close modal
   useEffect(() => {
     if (!activePost) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setActivePost(null); };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [activePost]);
-
-  // Deep-link support: visiting /news#post-<id> opens that article's modal on mount.
-  // Also re-runs on hashchange so internal links can update the open article.
   useEffect(() => {
     const openFromHash = () => {
       const match = window.location.hash.match(/^#post-(\d+)$/);
@@ -407,9 +383,6 @@ export default function News() {
         )}
       </AnimatePresence>
 
-      {/* ===================================================================
-          HERO
-      =================================================================== */}
       <section className="relative overflow-hidden border-b border-primary/15">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=2400')] bg-cover bg-center opacity-15 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(212,175,55,0.18),transparent_55%)]" />
@@ -450,9 +423,6 @@ export default function News() {
         </div>
       </section>
 
-      {/* ===================================================================
-          FILTER STRIP
-      =================================================================== */}
       <section className="sticky top-20 z-30 border-b border-primary/15 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 py-3 flex gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {categoryOptions.map((cat) => {
@@ -475,18 +445,12 @@ export default function News() {
         </div>
       </section>
 
-      {/* ===================================================================
-          FEATURED ARTICLE
-      =================================================================== */}
       {featured && (filter === ALL || filter === featured.category) && (
         <section className="py-12 md:py-16 container mx-auto px-4">
           <FeaturedCard post={featured} onOpen={() => setActivePost(featured)} />
         </section>
       )}
 
-      {/* ===================================================================
-          ARTICLE GRID
-      =================================================================== */}
       <section className="pb-20 container mx-auto px-4">
         <div className="flex items-end justify-between gap-4 mb-8">
           <h2 className="font-heading font-bold text-2xl md:text-3xl text-white tracking-tight">
@@ -510,9 +474,6 @@ export default function News() {
         )}
       </section>
 
-      {/* ===================================================================
-          BOTTOM CTA
-      =================================================================== */}
       <section className="border-t border-primary/15 bg-card/40">
         <div className="container mx-auto px-4 py-14 md:py-16 text-center">
           <p className="text-primary font-heading tracking-[0.25em] uppercase font-bold text-sm mb-3">
@@ -547,10 +508,6 @@ export default function News() {
     </Layout>
   );
 }
-
-// =============================================================================
-// FEATURED CARD
-// =============================================================================
 
 function FeaturedCard({ post, onOpen }: { post: NewsPost; onOpen: () => void }) {
   return (
@@ -603,10 +560,6 @@ function FeaturedCard({ post, onOpen }: { post: NewsPost; onOpen: () => void }) 
     </motion.button>
   );
 }
-
-// =============================================================================
-// ARTICLE CARD
-// =============================================================================
 
 function NewsCard({ post, onOpen }: { post: NewsPost; onOpen: () => void }) {
   return (
@@ -661,10 +614,6 @@ function Meta({ icon, label, small }: { icon: React.ReactNode; label: string; sm
   );
 }
 
-// =============================================================================
-// MODAL
-// =============================================================================
-
 function NewsModal({
   post,
   related,
@@ -692,7 +641,7 @@ function NewsModal({
         className="relative bg-card border border-primary/40 rounded-2xl overflow-hidden max-w-4xl w-full my-4 md:my-8 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Hero image */}
+
         <div className="relative h-64 md:h-[22rem] overflow-hidden">
           <img
             src={post.image}
@@ -703,7 +652,6 @@ function NewsModal({
           <div className="absolute inset-0 bg-gradient-to-t from-card via-card/55 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-card/40 via-transparent to-card/40" />
 
-          {/* Close */}
           <button
             type="button"
             onClick={onClose}
@@ -713,7 +661,6 @@ function NewsModal({
             <X className="w-5 h-5" />
           </button>
 
-          {/* Category + featured (if applicable) */}
           <div className="absolute bottom-5 left-5 md:bottom-8 md:left-10 right-5 md:right-10 flex flex-wrap items-center gap-2">
             {post.featured && (
               <span className="inline-flex items-center gap-1.5 h-7 px-3 rounded-full bg-primary text-primary-foreground text-[0.65rem] font-heading font-bold tracking-[0.25em] uppercase">
@@ -724,7 +671,6 @@ function NewsModal({
           </div>
         </div>
 
-        {/* Body */}
         <div className="p-6 md:p-10">
           <motion.h2
             initial={{ opacity: 0, y: 12 }}
@@ -750,7 +696,6 @@ function NewsModal({
             {post.body}
           </motion.div>
 
-          {/* Related Stories */}
           {related.length > 0 && (
             <div className="mt-10 pt-8 border-t border-primary/15">
               <div className="flex items-end justify-between gap-4 mb-5">

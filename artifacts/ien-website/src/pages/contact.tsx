@@ -14,7 +14,7 @@ export default function Contact() {
         description="Contact the Indiana Esports Network. Email board@indianaesportsnetwork.org or join the IEN newsletter."
         path="/contact"
       />
-      {/* Hero */}
+
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
         <div className="container relative z-20 mx-auto px-4 text-center max-w-4xl">
@@ -37,7 +37,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact by Topic */}
       <section className="py-20 container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-white tracking-widest uppercase">CONTACT BY TOPIC</h2>
@@ -91,7 +90,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Newsletter Signup */}
       <section className="py-20 bg-card border-y border-primary/30 relative">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
         <div className="container mx-auto px-4">
@@ -119,7 +117,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* General info footer strip */}
       <section className="py-14 container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-muted-foreground text-sm mb-2">General inquiries</p>

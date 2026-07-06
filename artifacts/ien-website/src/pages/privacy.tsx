@@ -5,19 +5,6 @@ import { Shield, Mail } from "lucide-react";
 
 const EFFECTIVE_DATE = "June 2026";
 
-/**
- * Privacy Policy.
- *
- * Reflects the site as it actually operates today: no analytics, no cookies
- * set by the site itself, newsletter signup that captures name/email/role/
- * interests and routes via mailto, and the small set of third-party services
- * the browser contacts when loading a page (Google Fonts, OpenStreetMap tiles,
- * Vercel hosting). Update this page whenever the data flow changes — e.g.
- * when Mailchimp replaces the mailto fallback or analytics is added.
- *
- * This is a working draft. The Indiana Esports Network should have its
- * counsel review before relying on it for any specific compliance regime.
- */
 export default function Privacy() {
   return (
     <Layout>
@@ -26,7 +13,7 @@ export default function Privacy() {
         description="Privacy policy for indianaesportsnetwork.org — the Indiana Esports Network."
         path="/privacy"
       />
-      {/* Hero */}
+
       <section className="relative py-20 bg-card border-b border-primary/20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
         <div className="container relative mx-auto px-4">
@@ -49,7 +36,6 @@ export default function Privacy() {
         </div>
       </section>
 
-      {/* Body */}
       <section className="py-14 container mx-auto px-4">
         <article className="max-w-3xl mx-auto prose prose-invert prose-headings:font-heading prose-headings:tracking-tight prose-h2:text-white prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-3 prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-strong:text-white prose-li:text-muted-foreground">
           <p>

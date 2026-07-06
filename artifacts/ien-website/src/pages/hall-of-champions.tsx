@@ -30,18 +30,13 @@ import {
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 import { findSchoolLogo } from "@/lib/schoolLogos";
 import { CHAMPIONS, type Champion, type League, type Tier } from "@/data/champions";
-import heroBackdrop from "@assets/state-finals/03-marvel-rivals-trophies.jpg";
-import championshipMomentsImg from "@assets/state-finals/01-greencastle-celebration.jpg";
-
-// =============================================================================
-// Game design system — color + icon per title. Drives the chip strip on each
-// season row, the tier pill on featured cards, and the dynasty/leaderboard tags.
-// =============================================================================
+import heroBackdrop from "@assets/state-finals/03-marvel-rivals-1200.jpg";
+import championshipMomentsImg from "@assets/state-finals/01-greencastle-hero-1280.jpg";
 
 type GameStyle = {
-  color: string;        // tailwind text utility — main accent
-  bg: string;           // tailwind bg utility — subtle fill behind icon
-  border: string;       // tailwind border utility
+  color: string;
+  bg: string;
+  border: string;
   icon: React.ComponentType<{ className?: string }>;
 };
 
@@ -66,12 +61,6 @@ const FALLBACK_STYLE: GameStyle = {
 
 const styleFor = (game: string): GameStyle => GAME_STYLES[game] ?? FALLBACK_STYLE;
 
-// =============================================================================
-// Featured Champions — four marquee headlines from the most recent IHSEN AAA
-// brackets. Cards are logo-driven (no stock photography) so they feel like
-// official championship plaques.
-// =============================================================================
-
 const FEATURED_PICKS: Array<{ game: string; tier: Tier }> = [
   { game: "Valorant",      tier: "AAA" },
   { game: "Rocket League", tier: "AAA" },
@@ -81,20 +70,12 @@ const FEATURED_PICKS: Array<{ game: string; tier: Tier }> = [
 
 const LATEST_SEASON = "2025-2026";
 
-// =============================================================================
-// Alumni Spotlight — curated list. Replace freely as student stories come in.
-// =============================================================================
-
 const ALUMNI = [
   { name: "Jacob B.",  school: "Carmel HS",         gradYear: "2023", role: "Esports Athlete",     org: "Purdue University",          accent: "from-yellow-700/30 to-yellow-900/40" },
   { name: "Lily W.",   school: "Warren Central HS", gradYear: "2022", role: "Esports Athlete",     org: "Indiana University",         accent: "from-red-800/30 to-red-950/40" },
   { name: "Ethan M.",  school: "Hobart HS",         gradYear: "2022", role: "Esports Analyst",     org: "University of Notre Dame",   accent: "from-emerald-800/30 to-emerald-950/40" },
   { name: "Maddie S.", school: "Ben Davis HS",      gradYear: "2021", role: "Broadcast Producer",  org: "Butler University",          accent: "from-blue-900/30 to-blue-950/40" },
 ];
-
-// =============================================================================
-// Page
-// =============================================================================
 
 const ANY = "All";
 
@@ -104,7 +85,6 @@ export default function HallOfChampions() {
   const [division, setDivision] = useState<string>(ANY);
   const [school, setSchool]     = useState<string>(ANY);
 
-  // Filter option lists derived from the data
   const SEASONS   = useMemo(() => Array.from(new Set(CHAMPIONS.map(c => c.season))).sort().reverse(), []);
   const GAMES     = useMemo(() => Array.from(new Set(CHAMPIONS.map(c => c.game))).sort(), []);
   const DIVISIONS = useMemo(() => ["IHSEN", "IMSEN", "IUEN"] as League[], []);
@@ -120,7 +100,6 @@ export default function HallOfChampions() {
   const filterActive = year !== ANY || game !== ANY || division !== ANY || school !== ANY;
   const clearAll = () => { setYear(ANY); setGame(ANY); setDivision(ANY); setSchool(ANY); };
 
-  // Group filtered champions by season for the season list
   const bySeason = useMemo(() => {
     const map = new Map<string, Champion[]>();
     for (const c of filtered) {
@@ -130,7 +109,6 @@ export default function HallOfChampions() {
     return [...map.entries()].sort((a, b) => b[0].localeCompare(a[0]));
   }, [filtered]);
 
-  // Featured cards: pick latest-season AAA winners for each highlighted game
   const featuredCards = useMemo(() => {
     return FEATURED_PICKS
       .map(pick => {
@@ -142,16 +120,11 @@ export default function HallOfChampions() {
       .filter(Boolean) as Array<{ game: string; tier: Tier; winner: Champion }>;
   }, []);
 
-  // Stats — straight from the data. Each stat carries a "Since 2019" sub-label
-  // so visitors immediately understand the dataset's timeframe.
   const heroStats = [
     { value: CHAMPIONS.length.toString(),                           label: "STATE TITLES",      icon: <Trophy   className="w-5 h-5" /> },
     { value: new Set(CHAMPIONS.map(c => c.school)).size.toString(), label: "CHAMPIONS CROWNED", icon: <Shield   className="w-5 h-5" /> },
     { value: `${new Set(CHAMPIONS.map(c => c.game)).size}+`,        label: "ESPORTS TITLES",    icon: <Gamepad2 className="w-5 h-5" /> },
   ];
-
-  // Dynasty leaderboards — computed PER LEAGUE from the data.
-  // Each league gets its own Titles / Finals Appearances / Win Streak top-5.
   const dynastyByLeague = useMemo(() => {
     const seasonOrder = ["2022-2023", "2023-2024", "2024-2025", "2025-2026"];
 
@@ -204,17 +177,12 @@ export default function HallOfChampions() {
         description="Indiana scholastic esports champions since 2019. 93+ state titles across 12+ game titles in IHSEN, IMSEN, and IUEN."
         path="/hall-of-champions"
       />
-      {/* ===================================================================
-          HERO
-      =================================================================== */}
+
       <HeroSection stats={heroStats} backdrop={heroBackdrop} />
 
-      {/* ===================================================================
-          FILTER BAR — styled like a sports-database archive console
-      =================================================================== */}
       <section className="sticky top-20 z-30 border-y border-primary/20 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 py-4">
-          {/* Archive header strip */}
+
           <div className="flex items-center justify-between gap-4 mb-3 pb-3 border-b border-primary/10">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-heading font-bold tracking-[0.2em] uppercase text-primary/90">
               <Archive className="w-4 h-4" />
@@ -250,9 +218,6 @@ export default function HallOfChampions() {
         </div>
       </section>
 
-      {/* ===================================================================
-          FEATURED CHAMPIONS — 4-card responsive grid (4 / 2 / 1)
-      =================================================================== */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <SectionHeader
@@ -275,11 +240,6 @@ export default function HallOfChampions() {
         </div>
       </section>
 
-      {/* ===================================================================
-          TWO-COLUMN BODY
-          Left: Champions by Season + Championship Moments
-          Right: Dynasty Tracker + Alumni Spotlight
-      =================================================================== */}
       <section id="all-seasons" className="py-8 md:py-12">
         <div className="container mx-auto px-4 space-y-10">
 
@@ -303,9 +263,6 @@ export default function HallOfChampions() {
         </div>
       </section>
 
-      {/* ===================================================================
-          CTA FOOTER — horizontal banner
-      =================================================================== */}
       <section className="relative overflow-hidden border-t border-primary/20">
         <div className="container relative z-10 mx-auto px-4 py-10 md:py-12">
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
@@ -336,26 +293,22 @@ export default function HallOfChampions() {
   );
 }
 
-// =============================================================================
-// HERO
-// =============================================================================
-
 function HeroSection({ stats, backdrop }: { stats: Array<{ value: string; label: string; icon: React.ReactNode }>; backdrop: string }) {
   return (
     <section className="relative overflow-hidden">
       <img src={backdrop} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-30 motion-safe:animate-hero-zoom" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(212,175,55,0.22),transparent_60%)]" />
       <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/85 to-background" />
-      {/* Diagonal gold weave + subtle archival grid texture */}
+
       <div className="absolute inset-0 opacity-[0.05] [background:repeating-linear-gradient(45deg,transparent_0_22px,rgba(212,175,55,0.6)_22px_23px)]" />
       <div className="absolute inset-0 opacity-[0.04] [background:linear-gradient(rgba(212,175,55,0.6)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.6)_1px,transparent_1px)] [background-size:64px_64px]" />
-      {/* Trophy silhouettes for atmosphere — pure decoration */}
+
       <Trophy aria-hidden className="hidden md:block absolute -right-10 top-10 w-72 h-72 lg:w-96 lg:h-96 text-primary/[0.06] rotate-12" />
       <Trophy aria-hidden className="hidden lg:block absolute right-1/3 -bottom-16 w-64 h-64 text-primary/[0.04] -rotate-12" />
       <Particles />
 
       <div className="container relative z-10 mx-auto px-4 pt-16 pb-12 md:pt-24 md:pb-16">
-        {/* Archival eyebrow — "this is the permanent record" */}
+
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -386,7 +339,6 @@ function HeroSection({ stats, backdrop }: { stats: Array<{ value: string; label:
               Honoring the schools, teams, and players who have reached the pinnacle of Indiana scholastic esports.
             </p>
 
-            {/* Premium "since" badge */}
             <div className="mt-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/50 bg-primary/10 backdrop-blur shadow-[0_0_25px_rgba(212,175,55,0.15)]">
               <Trophy className="w-3.5 h-3.5 text-primary" />
               <span className="text-[0.65rem] font-heading font-bold tracking-[0.25em] uppercase text-primary">
@@ -394,7 +346,6 @@ function HeroSection({ stats, backdrop }: { stats: Array<{ value: string; label:
               </span>
             </div>
 
-            {/* Stat row */}
             <div className="mt-8 grid grid-cols-3 sm:flex sm:flex-wrap items-stretch gap-x-8 gap-y-6 max-w-2xl">
               {stats.map((s, i) => (
                 <div key={s.label} className="flex items-center gap-3 relative">
@@ -420,22 +371,16 @@ function HeroSection({ stats, backdrop }: { stats: Array<{ value: string; label:
             </div>
           </motion.div>
 
-          {/* Right column intentionally left blank — trophy silhouettes fill the space */}
           <div className="hidden lg:block lg:col-span-4" />
         </div>
       </div>
 
-      {/* Gold divider out to the next section */}
       <div className="relative z-10 container mx-auto px-4">
         <div className="h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
       </div>
     </section>
   );
 }
-
-// =============================================================================
-// FILTER FIELD — labelled select with gold-active styling
-// =============================================================================
 
 function FilterField({
   label, value, options, onChange, anyLabel,
@@ -470,10 +415,6 @@ function FilterField({
   );
 }
 
-// =============================================================================
-// SECTION HEADER — small title + optional right-side action
-// =============================================================================
-
 function SectionHeader({
   title,
   eyebrow,
@@ -500,11 +441,6 @@ function SectionHeader({
   );
 }
 
-// =============================================================================
-// FEATURED CHAMPIONS — 4-card responsive grid of championship plaques.
-// Mobile: 1 col · Tablet: 2 cols · Desktop: 4 cols
-// =============================================================================
-
 function FeaturedGrid({
   cards,
 }: {
@@ -525,14 +461,6 @@ function FeaturedGrid({
     </div>
   );
 }
-
-/**
- * Championship plaque card.
- * - School esports logo dominates the top half (with polished fallback).
- * - Year badge anchors the top corner.
- * - Body lists School, Game | State Champions, optional Division.
- * - "View Champion" micro-CTA scrolls to the matching season block.
- */
 function FeaturedCard({
   card,
   index,
@@ -561,23 +489,21 @@ function FeaturedCard({
       aria-label={`View ${card.winner.school} — ${card.game} ${tierLabel} champion, ${card.winner.season}`}
       className="group text-left bg-gradient-to-br from-card via-card to-background/80 border border-primary/30 rounded-xl overflow-hidden hover:border-primary hover:-translate-y-1 hover:shadow-[0_25px_55px_-15px_rgba(212,175,55,0.45)] transition-all duration-300 h-full flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
-      {/* Logo plate */}
+
       <div className="relative aspect-[5/4] flex items-center justify-center bg-[radial-gradient(circle_at_50%_45%,rgba(212,175,55,0.10),transparent_70%)] border-b border-primary/15 p-6 overflow-hidden">
-        {/* Subtle plaque grid */}
+
         <div aria-hidden className="absolute inset-0 opacity-[0.05] [background:linear-gradient(rgba(212,175,55,0.7)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.7)_1px,transparent_1px)] [background-size:32px_32px]" />
-        {/* Corner shield ornaments */}
+
         <Shield aria-hidden className="absolute top-3 left-3 w-3.5 h-3.5 text-primary/30" />
         <Shield aria-hidden className="absolute top-3 right-3 w-3.5 h-3.5 text-primary/30" />
 
         <SchoolLogo school={card.winner.school} logoUrl={card.winner.logoUrl} />
 
-        {/* Year badge */}
         <span className="absolute bottom-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 bg-background/90 backdrop-blur border border-primary/50 text-[0.65rem] font-heading font-bold tracking-[0.2em] rounded text-primary shadow-[0_0_15px_rgba(212,175,55,0.2)]">
           <Trophy className="w-3 h-3" /> {seasonYear}
         </span>
       </div>
 
-      {/* Body */}
       <div className="p-5 flex-1 flex flex-col">
         <h3 className="font-heading font-bold text-white text-lg leading-tight tracking-wide line-clamp-2">
           {card.winner.school}
@@ -598,32 +524,22 @@ function FeaturedCard({
           </div>
         )}
 
-        {/* Champions banner divider */}
         <div className="mt-4 flex items-center gap-3">
           <span className="flex-1 h-px bg-gradient-to-r from-transparent to-primary/40" />
           <Crown className="w-3.5 h-3.5 text-primary/80 shrink-0" />
           <span className="flex-1 h-px bg-gradient-to-l from-transparent to-primary/40" />
         </div>
 
-        {/* Micro CTA */}
         <div className="mt-4 inline-flex items-center gap-1 text-[0.7rem] font-heading font-bold tracking-[0.22em] uppercase text-primary/80 group-hover:text-primary transition-colors">
           View Champion <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </div>
       </div>
 
-      {/* hover glow */}
       <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.18),transparent_60%)]" />
     </motion.button>
   );
 }
-
-/**
- * SchoolLogo — renders the school's esports logo (when provided) or a polished
- * gold-outlined shield with initials and "Logo Coming Soon" subtext. The
- * fallback is intentional: no generic stock imagery should ever appear here.
- */
 function SchoolLogo({ school, logoUrl }: { school: string; logoUrl?: string }) {
-  // Explicit override > auto-match against src/data/schools.ts > shield fallback.
   const resolved = logoUrl ?? findSchoolLogo(school);
   if (resolved) {
     return (
@@ -648,7 +564,7 @@ function SchoolLogo({ school, logoUrl }: { school: string; logoUrl?: string }) {
     <div
       className="relative z-10 flex flex-col items-center justify-center gap-2 group-hover:scale-[1.06] transition-transform duration-500"
       role="img"
-      aria-label={`${school} logo placeholder`}
+      aria-label={`${school} championship crest`}
     >
       <div className="relative w-24 h-28 flex items-center justify-center">
         <svg viewBox="0 0 100 110" className="absolute inset-0 w-full h-full" aria-hidden="true">
@@ -676,17 +592,11 @@ function SchoolLogo({ school, logoUrl }: { school: string; logoUrl?: string }) {
         </span>
       </div>
       <span className="text-[0.55rem] tracking-[0.22em] uppercase text-muted-foreground/70 font-heading font-bold">
-        Logo Coming Soon
+        Championship Crest
       </span>
     </div>
   );
 }
-
-// =============================================================================
-// CHAMPIONS BY SEASON — left column accordion
-// =============================================================================
-
-// Display order + visual identity for each league.
 const LEAGUE_META: Record<League, { label: string; sublabel: string; color: string; bg: string; border: string }> = {
   IHSEN: { label: "IHSEN", sublabel: "High School",   color: "text-primary",      bg: "bg-primary/15",      border: "border-primary/40" },
   IMSEN: { label: "IMSEN", sublabel: "Middle School", color: "text-sky-300",      bg: "bg-sky-500/15",      border: "border-sky-500/40" },
@@ -695,7 +605,6 @@ const LEAGUE_META: Record<League, { label: string; sublabel: string; color: stri
 const LEAGUE_ORDER: League[] = ["IHSEN", "IMSEN", "IUEN"];
 
 function ChampionsBySeason({ bySeason }: { bySeason: Array<[string, Champion[]]> }) {
-  // Multi-open: every season tracks its own state. Latest one starts open.
   const [openSet, setOpenSet] = useState<Set<string>>(
     () => new Set(bySeason[0] ? [bySeason[0][0]] : []),
   );
@@ -735,7 +644,6 @@ function ChampionsBySeason({ bySeason }: { bySeason: Array<[string, Champion[]]>
         <div className="space-y-3">
           {bySeason.map(([season, list]) => {
             const isOpen = openSet.has(season);
-            // Group entries by league, preserve display order
             const groups = LEAGUE_ORDER
               .map(l => [l, list.filter(c => c.league === l)] as const)
               .filter(([, items]) => items.length > 0);
@@ -836,8 +744,6 @@ function ChampionLine({ champion }: { champion: Champion }) {
   const style = styleFor(champion.game);
   const Icon = style.icon;
   const tierLabel = champion.tier || "OPEN";
-
-  // Build placement list — only show ranks that have data
   type Placement = { rank: 1 | 2 | 3 | 4; label: string; school: string; player?: string };
   const placements: Placement[] = [
     { rank: 1, label: "Champion",    school: champion.school,         player: champion.player },
@@ -848,7 +754,7 @@ function ChampionLine({ champion }: { champion: Champion }) {
 
   return (
     <li className={`bg-background/40 border border-transparent hover:bg-card/80 hover:border-primary/20 rounded-md p-3 transition-all`}>
-      {/* Game header */}
+
       <div className="flex items-center gap-2.5 pb-2.5 mb-2.5 border-b border-primary/10">
         <span className={`w-8 h-8 rounded-md ${style.bg} ${style.border} border flex items-center justify-center ${style.color} shrink-0`}>
           <Icon className="w-4 h-4" />
@@ -858,7 +764,6 @@ function ChampionLine({ champion }: { champion: Champion }) {
         </span>
       </div>
 
-      {/* Placements */}
       <ol className="space-y-1.5">
         {placements.map((p) => {
           const isChamp = p.rank === 1;
@@ -890,10 +795,6 @@ function ChampionLine({ champion }: { champion: Champion }) {
     </li>
   );
 }
-
-// =============================================================================
-// DYNASTY TRACKER — three stacked sections, one per league
-// =============================================================================
 
 type LeagueDynasty = {
   league: League;
@@ -929,7 +830,7 @@ function DynastyLeagueSection({ dynasty }: { dynasty: LeagueDynasty }) {
 
   return (
     <div className={`bg-card border ${meta.border} rounded-xl overflow-hidden`}>
-      {/* League banner */}
+
       <div className={`flex items-center gap-3 px-5 py-4 border-b ${meta.border} ${meta.bg}`}>
         <span className={`inline-flex items-center justify-center w-10 h-10 rounded-lg bg-background/40 border ${meta.border} ${meta.color}`}>
           <Trophy className="w-4 h-4" />
@@ -1008,10 +909,6 @@ function DynastyColumn({
   );
 }
 
-// =============================================================================
-// CHAMPIONSHIP MOMENTS — single video card, left column
-// =============================================================================
-
 function ChampionshipMoments() {
   return (
     <div>
@@ -1046,10 +943,6 @@ function ChampionshipMoments() {
     </div>
   );
 }
-
-// =============================================================================
-// ALUMNI SPOTLIGHT — right column, 4 cards
-// =============================================================================
 
 function AlumniSpotlight() {
   return (
@@ -1092,8 +985,6 @@ function AlumniCard({ alum }: { alum: typeof ALUMNI[number] }) {
 }
 
 function Particles({ count = 22 }: { count?: number }) {
-  // WCAG 2.3.3 / 2.2.2 — honor prefers-reduced-motion. If the user opted out
-  // of motion at the OS level, render static dots instead of the floating loop.
   const prefersReducedMotion = useReducedMotion();
   const seeds = Array.from({ length: count }, (_, i) => i);
   return (

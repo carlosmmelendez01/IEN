@@ -14,13 +14,13 @@ export default function Events() {
         description="Upcoming Indiana Esports Network events including State Finals, regular-season tournaments, and community gatherings."
         path="/events"
       />
-      {/* Hero Section */}
+
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-        
+
         <div className="container relative z-20 mx-auto px-4 text-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -36,7 +36,6 @@ export default function Events() {
         </div>
       </section>
 
-      {/* Featured Event: Spring Finals 2026 */}
       <section className="py-12 container mx-auto px-4">
          <div className="relative rounded-2xl overflow-hidden border-2 border-primary/50 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40 mix-blend-overlay"></div>
@@ -91,9 +90,6 @@ export default function Events() {
          </div>
       </section>
 
-      {/* Coach of the Year — Drew Rhoda was named the 2025-26 winner at State Finals on
-          April 25, 2026. Updated from the pre-announcement teaser to the post-announcement
-          recognition card with his actual photo. */}
       <section className="py-8 container mx-auto px-4">
          <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -102,7 +98,7 @@ export default function Events() {
             transition={{ duration: 0.5 }}
             className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center max-w-5xl mx-auto"
          >
-            {/* Photo: portrait crop kept intact via constrained max-width column. */}
+
             <div className="md:col-span-2 rounded-2xl overflow-hidden border border-primary/30 shadow-[0_0_30px_rgba(212,175,55,0.15)] bg-card">
                <img
                   src={drewRhodaPhoto}
@@ -111,7 +107,7 @@ export default function Events() {
                   className="w-full h-auto object-cover"
                />
             </div>
-            {/* Citation. */}
+
             <div className="md:col-span-3 flex flex-col gap-4 text-center md:text-left">
                <div className="inline-flex items-center justify-center md:justify-start gap-2 text-primary font-heading font-bold tracking-widest uppercase text-sm">
                   <Trophy className="w-4 h-4" /> 2025–26 Coach of the Year
@@ -138,14 +134,12 @@ export default function Events() {
          </motion.div>
       </section>
 
-      {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Past Events</span>
          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
       </div>
 
-      {/* Past Events */}
       <section className="py-8 container mx-auto px-4 mb-20">
          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <a
@@ -173,14 +167,12 @@ export default function Events() {
          </div>
       </section>
 
-      {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Newsletter</span>
          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
       </div>
 
-      {/* Newsletter */}
       <section className="py-8 container mx-auto px-4 mb-20">
          <div className="max-w-3xl mx-auto bg-card border border-primary/30 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8">
             <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0">
@@ -200,14 +192,12 @@ export default function Events() {
          </div>
       </section>
 
-      {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Champions</span>
          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
       </div>
-      
-      {/* Champions */}
+
       <section className="py-8 container mx-auto px-4 mb-20">
          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[

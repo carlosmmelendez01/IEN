@@ -5,7 +5,6 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { College } from "@/data/colleges";
 
-// Reuse leaflet default icon images.
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png",
@@ -13,7 +12,6 @@ L.Icon.Default.mergeOptions({
   shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png",
 });
 
-// Standard regional marker — small gold dot, white outline.
 const regionalIcon = L.divIcon({
   html: `<div style="
     background:#c9a227;
@@ -27,8 +25,6 @@ const regionalIcon = L.divIcon({
   iconAnchor: [7, 7],
 });
 
-// IEN partner (Indiana) marker — larger, brighter, with a gold ring halo so
-// partnered programs read as the league's home anchor at a glance.
 const partneredIcon = L.divIcon({
   html: `<div style="
     position:relative;
@@ -70,13 +66,6 @@ const createClusterIcon = (cluster: any) =>
     iconSize: [36, 36],
     iconAnchor: [18, 18],
   });
-
-/**
- * Re-fits the map to the supplied colleges whenever the list changes —
- * driven by the user picking a state in the parent. Adds modest padding
- * so markers aren't flush against the map edge, and avoids zooming in
- * past `maxZoom` when a state has a single very tightly-clustered campus.
- */
 function FitToColleges({ colleges }: { colleges: College[] }) {
   const map = useMap();
   useEffect(() => {
@@ -96,8 +85,6 @@ interface RegionalCollegeMapProps {
 }
 
 export default function RegionalCollegeMap({ colleges }: RegionalCollegeMapProps) {
-  // Initial render center on the Midwest (~Madison, WI) at a wide zoom that
-  // captures all eight included states. FitToColleges immediately adjusts.
   return (
     <MapContainer
       center={[42.5, -90]}

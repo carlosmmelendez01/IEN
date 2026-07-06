@@ -61,7 +61,6 @@ interface SchoolMapProps {
 }
 
 export default function SchoolMap({ schools, selectedDivision }: SchoolMapProps) {
-  // Which division key is currently selected (or null = all)
   const selectedKey =
     selectedDivision === "High School (IHSEN)" ? "IHSEN"
     : selectedDivision === "Middle School (IMSEN)" ? "IMSEN"
@@ -71,10 +70,6 @@ export default function SchoolMap({ schools, selectedDivision }: SchoolMapProps)
   const filtered = selectedKey === null
     ? schools
     : schools.filter(s => s.divisions.includes(selectedKey));
-
-  // Marker color rule:
-  //   - If a specific division is selected, color by that division (so filtered view is consistent).
-  //   - Otherwise, use the school's first/primary division.
   const markerDivisionFor = (s: School) =>
     selectedKey && s.divisions.includes(selectedKey) ? selectedKey : s.divisions[0];
 

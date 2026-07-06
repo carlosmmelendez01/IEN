@@ -1,36 +1,29 @@
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 
 import Home from "@/pages/home";
-import About from "@/pages/about";
-import Leagues from "@/pages/leagues";
-import IHSEN from "@/pages/ihsen";
-import IMSEN from "@/pages/imsen";
-import IUEN from "@/pages/iuen";
-import Events from "@/pages/events";
-import Schools from "@/pages/schools";
-import Partners from "@/pages/partners";
-import PartnerWithIEN from "@/pages/partner-with-ien";
-import StartAProgram from "@/pages/start-a-program";
-import WhyEsports from "@/pages/why-esports";
-import Schedule from "@/pages/schedule";
-import Contact from "@/pages/contact";
-import News from "@/pages/news";
-import HallOfChampions from "@/pages/hall-of-champions";
-import Privacy from "@/pages/privacy";
-import Terms from "@/pages/terms";
 
-const queryClient = new QueryClient();
-
-// Per-page <title>, meta description, OG / Twitter tags, and canonical URLs
-// are now owned by the SEO component (src/components/SEO.tsx) which each page
-// renders directly. That keeps the head config next to the page content it
-// describes and lets the build-time pre-renderer capture per-route metadata.
+const About = lazy(() => import("@/pages/about"));
+const Leagues = lazy(() => import("@/pages/leagues"));
+const IHSEN = lazy(() => import("@/pages/ihsen"));
+const IMSEN = lazy(() => import("@/pages/imsen"));
+const IUEN = lazy(() => import("@/pages/iuen"));
+const Events = lazy(() => import("@/pages/events"));
+const Schools = lazy(() => import("@/pages/schools"));
+const Partners = lazy(() => import("@/pages/partners"));
+const PartnerWithIEN = lazy(() => import("@/pages/partner-with-ien"));
+const StartAProgram = lazy(() => import("@/pages/start-a-program"));
+const WhyEsports = lazy(() => import("@/pages/why-esports"));
+const Schedule = lazy(() => import("@/pages/schedule"));
+const Contact = lazy(() => import("@/pages/contact"));
+const News = lazy(() => import("@/pages/news"));
+const HallOfChampions = lazy(() => import("@/pages/hall-of-champions"));
+const Privacy = lazy(() => import("@/pages/privacy"));
+const Terms = lazy(() => import("@/pages/terms"));
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -69,15 +62,15 @@ function Router() {
 function App() {
   return (
     <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-            <ScrollToTop />
+      <TooltipProvider>
+        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+          <ScrollToTop />
+          <Suspense fallback={null}>
             <Router />
-          </WouterRouter>
-          <Toaster />
-        </TooltipProvider>
-      </QueryClientProvider>
+          </Suspense>
+        </WouterRouter>
+        <Toaster />
+      </TooltipProvider>
     </HelmetProvider>
   );
 }

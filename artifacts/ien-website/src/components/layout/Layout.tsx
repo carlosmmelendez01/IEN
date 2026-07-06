@@ -9,8 +9,7 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-background text-foreground dark">
-      {/* WCAG 2.4.1 Bypass Blocks: a "skip to main content" anchor for
-          screen-reader / keyboard users. Hidden visually until focused. */}
+
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-md focus:bg-primary focus:text-primary-foreground focus:font-heading focus:font-bold focus:tracking-widest focus:uppercase focus:text-sm"

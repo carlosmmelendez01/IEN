@@ -8,25 +8,22 @@ import { Users, Target, Shield, Heart, Star, Scale } from "lucide-react";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 import { useState } from "react";
 
-const placeholderBio = "Short bio coming soon. Replace this with a paragraph about this board member's background, role at IEN, and what they bring to scholastic esports in Indiana.";
-
 const boardMembers: {
   name: string;
   title: string;
   initials: string;
-  bio: string;
+  bio?: string;
   photo?: string;
 }[] = [
-  { name: "Nick Parcell",     title: "President",                          initials: "NP", bio: placeholderBio, photo: "/board/Nick.jpg" },
-  { name: "Ryan Dunfee",      title: "Vice President",                     initials: "RD", bio: placeholderBio, photo: "/board/Ryan.jpg" },
-  { name: "Chris King",       title: "Treasurer",                          initials: "CK", bio: placeholderBio, photo: "/board/Chris.png" },
-  { name: "Matt Mills",       title: "Secretary",                          initials: "MM", bio: placeholderBio, photo: "/board/Matt.png" },
-  { name: "Shaun Doyle",      title: "Director of Governance",             initials: "SD", bio: placeholderBio, photo: "/board/Shaun.jpg" },
-  { name: "Konnor Powell",    title: "Director of League Management",      initials: "KP", bio: placeholderBio, photo: "/board/Konnor.jpg" },
-  { name: "Jonathan Morgan",  title: "Director of Technology Operations",  initials: "JM", bio: placeholderBio, photo: "/board/Jonathan.png" },
-  { name: "Trevor Smith",     title: "Director of Support",                initials: "TS", bio: placeholderBio, photo: "/board/Trevor.jpg" },
-  { name: "Carlos Melendez",  title: "Director of Marketing",              initials: "CM", bio: "Carlos Melendez is the Head Coach of Wolves Esports at Michigan City High School and is part of the Indiana Esports Network's board of directors. Coming from an educational and competitive gaming background with a degree in computer science and digital media, Carlos is devoted to the development of scholastic esports across Indiana and creating avenues for high schoolers across the state. With a specialization in building scholastic esports programs that nurture teamwork, leadership, communication skills, and career ready development both in and outside of games, Carlos works tirelessly to manage events, create broadcast content, develop players, and broaden initiatives across the state, driven by a mission to influence the future of esports and provide a space for student to compete, belong, and develop.", photo: "/board/Carlos.png" },
-  { name: "Dylan Gentilcore", title: "Director At Large",                  initials: "DG", bio: placeholderBio, photo: "/board/Dylan.jpg" },
+  { name: "Carlos Melendez",  title: "Board President",                    initials: "CM", bio: "Carlos Melendez is the Board President of the Indiana Esports Network and Head Coach of Wolves Esports at Michigan City High School. Coming from an educational and competitive gaming background with a degree in computer science and digital media, Carlos is devoted to the development of scholastic esports across Indiana and creating avenues for high schoolers across the state. With a specialization in building scholastic esports programs that nurture teamwork, leadership, communication skills, and career ready development both in and outside of games, Carlos works tirelessly to manage events, create broadcast content, develop players, and broaden initiatives across the state, driven by a mission to influence the future of esports and provide a space for students to compete, belong, and develop.", photo: "/board/Carlos.png" },
+  { name: "Ryan Dunfee",      title: "Vice President",                     initials: "RD", photo: "/board/Ryan.jpg" },
+  { name: "Chris King",       title: "Treasurer",                          initials: "CK", photo: "/board/Chris.png" },
+  { name: "Matt Mills",       title: "Secretary",                          initials: "MM", photo: "/board/Matt.png" },
+  { name: "Shaun Doyle",      title: "Director of Governance",             initials: "SD", photo: "/board/Shaun.jpg" },
+  { name: "Konnor Powell",    title: "Director of League Management",      initials: "KP", photo: "/board/Konnor.jpg" },
+  { name: "Jonathan Morgan",  title: "Director of Technology Operations",  initials: "JM", photo: "/board/Jonathan.png" },
+  { name: "Trevor Smith",     title: "Director of Support",                initials: "TS", photo: "/board/Trevor.jpg" },
+  { name: "Dylan Gentilcore", title: "Director At Large",                  initials: "DG", photo: "/board/Dylan.jpg" },
 ];
 
 type BoardMember = (typeof boardMembers)[number];
@@ -80,7 +77,7 @@ export default function About() {
         description="Learn about the Indiana Esports Network — a nonprofit serving Indiana's scholastic esports programs through IHSEN, IMSEN, and IUEN since 2019."
         path="/about"
       />
-      {/* Hero */}
+
       <section className="relative py-28 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
@@ -101,7 +98,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* About blurb */}
       <section className="py-16 container mx-auto px-4">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -117,7 +113,6 @@ export default function About() {
         </motion.p>
       </section>
 
-      {/* Stats bar */}
       <section className="py-10 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-4xl mx-auto">
@@ -142,7 +137,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Core Values */}
       <section className="py-20 container mx-auto px-4">
         <div className="text-center mb-12">
           <p className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">What We Stand For</p>
@@ -171,7 +165,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Board of Directors */}
       <section className="py-20 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-4">
@@ -212,7 +205,6 @@ export default function About() {
             ))}
           </div>
 
-          {/* Development Committee */}
           <div className="flex items-center justify-center mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/20" />
             <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
@@ -242,7 +234,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-20 container mx-auto px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -290,9 +281,11 @@ export default function About() {
                   </div>
                 </div>
               </DialogHeader>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {selectedMember.bio}
-              </p>
+              {selectedMember.bio && (
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {selectedMember.bio}
+                </p>
+              )}
             </>
           )}
         </DialogContent>

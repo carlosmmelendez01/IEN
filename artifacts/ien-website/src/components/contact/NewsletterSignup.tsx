@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Mail, CheckCircle2, Loader2 } from "lucide-react";
+import { Mail, CheckCircle2 } from "lucide-react";
 
 type Role = "" | "student" | "parent" | "educator" | "sponsor" | "community";
 
@@ -33,7 +33,7 @@ const DEFAULT_STATE: FormState = {
   },
 };
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "success";
 
 const INTEREST_OPTIONS: Array<{ key: keyof FormState["interests"]; label: string }> = [
   { key: "ihsen",       label: "IHSEN: High School" },
@@ -53,12 +53,11 @@ const ROLE_OPTIONS: Array<{ value: Role; label: string }> = [
 ];
 
 function isValidEmail(email: string): boolean {
-  // Simple RFC-pragmatic check: anything@anything.anything, no spaces
+
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
 
-/** Build a mailto: URL as a graceful fallback when the backend endpoint isn't wired up yet. */
-function buildMailtoFallback(state: FormState): string {
+function buildNewsletterMailto(state: FormState): string {
   const selectedInterests = INTEREST_OPTIONS
     .filter((o) => state.interests[o.key])
     .map((o) => o.label)
@@ -79,10 +78,9 @@ function buildMailtoFallback(state: FormState): string {
 export default function NewsletterSignup() {
   const [state, setState] = useState<FormState>(DEFAULT_STATE);
   const [status, setStatus] = useState<Status>("idle");
-  const [errorMsg, setErrorMsg] = useState<string>("");
 
   const emailInvalid = state.email.length > 0 && !isValidEmail(state.email);
-  const canSubmit = state.email.length > 0 && isValidEmail(state.email) && status !== "submitting";
+  const canSubmit = state.email.length > 0 && isValidEmail(state.email);
 
   const toggleInterest = (key: keyof FormState["interests"]) => {
     setState((s) => ({
@@ -91,38 +89,12 @@ export default function NewsletterSignup() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!canSubmit) return;
 
-    setStatus("submitting");
-    setErrorMsg("");
-
-    try {
-      // TODO: Point this at the real newsletter endpoint (Mailchimp, ConvertKit, Beehiiv,
-      // or an internal /api/newsletter route). Until that's wired up, we fall back to mailto:
-      // so every submission still reaches board@indianaesportsnetwork.org.
-      const res = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: state.name.trim(),
-          email: state.email.trim(),
-          role: state.role,
-          interests: Object.entries(state.interests)
-            .filter(([, v]) => v)
-            .map(([k]) => k),
-        }),
-      });
-
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      setStatus("success");
-    } catch {
-      // Fallback: open the user's email client with a pre-filled newsletter-request message.
-      // This guarantees signups still reach IEN even before the API is live.
-      window.location.href = buildMailtoFallback(state);
-      setStatus("success");
-    }
+    window.location.href = buildNewsletterMailto(state);
+    setStatus("success");
   };
 
   if (status === "success") {
@@ -238,28 +210,13 @@ export default function NewsletterSignup() {
         </div>
       </fieldset>
 
-      {status === "error" && (
-        <div className="mb-4 rounded-md border border-red-500/40 bg-red-500/10 p-3 text-sm text-red-300">
-          {errorMsg || "Something went wrong. Please try again or email board@indianaesportsnetwork.org."}
-        </div>
-      )}
-
       <Button
         type="submit"
         disabled={!canSubmit}
         className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 disabled:opacity-60"
       >
-        {status === "submitting" ? (
-          <>
-            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-            SIGNING YOU UP…
-          </>
-        ) : (
-          <>
-            <Mail className="w-4 h-4 mr-2" />
-            SUBSCRIBE TO IEN NEWS
-          </>
-        )}
+        <Mail className="w-4 h-4 mr-2" />
+        SUBSCRIBE TO IEN NEWS
       </Button>
 
       <p className="text-[11px] text-muted-foreground/70 mt-4 text-center leading-relaxed">

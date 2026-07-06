@@ -4,33 +4,28 @@ export interface School {
   name: string;
   city: string;
   teams: number;
-  /** One or more divisions this school competes in (e.g. ["IHSEN", "IUEN"]). */
+
   divisions: Division[];
   lat: number;
   lng: number;
-  /** Optional path to school/esports logo, e.g. "/schools/carmel.png" */
+
   logo?: string;
-  /** Optional: short description of the school's esports program */
+
   description?: string;
-  /** Optional: list of game titles this school competes in */
+
   games?: string[];
-  /** Optional: notable achievements, state championships, etc. */
+
   achievements?: string[];
-  /** Optional: school or esports program website */
+
   website?: string;
-  /** Optional: head coach name */
+
   coach?: string;
-  /** Optional: year the esports program was established */
+
   established?: string;
 }
 
-// Division is inferred from school name:
-//   "Middle School" / "Jr High" / "Junior High" / "7th & 8th" → IMSEN
-//   "Jr/Sr" / "Junior/Senior" / all others                    → IHSEN
-// Coordinates are approximate center-of-city for each school's municipality.
-
 export const SCHOOLS: School[] = [
-  // A ─────────────────────────────────────────────────────────────────────────
+
   { name: "Adams Central Community Schools",           city: "Monroe, IN",          teams: 2, divisions: ["IHSEN"], lat: 40.77,  lng: -84.91, logo: "/schools/adams-central.webp" },
   { name: "Alexandria-Monroe Junior/Senior High School", city: "Alexandria, IN",    teams: 2, divisions: ["IHSEN"], lat: 40.26,  lng: -85.68 },
   { name: "Anderson High School",                       city: "Anderson, IN",       teams: 2, divisions: ["IHSEN"], lat: 40.10,  lng: -85.68 },
@@ -41,7 +36,6 @@ export const SCHOOLS: School[] = [
   { name: "Argos Jr. Sr. High School",                  city: "Argos, IN",          teams: 2, divisions: ["IHSEN", "IUEN"], lat: 41.24,  lng: -86.24 },
   { name: "Attica Jr/Sr High School",                   city: "Attica, IN",         teams: 2, divisions: ["IHSEN"], lat: 40.29,  lng: -87.25 },
 
-  // B ─────────────────────────────────────────────────────────────────────────
   { name: "Barker Middle School",                        city: "Michigan City, IN",  teams: 2, divisions: ["IMSEN"], lat: 41.71,  lng: -86.90 },
   { name: "Batchelor Middle School",                     city: "Bloomington, IN",    teams: 2, divisions: ["IMSEN"], lat: 39.17,  lng: -86.54, logo: "/schools/batchelor-ms.webp" },
   { name: "Batesville Middle School",                    city: "Batesville, IN",     teams: 2, divisions: ["IMSEN"], lat: 39.30,  lng: -85.22 },
@@ -58,7 +52,6 @@ export const SCHOOLS: School[] = [
   { name: "Bremen Senior High School",                   city: "Bremen, IN",         teams: 2, divisions: ["IHSEN"], lat: 41.45,  lng: -86.16 },
   { name: "Burris Laboratory School",                    city: "Muncie, IN",         teams: 2, divisions: ["IHSEN"], lat: 40.20,  lng: -85.39, logo: "/schools/burris.webp" },
 
-  // C ─────────────────────────────────────────────────────────────────────────
   { name: "Canaan Community Academy",                    city: "Canaan, IN",         teams: 2, divisions: ["IHSEN"], lat: 38.87,  lng: -85.29 },
   { name: "Carmel High School",                          city: "Carmel, IN",         teams: 5, divisions: ["IHSEN"], lat: 39.98,  lng: -86.13 },
   { name: "Carmel Middle School",                        city: "Carmel, IN",         teams: 3, divisions: ["IMSEN"], lat: 39.97,  lng: -86.14 },
@@ -73,20 +66,17 @@ export const SCHOOLS: School[] = [
   { name: "Crown Point High School",                     city: "Crown Point, IN",    teams: 5, divisions: ["IHSEN"], lat: 41.42,  lng: -87.37 },
   { name: "Culver Community Middle/High School",         city: "Culver, IN",         teams: 2, divisions: ["IHSEN"], lat: 41.22,  lng: -86.42 },
 
-  // D ─────────────────────────────────────────────────────────────────────────
   { name: "Daleville Jr/Sr High School",                 city: "Daleville, IN",      teams: 2, divisions: ["IHSEN"], lat: 40.12,  lng: -85.55 },
   { name: "Danville Community Middle School",            city: "Danville, IN",       teams: 2, divisions: ["IMSEN"], lat: 39.76,  lng: -86.52 },
   { name: "Delta High School",                           city: "Muncie, IN",         teams: 2, divisions: ["IHSEN"], lat: 40.30,  lng: -85.45 },
   { name: "Discovery Middle School",                     city: "Granger, IN",        teams: 2, divisions: ["IMSEN"], lat: 41.65,  lng: -86.14 },
   { name: "Driver Middle School",                        city: "Fort Wayne, IN",     teams: 2, divisions: ["IMSEN"], lat: 41.11,  lng: -85.21 },
 
-  // E ─────────────────────────────────────────────────────────────────────────
   { name: "East Chicago Central High",                   city: "East Chicago, IN",   teams: 2, divisions: ["IHSEN"], lat: 41.64,  lng: -87.45 },
   { name: "East Tipp Middle School",                     city: "Lafayette, IN",      teams: 2, divisions: ["IMSEN"], lat: 40.51,  lng: -86.90, logo: "/schools/east-tipp.webp" },
   { name: "Eastern Greene High School",                  city: "Bloomfield, IN",     teams: 2, divisions: ["IHSEN"], lat: 39.03,  lng: -86.93 },
   { name: "Eastern Hancock",                             city: "Charlottesville, IN",teams: 2, divisions: ["IHSEN"], lat: 39.76,  lng: -85.65 },
 
-  // F ─────────────────────────────────────────────────────────────────────────
   { name: "Fairfield High School",                       city: "Goshen, IN",         teams: 2, divisions: ["IHSEN"], lat: 41.57,  lng: -85.83, logo: "/schools/fairfield.png" },
   { name: "Fall Creek Valley Middle School",             city: "Indianapolis, IN",   teams: 2, divisions: ["IMSEN"], lat: 39.87,  lng: -86.00, logo: "/schools/fall-creek-valley.webp" },
   { name: "Fishers High School",                         city: "Fishers, IN",        teams: 6, divisions: ["IHSEN"], lat: 39.96,  lng: -85.97 },
@@ -95,7 +85,6 @@ export const SCHOOLS: School[] = [
   { name: "Franklin Community High School",              city: "Franklin, IN",       teams: 2, divisions: ["IHSEN"], lat: 39.48,  lng: -86.05 },
   { name: "Franklin County High School",                 city: "Brookville, IN",     teams: 2, divisions: ["IHSEN"], lat: 39.41,  lng: -85.01 },
 
-  // G ─────────────────────────────────────────────────────────────────────────
   { name: "Gibson Southern High School",                 city: "Fort Branch, IN",    teams: 2, divisions: ["IHSEN"], lat: 38.26,  lng: -87.58 },
   { name: "Greater Lafayette Career Academy",            city: "Lafayette, IN",      teams: 2, divisions: ["IHSEN"], lat: 40.42,  lng: -86.88 },
   { name: "Greencastle High School",                     city: "Greencastle, IN",    teams: 2, divisions: ["IHSEN"], lat: 39.64,  lng: -86.86, logo: "/schools/greencastle.webp" },
@@ -104,7 +93,6 @@ export const SCHOOLS: School[] = [
   { name: "Griffith Jr./Sr. High School",                city: "Griffith, IN",       teams: 2, divisions: ["IHSEN", "IUEN"], lat: 41.52,  lng: -87.42 },
   { name: "Guion Creek Middle School",                   city: "Indianapolis, IN",   teams: 2, divisions: ["IMSEN"], lat: 39.87,  lng: -86.22 },
 
-  // H ─────────────────────────────────────────────────────────────────────────
   { name: "Hamilton Southeastern High School",           city: "Fishers, IN",        teams: 5, divisions: ["IHSEN"], lat: 39.95,  lng: -85.96, logo: "/schools/hse.png" },
   { name: "Hanover Central",                             city: "Cedar Lake, IN",     teams: 2, divisions: ["IHSEN"], lat: 41.36,  lng: -87.44 },
   { name: "Heartland Christian School",                  city: "Amo, IN",            teams: 2, divisions: ["IHSEN"], lat: 39.69,  lng: -86.62 },
@@ -116,22 +104,18 @@ export const SCHOOLS: School[] = [
   { name: "Hoosier Academy (formerly Insight Indiana)", city: "Indianapolis, IN",   teams: 2, divisions: ["IHSEN"], lat: 39.80,  lng: -86.15 },
   { name: "Huntington North High School",                city: "Huntington, IN",     teams: 2, divisions: ["IHSEN"], lat: 40.89,  lng: -85.49 },
 
-  // I ─────────────────────────────────────────────────────────────────────────
   { name: "Indiana Digital Learning School",             city: "Indianapolis, IN",   teams: 2, divisions: ["IHSEN"], lat: 39.77,  lng: -86.16, logo: "/schools/indls.webp" },
   { name: "Indiana Gateway Digital Academy",             city: "Indianapolis, IN",   teams: 2, divisions: ["IHSEN", "IUEN"], lat: 39.78,  lng: -86.15, logo: "/schools/indga.png" },
 
-  // J ─────────────────────────────────────────────────────────────────────────
   { name: "Jackson Creek Middle School",                 city: "Bloomington, IN",    teams: 2, divisions: ["IMSEN"], lat: 39.12,  lng: -86.52, logo: "/schools/jackson-creek.webp" },
   { name: "Jennings County High School",                 city: "North Vernon, IN",   teams: 2, divisions: ["IHSEN", "IUEN"], lat: 38.99,  lng: -85.62, logo: "/schools/jennings-county.webp" },
   { name: "John Glenn High School",                      city: "Walkerton, IN",      teams: 2, divisions: ["IHSEN"], lat: 41.47,  lng: -86.49 },
 
-  // K ─────────────────────────────────────────────────────────────────────────
   { name: "Kankakee Valley High School",                 city: "Wheatfield, IN",     teams: 2, divisions: ["IHSEN"], lat: 41.21,  lng: -87.07, logo: "/schools/kankakee-valley.png" },
   { name: "Knightstown Community High School",           city: "Knightstown, IN",    teams: 2, divisions: ["IHSEN"], lat: 39.79,  lng: -85.53, logo: "/schools/knightstown.webp" },
   { name: "Knightstown Middle School",                   city: "Knightstown, IN",    teams: 2, divisions: ["IMSEN"], lat: 39.79,  lng: -85.53, logo: "/schools/knightstown.webp" },
   { name: "Kokomo High School",                          city: "Kokomo, IN",         teams: 3, divisions: ["IHSEN"], lat: 40.49,  lng: -86.13 },
 
-  // L ─────────────────────────────────────────────────────────────────────────
   { name: "Lafayette Jefferson",                         city: "Lafayette, IN",      teams: 2, divisions: ["IHSEN", "IUEN"], lat: 40.42,  lng: -86.88 },
   { name: "Lake Central High School",                    city: "St. John, IN",       teams: 5, divisions: ["IHSEN"], lat: 41.44,  lng: -87.46 },
   { name: "Lakeland Jr/Sr High School",                  city: "LaGrange, IN",       teams: 2, divisions: ["IHSEN"], lat: 41.64,  lng: -85.41 },
@@ -146,7 +130,6 @@ export const SCHOOLS: School[] = [
   { name: "Lowell Senior High School",                   city: "Lowell, IN",         teams: 2, divisions: ["IHSEN"], lat: 41.29,  lng: -87.42 },
   { name: "Lynhurst 7th and 8th Grade Center",           city: "Indianapolis, IN",   teams: 2, divisions: ["IMSEN"], lat: 39.79,  lng: -86.28, logo: "/schools/lynhurst.png" },
 
-  // M ─────────────────────────────────────────────────────────────────────────
   { name: "Maconaquah High School",                      city: "Bunker Hill, IN",    teams: 2, divisions: ["IHSEN"], lat: 40.66,  lng: -86.10 },
   { name: "Madison Consolidated Junior High",            city: "Madison, IN",        teams: 2, divisions: ["IMSEN"], lat: 38.73,  lng: -85.38 },
   { name: "Martinsville High School",                    city: "Martinsville, IN",   teams: 7, divisions: ["IHSEN"], lat: 39.43,  lng: -86.43 },
@@ -162,7 +145,6 @@ export const SCHOOLS: School[] = [
   { name: "Muncie Central High School",                  city: "Muncie, IN",         teams: 3, divisions: ["IHSEN"], lat: 40.19,  lng: -85.39 },
   { name: "Munster High School",                         city: "Munster, IN",        teams: 2, divisions: ["IHSEN"], lat: 41.56,  lng: -87.51 },
 
-  // N ─────────────────────────────────────────────────────────────────────────
   { name: "New Castle High School",                      city: "New Castle, IN",     teams: 2, divisions: ["IHSEN"], lat: 39.93,  lng: -85.37 },
   { name: "New Prairie High School",                     city: "New Carlisle, IN",   teams: 2, divisions: ["IHSEN"], lat: 41.70,  lng: -86.49 },
   { name: "North Decatur Jr/Sr High School",             city: "Westport, IN",       teams: 2, divisions: ["IHSEN"], lat: 39.18,  lng: -85.57 },
@@ -180,10 +162,8 @@ export const SCHOOLS: School[] = [
   { name: "Northside Middle School",                     city: "Muncie, IN",         teams: 2, divisions: ["IMSEN"], lat: 40.20,  lng: -85.40 },
   { name: "Norwell High School",                         city: "Ossian, IN",         teams: 2, divisions: ["IHSEN"], lat: 40.88,  lng: -85.17, logo: "/schools/norwell.webp" },
 
-  // O ─────────────────────────────────────────────────────────────────────────
   { name: "Oregon-Davis School Corporation",             city: "Hamlet, IN",         teams: 2, divisions: ["IHSEN"], lat: 41.37,  lng: -86.59 },
 
-  // P ─────────────────────────────────────────────────────────────────────────
   { name: "Park Tudor",                                  city: "Indianapolis, IN",   teams: 2, divisions: ["IHSEN"], lat: 39.89,  lng: -86.08 },
   { name: "Pendleton Heights High School",               city: "Pendleton, IN",      teams: 2, divisions: ["IHSEN"], lat: 40.00,  lng: -85.75, logo: "/schools/pendleton-heights.png" },
   { name: "Penn High School",                            city: "Mishawaka, IN",      teams: 4, divisions: ["IHSEN"], lat: 41.66,  lng: -86.17, logo: "/schools/penn.png" },
@@ -198,10 +178,8 @@ export const SCHOOLS: School[] = [
   { name: "Prairie Heights High School",                 city: "LaGrange, IN",       teams: 2, divisions: ["IHSEN"], lat: 41.77,  lng: -85.41 },
   { name: "Purdue Polytechnic South Bend",               city: "South Bend, IN",     teams: 2, divisions: ["IHSEN"], lat: 41.67,  lng: -86.27 },
 
-  // Q ─────────────────────────────────────────────────────────────────────────
   { name: "Queen of All Saints",                         city: "Mishawaka, IN",      teams: 2, divisions: ["IHSEN"], lat: 41.66,  lng: -86.18 },
 
-  // R ─────────────────────────────────────────────────────────────────────────
   { name: "R.J. Basket Middle School",                   city: "Fort Wayne, IN",     teams: 2, divisions: ["IMSEN"], lat: 41.10,  lng: -85.10 },
   { name: "Rensselaer Central High School",              city: "Rensselaer, IN",     teams: 2, divisions: ["IHSEN"], lat: 40.94,  lng: -87.15 },
   { name: "Rensselaer Central Middle School",            city: "Rensselaer, IN",     teams: 2, divisions: ["IMSEN"], lat: 40.94,  lng: -87.15 },
@@ -209,7 +187,6 @@ export const SCHOOLS: School[] = [
   { name: "Riley High School - Career and Technical Education", city: "South Bend, IN", teams: 2, divisions: ["IHSEN"], lat: 41.67, lng: -86.27 },
   { name: "Rossville Consolidated School District",      city: "Rossville, IN",      teams: 2, divisions: ["IHSEN"], lat: 40.42,  lng: -86.59 },
 
-  // S ─────────────────────────────────────────────────────────────────────────
   { name: "Saint Joseph High School",                    city: "South Bend, IN",     teams: 2, divisions: ["IHSEN"], lat: 41.67,  lng: -86.27 },
   { name: "Saint Monica Catholic School",                city: "Indianapolis, IN",   teams: 2, divisions: ["IHSEN"], lat: 39.86,  lng: -86.18 },
   { name: "Salem High School",                           city: "Salem, IN",          teams: 2, divisions: ["IHSEN"], lat: 38.61,  lng: -86.10 },
@@ -232,7 +209,6 @@ export const SCHOOLS: School[] = [
   { name: "Switzerland County High school",              city: "Vevay, IN",          teams: 2, divisions: ["IHSEN"], lat: 38.74,  lng: -85.06 },
   { name: "Switzerland County Middle school",            city: "Vevay, IN",          teams: 2, divisions: ["IMSEN"], lat: 38.74,  lng: -85.07 },
 
-  // T ─────────────────────────────────────────────────────────────────────────
   { name: "The Academy of Science and Entrepreneurship", city: "Bloomington, IN",    teams: 2, divisions: ["IHSEN"], lat: 39.17,  lng: -86.52 },
   { name: "Tippecanoe Valley High School",               city: "Akron, IN",          teams: 2, divisions: ["IHSEN"], lat: 41.06,  lng: -86.03 },
   { name: "Tri-Central Jr/Sr High School",               city: "Sharpsville, IN",    teams: 2, divisions: ["IHSEN"], lat: 40.60,  lng: -86.11 },
@@ -240,13 +216,11 @@ export const SCHOOLS: School[] = [
   { name: "Tri-Township High School",                    city: "New Harmony, IN",    teams: 2, divisions: ["IHSEN"], lat: 38.13,  lng: -87.93 },
   { name: "Triton Central High School",                  city: "Fairland, IN",       teams: 2, divisions: ["IHSEN"], lat: 39.66,  lng: -85.87 },
 
-  // U ─────────────────────────────────────────────────────────────────────────
   { name: "Union City Jr/Sr High School",                city: "Union City, IN",     teams: 2, divisions: ["IHSEN"], lat: 40.20,  lng: -84.81, logo: "/schools/union-city.webp" },
   { name: "Union County High School",                    city: "Liberty, IN",        teams: 2, divisions: ["IHSEN"], lat: 39.64,  lng: -84.94 },
   { name: "University High School of Indiana",           city: "Carmel, IN",         teams: 2, divisions: ["IHSEN"], lat: 39.97,  lng: -86.14 },
   { name: "Urey Middle School",                          city: "Walkerton, IN",      teams: 2, divisions: ["IMSEN"], lat: 41.47,  lng: -86.49 },
 
-  // W ─────────────────────────────────────────────────────────────────────────
   { name: "Wabash High School",                          city: "Wabash, IN",         teams: 2, divisions: ["IHSEN", "IUEN"], lat: 40.79,  lng: -85.82, logo: "/schools/wabash.webp" },
   { name: "Waldron Jr. Sr. High School",                 city: "Waldron, IN",        teams: 2, divisions: ["IHSEN"], lat: 39.77,  lng: -85.64 },
   { name: "Wawasee High School",                         city: "Syracuse, IN",       teams: 2, divisions: ["IHSEN"], lat: 41.43,  lng: -85.75 },
@@ -257,6 +231,5 @@ export const SCHOOLS: School[] = [
   { name: "William Henry Harrison High School",          city: "West Lafayette, IN", teams: 2, divisions: ["IHSEN"], lat: 40.42,  lng: -86.87 },
   { name: "Winchester Community High School",            city: "Winchester, IN",     teams: 2, divisions: ["IHSEN"], lat: 40.17,  lng: -84.98 },
 
-  // Z ─────────────────────────────────────────────────────────────────────────
   { name: "Zionsville Community High School",            city: "Zionsville, IN",     teams: 4, divisions: ["IHSEN"], lat: 39.95,  lng: -86.26 },
 ];

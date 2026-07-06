@@ -14,9 +14,9 @@ import { ONBOARDING_URL } from "@/lib/socialLinks";
 type NavItem = {
   label: string;
   href: string;
-  /** If true, treat href's hash as part of matching (e.g. Games on /leagues). */
+
   hashAware?: boolean;
-  /** Optional children for dropdown items (desktop only). If set, `href` is still used for active-match fallback. */
+
   children?: Array<{ label: string; href: string }>;
 };
 
@@ -40,15 +40,6 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Contact",   href: "/contact" },
 ];
 
-/**
- * Returns true if the current route should show this nav item as "active".
- * - Home is exact-match only.
- * - Items with children match if ANY child path matches current route.
- * - The Games link (hash-aware) only lights up when the hash is present.
- * - Other top-level pages match exact path + any sub-path (e.g. /leagues/ihsen matches /leagues).
- * - If a hash-aware sibling matches the current hash on the same pathname, its non-hash sibling
- *   (e.g. Leagues) yields so only one nav item lights up.
- */
 function isActive(
   pathname: string,
   currentHash: string,
@@ -69,8 +60,6 @@ function isActive(
     return pathname === target && currentHash === targetHash;
   }
 
-  // Non-hash-aware item: if a sibling hash-aware item is currently matching on this same
-  // pathname, yield to that sibling so we don't highlight both (e.g. Games vs Leagues).
   const hashSiblingActive = allItems.some((other) => {
     if (other === item || !other.hashAware) return false;
     const otherTarget = other.href.split("#")[0] || "/";
@@ -86,28 +75,23 @@ function isActive(
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
-  // wouter's useLocation only tracks pathname, so we track the hash ourselves
-  // to keep hash-aware active states (e.g. "Games" -> /leagues#game-titles) in sync.
+
   const [hash, setHash] = useState<string>(() =>
     typeof window !== "undefined" ? window.location.hash.slice(1) : "",
   );
   useEffect(() => {
     const onHashChange = () => setHash(window.location.hash.slice(1));
     window.addEventListener("hashchange", onHashChange);
-    // Also re-read on route change (wouter Link clicks can change hash without firing hashchange).
+
     onHashChange();
     return () => window.removeEventListener("hashchange", onHashChange);
   }, [location]);
 
-  // For hash-aware items (e.g. Games -> /leagues#game-titles), manually scroll to the
-  // target section when the user is already on that pathname. Without this, clicking the
-  // link a second time (when the hash is already set) fires no hashchange event and the
-  // page doesn't re-scroll.
   const handleHashNav = (href: string) => {
     const [target, anchor] = href.split("#");
     if (!anchor) return;
     const targetPath = target || "/";
-    if (location !== targetPath) return; // let wouter handle cross-page nav
+    if (location !== targetPath) return;
     const el = document.getElementById(anchor);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -142,8 +126,6 @@ export function Navbar() {
         <nav aria-label="Primary" className="hidden md:flex items-center gap-6">
           {NAV_ITEMS.map((item) => {
             const active = isActive(location, hash, item, NAV_ITEMS);
-
-            // Dropdown variant (for items with children)
             if (item.children && item.children.length > 0) {
               return (
                 <DropdownMenu key={item.label}>
@@ -202,7 +184,6 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <div
           id="primary-mobile-navigation"
@@ -212,8 +193,6 @@ export function Navbar() {
         >
           {NAV_ITEMS.map((item) => {
             const active = isActive(location, hash, item, NAV_ITEMS);
-
-            // On mobile, expand children inline rather than using a dropdown.
             if (item.children && item.children.length > 0) {
               return (
                 <div key={item.label} className="space-y-2">

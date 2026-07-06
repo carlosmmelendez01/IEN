@@ -24,11 +24,9 @@ export default function Home() {
         description="Indiana's official scholastic esports league. IHSEN high school, IMSEN middle school, and IUEN unified — serving 180+ Indiana schools and 7,000+ student athletes since 2019."
         path="/"
       />
-      {/* Hero Section */}
+
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Real photo from IEN State Finals: Greencastle celebrates a Rocket League win.
-            Layered: photo on bottom -> dark gradient on top so headline stays readable.
-            Subtle 20s scale loop adds motion since we don't have video yet. */}
+
         <img
           src={heroDesktop}
           srcSet={`${heroMobile} 1280w, ${heroDesktop} 2400w`}
@@ -38,7 +36,7 @@ export default function Home() {
           loading="eager"
           fetchPriority="high"
         />
-        {/* Top->bottom gradient: lighter at top so photo shows through, opaque at bottom so text stands clear. */}
+
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background z-10" />
 
         <div className="container relative z-20 mx-auto px-4 text-center">
@@ -86,7 +84,6 @@ export default function Home() {
               </Button>
             </div>
 
-            {/* Social links row */}
             <div className="flex items-center justify-center gap-3 mt-8">
               <span className="text-xs text-muted-foreground tracking-widest uppercase font-heading mr-1">
                 Follow IEN
@@ -106,9 +103,6 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Stats bar — no chrome; numbers sit directly over the hero gradient.
-              The hero already runs a heavy bottom-to-top dark gradient, so the
-              gold numbers and gray-200 labels stay readable. */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -144,7 +138,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
@@ -153,9 +146,6 @@ export default function Home() {
         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
       </div>
 
-      {/* State Finals 2026 photo grid -- replaces the placeholder video. Three real moments
-          (live competition, championship trophies, coach recognition) under one section, with
-          the existing onboarding CTA preserved at the bottom. */}
       <section className="py-8 container mx-auto px-4">
         <div className="text-center mb-10">
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-light">
@@ -164,8 +154,6 @@ export default function Home() {
           </p>
         </div>
 
-        {/* 3-tile grid. Drew's portrait shot gets center-cropped via object-cover into a
-            4:3 tile so all three cards share the same footprint. */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {[
             {
@@ -237,7 +225,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
@@ -246,7 +233,6 @@ export default function Home() {
         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
       </div>
 
-      {/* How It Works Steps */}
       <section className="py-16 container mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-12">
           HOW TO START AN ESPORTS PROGRAM
@@ -300,7 +286,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Divider */}
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
@@ -309,7 +294,6 @@ export default function Home() {
         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
       </div>
 
-      {/* Events Quick View */}
       <section className="py-16 container mx-auto px-4 mb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="group relative overflow-hidden rounded-xl border border-primary/30 aspect-video bg-card hover:border-primary transition-colors">

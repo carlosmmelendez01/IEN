@@ -7,7 +7,6 @@ export function Footer() {
     <footer className="border-t border-primary/20 bg-background relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
-      {/* Social bar */}
       <div className="bg-card border-b border-primary/10 py-5">
         <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <span className="font-heading font-bold tracking-widest text-primary text-sm uppercase">
@@ -37,10 +36,9 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Main footer grid */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-10">
-          {/* Brand */}
+
           <div className="sm:col-span-2">
             <Link href="/" className="flex items-center mb-4" aria-label="Indiana Esports Network home">
               <img
@@ -60,7 +58,6 @@ export function Footer() {
             </a>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="font-heading font-bold text-primary mb-4 tracking-wider text-sm">Quick Links</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
@@ -76,7 +73,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Programs */}
           <div>
             <h4 className="font-heading font-bold text-primary mb-4 tracking-wider text-sm">Programs</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
@@ -108,7 +104,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="border-t border-primary/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-xs text-muted-foreground text-center sm:text-left">
             <span>&copy; {new Date().getFullYear()} Indiana Esports Network. All rights reserved.</span>

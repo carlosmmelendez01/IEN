@@ -85,7 +85,6 @@ function SeasonRow({
       >
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 items-start">
 
-          {/* Left: thumbnail (click to enlarge) */}
           <button
             onClick={() => setLightboxOpen(true)}
             className="group relative rounded-xl overflow-hidden border border-primary/20 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary w-full lg:w-[280px] shrink-0"
@@ -103,7 +102,6 @@ function SeasonRow({
             </div>
           </button>
 
-          {/* Right: Details */}
           <div className="flex flex-col gap-5">
             <div>
               <div className="inline-block px-3 py-1 bg-primary/10 border border-primary/30 text-primary text-xs font-bold tracking-widest rounded-full uppercase mb-3">
@@ -190,7 +188,7 @@ function SeasonRow({
 function SectionDivider({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-2 md:gap-4 pt-10 pb-2">
-      {/* Side lines hide on mobile so the label can use full width without overflow */}
+
       <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50 hidden md:block" />
       <span className="font-heading font-bold text-primary tracking-widest uppercase text-lg md:text-3xl px-2 md:px-4 text-center md:whitespace-nowrap">
         {label}
@@ -208,7 +206,7 @@ export default function Schedule() {
         description="2026–2027 season schedule for IHSEN, IMSEN, and IUEN — registration dates, season calendars, and downloadable PDFs."
         path="/schedule"
       />
-      {/* Hero */}
+
       <section className="relative py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
@@ -227,10 +225,8 @@ export default function Schedule() {
         </div>
       </section>
 
-      {/* Content */}
       <div className="container mx-auto px-4 pb-8">
 
-        {/* ── IHSEN ── */}
         <SectionDivider label="Indiana High School Esports Network (IHSEN)" />
 
         <SeasonRow
@@ -264,7 +260,6 @@ export default function Schedule() {
           registerLabel="VIEW LEAGUEOS"
         />
 
-        {/* ── IMSEN ── */}
         <SectionDivider label="Indiana Middle School Esports Network (IMSEN)" />
 
         <SeasonRow
@@ -297,7 +292,6 @@ export default function Schedule() {
           pdfLabel="VIEW IMSEN CALENDAR"
         />
 
-        {/* ── IUEN ── */}
         <SectionDivider label="Indiana Unified Esports Network (IUEN)" />
 
         <SeasonRow
@@ -332,7 +326,6 @@ export default function Schedule() {
 
       </div>
 
-      {/* State Finals CTA */}
       <section className="py-20 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4 text-center">
           <div className="inline-block px-4 py-1 bg-primary/10 border border-primary/30 text-primary text-xs font-bold tracking-widest rounded-full uppercase mb-6">

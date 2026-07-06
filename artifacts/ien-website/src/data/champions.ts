@@ -1,6 +1,4 @@
-// AUTO-GENERATED from /Users/mattmelendez/Downloads/IEN Hall of Champions.xlsx
-// Edit the spreadsheet (or this file) to update.
-// Sort: newest season -> league (IHSEN/IMSEN/IUEN) -> game (A-Z) -> tier (A -> AA -> AAA -> open).
+
 
 export type League = "IHSEN" | "IMSEN" | "IUEN";
 export type Tier = "AAA" | "AA" | "A" | "A/AA" | "";
@@ -18,11 +16,7 @@ export interface Champion {
   thirdPlayer?: string;
   finalist?: string;
   finalistPlayer?: string;
-  /**
-   * Optional path or URL to the school's esports/athletics logo, used by the
-   * Hall of Champions featured cards. When absent, the UI renders a polished
-   * shield + initials fallback. Files can live in /public/schools/<slug>.png.
-   */
+
   logoUrl?: string;
 }
 

@@ -113,7 +113,6 @@ const featuredPartners = [
 export default function Partners() {
   const [location] = useLocation();
 
-  // Scroll to hash target on mount / route change (e.g. /partners#ways-to-support from footer).
   useEffect(() => {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
     if (!hash) return;
@@ -132,7 +131,7 @@ export default function Partners() {
         description="Featured partners and sponsors supporting the Indiana Esports Network and Indiana scholastic esports."
         path="/partners"
       />
-      {/* Hero */}
+
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
@@ -165,8 +164,6 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Featured Partners (social proof: shown first so visitors immediately see
-          who already partners with IEN before the sponsorship pitch). */}
       <section className="py-20 container mx-auto px-4">
         <div className="flex items-center justify-center mb-12">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/40" />
@@ -219,8 +216,6 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Become a Sponsor (tiered sponsorship packages for corporate prospects).
-          Reached via the hero "BECOME A SPONSOR" CTA. */}
       <section id="become-a-sponsor" className="py-20 bg-card scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -252,7 +247,7 @@ export default function Partners() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-            {/* Tier 3 - Community */}
+
             <div className="bg-background border border-primary/30 p-8 rounded-xl relative overflow-hidden flex flex-col">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
               <div className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Tier 3</div>
@@ -285,7 +280,6 @@ export default function Partners() {
               </Button>
             </div>
 
-            {/* Tier 1 - State Finals (featured) */}
             <div className="bg-background border-2 border-primary p-8 rounded-xl relative overflow-hidden flex flex-col transform md:-translate-y-4 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
               <div className="absolute top-4 right-4 bg-primary text-primary-foreground text-[10px] font-heading font-bold tracking-widest uppercase px-2 py-1 rounded">
@@ -329,7 +323,6 @@ export default function Partners() {
               </Button>
             </div>
 
-            {/* Tier 2 - Regional */}
             <div className="bg-background border border-primary/30 p-8 rounded-xl relative overflow-hidden flex flex-col">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent" />
               <div className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Tier 2</div>
@@ -367,7 +360,6 @@ export default function Partners() {
             </div>
           </div>
 
-          {/* How to Sponsor - 3 step process */}
           <div className="max-w-4xl mx-auto mb-12">
             <h3 className="text-center font-heading font-bold tracking-widest uppercase text-primary text-sm mb-8">
               How to Become a Sponsor
@@ -411,10 +403,8 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* Ways to Support IEN (donor/fan-focused: Kroger / Walmart / PayPal).
-          Sits below Become a Sponsor so corporate prospects hit tiered pricing first. */}
       <section id="ways-to-support" className="relative py-20 bg-card border-y border-primary/30 scroll-mt-20">
-        {/* subtle gold glow accent */}
+
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -430,7 +420,7 @@ export default function Partners() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {/* Walmart Spark Good */}
+
             <div className="bg-background border border-primary/20 hover:border-primary rounded-xl p-6 flex flex-col transition-colors">
               <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
                 <ShoppingCart className="w-6 h-6 text-primary" />
@@ -452,7 +442,6 @@ export default function Partners() {
               </Button>
             </div>
 
-            {/* Kroger Community Rewards */}
             <div className="bg-background border border-primary/20 hover:border-primary rounded-xl p-6 flex flex-col transition-colors">
               <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
                 <Heart className="w-6 h-6 text-primary" />
@@ -475,7 +464,6 @@ export default function Partners() {
               </Button>
             </div>
 
-            {/* PayPal Giving Fund */}
             <div className="bg-background border border-primary/20 hover:border-primary rounded-xl p-6 flex flex-col transition-colors">
               <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
                 <Gift className="w-6 h-6 text-primary" />
@@ -498,7 +486,6 @@ export default function Partners() {
             </div>
           </div>
 
-          {/* 501c3 note */}
           <div className="max-w-3xl mx-auto mt-10 text-center">
             <p className="text-xs text-muted-foreground leading-relaxed">
               Indiana Esports Network Limited is a <span className="text-primary font-bold">501(c)(3) nonprofit</span> organization,

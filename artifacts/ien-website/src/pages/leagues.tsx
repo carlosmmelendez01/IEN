@@ -42,46 +42,10 @@ const iuenGames = [
 
 const resources = [
   {
-    title: "General IEN Rulebook",
-    desc: "Core rules, eligibility, and conduct standards for all IEN leagues.",
-    // TODO: Replace with real PDF URL when available
-    href: "#",
-    downloadable: false,
-  },
-  {
-    title: "IHSEN Rulebook",
-    desc: "Competition rules for the Indiana High School Esports Network.",
-    // TODO: Replace with real PDF URL when available
-    href: "#",
-    downloadable: false,
-  },
-  {
-    title: "IMSEN Rulebook",
-    desc: "Competition rules for the Indiana Middle School Esports Network.",
-    // TODO: Replace with real PDF URL when available
-    href: "#",
-    downloadable: false,
-  },
-  {
-    title: "IUEN Rulebook",
-    desc: "Rules and guidelines for the Indiana Unified Esports Network.",
-    // TODO: Replace with real PDF URL when available
-    href: "#",
-    downloadable: false,
-  },
-  {
     title: "LeagueOS Platform Guide",
     desc: "How to register, manage rosters, and navigate the LeagueOS platform.",
     href: "https://leagueos.gg",
-    downloadable: false,
     external: true,
-  },
-  {
-    title: "Code of Conduct",
-    desc: "Expected behavior standards for all players, coaches, and school staff.",
-    // TODO: Replace with real PDF URL when available
-    href: "#",
-    downloadable: false,
   },
 ];
 
@@ -89,17 +53,14 @@ function GameTile({
   name,
   type,
   color,
-  rulebookHref,
   index,
 }: {
   name: string;
   type?: string;
   color: string;
-  rulebookHref: string;
   index: number;
 }) {
   const [borderClass, textClass] = color.split(" ");
-  const isPlaceholder = rulebookHref === "#";
 
   return (
     <motion.div
@@ -113,47 +74,24 @@ function GameTile({
         <span className={`font-heading font-bold text-base md:text-lg ${textClass} leading-tight`}>{name}</span>
         {type && <span className="text-sm text-muted-foreground">{type}</span>}
       </div>
-      <a
-        href={rulebookHref}
-        target={!isPlaceholder && !rulebookHref.startsWith("#") ? "_blank" : undefined}
-        rel={!isPlaceholder && !rulebookHref.startsWith("#") ? "noopener noreferrer" : undefined}
-        onClick={isPlaceholder ? (e) => e.preventDefault() : undefined}
-        title={isPlaceholder ? "Rulebook coming soon" : `${name} rules`}
-        className={`text-sm font-heading tracking-wide flex items-center gap-0.5 transition-colors ${
-          isPlaceholder
-            ? "text-muted-foreground/40 cursor-default"
-            : "text-primary hover:text-primary/80"
-        }`}
-      >
-        Rules ↗
-      </a>
     </motion.div>
   );
 }
 
 export default function Leagues() {
   const [location] = useLocation();
-  // Track the hash ourselves so hash-only changes (e.g. clicking Games in the navbar
-  // while already on /leagues) re-trigger the scroll effect below. Wouter's useLocation
-  // only tracks pathname, so without this a hash-only navigation wouldn't re-run the effect.
   const [hash, setHash] = useState<string>(() =>
     typeof window !== "undefined" ? window.location.hash : "",
   );
   useEffect(() => {
     const onHashChange = () => setHash(window.location.hash);
     window.addEventListener("hashchange", onHashChange);
-    // Also re-read on mount / route change in case wouter updated the hash without
-    // the browser firing a hashchange event.
     onHashChange();
     return () => window.removeEventListener("hashchange", onHashChange);
   }, [location]);
-
-  // Scroll to #hash anchor whenever the route or hash changes
-  // (e.g. /leagues#game-titles from clicking Games in the navbar).
   useEffect(() => {
     if (!hash) return;
     const id = hash.slice(1);
-    // Defer to next tick to ensure the target element is mounted.
     const t = setTimeout(() => {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -168,7 +106,7 @@ export default function Leagues() {
         description="IEN operates three scholastic esports leagues: IHSEN (high school), IMSEN (middle school), and IUEN (unified). 12+ game titles across Indiana."
         path="/leagues"
       />
-      {/* Hero Section */}
+
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
@@ -197,7 +135,6 @@ export default function Leagues() {
         </div>
       </section>
 
-      {/* Leagues Cards */}
       <section className="py-16 container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
@@ -249,7 +186,6 @@ export default function Leagues() {
         </div>
       </section>
 
-      {/* Competition Formats */}
       <section className="py-16 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
@@ -329,7 +265,6 @@ export default function Leagues() {
         </div>
       </section>
 
-      {/* IHSEN Game Titles */}
       <section id="game-titles" className="py-16 container mx-auto px-4 scroll-mt-20">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
@@ -343,20 +278,17 @@ export default function Leagues() {
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {ihsenGames.map((game, i) => (
-            // TODO: Replace rulebookHref with IHSEN per-game rulebook PDF URL when available
             <GameTile
               key={i}
               index={i}
               name={game.name}
               type={game.type}
               color={game.color}
-              rulebookHref="#rules-resources"
             />
           ))}
         </div>
       </section>
 
-      {/* IMSEN Game Titles */}
       <section className="py-4 pb-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
@@ -370,20 +302,17 @@ export default function Leagues() {
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
           {imsenGames.map((game, i) => (
-            // TODO: Replace rulebookHref with IMSEN per-game rulebook PDF URL when available
             <GameTile
               key={i}
               index={i}
               name={game.name}
               type={game.type}
               color={game.color}
-              rulebookHref="#rules-resources"
             />
           ))}
         </div>
       </section>
 
-      {/* Unified Program */}
       <section className="py-16 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
@@ -413,13 +342,11 @@ export default function Leagues() {
                 </h4>
                 <div className="grid grid-cols-2 gap-3">
                   {iuenGames.map((game, i) => (
-                    // TODO: Replace rulebookHref with IUEN rulebook PDF URL when available
                     <GameTile
                       key={i}
                       index={i}
                       name={game.name}
                       color={game.color}
-                      rulebookHref="#rules-resources"
                     />
                   ))}
                 </div>
@@ -455,7 +382,6 @@ export default function Leagues() {
         </div>
       </section>
 
-      {/* Rules & Resources */}
       <section className="py-16 container mx-auto px-4" id="rules-resources">
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
@@ -469,66 +395,49 @@ export default function Leagues() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
-          {resources.map((res, i) => {
-            const isPlaceholder = res.href === "#";
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07, duration: 0.4 }}
-                className="bg-card border border-primary/20 rounded-xl p-6 flex flex-col gap-4 hover:border-primary transition-colors group"
-              >
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                    <FileText className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-white text-sm leading-snug">
-                      {res.title}
-                    </h3>
-                    <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{res.desc}</p>
-                  </div>
+          {resources.map((res, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.07, duration: 0.4 }}
+              className="bg-card border border-primary/20 rounded-xl p-6 flex flex-col gap-4 hover:border-primary transition-colors group"
+            >
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <FileText className="w-5 h-5 text-primary" />
                 </div>
+                <div>
+                  <h3 className="font-heading font-bold text-white text-sm leading-snug">
+                    {res.title}
+                  </h3>
+                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{res.desc}</p>
+                </div>
+              </div>
 
-                {isPlaceholder ? (
-                  <div className="mt-auto text-xs text-muted-foreground/50 italic font-medium">
-                    Coming soon, contact{" "}
-                    <a
-                      href="mailto:board@indianaesportsnetwork.org"
-                      className="text-primary/60 hover:text-primary underline underline-offset-2"
-                    >
-                      board@indianaesportsnetwork.org
-                    </a>{" "}
-                    for current rules
-                  </div>
+              <a
+                href={res.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto flex items-center gap-2 text-xs font-heading font-bold text-primary tracking-wide hover:text-primary/80 transition-colors"
+              >
+                {res.external ? (
+                  <>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    OPEN PLATFORM
+                  </>
                 ) : (
-                  <a
-                    href={res.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-auto flex items-center gap-2 text-xs font-heading font-bold text-primary tracking-wide hover:text-primary/80 transition-colors"
-                  >
-                    {res.external ? (
-                      <>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        OPEN PLATFORM
-                      </>
-                    ) : (
-                      <>
-                        <Download className="w-3.5 h-3.5" />
-                        DOWNLOAD PDF
-                      </>
-                    )}
-                  </a>
+                  <>
+                    <Download className="w-3.5 h-3.5" />
+                    DOWNLOAD PDF
+                  </>
                 )}
-              </motion.div>
-            );
-          })}
+              </a>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Season Calendar downloads */}
         <div className="mt-16 max-w-5xl mx-auto">
           <div className="flex items-center justify-center mb-8">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />

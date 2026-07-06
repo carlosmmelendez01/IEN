@@ -13,11 +13,11 @@ export default function StartAProgram() {
         description="Bring competitive esports to your Indiana school. Step-by-step guide to launching an IEN program at your school."
         path="/start-a-program"
       />
-      {/* Hero Section */}
+
       <section className="relative py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-        
+
         <div className="container relative z-20 mx-auto px-4 text-center max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4 tracking-tight uppercase">
             Start an Esports Program <br/>at Your School
@@ -31,17 +31,15 @@ export default function StartAProgram() {
         </div>
       </section>
 
-      {/* Steps Section */}
       <section className="py-20 container mx-auto px-4">
          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4 uppercase tracking-wider">Get Your School Connected</h2>
             <p className="text-muted-foreground text-lg">Three Steps to Starting Your Esports Club or Team</p>
          </div>
-         
+
          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 relative">
             <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-primary/20 z-0"></div>
-            
-            {/* Step 1 */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -78,8 +76,7 @@ export default function StartAProgram() {
                   <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE MEETING</a>
                </Button>
             </motion.div>
-            
-            {/* Step 2 */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -112,8 +109,7 @@ export default function StartAProgram() {
                   DOWNLOAD PROGRAM GUIDE
                </Button>
             </motion.div>
-            
-            {/* Step 3 */}
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -150,7 +146,6 @@ export default function StartAProgram() {
          </div>
       </section>
 
-      {/* Eligibility Section */}
       <section className="py-16 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
@@ -191,7 +186,6 @@ export default function StartAProgram() {
         </div>
       </section>
 
-      {/* Closing CTA */}
       <section className="py-20 text-center mb-10 bg-gradient-to-b from-transparent to-primary/5 border-b border-primary/10">
          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Get Started with IEN Today!</h2>
          <p className="text-muted-foreground mb-8">Take the first step in bringing competitive gaming to your school.</p>

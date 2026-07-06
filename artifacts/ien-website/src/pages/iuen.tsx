@@ -25,20 +25,12 @@ import iuenLogo from "@assets/IUEN_Wordmark.png";
 import { CHAMPIONS, type Champion } from "@/data/champions";
 import { findSchoolLogo } from "@/lib/schoolLogos";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Data derived from the central champions table (single source of truth).
-// IUEN currently spans 2022-23 → present; whenever new champions land in the
-// data file the "By The Numbers" total and the Champions Showcase update
-// automatically.
-// ─────────────────────────────────────────────────────────────────────────────
 const IUEN_CHAMPIONS: Champion[] = CHAMPIONS.filter((c) => c.league === "IUEN")
-  // newest first
+
   .sort((a, b) => b.season.localeCompare(a.season));
 
 const TOTAL_STATE_TITLES = IUEN_CHAMPIONS.length;
 
-// TODO(stats): replace the three "—" entries below with real figures from
-// league ops once they're confirmed. Structure is final; just swap the values.
 const BY_THE_NUMBERS: Array<{
   icon: React.ReactNode;
   value: string;
@@ -50,10 +42,6 @@ const BY_THE_NUMBERS: Array<{
   { icon: <Trophy className="w-6 h-6" />,       value: TOTAL_STATE_TITLES.toString(), label: "State Championships" },
 ];
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Wabash student impact stories — provided verbatim by IEN. Quotes are real;
-// names anonymized per the source material (no last names supplied).
-// ─────────────────────────────────────────────────────────────────────────────
 const STORIES: Array<{
   eyebrow: string;
   title: string;
@@ -126,9 +114,6 @@ const ADMIN_VALUE_PROPS: Array<{ title: string; desc: string; icon: React.ReactN
   { title: "Supports Unified Champion Schools Goals", desc: "Counts toward Special Olympics Unified Champion Schools recognition and reporting.",                              icon: <Star className="w-6 h-6" /> },
 ];
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Page
-// ─────────────────────────────────────────────────────────────────────────────
 export default function IUEN() {
   return (
     <Layout>
@@ -137,7 +122,7 @@ export default function IUEN() {
         description="Indiana Unified Esports Network. Inclusive competitive esports where students with and without intellectual disabilities compete side by side, in partnership with Indiana Special Olympics."
         path="/leagues/iuen"
       />
-      {/* Hero */}
+
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
@@ -177,7 +162,6 @@ export default function IUEN() {
         </div>
       </section>
 
-      {/* Special Olympics Partnership Banner */}
       <section className="py-10 bg-primary/10 border-y border-primary/30">
         <div className="container mx-auto px-4 text-center">
           <p className="text-primary font-heading font-bold tracking-widest uppercase text-sm mb-2">
@@ -191,9 +175,7 @@ export default function IUEN() {
             schools, creating an esports environment where every student has a
             place to compete, grow, and belong.
           </p>
-          {/* Partner credit link — anchors to Special Olympics Indiana's own page so
-              visitors who want partner context can dig deeper. Framed as a partner
-              credit, not as an "IUEN learn more" CTA. */}
+
           <a
             href="https://soindiana.org/unified-champion-schools/unified-esport/"
             target="_blank"
@@ -206,7 +188,6 @@ export default function IUEN() {
         </div>
       </section>
 
-      {/* IUEN By The Numbers */}
       <section className="py-14 container mx-auto px-4">
         <div className="flex items-center justify-center mb-3">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
@@ -242,7 +223,6 @@ export default function IUEN() {
         </div>
       </section>
 
-      {/* Indiana Success Stories */}
       <section className="py-16 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-12">
@@ -289,7 +269,6 @@ export default function IUEN() {
         </div>
       </section>
 
-      {/* How Unified Works — 5-step journey */}
       <section className="py-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-12">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
@@ -326,7 +305,6 @@ export default function IUEN() {
         </ol>
       </section>
 
-      {/* Athletes & Partners */}
       <section className="py-14 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-12">
@@ -382,7 +360,6 @@ export default function IUEN() {
         </div>
       </section>
 
-      {/* Game Titles */}
       <section className="py-14 container mx-auto px-4">
         <div className="flex items-center justify-center mb-10">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
@@ -407,7 +384,6 @@ export default function IUEN() {
         </div>
       </section>
 
-      {/* IUEN Champions Showcase */}
       <section className="py-16 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-12">
@@ -435,7 +411,6 @@ export default function IUEN() {
         </div>
       </section>
 
-      {/* Why It Matters (student/family framing) */}
       <section className="py-14 container mx-auto px-4">
         <div className="flex items-center justify-center mb-12">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
@@ -473,7 +448,6 @@ export default function IUEN() {
         </div>
       </section>
 
-      {/* Season Structure */}
       <section className="py-14 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="flex items-center justify-center mb-10">
@@ -511,7 +485,6 @@ export default function IUEN() {
         </div>
       </section>
 
-      {/* Why Schools Choose Unified — administrator value proposition */}
       <section className="py-16 container mx-auto px-4">
         <div className="flex items-center justify-center mb-12">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
@@ -551,7 +524,6 @@ export default function IUEN() {
         </div>
       </section>
 
-      {/* CTA — Every Student Deserves a Team */}
       <section className="py-16 container mx-auto px-4 mb-12 max-w-3xl text-center">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4 tracking-tight">
           Every Student Deserves a Team
@@ -582,12 +554,6 @@ export default function IUEN() {
     </Layout>
   );
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-// ChampionCard — compact championship plaque for the IUEN champions showcase.
-// Auto-resolves the school logo from src/data/schools.ts; falls back to a
-// gold-outlined shield + initials when no file exists yet (no stock images).
-// ─────────────────────────────────────────────────────────────────────────────
 function ChampionCard({ champion }: { champion: Champion }) {
   const seasonYear = champion.season.split("-").pop() ?? champion.season;
   const logoUrl = champion.logoUrl ?? findSchoolLogo(champion.school);

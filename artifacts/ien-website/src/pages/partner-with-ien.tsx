@@ -11,11 +11,11 @@ export default function PartnerWithIEN() {
         description="Sponsorship and partnership opportunities for businesses and organizations supporting Indiana scholastic esports."
         path="/partner-with-ien"
       />
-      {/* Hero Section */}
+
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-        
+
         <div className="container relative z-20 mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6 tracking-tight drop-shadow-lg">
             PARTNER WITH <span className="text-primary">IEN</span>
@@ -29,7 +29,6 @@ export default function PartnerWithIEN() {
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className="py-12 border-y border-primary/20 bg-background/50">
          <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -53,13 +52,12 @@ export default function PartnerWithIEN() {
          </div>
       </section>
 
-      {/* Sponsorship Opportunities */}
       <section className="py-20 container mx-auto px-4">
          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4 uppercase tracking-wider">Sponsorship Opportunities</h2>
             <div className="w-24 h-1 bg-primary mx-auto"></div>
          </div>
-         
+
          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="bg-card border border-primary/30 p-8 rounded-xl flex flex-col items-center text-center shadow-lg hover:border-primary transition-all">
                <h3 className="font-heading font-bold text-2xl text-white mb-4">State Finals Sponsor</h3>
@@ -67,7 +65,7 @@ export default function PartnerWithIEN() {
                   Title recognition at our massive year-end championship event. Includes physical booth space, stream overlays, jersey logo placement on champion teams, and VIP access.
                </p>
             </div>
-            
+
             <div className="bg-card border border-primary p-8 rounded-xl flex flex-col items-center text-center shadow-[0_0_20px_rgba(212,175,55,0.15)] transform md:-translate-y-4">
                <div className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Most Popular</div>
                <h3 className="font-heading font-bold text-2xl text-white mb-4">Program Partner</h3>
@@ -75,7 +73,7 @@ export default function PartnerWithIEN() {
                   Year-round integration into the IEN ecosystem. Newsletter features, website branding, Discord community presence, and direct connection with school administrators.
                </p>
             </div>
-            
+
             <div className="bg-card border border-primary/30 p-8 rounded-xl flex flex-col items-center text-center shadow-lg hover:border-primary transition-all">
                <h3 className="font-heading font-bold text-2xl text-white mb-4">Regional Event Sponsor</h3>
                <p className="text-muted-foreground text-sm mb-8 flex-grow">
@@ -83,7 +81,7 @@ export default function PartnerWithIEN() {
                </p>
             </div>
          </div>
-         
+
          <div className="text-center">
             <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8 h-12">
                DOWNLOAD SPONSORSHIP PACKET
@@ -91,7 +89,6 @@ export default function PartnerWithIEN() {
          </div>
       </section>
 
-      {/* Closing CTA */}
       <section className="py-24 bg-card text-center border-t border-primary/20 relative overflow-hidden mb-20">
          <div className="absolute inset-0 bg-primary/5"></div>
          <div className="container relative z-10 mx-auto px-4">
