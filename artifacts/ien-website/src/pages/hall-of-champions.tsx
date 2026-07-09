@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
@@ -27,7 +28,6 @@ import {
   LayoutGrid,
   Archive,
 } from "lucide-react";
-import { ONBOARDING_URL } from "@/lib/socialLinks";
 import { findSchoolLogo } from "@/lib/schoolLogos";
 import { CHAMPIONS, type Champion, type League, type Tier } from "@/data/champions";
 import heroBackdrop from "@assets/state-finals/03-marvel-rivals-1200.jpg";
@@ -282,9 +282,7 @@ export default function HallOfChampions() {
               size="lg"
               className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest text-base h-12 px-8"
             >
-              <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">
-                JOIN THE LEAGUE
-              </a>
+              <Link href="/start-a-program">JOIN THE LEAGUE</Link>
             </Button>
           </div>
         </div>

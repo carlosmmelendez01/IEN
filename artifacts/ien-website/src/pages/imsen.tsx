@@ -8,7 +8,6 @@ import { Trophy, Users, Gamepad2, Star, Calendar, FileText } from "lucide-react"
 import { RulesDialog, defaultTabForGame } from "@/components/rulesets/RulesetQuickView";
 import { getRulesetGame, type RulesTab, type RulesetGame } from "@/data/gameRules";
 import imsenLogo from "@assets/IMSEN_Wordmark.png";
-import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 const games = [
   { name: "Rocket League",       type: "Varsity + Club", color: "text-blue-400",   border: "border-blue-500/50",   roster: "3 starters | 2 subs",  platform: "Cross-platform" },
@@ -236,7 +235,7 @@ export default function IMSEN() {
             className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]"
             asChild
           >
-            <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">JOIN THE LEAGUE</a>
+            <Link href="/start-a-program">JOIN THE LEAGUE</Link>
           </Button>
           <Button
             size="lg"

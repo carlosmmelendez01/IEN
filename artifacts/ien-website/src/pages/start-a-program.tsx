@@ -23,15 +23,20 @@ export default function StartAProgram() {
             Start an Esports Program <br/>at Your School
           </h1>
           <p className="text-xl text-primary mb-8 font-light">
-            Join the Indiana Esports Network and bring the benefits of competitive gaming to your students.
+            Review the path for new coaches, then schedule onboarding when your school is ready to talk through next steps.
           </p>
-          <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
-            <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE AN ONBOARDING MEETING</a>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+              <a href="#get-connected">VIEW STARTER STEPS</a>
+            </Button>
+            <Button size="lg" variant="outline" asChild className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-14 px-8">
+              <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE MEETING</a>
+            </Button>
+          </div>
         </div>
       </section>
 
-      <section className="py-20 container mx-auto px-4">
+      <section id="get-connected" className="py-20 container mx-auto px-4 scroll-mt-24">
          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4 uppercase tracking-wider">Get Your School Connected</h2>
             <p className="text-muted-foreground text-lg">Three Steps to Starting Your Esports Club or Team</p>
@@ -105,8 +110,8 @@ export default function StartAProgram() {
                      <span>Prepare space and equipment</span>
                   </li>
                </ul>
-               <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest mt-auto">
-                  DOWNLOAD PROGRAM GUIDE
+               <Button variant="outline" asChild className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest mt-auto">
+                  <a href="#program-basics">REVIEW PROGRAM BASICS</a>
                </Button>
             </motion.div>
 
@@ -146,7 +151,7 @@ export default function StartAProgram() {
          </div>
       </section>
 
-      <section className="py-16 bg-card border-y border-primary/20">
+      <section id="program-basics" className="py-16 bg-card border-y border-primary/20 scroll-mt-24">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
@@ -188,7 +193,7 @@ export default function StartAProgram() {
 
       <section className="py-20 text-center mb-10 bg-gradient-to-b from-transparent to-primary/5 border-b border-primary/10">
          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Get Started with IEN Today!</h2>
-         <p className="text-muted-foreground mb-8">Take the first step in bringing competitive gaming to your school.</p>
+         <p className="text-muted-foreground mb-8">Once you have reviewed the starter steps, schedule onboarding with the IEN team.</p>
          <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8">
             <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE AN ONBOARDING MEETING</a>
          </Button>

@@ -8,7 +8,6 @@ import { Trophy, Users, Gamepad2, Star, Calendar, FileText } from "lucide-react"
 import { RulesDialog, defaultTabForGame } from "@/components/rulesets/RulesetQuickView";
 import { getRulesetGame, type RulesTab, type RulesetGame } from "@/data/gameRules";
 import ihsenLogo from "@assets/IHSEN_Wordmark.png";
-import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 const games = [
   { name: "Valorant",            type: "Varsity A/AA + Club", color: "text-red-400",    border: "border-red-500/50",    roster: "5 starters | 2 subs",    platform: "PC" },
@@ -242,7 +241,7 @@ export default function IHSEN() {
             className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]"
             asChild
           >
-            <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">JOIN THE LEAGUE</a>
+            <Link href="/start-a-program">JOIN THE LEAGUE</Link>
           </Button>
           <Button
             size="lg"

@@ -9,7 +9,6 @@ import {
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import ienLogo from "@assets/IEN_LogoNavbar.png";
-import { ONBOARDING_URL } from "@/lib/socialLinks";
 
 type NavItem = {
   label: string;
@@ -168,7 +167,7 @@ export function Navbar() {
             );
           })}
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-6 ml-4">
-             <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">JOIN THE LEAGUE</a>
+             <Link href="/start-a-program">JOIN THE LEAGUE</Link>
           </Button>
         </nav>
 
@@ -235,7 +234,7 @@ export function Navbar() {
             );
           })}
           <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest mt-4">
-             <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">JOIN THE LEAGUE</a>
+             <Link href="/start-a-program" onClick={() => setIsOpen(false)}>JOIN THE LEAGUE</Link>
           </Button>
         </div>
       )}

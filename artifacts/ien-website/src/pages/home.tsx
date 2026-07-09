@@ -70,9 +70,7 @@ export default function Home() {
                 asChild
                 className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest text-lg h-14 px-8"
               >
-                <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">
-                  JOIN THE LEAGUE
-                </a>
+                <Link href="/start-a-program">JOIN THE LEAGUE</Link>
               </Button>
               <Button
                 size="lg"
