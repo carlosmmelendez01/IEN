@@ -23,16 +23,11 @@ export default function StartAProgram() {
             Start an Esports Program <br/>at Your School
           </h1>
           <p className="text-xl text-primary mb-8 font-light">
-            Review the path for new coaches, then schedule onboarding when your school is ready to talk through next steps.
+            Review the path for new coaches, then use the onboarding meeting in step one when your school is ready.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
-              <a href="#get-connected">VIEW STARTER STEPS</a>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-14 px-8">
-              <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE MEETING</a>
-            </Button>
-          </div>
+          <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+            <a href="#get-connected">VIEW STARTER STEPS</a>
+          </Button>
         </div>
       </section>
 
@@ -91,7 +86,7 @@ export default function StartAProgram() {
             >
                <div className="w-16 h-16 bg-background border-2 border-primary text-primary flex items-center justify-center rounded-full font-heading text-2xl font-bold mb-6 mx-auto shadow-[0_0_15px_rgba(212,175,55,0.2)]">2</div>
                <h3 className="font-heading font-bold text-xl text-white text-center mb-6">BUILD YOUR PROGRAM</h3>
-               <p className="text-sm text-muted-foreground mb-4">Set up your school's esports club or team:</p>
+               <p className="text-sm text-muted-foreground mb-4">After onboarding, IEN sends the next-step packet so your school can build its esports club or team:</p>
                <ul className="space-y-3 text-sm text-muted-foreground mb-8 flex-grow">
                   <li className="flex items-start gap-2">
                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></div>
@@ -110,9 +105,9 @@ export default function StartAProgram() {
                      <span>Prepare space and equipment</span>
                   </li>
                </ul>
-               <Button variant="outline" asChild className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest mt-auto">
-                  <a href="#program-basics">REVIEW PROGRAM BASICS</a>
-               </Button>
+               <div className="mt-auto rounded-lg border border-primary/25 bg-primary/10 p-4 text-xs text-primary font-medium leading-relaxed">
+                  Onboarding email includes the charter form, Discord invite, resource portal, calendars, and monthly coaches meeting link.
+               </div>
             </motion.div>
 
             <motion.div
@@ -149,6 +144,40 @@ export default function StartAProgram() {
                <p className="text-xs text-muted-foreground text-center mt-2">Available after your onboarding meeting is complete.</p>
             </motion.div>
          </div>
+      </section>
+
+      <section className="py-4 pb-16 container mx-auto px-4">
+        <div className="max-w-5xl mx-auto rounded-xl border border-primary/25 bg-card p-8">
+          <div className="flex flex-col md:flex-row md:items-start gap-6">
+            <div className="w-14 h-14 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary shrink-0">
+              <ClipboardCheck className="w-7 h-7" />
+            </div>
+            <div className="flex-1">
+              <p className="text-xs font-heading font-bold tracking-[0.24em] uppercase text-primary mb-2">
+                After Onboarding
+              </p>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
+                Schools Receive the Next-Step Email
+              </h2>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                After the onboarding meeting, IEN emails the coach a launch packet with the links needed to officially prepare for the season.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                {[
+                  "Team charter form",
+                  "IEN Discord invite",
+                  "Resource portal",
+                  "League calendars",
+                  "Monthly coaches meeting",
+                ].map((item) => (
+                  <div key={item} className="rounded-lg border border-primary/15 bg-background px-4 py-3 text-sm text-white/85">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="program-basics" className="py-16 bg-card border-y border-primary/20 scroll-mt-24">
@@ -192,11 +221,10 @@ export default function StartAProgram() {
       </section>
 
       <section className="py-20 text-center mb-10 bg-gradient-to-b from-transparent to-primary/5 border-b border-primary/10">
-         <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Get Started with IEN Today!</h2>
-         <p className="text-muted-foreground mb-8">Once you have reviewed the starter steps, schedule onboarding with the IEN team.</p>
-         <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8">
-            <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE AN ONBOARDING MEETING</a>
-         </Button>
+         <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Ready When Your School Is</h2>
+         <p className="text-muted-foreground max-w-2xl mx-auto">
+            Start with the onboarding meeting above, then use the emailed packet to submit your charter, join the coach community, review rules, and prepare for the season.
+         </p>
       </section>
 
     </Layout>
