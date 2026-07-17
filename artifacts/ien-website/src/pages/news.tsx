@@ -16,12 +16,14 @@ import {
   Layers,
   ClipboardList,
   Monitor,
+  Newspaper,
   Users,
   Trophy,
   Sparkles,
   Briefcase,
 } from "lucide-react";
 import drewRhodaPhoto from "@assets/state-finals/04-drew-rhoda-1200.jpg";
+import brandIdentityImage from "@assets/IEN_Horizontal Logo Transparent.png";
 
 type Category =
   | "Season Announcement"
@@ -30,6 +32,7 @@ type Category =
   | "League Operations"
   | "Registration Update"
   | "Website Update"
+  | "Press Release"
   | "Community"
   | "Event Recap"
   | "Program Spotlight"
@@ -42,6 +45,7 @@ const CATEGORY_STYLES: Record<Category, { icon: React.ComponentType<{ className?
   "League Operations":   { icon: Layers,         tone: "outline" },
   "Registration Update": { icon: ClipboardList,  tone: "outline" },
   "Website Update":      { icon: Monitor,        tone: "outline" },
+  "Press Release":       { icon: Newspaper,      tone: "solid"   },
   "Community":           { icon: Users,          tone: "outline" },
   "Event Recap":         { icon: Trophy,         tone: "solid"   },
   "Program Spotlight":   { icon: Sparkles,       tone: "outline" },
@@ -90,6 +94,59 @@ imageFocal?: string;
   featured?: boolean;
 }
 
+const BRAND_RELEASE_BODY = `INDIANA — July 17, 2026 — The Indiana Esports Network (IEN), a volunteer-driven, educator-led nonprofit serving scholastic esports programs across Indiana, has officially adopted a new brand identity and launched a redesigned website.
+
+The new identity represents the next chapter of IEN's work to provide accessible, equitable, and education-centered esports opportunities for Indiana students.
+
+More than a logo change, the rebrand reflects IEN's continued organizational growth, renewed leadership, and commitment to strengthening the support it provides to schools, coaches, students, families, and community partners throughout the state.
+
+"Indiana Esports Network has grown from an educator-led idea into a statewide community connecting schools and students through competition, leadership, and belonging," said Carlos Melendez, President of the Indiana Esports Network. "Our new identity honors the foundation built by the educators and volunteers who came before us while giving IEN a stronger, more unified presence for the future."
+
+IEN serves more than 200 schools across over 150 Indiana school districts through three primary networks:
+
+• The Indiana High School Esports Network
+• The Indiana Middle School Esports Network
+• Unified Esports programming in collaboration with Special Olympics Indiana
+
+Schools participate through one annual membership fee that provides access to eligible IEN programs, while students are never charged participation fees by the organization.
+
+The newly redesigned website will serve as a central destination for information about IEN's programs, competitions, school membership, resources, partnerships, collegiate opportunities, and statewide events. The site is designed to make it easier for educators, families, prospective members, and community partners to understand IEN's mission and become involved.
+
+The organization's adopted tagline, Education First. Esports Always., remains at the center of the new brand.
+
+"Our responsibility is not simply to operate esports competitions," Melendez said. "It is to create meaningful opportunities for students, support the educators leading these programs, and demonstrate that scholastic esports can strengthen education, career readiness, teamwork, and school engagement."
+
+IEN will begin transitioning its digital platforms, communications, event materials, apparel, and organizational resources to the new identity throughout the 2026–27 academic year.
+
+Schools will not be required to immediately replace existing jerseys, banners, equipment, or other materials displaying IEN's previous logo. The new identity will be introduced gradually as materials are updated, reordered, or newly created.
+
+The new brand will also support IEN's efforts to:
+
+• Improve communication and support for member schools
+• Expand middle school and Unified Esports opportunities
+• Strengthen statewide partnerships
+• Improve coach onboarding and organizational resources
+• Connect students with collegiate and career opportunities
+• Deliver more professional competitions, events, and broadcasts
+
+IEN's previous identity played an important role in establishing the organization and building its statewide community. The organization recognizes and celebrates the educators, volunteers, schools, partners, and students whose work created the foundation for this next chapter.
+
+To explore the new website and learn more about the Indiana Esports Network, visit indianaesportsnetwork.org.
+
+ABOUT THE INDIANA ESPORTS NETWORK
+
+The Indiana Esports Network is a 501(c)(3) nonprofit organization dedicated to advancing accessible, equitable, and education-centered scholastic esports across Indiana. Led by educators and volunteers, IEN supports high school, middle school, and Unified Esports programs while creating opportunities for competition, leadership, career exploration, and student belonging.
+
+Education First. Esports Always.
+
+MEDIA CONTACT
+
+Carlos Melendez
+President
+Indiana Esports Network
+ienboard@indianaesportsnetwork.org
+indianaesportsnetwork.org`;
+
 const FEATURED_BODY = `The Indiana Esports Network is preparing for one of the biggest evolutions in organization history. The 2026–27 season will introduce sweeping updates to divisions, game titles, registration workflows, support systems, and the broader infrastructure that powers Indiana scholastic esports.
 
 This year-long preview marks a turning point for IEN. After three years of rapid growth — from 30 founding programs to nearly 200 schools across IHSEN, IMSEN, and IUEN — the organization is doubling down on the systems that make competition feel professional, fair, and accessible to every Indiana student.
@@ -136,7 +193,7 @@ ROLLOUT TIMELINE
 • August 2026: Registration opens with Apex as a default IHSEN title
 • October 2026: Inaugural Apex Legends season begins
 
-Coaches with questions about transitioning Fortnite rosters into Apex teams can reach out at board@indianaesportsnetwork.org.`;
+Coaches with questions about transitioning Fortnite rosters into Apex teams can reach out at ienboard@indianaesportsnetwork.org.`;
 
 const COACH_BODY = `The Indiana Esports Network is proud to recognize Drew Rhoda as its first-ever Coach of the Year, honoring his leadership, mentorship, and lasting impact on the student competitors who pass through his program.
 
@@ -179,7 +236,7 @@ WHAT'S NEXT
 • September 2026: Per-title 1A/2A placements published
 • October 2026: First competitive matches under the new structure
 
-Coaches with questions about how their program will be placed under the new model can reach out at board@indianaesportsnetwork.org.`;
+Coaches with questions about how their program will be placed under the new model can reach out at ienboard@indianaesportsnetwork.org.`;
 
 const REGISTRATION_BODY = `Registration for the 2026–27 season will move to a redesigned, Google Forms-based intake process — a streamlined experience built around the realities of how Indiana schools, coaches, and athletic departments actually work.
 
@@ -220,7 +277,7 @@ The Hall of Champions deserves a special call-out. For the first time, every IEN
 ROLLOUT
 The new IEN website goes live this summer ahead of the 2026–27 registration window. All existing URLs will redirect to their new homes; coaches and schools should not need to update bookmarks.
 
-Feedback is welcome. Coaches and partners noticing anything that should be improved can reach out at board@indianaesportsnetwork.org.`;
+Feedback is welcome. Coaches and partners noticing anything that should be improved can reach out at ienboard@indianaesportsnetwork.org.`;
 
 const HECC_BODY = `The Indiana Esports Network is returning to the HECC Conference this year with a permanent booth presence, expanded community programming, and a possible Apex Legends live demonstration.
 
@@ -240,6 +297,18 @@ More information — booth location, daily schedule, demo windows — will be pu
 
 const POSTS: NewsPost[] = [
   {
+    id: 8,
+    date: "July 17, 2026",
+    author: "Indiana Esports Network",
+    category: "Press Release",
+    headline: "Indiana Esports Network Unveils New Brand Identity and Website",
+    excerpt:
+      "IEN's new visual identity reflects continued growth, statewide reach, and its commitment to education-first scholastic esports across Indiana.",
+    body: BRAND_RELEASE_BODY,
+    image: brandIdentityImage,
+    featured: true,
+  },
+  {
     id: 1,
     date: "May 2026",
     author: "IEN Staff",
@@ -249,7 +318,6 @@ const POSTS: NewsPost[] = [
       "The Indiana Esports Network is preparing for one of the biggest evolutions in organization history with updates to divisions, games, registration, support systems, and the future of Indiana scholastic esports.",
     body: FEATURED_BODY,
     image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=2400",
-    featured: true,
   },
   {
     id: 2,
@@ -500,7 +568,7 @@ export default function News() {
               asChild
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-6"
             >
-              <a href="mailto:board@indianaesportsnetwork.org">EMAIL US</a>
+              <a href="mailto:ienboard@indianaesportsnetwork.org">EMAIL US</a>
             </Button>
           </div>
         </div>

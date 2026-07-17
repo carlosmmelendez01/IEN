@@ -57,7 +57,7 @@ export default function Privacy() {
             </li>
             <li>
               <strong>Direct email contact.</strong> If you email us at{" "}
-              <a href="mailto:board@indianaesportsnetwork.org">board@indianaesportsnetwork.org</a>{" "}
+              <a href="mailto:ienboard@indianaesportsnetwork.org">ienboard@indianaesportsnetwork.org</a>{" "}
               or any address linked from the Site, we receive whatever you send and keep that message
               for as long as needed to respond and maintain records.
             </li>
@@ -131,7 +131,7 @@ export default function Privacy() {
             informational resource intended primarily for school staff, parents, and adult supporters.
             We do not knowingly collect personal information from children under 13 through the Site.
             If you believe a child under 13 has submitted personal information to us, please email{" "}
-            <a href="mailto:board@indianaesportsnetwork.org">board@indianaesportsnetwork.org</a>{" "}
+            <a href="mailto:ienboard@indianaesportsnetwork.org">ienboard@indianaesportsnetwork.org</a>{" "}
             and we will promptly delete it.
           </p>
           <p>
@@ -148,7 +148,7 @@ export default function Privacy() {
             </li>
             <li>
               <strong>Access, correction, or deletion.</strong> Email{" "}
-              <a href="mailto:board@indianaesportsnetwork.org">board@indianaesportsnetwork.org</a>{" "}
+              <a href="mailto:ienboard@indianaesportsnetwork.org">ienboard@indianaesportsnetwork.org</a>{" "}
               to request a copy of the information we hold about you, correct inaccurate information,
               or have your information deleted. We will respond within 30 days.
             </li>
@@ -175,8 +175,8 @@ export default function Privacy() {
           <h2>CONTACT</h2>
           <p>
             For any privacy question or request, email{" "}
-            <a href="mailto:board@indianaesportsnetwork.org" className="inline-flex items-center gap-1.5">
-              <Mail className="w-4 h-4" /> board@indianaesportsnetwork.org
+            <a href="mailto:ienboard@indianaesportsnetwork.org" className="inline-flex items-center gap-1.5">
+              <Mail className="w-4 h-4" /> ienboard@indianaesportsnetwork.org
             </a>
             .
           </p>

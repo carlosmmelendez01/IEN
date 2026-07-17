@@ -92,7 +92,7 @@ export default function Schools() {
     <Layout>
       <SEO
         title="Member Schools"
-        description="180+ schools competing across Indiana in the Indiana Esports Network's scholastic leagues."
+        description="200+ schools competing across Indiana in the Indiana Esports Network's scholastic leagues."
         path="/schools"
       />
 
@@ -103,7 +103,7 @@ export default function Schools() {
             MEMBER <span className="text-primary">SCHOOLS</span>
           </h1>
           <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto mb-8">
-            180+ schools competing across Indiana in the Esports Network
+            200+ schools competing across Indiana in the Esports Network
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
@@ -169,7 +169,7 @@ export default function Schools() {
             <div className="bg-card border border-primary/30 rounded-xl p-6 shadow-[0_0_20px_rgba(212,175,55,0.05)]">
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="text-center">
-                  <div className="text-4xl font-heading font-bold text-white">180+</div>
+                  <div className="text-4xl font-heading font-bold text-white">200+</div>
                   <div className="text-xs text-primary tracking-widest uppercase mt-1">Schools</div>
                 </div>
                 <div className="text-center">
@@ -554,7 +554,7 @@ export default function Schools() {
               the league. Click any program to visit its official page.
               {" "}Know a program we should add?{" "}
               <a
-                href="mailto:board@indianaesportsnetwork.org?subject=Collegiate%20Program%20Addition"
+                href="mailto:ienboard@indianaesportsnetwork.org?subject=Collegiate%20Program%20Addition"
                 className="text-primary hover:text-primary/80 underline-offset-2 hover:underline"
               >
                 Let us know

@@ -71,7 +71,7 @@ const impactAreas: Array<{
 
 const partnerMetrics = [
   {
-    value: "180+",
+    value: "200+",
     label: "Member Schools",
   },
   {
@@ -461,14 +461,14 @@ function PartnerCTA() {
                 variant="outline"
                 className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-8"
               >
-                <a href="mailto:board@indianaesportsnetwork.org?subject=IEN%20Partnership%20Inquiry">
+                <a href="mailto:ienboard@indianaesportsnetwork.org?subject=IEN%20Partnership%20Inquiry">
                   <Mail className="w-4 h-4 mr-2" />
                   Contact IEN
                 </a>
               </Button>
             </div>
             <p className="text-xs text-muted-foreground mt-4">
-              board@indianaesportsnetwork.org
+              ienboard@indianaesportsnetwork.org
             </p>
           </div>
         </div>

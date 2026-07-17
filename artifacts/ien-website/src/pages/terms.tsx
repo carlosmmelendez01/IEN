@@ -128,8 +128,8 @@ export default function Terms() {
           <h2>CONTACT</h2>
           <p>
             Questions about these Terms? Email{" "}
-            <a href="mailto:board@indianaesportsnetwork.org" className="inline-flex items-center gap-1.5">
-              <Mail className="w-4 h-4" /> board@indianaesportsnetwork.org
+            <a href="mailto:ienboard@indianaesportsnetwork.org" className="inline-flex items-center gap-1.5">
+              <Mail className="w-4 h-4" /> ienboard@indianaesportsnetwork.org
             </a>
             .
           </p>

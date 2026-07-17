@@ -70,7 +70,7 @@ function buildNewsletterMailto(state: FormState): string {
     `Role:      ${ROLE_OPTIONS.find((r) => r.value === state.role)?.label ?? "(not provided)"}`,
     `Interests: ${selectedInterests || "(none selected)"}`,
   ].join("\n");
-  return `mailto:board@indianaesportsnetwork.org?subject=${encodeURIComponent(
+  return `mailto:ienboard@indianaesportsnetwork.org?subject=${encodeURIComponent(
     "Newsletter signup"
   )}&body=${encodeURIComponent(body)}`;
 }

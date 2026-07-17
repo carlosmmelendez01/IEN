@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 
 const sponsorMetrics = [
-  { value: "180+", label: "Member Schools" },
+  { value: "200+", label: "Member Schools" },
   { value: "7,000+", label: "Student-Athletes" },
   { value: "3", label: "Middle School, High School, and Unified Programs" },
   { value: "Statewide", label: "Indiana Competition and Championships" },

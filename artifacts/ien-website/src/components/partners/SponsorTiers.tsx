@@ -114,7 +114,7 @@ export function SponsorTiers() {
                 }
               >
                 <a
-                  href={`mailto:board@indianaesportsnetwork.org?subject=${encodeURIComponent(
+                  href={`mailto:ienboard@indianaesportsnetwork.org?subject=${encodeURIComponent(
                     tier.subject,
                   )}`}
                 >
@@ -167,13 +167,13 @@ export function SponsorTiers() {
             asChild
             className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8 h-12"
           >
-            <a href="mailto:board@indianaesportsnetwork.org?subject=IEN%20Sponsorship%20Inquiry">
+            <a href="mailto:ienboard@indianaesportsnetwork.org?subject=IEN%20Sponsorship%20Inquiry">
               <Mail className="w-4 h-4 mr-2" />
               Contact Partnerships
             </a>
           </Button>
           <p className="text-xs text-muted-foreground mt-3">
-            board@indianaesportsnetwork.org
+            ienboard@indianaesportsnetwork.org
           </p>
         </div>
       </div>

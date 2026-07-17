@@ -51,10 +51,10 @@ export function Footer() {
               Indiana's official scholastic esports league, fostering community, competition, and career pathways through gaming since 2019.
             </p>
             <a
-              href="mailto:board@indianaesportsnetwork.org"
+              href="mailto:ienboard@indianaesportsnetwork.org"
               className="text-sm text-primary hover:underline"
             >
-              board@indianaesportsnetwork.org
+              ienboard@indianaesportsnetwork.org
             </a>
           </div>
 
