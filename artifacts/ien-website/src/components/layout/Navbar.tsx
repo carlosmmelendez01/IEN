@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
-import ienLogo from "@assets/IEN_LogoNavbar.png";
+import ienLogo from "@assets/IEN_Horizontal Logo Transparent.png";
 
 type NavItem = {
   label: string;
@@ -118,11 +118,11 @@ export function Navbar() {
           <img
             src={ienLogo}
             alt="Indiana Esports Network"
-            className="h-12 md:h-16 w-auto object-contain shrink-0"
+            className="h-14 md:h-[4.5rem] w-auto object-contain shrink-0"
           />
         </Link>
 
-        <nav aria-label="Primary" className="hidden md:flex items-center gap-6">
+        <nav aria-label="Primary" className="hidden lg:flex items-center gap-6">
           {NAV_ITEMS.map((item) => {
             const active = isActive(location, hash, item, NAV_ITEMS);
             if (item.children && item.children.length > 0) {
@@ -173,7 +173,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="md:hidden text-foreground"
+          className="lg:hidden text-foreground"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isOpen}
@@ -188,7 +188,7 @@ export function Navbar() {
           id="primary-mobile-navigation"
           role="navigation"
           aria-label="Primary mobile navigation"
-          className="md:hidden border-t border-primary/20 bg-background/95 px-4 py-4 space-y-4"
+          className="lg:hidden border-t border-primary/20 bg-background/95 px-4 py-4 space-y-4"
         >
           {NAV_ITEMS.map((item) => {
             const active = isActive(location, hash, item, NAV_ITEMS);

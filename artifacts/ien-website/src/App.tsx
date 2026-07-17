@@ -15,6 +15,8 @@ const IUEN = lazy(() => import("@/pages/iuen"));
 const Events = lazy(() => import("@/pages/events"));
 const Schools = lazy(() => import("@/pages/schools"));
 const Partners = lazy(() => import("@/pages/partners"));
+const Sponsor = lazy(() => import("@/pages/sponsor"));
+const Support = lazy(() => import("@/pages/support"));
 const PartnerWithIEN = lazy(() => import("@/pages/partner-with-ien"));
 const StartAProgram = lazy(() => import("@/pages/start-a-program"));
 const WhyEsports = lazy(() => import("@/pages/why-esports"));
@@ -45,6 +47,8 @@ function Router() {
       <Route path="/events" component={Events} />
       <Route path="/schools" component={Schools} />
       <Route path="/partners" component={Partners} />
+      <Route path="/sponsor" component={Sponsor} />
+      <Route path="/support" component={Support} />
       <Route path="/partner-with-ien" component={PartnerWithIEN} />
       <Route path="/start-a-program" component={StartAProgram} />
       <Route path="/why-esports" component={WhyEsports} />

@@ -4,111 +4,478 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ExternalLink, Check, ShoppingCart, Heart, Gift, Mail } from "lucide-react";
+import {
+  ArrowRight,
+  Briefcase,
+  Cpu,
+  ExternalLink,
+  GraduationCap,
+  HeartHandshake,
+  Mail,
+  MapPin,
+  Network,
+  School,
+  ShieldCheck,
+  Trophy,
+  type LucideIcon,
+} from "lucide-react";
+import {
+  featuredPartners,
+  partnerCategories,
+  type Partner,
+  type PartnerCategory,
+} from "@/data/partners";
+import ienMark from "@assets/IEN_Main Logo Transparent.png";
 
-import spinLogo from "@assets/White_SPIN_Icon_1776776398973.png";
-import gravityLogo from "@assets/Gravity_Gaming_Logo_1776776398973.png";
-import leagueOSLogo from "@assets/LeagueOS_1776776398973.jpg";
-import mcdonaldsLogo from "@assets/McDonald's_Golden_Arches_1776776398973.png";
-import zotacLogo from "@assets/Zotac_Vertical_Logo_1776776398973.png";
-import starfallLogo from "@assets/Sponsor_Logo_01_1776776398973.png";
-
-const featuredPartners = [
+const impactAreas: Array<{
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}> = [
   {
-    name: "Stay Plugged In (SPIN)",
-    url: "https://www.staypluggedin.com",
-    external: true,
-    description: "A leading gaming organization providing academic roadmapping, STEM and esports competitions, college recruitment, and career pathways for IEN students.",
-    display: (
-      <div className="flex items-center justify-center w-full h-full">
-        <img
-          src={spinLogo}
-          alt="Stay Plugged In (SPIN)"
-          className="h-14 w-auto object-contain mix-blend-screen"
-        />
-      </div>
-    ),
+    title: "State Championships",
+    description: "Supporting professional-quality statewide competition experiences.",
+    icon: Trophy,
   },
   {
-    name: "Gravity Gaming by ByteSpeed",
-    url: "https://www.bytespeed.com",
-    external: true,
-    description: "Hardware solutions and gaming rigs supporting IEN competition and events.",
-    display: (
-      <div className="flex items-center justify-center w-full h-full">
-        <div className="bg-white rounded-xl px-4 py-2 flex items-center justify-center">
-          <img
-            src={gravityLogo}
-            alt="Gravity Gaming by ByteSpeed"
-            className="h-10 w-auto object-contain"
-          />
-        </div>
-      </div>
-    ),
+    title: "College Pathways",
+    description:
+      "Connecting students with colleges, scholarships, and recruiting opportunities.",
+    icon: GraduationCap,
   },
   {
-    name: "LeagueOS",
-    url: "https://leagueos.gg",
-    external: true,
-    description: "The official league management platform for IEN scheduling, rosters, and standings.",
-    display: (
-      <div className="flex items-center justify-center w-full h-full">
-        <div className="bg-white rounded-xl px-4 py-2 flex items-center justify-center">
-          <img
-            src={leagueOSLogo}
-            alt="LeagueOS"
-            className="h-10 w-auto object-contain"
-          />
-        </div>
-      </div>
-    ),
+    title: "STEM and Career Exposure",
+    description:
+      "Helping students explore technology, cybersecurity, broadcasting, design, and esports careers.",
+    icon: Briefcase,
   },
   {
-    name: "McDonald's",
-    url: "https://www.mcdonalds.com",
-    external: true,
-    description: "Community sponsor supporting IEN events and student-athletes across Indiana.",
-    display: (
-      <div className="flex items-center justify-center w-full h-full">
-        <img
-          src={mcdonaldsLogo}
-          alt="McDonald's"
-          className="h-14 w-auto object-contain"
-        />
-      </div>
-    ),
+    title: "Competition Technology",
+    description:
+      "Providing the platforms, hardware, networking, and production tools that power IEN.",
+    icon: Cpu,
   },
   {
-    name: "Zotac Gaming",
-    url: "https://www.zotacgaming.com",
-    external: true,
-    description: "High-performance gaming hardware partner providing tournament-grade equipment for IEN events.",
-    display: (
-      <div className="flex items-center justify-center w-full h-full">
-        <img
-          src={zotacLogo}
-          alt="Zotac Gaming"
-          className="h-16 w-auto object-contain mix-blend-screen"
-        />
-      </div>
-    ),
+    title: "Inclusive Competition",
+    description:
+      "Expanding middle school, high school, and unified esports opportunities.",
+    icon: ShieldCheck,
   },
   {
-    name: "Starfall PR",
-    url: "https://www.starfallpr.com",
-    external: true,
-    description: "Public relations and communications partner amplifying IEN's mission statewide.",
-    display: (
-      <div className="flex items-center justify-center w-full h-full">
-        <img
-          src={starfallLogo}
-          alt="Starfall PR"
-          className="h-16 w-auto object-contain mix-blend-screen"
-        />
-      </div>
-    ),
+    title: "School Growth",
+    description:
+      "Helping more Indiana schools build sustainable scholastic esports programs.",
+    icon: School,
   },
 ];
+
+const partnerMetrics = [
+  {
+    value: "180+",
+    label: "Member Schools",
+  },
+  {
+    value: "7,000+",
+    label: "Student-Athletes",
+  },
+  {
+    value: "3",
+    label: "Programs: Middle School, High School, and Unified",
+  },
+  {
+    value: "Statewide",
+    label: "Indiana Competition and Championships",
+  },
+];
+
+function SectionHeader({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+}) {
+  return (
+    <div className="text-center max-w-3xl mx-auto mb-12">
+      {eyebrow && (
+        <div className="text-xs font-heading font-bold tracking-widest uppercase text-primary mb-3">
+          {eyebrow}
+        </div>
+      )}
+      <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
+        {title}
+      </h2>
+      {description && (
+        <p className="text-muted-foreground leading-relaxed">{description}</p>
+      )}
+    </div>
+  );
+}
+
+function LogoFrame({ partner, featured = false }: { partner: Partner; featured?: boolean }) {
+  const logoSize = featured ? "h-16 md:h-20" : "h-12";
+  const wrapperClass =
+    partner.logoTreatment === "light"
+      ? "bg-white rounded-lg px-4 py-3"
+      : "rounded-lg px-2 py-2";
+
+  return (
+    <div className="h-full min-h-20 flex items-center justify-center">
+      {partner.logo ? (
+        <div className={`flex items-center justify-center ${wrapperClass}`}>
+          <img
+            src={partner.logo}
+            alt={partner.logoAlt ?? `${partner.name} logo`}
+            className={`${logoSize} w-auto max-w-full object-contain`}
+          />
+        </div>
+      ) : (
+        <div
+          className={`${
+            featured ? "w-24 h-24 text-2xl" : "w-16 h-16 text-lg"
+          } rounded-lg border border-primary/30 bg-primary/10 text-primary font-heading font-bold flex items-center justify-center tracking-widest`}
+          aria-label={`${partner.name} text logo placeholder`}
+        >
+          {partner.initials ?? partner.name.slice(0, 2)}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Badge({ children }: { children: string }) {
+  return (
+    <span className="inline-flex w-fit items-center rounded border border-primary/30 bg-primary/10 px-2.5 py-1 text-[10px] font-heading font-bold uppercase tracking-widest text-primary">
+      {children}
+    </span>
+  );
+}
+
+function FeaturedPartnerCard({
+  partner,
+  index,
+}: {
+  partner: Partner;
+  index: number;
+}) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.08, duration: 0.4 }}
+      className="group h-full bg-card border border-primary/20 hover:border-primary rounded-lg p-6 md:p-7 flex flex-col gap-5 transition-all hover:-translate-y-1 hover:shadow-[0_0_24px_rgba(212,175,55,0.12)]"
+    >
+      <div className="min-h-28 flex items-center justify-center">
+        <LogoFrame partner={partner} featured />
+      </div>
+      <div className="flex flex-wrap gap-2">
+        <Badge>{partner.category}</Badge>
+        {partner.relationshipLabel && (
+          <span className="inline-flex w-fit items-center rounded border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-heading font-bold uppercase tracking-widest text-white/80">
+            {partner.relationshipLabel}
+          </span>
+        )}
+      </div>
+      <div>
+        <h3 className="text-2xl font-heading font-bold text-white mb-3">
+          {partner.name}
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          {partner.description}
+        </p>
+      </div>
+      {partner.url && (
+        <a
+          href={partner.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-auto inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-card rounded"
+        >
+          <ExternalLink className="w-4 h-4" />
+          <span className="font-heading font-bold tracking-widest uppercase">
+            {partner.linkLabel ?? `Visit ${partner.name}`}
+          </span>
+        </a>
+      )}
+    </motion.article>
+  );
+}
+
+function PartnerCard({ partner }: { partner: Partner }) {
+  return (
+    <article className="bg-background border border-primary/20 rounded-lg p-5 flex flex-col gap-4 min-h-full transition-colors hover:border-primary/70">
+      <div className="h-20 flex items-center justify-center">
+        <LogoFrame partner={partner} />
+      </div>
+      <div className="flex flex-col gap-2">
+        <Badge>{partner.category}</Badge>
+        {partner.relationshipLabel && (
+          <span className="text-xs text-white/70 font-medium">
+            {partner.relationshipLabel}
+          </span>
+        )}
+      </div>
+      <div>
+        <h4 className="font-heading font-bold text-white text-xl mb-2">
+          {partner.name}
+        </h4>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          {partner.description}
+        </p>
+      </div>
+      {partner.url ? (
+        <a
+          href={partner.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-auto inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
+        >
+          <ExternalLink className="w-4 h-4" />
+          <span className="font-heading font-bold tracking-widest uppercase">
+            {partner.linkLabel ?? `Visit ${partner.name}`}
+          </span>
+        </a>
+      ) : (
+        <div className="mt-auto inline-flex items-center gap-2 text-xs text-muted-foreground">
+          <MapPin className="w-4 h-4 text-primary" />
+          <span>Referenced in IEN event content</span>
+        </div>
+      )}
+    </article>
+  );
+}
+
+function PartnerCategorySection({ category }: { category: PartnerCategory }) {
+  if (category.partners.length === 0) return null;
+
+  return (
+    <section className="border border-primary/15 bg-card/50 rounded-lg p-5 md:p-6">
+      <div className="mb-6">
+        <h3 className="text-2xl font-heading font-bold text-white mb-2">
+          {category.title}
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl">
+          {category.description}
+        </p>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {category.partners.map((partner) => (
+          <PartnerCard key={partner.name} partner={partner} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function PartnerImpact() {
+  return (
+    <section className="py-20 border-y border-primary/15 bg-background/60">
+      <div className="container mx-auto px-4">
+        <SectionHeader
+          eyebrow="Partner Impact"
+          title="What Our Partners Make Possible"
+          description="IEN partners help create credible, student-centered esports experiences that connect competition with education, opportunity, and school growth."
+        />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto mb-12">
+          {partnerMetrics.map((metric) => (
+            <div
+              key={metric.label}
+              className="bg-card border border-primary/20 rounded-lg p-5 text-center"
+            >
+              <div className="text-3xl md:text-4xl font-heading font-bold text-primary mb-2">
+                {metric.value}
+              </div>
+              <div className="text-xs text-muted-foreground uppercase tracking-widest leading-relaxed">
+                {metric.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 max-w-6xl mx-auto">
+          {impactAreas.map((area, index) => {
+            const Icon = area.icon;
+            return (
+              <motion.article
+                key={area.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05, duration: 0.35 }}
+                className="bg-card border border-primary/20 rounded-lg p-6"
+              >
+                <div className="w-12 h-12 rounded-lg border border-primary/30 bg-primary/10 flex items-center justify-center mb-4">
+                  <Icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-heading font-bold text-white mb-2">
+                  {area.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {area.description}
+                </p>
+              </motion.article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PartnersHero() {
+  return (
+    <section className="relative min-h-[620px] py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
+      <div className="absolute inset-0 opacity-35">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.08)_1px,transparent_1px)] bg-[size:56px_56px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(212,175,55,0.16),transparent_26%),radial-gradient(circle_at_80%_70%,rgba(39,86,166,0.28),transparent_32%)]" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/20" />
+      <img
+        src={ienMark}
+        alt=""
+        aria-hidden="true"
+        className="absolute -right-16 md:right-8 bottom-4 w-64 md:w-96 opacity-[0.08] pointer-events-none"
+      />
+
+      <div className="container relative z-20 mx-auto px-4 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/15 border border-primary/40 rounded-full text-[10px] font-heading font-bold tracking-widest uppercase text-primary mb-5">
+            <Network className="w-3.5 h-3.5" />
+            IEN Partners
+          </div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white mb-6 tracking-tight">
+            Building Indiana&apos;s Esports Future Together
+          </h1>
+          <p className="text-lg md:text-xl text-gray-300 font-light max-w-3xl mx-auto mb-8 leading-relaxed">
+            Indiana Esports Network works with schools, colleges, technology
+            companies, venues, community organizations, and industry leaders to
+            create meaningful opportunities for students across Indiana.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              asChild
+              size="lg"
+              className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest text-base h-12 px-8"
+            >
+              <a href="#partner-with-ien">Partner With IEN</a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest text-base h-12 px-8"
+            >
+              <Link href="/support">Support IEN</Link>
+            </Button>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function FeaturedPartners() {
+  return (
+    <section className="py-20 container mx-auto px-4">
+      <SectionHeader
+        eyebrow="Featured Partners"
+        title="Featured Partners"
+        description="These partners are prominently represented across IEN's current site content and help power student pathways, competition technology, and event operations."
+      />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {featuredPartners.map((partner, index) => (
+          <FeaturedPartnerCard
+            key={partner.name}
+            partner={partner}
+            index={index}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function PartnerNetwork() {
+  return (
+    <section className="py-20 bg-background/70 border-y border-primary/15">
+      <div className="container mx-auto px-4">
+        <SectionHeader
+          eyebrow="Partner Network"
+          title="Our Partner Network"
+          description="Every organization in IEN's partner network plays a distinct role in supporting Indiana students, schools, coaches, and competitions."
+        />
+        <div className="space-y-6 max-w-6xl mx-auto">
+          {partnerCategories.map((category) => (
+            <PartnerCategorySection key={category.key} category={category} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PartnerCTA() {
+  return (
+    <section id="partner-with-ien" className="py-20 scroll-mt-20">
+      <div className="container mx-auto px-4">
+        <div className="relative overflow-hidden border border-primary/30 bg-card rounded-lg p-8 md:p-12 text-center">
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(212,175,55,0.10),transparent_34%,rgba(39,86,166,0.16))]" />
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/15 border border-primary/40 rounded-full text-[10px] font-heading font-bold tracking-widest uppercase text-primary mb-5">
+              <HeartHandshake className="w-3.5 h-3.5" />
+              Partner With IEN
+            </div>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-5">
+              Partner With IEN
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-8">
+              IEN works with organizations that believe esports can strengthen
+              education, expand career awareness, and create meaningful
+              opportunities for Indiana students. Partnerships may include event
+              sponsorship, technology support, student programming, scholarships,
+              recruiting, venue support, and community engagement.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
+              >
+                <Link href="/sponsor">
+                  Explore Partnership Opportunities
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-8"
+              >
+                <a href="mailto:board@indianaesportsnetwork.org?subject=IEN%20Partnership%20Inquiry">
+                  <Mail className="w-4 h-4 mr-2" />
+                  Contact IEN
+                </a>
+              </Button>
+            </div>
+            <p className="text-xs text-muted-foreground mt-4">
+              board@indianaesportsnetwork.org
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function Partners() {
   const [location] = useLocation();
@@ -127,374 +494,16 @@ export default function Partners() {
   return (
     <Layout>
       <SEO
-        title="Our Partners"
-        description="Featured partners and sponsors supporting the Indiana Esports Network and Indiana scholastic esports."
+        title="Partners"
+        description="Indiana Esports Network's partner ecosystem connecting schools, colleges, technology providers, venues, community organizations, and industry partners."
         path="/partners"
       />
 
-      <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-        <div className="container relative z-20 mx-auto px-4 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4 tracking-tight">
-              OUR <span className="text-primary">PARTNERS</span>
-            </h1>
-            <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto mb-8">
-              Working Together to Advance Scholastic Esports in Indiana
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest text-base h-12 px-8"
-              >
-                <a href="#become-a-sponsor">BECOME A SPONSOR</a>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest text-base h-12 px-8"
-              >
-                <a href="#ways-to-support">WAYS TO GIVE</a>
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-20 container mx-auto px-4">
-        <div className="flex items-center justify-center mb-12">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/40" />
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
-            Featured Partners
-          </span>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/40" />
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {featuredPartners.map((partner, i) => {
-            const inner = (
-              <>
-                <div className="h-20 flex items-center justify-center">
-                  {partner.display}
-                </div>
-                <div className="border-t border-primary/10 pt-4">
-                  <p className="text-xs text-muted-foreground leading-relaxed">{partner.description}</p>
-                </div>
-                <div className="flex items-center gap-1 text-xs text-primary/60 group-hover:text-primary transition-colors mt-auto">
-                  <ExternalLink className="w-3 h-3" />
-                  <span className="font-heading tracking-wide">Visit {partner.name}</span>
-                </div>
-              </>
-            );
-
-            const sharedClass =
-              "group bg-card border border-primary/20 hover:border-primary rounded-xl p-6 flex flex-col gap-4 transition-all hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(212,175,55,0.1)]";
-
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07, duration: 0.4 }}
-              >
-                {partner.external ? (
-                  <a href={partner.url} target="_blank" rel="noopener noreferrer" className={sharedClass}>
-                    {inner}
-                  </a>
-                ) : (
-                  <Link href={partner.url} className={sharedClass}>
-                    {inner}
-                  </Link>
-                )}
-              </motion.div>
-            );
-          })}
-        </div>
-      </section>
-
-      <section id="become-a-sponsor" className="py-20 bg-card scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">BECOME A SPONSOR</h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              IEN sponsorships put your brand in front of thousands of students, parents, and educators
-              across Indiana, at the middle school, high school, and unified levels. Every sponsorship
-              directly funds scholarships, equipment, and state championship events for Hoosier
-              student-athletes.
-            </p>
-            <div className="flex flex-wrap justify-center gap-8 mt-8 text-sm">
-              <div className="text-center">
-                <div className="text-3xl font-heading font-bold text-primary">180+</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-widest mt-1">Member Schools</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-heading font-bold text-primary">7,000+</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-widest mt-1">Student-Athletes</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-heading font-bold text-primary">3</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-widest mt-1">Divisions (HS / MS / Unified)</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-heading font-bold text-primary">501(c)(3)</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-widest mt-1">Tax-Deductible</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-
-            <div className="bg-background border border-primary/30 p-8 rounded-xl relative overflow-hidden flex flex-col">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gray-400 to-transparent" />
-              <div className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Tier 3</div>
-              <h3 className="font-heading font-bold text-xl text-white mb-2">Community Sponsor</h3>
-              <p className="text-sm text-muted-foreground mb-6">
-                Support local schools and regional events with entry-level brand presence.
-              </p>
-              <ul className="space-y-3 text-sm text-muted-foreground mb-8 flex-grow">
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Logo on IEN partners page</span>
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Regional event recognition</span>
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Social media shoutout</span>
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Quarterly IEN newsletter mention</span>
-                </li>
-              </ul>
-              <Button variant="outline" asChild className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
-                <a href="mailto:board@indianaesportsnetwork.org?subject=Community%20Sponsor%20Inquiry%20(Tier%203)">
-                  INQUIRE
-                </a>
-              </Button>
-            </div>
-
-            <div className="bg-background border-2 border-primary p-8 rounded-xl relative overflow-hidden flex flex-col transform md:-translate-y-4 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
-              <div className="absolute top-4 right-4 bg-primary text-primary-foreground text-[10px] font-heading font-bold tracking-widest uppercase px-2 py-1 rounded">
-                Most Visible
-              </div>
-              <div className="text-xs uppercase tracking-widest text-primary mb-1">Tier 1</div>
-              <h3 className="font-heading font-bold text-xl text-white mb-2">State Finals Sponsor</h3>
-              <p className="text-sm text-muted-foreground mb-6">
-                Premium placement at our largest event of the year, the IEN State Championships.
-              </p>
-              <ul className="space-y-3 text-sm text-muted-foreground mb-8 flex-grow">
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Top-tier logo on all State Finals materials</span>
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>On-stream broadcast mentions & lower-third</span>
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Venue signage &amp; booth space at Finals</span>
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Trophy / award presentation opportunity</span>
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Dedicated social campaign &amp; press release</span>
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Featured placement on IEN website</span>
-                </li>
-              </ul>
-              <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest">
-                <a href="mailto:board@indianaesportsnetwork.org?subject=State%20Finals%20Sponsor%20Inquiry%20(Tier%201)">
-                  INQUIRE
-                </a>
-              </Button>
-            </div>
-
-            <div className="bg-background border border-primary/30 p-8 rounded-xl relative overflow-hidden flex flex-col">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent" />
-              <div className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Tier 2</div>
-              <h3 className="font-heading font-bold text-xl text-white mb-2">Regional Sponsor</h3>
-              <p className="text-sm text-muted-foreground mb-6">
-                Strong brand presence at regional LAN events and across the IEN season.
-              </p>
-              <ul className="space-y-3 text-sm text-muted-foreground mb-8 flex-grow">
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Logo on regional event materials &amp; streams</span>
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Booth space at regional LANs</span>
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Social media campaign inclusion</span>
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Featured logo on IEN partners page</span>
-                </li>
-                <li className="flex gap-2">
-                  <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                  <span>Season-long newsletter recognition</span>
-                </li>
-              </ul>
-              <Button variant="outline" asChild className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
-                <a href="mailto:board@indianaesportsnetwork.org?subject=Regional%20Sponsor%20Inquiry%20(Tier%202)">
-                  INQUIRE
-                </a>
-              </Button>
-            </div>
-          </div>
-
-          <div className="max-w-4xl mx-auto mb-12">
-            <h3 className="text-center font-heading font-bold tracking-widest uppercase text-primary text-sm mb-8">
-              How to Become a Sponsor
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <div className="w-12 h-12 rounded-full border-2 border-primary text-primary font-heading font-bold text-xl flex items-center justify-center mx-auto mb-3">1</div>
-                <h4 className="font-heading font-bold text-white text-sm mb-1">Reach Out</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Email our partnerships team with the tier that fits your goals.
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="w-12 h-12 rounded-full border-2 border-primary text-primary font-heading font-bold text-xl flex items-center justify-center mx-auto mb-3">2</div>
-                <h4 className="font-heading font-bold text-white text-sm mb-1">Customize Your Package</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  We'll build a sponsorship that matches your brand and budget. Tiers are a starting point, not a ceiling.
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="w-12 h-12 rounded-full border-2 border-primary text-primary font-heading font-bold text-xl flex items-center justify-center mx-auto mb-3">3</div>
-                <h4 className="font-heading font-bold text-white text-sm mb-1">Activate</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Launch your campaign across IEN events, broadcasts, and digital channels.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8 h-12">
-              <a href="mailto:board@indianaesportsnetwork.org?subject=IEN%20Sponsorship%20Inquiry">
-                <Mail className="w-4 h-4 mr-2" />
-                CONTACT PARTNERSHIPS
-              </a>
-            </Button>
-            <p className="text-xs text-muted-foreground mt-3">
-              board@indianaesportsnetwork.org
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="ways-to-support" className="relative py-20 bg-card border-y border-primary/30 scroll-mt-20">
-
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/15 border border-primary/40 rounded-full text-[10px] font-heading font-bold tracking-widest uppercase text-primary mb-4">
-              <Heart className="w-3 h-3" />
-              Every Dollar Counts
-            </div>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">WAYS TO SUPPORT IEN</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Not every supporter has to be a corporate sponsor. Here are a few ways any fan, family, or
-              community member can help fund scholastic esports in Indiana, at no extra cost to you.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-
-            <div className="bg-background border border-primary/20 hover:border-primary rounded-xl p-6 flex flex-col transition-colors">
-              <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
-                <ShoppingCart className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-heading font-bold text-white text-lg mb-2">Walmart Spark Good</h3>
-              <p className="text-sm text-muted-foreground mb-6 flex-grow leading-relaxed">
-                Round up your Walmart purchase and send the change directly to IEN. Simple, fee-free, and
-                adds up fast across our supporter base.
-              </p>
-              <Button variant="outline" asChild className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
-                <a
-                  href="https://www.walmart.com/nonprofits/a49bd66d-f7de-4d0c-ab33-cf0a8fdd1b74"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  ROUND UP FOR IEN
-                </a>
-              </Button>
-            </div>
-
-            <div className="bg-background border border-primary/20 hover:border-primary rounded-xl p-6 flex flex-col transition-colors">
-              <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
-                <Heart className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-heading font-bold text-white text-lg mb-2">Kroger Community Rewards</h3>
-              <p className="text-sm text-muted-foreground mb-4 flex-grow leading-relaxed">
-                Link your Kroger Plus Card to IEN and a portion of every purchase is donated, at no cost
-                to you. Search for <span className="text-primary font-bold">&ldquo;Indiana Esports Network&rdquo;</span> or code
-                {" "}<span className="text-primary font-bold">YD133</span>.
-              </p>
-              <Button variant="outline" asChild className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
-                <a
-                  href="https://www.kroger.com/account/communityrewards"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  ENROLL WITH KROGER
-                </a>
-              </Button>
-            </div>
-
-            <div className="bg-background border border-primary/20 hover:border-primary rounded-xl p-6 flex flex-col transition-colors">
-              <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
-                <Gift className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-heading font-bold text-white text-lg mb-2">PayPal Giving Fund</h3>
-              <p className="text-sm text-muted-foreground mb-6 flex-grow leading-relaxed">
-                Make a one-time or recurring tax-deductible donation through PayPal Giving Fund. 100% of
-                your gift reaches IEN.
-              </p>
-              <Button variant="outline" asChild className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest">
-                <a
-                  href="https://www.paypal.com/us/fundraiser/charity/4539677"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  DONATE VIA PAYPAL
-                </a>
-              </Button>
-            </div>
-          </div>
-
-          <div className="max-w-3xl mx-auto mt-10 text-center">
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Indiana Esports Network Limited is a <span className="text-primary font-bold">501(c)(3) nonprofit</span> organization,
-              {" "}EIN <span className="text-primary font-bold">86-3901103</span>. All donations are tax-deductible to the full extent allowed by law.
-            </p>
-          </div>
-        </div>
-      </section>
-
+      <PartnersHero />
+      <PartnerImpact />
+      <FeaturedPartners />
+      <PartnerNetwork />
+      <PartnerCTA />
     </Layout>
   );
 }

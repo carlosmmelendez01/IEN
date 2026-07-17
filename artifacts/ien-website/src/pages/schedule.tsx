@@ -7,12 +7,12 @@ import { Calendar, School, DollarSign, Clock, ZoomIn, X, Download, ExternalLink,
 import { GAME_RULESET_LIBRARY_HREF } from "@/data/gameRules";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 
-import ihsenSeason from "@assets/IHSEN_26-27 Season.jpg";
-import ihsenPlayoffs from "@assets/IHSEN_26-27 Playoffs.jpg";
-import imsenFall from "@assets/IMSEN 26 Fall.jpg";
-import iuenFall from "@assets/IUEN 26 Fall.jpg";
-import imsenSpring from "@assets/IMSEN 27 Spring.jpg";
-import iuenSpring from "@assets/IUEN 27 Spring.jpg";
+import ihsenSeason from "@assets/IHSEN.png";
+import ihsenPlayoffs from "@assets/IHSEN Playoffs.png";
+import imsenFall from "@assets/IMSEN Fall.png";
+import iuenFall from "@assets/IUEN Fall.png";
+import imsenSpring from "@assets/IMSEN Spring.png";
+import iuenSpring from "@assets/IUEN Spring.png";
 
 function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
   return (
@@ -248,7 +248,7 @@ export default function Schedule() {
           alt="IHSEN 2026-2027 Regular Season Schedule"
           badge="IHSEN · Fall / Winter 2026"
           title="IHSEN Regular Season"
-          subtitle="High school competition across Valorant, Rocket League, League of Legends, Marvel Rivals, Smash Bros., Overwatch 2, Apex Legends, Chess, Minecraft, Mario Kart, Tetris, and iRacing. Varsity teams earn playoff seeding. Preseason begins October 12."
+          subtitle="High school competition across Apex Legends, Rocket League, Marvel Rivals, Chess, Minecraft, Smash Bros., Tetris, Valorant, Overwatch 2, Mario Kart, and iRacing. Varsity teams earn playoff seeding. Preseason begins October 12."
           dateRange="Oct 12, 2026 – Feb 8, 2027 (Registration opens Aug 10)"
           level="High School (Grades 9–12)"
           cost="$100 / school for Varsity · Free for Club"
@@ -281,7 +281,7 @@ export default function Schedule() {
           alt="IMSEN 2026-2027 Fall Schedule"
           badge="IMSEN · Fall 2026"
           title="IMSEN Fall Season"
-          subtitle="Middle school fall competition featuring Fortnite, Mario Kart 8 Deluxe, Minecraft, and Tetris. Fall season wraps with IMSEN Finals on December 12."
+          subtitle="Middle school fall competition featuring Marvel Rivals, Mario Kart 8 Deluxe, Minecraft, and Tetris. Fall season wraps with IMSEN Finals on December 12."
           dateRange="Aug 10 – Dec 12, 2026"
           level="Middle School (Grades 6–8)"
           cost="$100 / school for Varsity · Free for Club"
@@ -296,7 +296,7 @@ export default function Schedule() {
           alt="IMSEN 2026-2027 Spring Schedule"
           badge="IMSEN · Spring 2027"
           title="IMSEN Spring Season"
-          subtitle="Spring competition features Marvel Rivals, Super Smash Bros. Ultimate, Rocket League, and Chess. Spring registration opens November 30. Playoffs run March–April into the State Finals."
+          subtitle="Spring competition features Fortnite, Super Smash Bros. Ultimate, Rocket League, and Chess. Spring registration opens November 30. Playoffs run March–April into the State Finals."
           dateRange="Nov 30, 2026 – Apr 24, 2027"
           level="Middle School (Grades 6–8)"
           cost="$100 / school for Varsity · Free for Club"

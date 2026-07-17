@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import { RulesDialog, defaultTabForGame } from "@/components/rulesets/RulesetQuickView";
 import { getRulesetGame, type RulesTab, type RulesetGame } from "@/data/gameRules";
-import iuenLogo from "@assets/IUEN_Wordmark.png";
+import iuenLogo from "@assets/IEN_IUEN White Text.png";
 import { CHAMPIONS, type Champion } from "@/data/champions";
 import { findSchoolLogo } from "@/lib/schoolLogos";
 
@@ -149,7 +149,7 @@ export default function IUEN() {
             <img
               src={iuenLogo}
               alt="IUEN — Indiana Unified Esports Network logo"
-              className="h-32 w-auto object-contain drop-shadow-[0_0_30px_rgba(212,175,55,0.4)]"
+              className="h-auto max-h-32 w-full max-w-lg md:max-w-xl object-contain drop-shadow-[0_0_30px_rgba(212,175,55,0.4)]"
             />
           </motion.div>
 

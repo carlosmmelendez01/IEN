@@ -287,51 +287,39 @@ export default function Home() {
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
-          Upcoming Events
+          Upcoming Events & Registration
         </span>
         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
       </div>
 
       <section className="py-16 container mx-auto px-4 mb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="group relative overflow-hidden rounded-xl border border-primary/30 aspect-video bg-card hover:border-primary transition-colors">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity mix-blend-overlay" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-8 w-full">
-              <div className="text-primary font-bold text-sm tracking-widest mb-2">
-                APRIL 25, 2026
-              </div>
-              <h3 className="text-3xl font-heading font-bold text-white mb-2">
-                IEN SPRING FINALS 2026
-              </h3>
-              <p className="text-gray-300 mb-4">Riverview Health Arena · Noblesville, IN</p>
-              <Button
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                asChild
-              >
-                <Link href="/events">LEARN MORE</Link>
-              </Button>
+        <div className="relative overflow-hidden rounded-xl border border-primary/30 bg-card p-8 md:p-12 text-center shadow-[0_0_30px_rgba(212,175,55,0.08)]">
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.08)_1px,transparent_1px)] bg-[size:48px_48px] opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <div className="inline-block mb-4 px-3 py-1 bg-primary/15 border border-primary/40 text-primary text-xs font-heading font-bold tracking-widest rounded-full uppercase">
+              Registration Updates
             </div>
-          </div>
-
-          <div className="group relative overflow-hidden rounded-xl border border-primary/30 aspect-video bg-card hover:border-primary transition-colors">
-            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity mix-blend-overlay" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-8 w-full">
-              <div className="text-primary font-bold text-sm tracking-widest mb-2">
-                MARCH 29, 2026
-              </div>
-              <h3 className="text-3xl font-heading font-bold text-white mb-2">
-                IEN NIGHT WITH THE PACERS
-              </h3>
-              <p className="text-gray-300 mb-4">Gainbridge Fieldhouse · Career Fair · NBA 2K Final Four</p>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
+              Upcoming Event Registration
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              Registration links for upcoming IEN events will be posted as soon as events are announced.
+              Check the Events page for tickets, schedules, venue details, and public attendee registration.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                 asChild
+                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
               >
-                <Link href="/events">LEARN MORE</Link>
+                <Link href="/events">VIEW EVENTS & REGISTRATION</Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-8"
+              >
+                <Link href="/schedule">VIEW SEASON SCHEDULE</Link>
               </Button>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import ienLogo from "@assets/IEN_LogoFooter.png";
+import ienLogo from "@assets/IEN_Horizontal Logo Transparent.png";
 import { socialLinks, ONBOARDING_URL } from "@/lib/socialLinks";
 
 export function Footer() {
@@ -27,7 +27,7 @@ export function Footer() {
             ))}
           </div>
           <Link
-            href="/partners#ways-to-support"
+            href="/support"
             className="inline-flex items-center gap-2 font-heading font-bold tracking-widest text-sm uppercase px-5 py-2 border border-primary/40 text-primary rounded-lg hover:bg-primary/10 hover:border-primary transition-all"
           >
             <span>♥ Donate</span>
@@ -44,7 +44,7 @@ export function Footer() {
               <img
                 src={ienLogo}
                 alt="Indiana Esports Network"
-                className="h-20 w-auto object-contain shrink-0"
+                className="h-24 md:h-28 w-auto object-contain shrink-0"
               />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mb-5">
@@ -69,6 +69,8 @@ export function Footer() {
               <li><Link href="/schedule" className="hover:text-primary transition-colors">Schedule</Link></li>
               <li><Link href="/schools" className="hover:text-primary transition-colors">Schools</Link></li>
               <li><Link href="/partners" className="hover:text-primary transition-colors">Partners</Link></li>
+              <li><Link href="/sponsor" className="hover:text-primary transition-colors">Sponsor IEN</Link></li>
+              <li><Link href="/support" className="hover:text-primary transition-colors">Support IEN</Link></li>
               <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
             </ul>
           </div>
@@ -114,7 +116,7 @@ export function Footer() {
             <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>
             <Link href="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
             <Link
-              href="/partners#ways-to-support"
+              href="/support"
               className="hover:text-primary transition-colors"
             >
               Donate

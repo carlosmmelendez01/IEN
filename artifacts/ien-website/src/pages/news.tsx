@@ -102,8 +102,8 @@ GAMES
 • Marvel Rivals and iRacing return after strong inaugural seasons
 
 DIVISIONS
-• IHSEN Varsity moves from three divisions (previously A / AA / AAA) to a two-division structure: A and AA
-• Placement is set per title each season — smaller schools generally in A, larger in AA — with the line adjusted to keep brackets competitive
+• IHSEN Varsity moves from three divisions to a two-division structure: 1A and 2A
+• Placement is set per title each season — smaller schools generally in 1A, larger in 2A — with the line adjusted to keep brackets competitive
 • The result: tighter, more competitive playoff brackets and clearer pathways from the regular season into State Finals
 
 REGISTRATION
@@ -156,17 +156,17 @@ Drew was officially recognized at the 2026 IEN State Finals in front of more tha
 
 The Coach of the Year award becomes a permanent IEN tradition, with future honorees selected each spring through a combination of peer nominations and IEN leadership review. Coaches interested in nominating a colleague for the 2026–27 season can submit nominations beginning January 2027.`;
 
-const DIVISION_BODY = `The Indiana Esports Network has announced a new IHSEN Varsity division structure for the 2026–27 season: a two-division model — Division A and Division AA — replacing the prior three-division alignment. The change is designed to improve competitive balance, simplify scheduling, and create a cleaner playoff bracket from the regular season through State Finals.
+const DIVISION_BODY = `The Indiana Esports Network has announced a new IHSEN Varsity division structure for the 2026–27 season: a two-division model — Division 1A and Division 2A — replacing the prior three-division alignment. The change is designed to improve competitive balance, simplify scheduling, and create a cleaner playoff bracket from the regular season through State Finals.
 
 THE NEW STRUCTURE
 IHSEN Varsity will compete across two divisions:
-• Division A — generally smaller-enrollment programs
-• Division AA — generally larger-enrollment programs
+• Division 1A — generally smaller-enrollment programs
+• Division 2A — generally larger-enrollment programs
 
-Placement is set per title each season. Smaller schools generally land in A and larger schools in AA, but the exact dividing line is adjusted by IEN league operations based on which schools register for that title — keeping each bracket competitive instead of locking a school into a fixed division across every game.
+Placement is set per title each season. Smaller schools generally land in 1A and larger schools in 2A, but the exact dividing line is adjusted by IEN league operations based on which schools register for that title — keeping each bracket competitive instead of locking a school into a fixed division across every game.
 
 WHAT THIS CHANGES
-• Three divisions (previously A, AA, AAA) consolidate into two: A and AA
+• Three divisions consolidate into two: 1A and 2A
 • Per-title placement replaces a single school-wide division assignment
 • Club tier is unchanged — new schools still play one semester of Club before moving up to Varsity
 • IMSEN and IUEN are not affected by this change
@@ -176,7 +176,7 @@ The IEN coaching council has been clear: the best esports seasons are the ones w
 
 WHAT'S NEXT
 • August 2026: 2026–27 registration opens with the new model
-• September 2026: Per-title A/AA placements published
+• September 2026: Per-title 1A/2A placements published
 • October 2026: First competitive matches under the new structure
 
 Coaches with questions about how their program will be placed under the new model can reach out at board@indianaesportsnetwork.org.`;
@@ -279,9 +279,9 @@ const POSTS: NewsPost[] = [
     date: "May 2026",
     author: "IEN Staff",
     category: "League Operations",
-    headline: "IHSEN Announces New A & AA Division Structure for 2026–27",
+    headline: "IHSEN Announces New 1A & 2A Division Structure for 2026–27",
     excerpt:
-      "IHSEN Varsity moves from three divisions to two — A and AA — with per-title placement to keep brackets competitive.",
+      "IHSEN Varsity moves from three divisions to two — 1A and 2A — with per-title placement to keep brackets competitive.",
     body: DIVISION_BODY,
     image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=1600",
   },

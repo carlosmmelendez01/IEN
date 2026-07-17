@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Trophy, Users, Gamepad2, Star, Calendar, FileText } from "lucide-react";
 import { RulesDialog, defaultTabForGame } from "@/components/rulesets/RulesetQuickView";
 import { getRulesetGame, type RulesTab, type RulesetGame } from "@/data/gameRules";
-import imsenLogo from "@assets/IMSEN_Wordmark.png";
+import imsenLogo from "@assets/IEN_IMSEN White Text .png";
 
 const games = [
   { name: "Rocket League",       type: "Varsity + Club", color: "text-blue-400",   border: "border-blue-500/50",   roster: "3 starters | 2 subs",  platform: "Cross-platform" },
@@ -58,7 +58,7 @@ export default function IMSEN() {
             <img
               src={imsenLogo}
               alt="IMSEN Logo"
-              className="h-32 w-auto object-contain drop-shadow-[0_0_30px_rgba(212,175,55,0.4)]"
+              className="h-auto max-h-32 w-full max-w-xl md:max-w-2xl object-contain drop-shadow-[0_0_30px_rgba(212,175,55,0.4)]"
             />
           </motion.div>
 

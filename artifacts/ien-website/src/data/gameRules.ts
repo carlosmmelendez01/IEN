@@ -42,7 +42,7 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "valorant",
     name: "Valorant",
-    type: "Varsity A/AA + Club",
+    type: "Varsity 1A/2A + Club",
     color: "#ff5d67",
     platform: "PC",
     roster: "5 starters / 2 substitutes",
@@ -54,7 +54,7 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "apex-legends",
     name: "Apex Legends",
-    type: "Varsity A/AA + Club",
+    type: "Varsity 1A/2A + Club",
     color: "#b56dff",
     platform: "PC",
     roster: "3 starters / 2 substitutes",
@@ -66,7 +66,7 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "rocket-league",
     name: "Rocket League",
-    type: "Varsity A/AA + Club",
+    type: "Varsity 1A/2A + Club",
     color: "#4da0ff",
     platform: "Cross-platform",
     roster: "3 starters / 2 substitutes",
@@ -78,7 +78,7 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "league-of-legends",
     name: "League of Legends",
-    type: "Varsity A/AA + Club",
+    type: "Varsity 1A/2A + Club",
     color: "#f5c542",
     platform: "PC",
     roster: "5 starters / 2 substitutes",
@@ -90,7 +90,7 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "overwatch-2",
     name: "Overwatch 2",
-    type: "Varsity A/AA + Club",
+    type: "Varsity 1A/2A + Club",
     color: "#ff8a24",
     platform: "Cross-platform",
     roster: "5 starters / 2 substitutes",
@@ -102,7 +102,7 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "super-smash-bros",
     name: "Super Smash Bros.",
-    type: "Varsity A/AA + Club",
+    type: "Varsity 1A/2A + Club",
     color: "#ff5eb8",
     platform: "Nintendo Switch",
     roster: "4 starters / 2 substitutes",
@@ -114,7 +114,7 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "mario-kart-8-deluxe",
     name: "Mario Kart 8 Deluxe",
-    type: "Varsity A/AA + Club",
+    type: "Varsity 1A/2A + Club",
     color: "#ff7676",
     platform: "Nintendo Switch",
     roster: "4 starters / 2 substitutes",
@@ -126,7 +126,7 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "minecraft",
     name: "Minecraft",
-    type: "Varsity A/AA",
+    type: "Varsity 1A/2A",
     color: "#23d37b",
     platform: "PC",
     roster: "Varies by format",
@@ -138,7 +138,7 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "marvel-rivals",
     name: "Marvel Rivals",
-    type: "Varsity A/AA + Club",
+    type: "Varsity 1A/2A + Club",
     color: "#ff5275",
     platform: "PC",
     roster: "6 starters / 2 substitutes",

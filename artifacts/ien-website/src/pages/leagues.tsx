@@ -7,31 +7,29 @@ import { motion } from "framer-motion";
 import { FileText, Download, ExternalLink } from "lucide-react";
 import {
   RulesDialog,
-  RulesetLibrary,
   defaultTabForGame,
 } from "@/components/rulesets/RulesetQuickView";
 import {
   RULEBOOK_HREF,
   getRulesetGame,
-  rulesetGames,
   type LeagueKey,
   type RulesTab,
   type RulesetGame,
 } from "@/data/gameRules";
-import ihsenLogo from "@assets/IHSEN_Wordmark.png";
-import imsenLogo from "@assets/IMSEN_Wordmark.png";
-import iuenLogo from "@assets/IUEN_Wordmark.png";
+import ihsenLogo from "@assets/IEN_IHSEN White Text.png";
+import imsenLogo from "@assets/IEN_IMSEN White Text .png";
+import iuenLogo from "@assets/IEN_IUEN White Text.png";
 
 const ihsenGames = [
-  { name: "Valorant", type: "Varsity A/AA + Club", color: "border-red-500/60 text-red-400" },
-  { name: "Apex Legends", type: "Varsity A/AA + Club", color: "border-purple-500/60 text-purple-400" },
-  { name: "Rocket League", type: "Varsity A/AA + Club", color: "border-blue-500/60 text-blue-400" },
-  { name: "League of Legends", type: "Varsity A/AA + Club", color: "border-yellow-500/60 text-yellow-400" },
-  { name: "Overwatch 2", type: "Varsity A/AA + Club", color: "border-orange-500/60 text-orange-400" },
-  { name: "Super Smash Bros.", type: "Varsity A/AA + Club", color: "border-pink-500/60 text-pink-400" },
-  { name: "Mario Kart 8 Deluxe", type: "Varsity A/AA + Club", color: "border-red-600/60 text-red-300" },
-  { name: "Minecraft", type: "Varsity A/AA", color: "border-green-500/60 text-green-400" },
-  { name: "Marvel Rivals", type: "Varsity A/AA + Club", color: "border-rose-500/60 text-rose-400" },
+  { name: "Valorant", type: "Varsity 1A/2A + Club", color: "border-red-500/60 text-red-400" },
+  { name: "Apex Legends", type: "Varsity 1A/2A + Club", color: "border-purple-500/60 text-purple-400" },
+  { name: "Rocket League", type: "Varsity 1A/2A + Club", color: "border-blue-500/60 text-blue-400" },
+  { name: "League of Legends", type: "Varsity 1A/2A + Club", color: "border-yellow-500/60 text-yellow-400" },
+  { name: "Overwatch 2", type: "Varsity 1A/2A + Club", color: "border-orange-500/60 text-orange-400" },
+  { name: "Super Smash Bros.", type: "Varsity 1A/2A + Club", color: "border-pink-500/60 text-pink-400" },
+  { name: "Mario Kart 8 Deluxe", type: "Varsity 1A/2A + Club", color: "border-red-600/60 text-red-300" },
+  { name: "Minecraft", type: "Varsity 1A/2A", color: "border-green-500/60 text-green-400" },
+  { name: "Marvel Rivals", type: "Varsity 1A/2A + Club", color: "border-rose-500/60 text-rose-400" },
   { name: "Chess", type: "Tournament", color: "border-gray-400/60 text-gray-300" },
   { name: "Tetris", type: "Tournament", color: "border-cyan-500/60 text-cyan-400" },
   { name: "iRacing", type: "Tournament", color: "border-amber-500/60 text-amber-400" },
@@ -212,7 +210,7 @@ export default function Leagues() {
               <img
                 src={league.logo}
                 alt={`${league.title} logo`}
-                className="w-full max-w-xs h-16 object-contain mb-6 drop-shadow-[0_0_20px_rgba(212,175,55,0.25)]"
+                className="w-full max-w-xs h-20 object-contain mb-6 drop-shadow-[0_0_20px_rgba(212,175,55,0.25)]"
               />
               <p className="text-primary text-sm font-medium mb-4">{league.subtitle}</p>
               <p className="text-muted-foreground text-sm mb-8 flex-grow">{league.desc}</p>
@@ -431,38 +429,13 @@ export default function Leagues() {
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
           <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
-            Rules &amp; Resources
+            League Resources
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
         </div>
         <p className="text-center text-muted-foreground text-sm mb-10">
           Official rulebooks, platform guides, and policy documents for coaches, administrators, and players
         </p>
-
-        <div className="max-w-6xl mx-auto mb-16">
-          <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary">
-                Game Rulesets
-              </p>
-              <h3 className="mt-2 text-2xl md:text-3xl font-heading font-bold text-white">
-                Title Rules Quick View
-              </h3>
-            </div>
-            <p className="max-w-xl text-sm text-muted-foreground md:text-right">
-              Open the coach quick guide for a title, then jump to the official rules document when needed.
-            </p>
-          </div>
-          <RulesetLibrary games={rulesetGames} onOpenRules={(game) => openRuleset(game)} />
-        </div>
-
-        <div className="mb-6 flex items-center justify-center">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-2xl">
-            League Resources
-          </span>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
-        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {resources.map((res, i) => (
@@ -506,36 +479,6 @@ export default function Leagues() {
               </a>
             </motion.div>
           ))}
-        </div>
-
-        <div className="mt-16 max-w-5xl mx-auto">
-          <div className="flex items-center justify-center mb-8">
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
-              Season Calendars
-            </span>
-            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {[
-              { label: "IHSEN 2026–27 Calendar", href: "/IHSEN_Calendar_2026-2027.pdf" },
-              { label: "IMSEN 2026–27 Calendar", href: "/IMSEN_Calendar_2026-2027.pdf" },
-              { label: "IUEN 2026–27 Calendar", href: "/IUEN_Calendar_2026-2027.pdf" },
-            ].map((cal, i) => (
-              <a
-                key={i}
-                href={cal.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between gap-3 bg-card border border-primary/20 hover:border-primary px-5 py-4 rounded-xl transition-colors group"
-              >
-                <span className="text-sm font-medium text-white group-hover:text-primary transition-colors">
-                  {cal.label}
-                </span>
-                <Download className="w-4 h-4 text-primary shrink-0" />
-              </a>
-            ))}
-          </div>
         </div>
       </section>
 

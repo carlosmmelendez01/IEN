@@ -1,0 +1,1439 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Indiana Esports Network - WordPress Full Site Mockup</title>
+    <style>
+      :root {
+        --ink: #f8fafc;
+        --muted: #aab2c4;
+        --gold: #e1af13;
+        --gold-soft: #ffd95f;
+        --navy: #051945;
+        --midnight: #070915;
+        --panel: #10182b;
+        --panel-2: #172039;
+        --line: rgba(255, 255, 255, 0.12);
+        --line-gold: rgba(225, 175, 19, 0.42);
+        --red: #b72944;
+        --cyan: #5fd4ff;
+        --green: #6ee7b7;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          linear-gradient(180deg, rgba(5, 25, 69, 0.85), rgba(7, 9, 21, 0.92) 48%, #070915),
+          #070915;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .site-shell {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .utility-bar {
+        background: #020817;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+        color: #d8dce8;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .utility-inner,
+      .nav-inner,
+      .section-inner {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .utility-inner {
+        min-height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .utility-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        color: var(--muted);
+      }
+
+      .site-nav {
+        position: sticky;
+        z-index: 50;
+        top: 0;
+        background: rgba(5, 13, 35, 0.9);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav-inner {
+        min-height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        min-width: 220px;
+      }
+
+      .brand img {
+        width: 58px;
+        height: 58px;
+        object-fit: contain;
+      }
+
+      .brand-copy {
+        display: grid;
+        gap: 2px;
+      }
+
+      .brand-title {
+        color: white;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        line-height: 1;
+      }
+
+      .brand-subtitle {
+        color: var(--gold-soft);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        color: #e5e7eb;
+        font-size: 0.88rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .nav-links a {
+        padding: 12px 10px;
+        border-radius: 6px;
+      }
+
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--gold-soft);
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        padding: 0 18px;
+        color: #08111f;
+        background: var(--gold);
+        font-weight: 950;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        box-shadow: 0 10px 26px rgba(225, 175, 19, 0.2);
+        transition:
+          transform 160ms ease,
+          border-color 160ms ease,
+          background 160ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+        background: var(--gold-soft);
+      }
+
+      .button.secondary {
+        color: white;
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--line-gold);
+        box-shadow: none;
+      }
+
+      .button.secondary:hover {
+        background: rgba(225, 175, 19, 0.12);
+      }
+
+      .hero {
+        position: relative;
+        min-height: 720px;
+        display: grid;
+        align-items: end;
+        isolation: isolate;
+      }
+
+      .hero::before {
+        position: absolute;
+        inset: 0;
+        z-index: -3;
+        background-image: url("../../attached_assets/state-finals/01-greencastle-hero-2400.jpg");
+        background-position: center;
+        background-size: cover;
+        content: "";
+        transform: scale(1.03);
+      }
+
+      .hero::after {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background:
+          linear-gradient(90deg, rgba(4, 8, 22, 0.92), rgba(4, 8, 22, 0.58) 50%, rgba(4, 8, 22, 0.8)),
+          linear-gradient(180deg, rgba(4, 8, 22, 0.12), rgba(4, 8, 22, 0.76) 72%, #070915);
+        content: "";
+      }
+
+      .hero-grid {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 92px 0 54px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.58fr);
+        align-items: end;
+        gap: 40px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        margin-bottom: 18px;
+        padding: 8px 12px;
+        border: 1px solid rgba(225, 175, 19, 0.46);
+        border-radius: 999px;
+        color: var(--gold-soft);
+        background: rgba(225, 175, 19, 0.1);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .pulse {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 0 6px rgba(110, 231, 183, 0.12);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 810px;
+        color: white;
+        font-size: clamp(3.2rem, 8vw, 7.6rem);
+        font-weight: 1000;
+        letter-spacing: 0;
+        line-height: 0.9;
+        text-transform: uppercase;
+        text-wrap: balance;
+      }
+
+      h1 span,
+      .gold-text {
+        color: var(--gold-soft);
+      }
+
+      .hero-copy {
+        max-width: 680px;
+        margin-top: 24px;
+        color: #e2e8f0;
+        font-size: clamp(1.12rem, 2vw, 1.5rem);
+        line-height: 1.5;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 32px;
+      }
+
+      .hero-panel {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 8px;
+        background: rgba(8, 17, 37, 0.76);
+        box-shadow: 0 20px 70px rgba(0, 0, 0, 0.36);
+        overflow: hidden;
+      }
+
+      .panel-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 18px 18px 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .panel-heading strong {
+        color: white;
+        font-size: 0.9rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .season-pill {
+        padding: 6px 9px;
+        border-radius: 4px;
+        color: #08111f;
+        background: var(--gold);
+        font-size: 0.72rem;
+        font-weight: 1000;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .hero-event {
+        padding: 18px;
+      }
+
+      .event-date {
+        color: var(--gold-soft);
+        font-size: 0.82rem;
+        font-weight: 950;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .hero-event h2 {
+        margin-top: 8px;
+        color: white;
+        font-size: 2rem;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .hero-event p {
+        margin-top: 12px;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .scoreboard {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .score {
+        min-height: 98px;
+        display: grid;
+        align-content: center;
+        gap: 4px;
+        padding: 12px;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+      }
+
+      .score:last-child {
+        border-right: 0;
+      }
+
+      .score b {
+        color: var(--gold-soft);
+        font-size: 2.2rem;
+        line-height: 1;
+      }
+
+      .score span {
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .content-band {
+        position: relative;
+        padding: 84px 0;
+      }
+
+      .content-band.alt {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.015));
+        border-block: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .section-header {
+        display: grid;
+        grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.28fr);
+        align-items: end;
+        gap: 32px;
+        margin-bottom: 30px;
+      }
+
+      .section-label {
+        color: var(--gold-soft);
+        font-size: 0.78rem;
+        font-weight: 950;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .section-header h2 {
+        margin-top: 8px;
+        color: white;
+        font-size: clamp(2rem, 4.2vw, 4.1rem);
+        line-height: 0.98;
+        text-transform: uppercase;
+        text-wrap: balance;
+      }
+
+      .section-header p {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .league-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .league-card {
+        position: relative;
+        min-height: 360px;
+        display: grid;
+        align-content: end;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        background: #111827;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+      }
+
+      .league-card::after {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(7, 9, 21, 0.08), rgba(7, 9, 21, 0.92) 78%),
+          linear-gradient(90deg, rgba(225, 175, 19, 0.12), transparent);
+        content: "";
+      }
+
+      .league-card img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.7;
+      }
+
+      .league-body {
+        position: relative;
+        z-index: 1;
+        padding: 24px;
+      }
+
+      .league-tag {
+        width: fit-content;
+        margin-bottom: 12px;
+        padding: 6px 9px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 4px;
+        color: var(--gold-soft);
+        background: rgba(0, 0, 0, 0.34);
+        font-size: 0.74rem;
+        font-weight: 950;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .league-card h3 {
+        color: white;
+        font-size: 2.2rem;
+        line-height: 0.96;
+        text-transform: uppercase;
+      }
+
+      .league-card p {
+        margin-top: 12px;
+        color: #d1d5db;
+        line-height: 1.55;
+      }
+
+      .news-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.62fr) minmax(280px, 0.38fr);
+        gap: 22px;
+      }
+
+      .featured-post,
+      .post-list,
+      .schedule-box,
+      .schools-card,
+      .champion-card,
+      .partner-card,
+      .newsletter {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        background: rgba(16, 24, 43, 0.82);
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+      }
+
+      .featured-post {
+        overflow: hidden;
+      }
+
+      .featured-post img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+      }
+
+      .post-body {
+        padding: 24px;
+      }
+
+      .post-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        color: var(--gold-soft);
+        font-size: 0.76rem;
+        font-weight: 950;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .featured-post h3 {
+        margin-top: 12px;
+        color: white;
+        font-size: clamp(1.8rem, 3vw, 3rem);
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .featured-post p {
+        margin-top: 14px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .post-list {
+        display: grid;
+        overflow: hidden;
+      }
+
+      .mini-post {
+        display: grid;
+        grid-template-columns: 112px 1fr;
+        gap: 16px;
+        padding: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .mini-post:last-child {
+        border-bottom: 0;
+      }
+
+      .mini-post img {
+        width: 112px;
+        height: 86px;
+        border-radius: 6px;
+        object-fit: cover;
+      }
+
+      .mini-post h3 {
+        margin-top: 6px;
+        color: white;
+        font-size: 1rem;
+        line-height: 1.2;
+        text-transform: uppercase;
+      }
+
+      .schedule-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .schedule-box {
+        min-height: 210px;
+        display: grid;
+        align-content: space-between;
+        padding: 18px;
+      }
+
+      .schedule-box .month {
+        color: var(--gold-soft);
+        font-size: 0.82rem;
+        font-weight: 950;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .schedule-box h3 {
+        margin-top: 16px;
+        color: white;
+        font-size: 1.35rem;
+        line-height: 1.05;
+        text-transform: uppercase;
+      }
+
+      .schedule-box p {
+        margin-top: 10px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .schedule-box .league-chip {
+        width: fit-content;
+        margin-top: 20px;
+        padding: 6px 9px;
+        border-radius: 999px;
+        color: white;
+        background: rgba(255, 255, 255, 0.08);
+        font-size: 0.72rem;
+        font-weight: 950;
+        letter-spacing: 0.12em;
+      }
+
+      .directory-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+        gap: 22px;
+        align-items: stretch;
+      }
+
+      .schools-card {
+        padding: 24px;
+      }
+
+      .schools-card h3,
+      .champions-header h3,
+      .partner-card h3,
+      .newsletter h3 {
+        color: white;
+        font-size: 2rem;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .schools-card p,
+      .partner-card p,
+      .newsletter p {
+        margin-top: 12px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .school-search {
+        margin-top: 22px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+      }
+
+      .school-search input,
+      .newsletter input {
+        min-height: 46px;
+        width: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 6px;
+        padding: 0 14px;
+        color: white;
+        background: rgba(255, 255, 255, 0.06);
+        font: inherit;
+      }
+
+      .school-search input::placeholder,
+      .newsletter input::placeholder {
+        color: #798398;
+      }
+
+      .school-logos {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .school-logos div {
+        min-height: 78px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .school-logos img {
+        max-width: 58px;
+        max-height: 52px;
+        object-fit: contain;
+      }
+
+      .map-panel {
+        position: relative;
+        min-height: 430px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        background:
+          linear-gradient(145deg, rgba(13, 30, 70, 0.9), rgba(21, 15, 39, 0.92)),
+          #0d1e46;
+      }
+
+      .map-panel::before {
+        position: absolute;
+        inset: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 54% 46% 48% 52% / 44% 40% 60% 56%;
+        background:
+          linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.08) 25%, transparent 26%),
+          linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.08) 25%, transparent 26%);
+        background-size: 82px 82px;
+        content: "";
+        opacity: 0.72;
+      }
+
+      .map-label {
+        position: absolute;
+        left: 24px;
+        top: 24px;
+        z-index: 2;
+        padding: 10px 12px;
+        border: 1px solid rgba(225, 175, 19, 0.42);
+        border-radius: 6px;
+        color: var(--gold-soft);
+        background: rgba(0, 0, 0, 0.35);
+        font-size: 0.78rem;
+        font-weight: 950;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .pin {
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        border: 2px solid #07101f;
+        border-radius: 50%;
+        background: var(--gold-soft);
+        box-shadow: 0 0 0 8px rgba(225, 175, 19, 0.12);
+      }
+
+      .pin:nth-child(2) {
+        left: 52%;
+        top: 38%;
+      }
+
+      .pin:nth-child(3) {
+        left: 45%;
+        top: 52%;
+      }
+
+      .pin:nth-child(4) {
+        left: 62%;
+        top: 63%;
+      }
+
+      .pin:nth-child(5) {
+        left: 37%;
+        top: 68%;
+      }
+
+      .pin:nth-child(6) {
+        left: 57%;
+        top: 22%;
+      }
+
+      .pin:nth-child(7) {
+        left: 32%;
+        top: 45%;
+      }
+
+      .champions-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
+        gap: 22px;
+      }
+
+      .champion-card {
+        overflow: hidden;
+      }
+
+      .champion-card img {
+        width: 100%;
+        height: 100%;
+        min-height: 410px;
+        object-fit: cover;
+      }
+
+      .champions-panel {
+        display: grid;
+        gap: 14px;
+      }
+
+      .champions-header {
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        background: rgba(16, 24, 43, 0.82);
+      }
+
+      .champion-row {
+        display: grid;
+        grid-template-columns: 96px 1fr auto;
+        align-items: center;
+        gap: 18px;
+        padding: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .champion-row .year {
+        color: var(--gold-soft);
+        font-size: 1.6rem;
+        font-weight: 1000;
+        line-height: 1;
+      }
+
+      .champion-row h4 {
+        margin: 0;
+        color: white;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+      }
+
+      .champion-row p {
+        margin-top: 4px;
+        color: var(--muted);
+      }
+
+      .champion-row .badge {
+        padding: 8px 10px;
+        border-radius: 999px;
+        color: #07101f;
+        background: var(--gold);
+        font-size: 0.72rem;
+        font-weight: 950;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .partner-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 22px;
+        align-items: stretch;
+      }
+
+      .partner-card {
+        padding: 24px;
+      }
+
+      .partner-logos {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .partner-logos div {
+        min-height: 138px;
+        display: grid;
+        place-items: center;
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .partner-logos img {
+        max-height: 70px;
+        object-fit: contain;
+      }
+
+      .footer-cta {
+        padding: 74px 0 0;
+        background:
+          linear-gradient(180deg, rgba(7, 9, 21, 0), #030712),
+          #070915;
+      }
+
+      .newsletter {
+        display: grid;
+        grid-template-columns: minmax(0, 0.62fr) minmax(280px, 0.38fr);
+        gap: 24px;
+        align-items: center;
+        padding: 30px;
+      }
+
+      .newsletter-form {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+      }
+
+      footer {
+        margin-top: 74px;
+        padding: 46px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: #030712;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.2fr repeat(3, 0.65fr);
+        gap: 30px;
+      }
+
+      .footer-logo {
+        width: 210px;
+        margin-bottom: 18px;
+      }
+
+      .footer-grid p {
+        max-width: 340px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .footer-grid h4 {
+        margin: 0 0 14px;
+        color: white;
+        font-size: 0.88rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .footer-grid ul {
+        display: grid;
+        gap: 9px;
+        margin: 0;
+        padding: 0;
+        color: var(--muted);
+        list-style: none;
+      }
+
+      .footer-grid a:hover {
+        color: var(--gold-soft);
+      }
+
+      @media (max-width: 980px) {
+        .utility-inner {
+          justify-content: center;
+        }
+
+        .utility-links,
+        .nav-links {
+          display: none;
+        }
+
+        .nav-inner {
+          min-height: 70px;
+        }
+
+        .hero-grid,
+        .section-header,
+        .news-layout,
+        .directory-layout,
+        .champions-layout,
+        .partner-grid,
+        .newsletter,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .hero-grid {
+          padding-top: 72px;
+        }
+
+        .league-grid,
+        .schedule-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 680px) {
+        .brand-copy,
+        .nav-actions .secondary {
+          display: none;
+        }
+
+        .button {
+          width: 100%;
+        }
+
+        .nav-actions .button {
+          width: auto;
+          min-height: 40px;
+          padding-inline: 12px;
+          font-size: 0.74rem;
+        }
+
+        .hero-actions,
+        .school-search,
+        .newsletter-form {
+          grid-template-columns: 1fr;
+        }
+
+        .league-grid,
+        .schedule-grid,
+        .school-logos,
+        .partner-logos {
+          grid-template-columns: 1fr;
+        }
+
+        .scoreboard {
+          grid-template-columns: 1fr;
+        }
+
+        .score {
+          border-right: 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .score:last-child {
+          border-bottom: 0;
+        }
+
+        .mini-post,
+        .champion-row {
+          grid-template-columns: 1fr;
+        }
+
+        .mini-post img {
+          width: 100%;
+          height: 160px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-shell">
+      <div class="utility-bar">
+        <div class="utility-inner">
+          <span>Indiana's scholastic esports home</span>
+          <div class="utility-links" aria-label="Quick links">
+            <a href="#news">Latest News</a>
+            <a href="#schedule">2026-2027 Calendar</a>
+            <a href="#schools">Member Schools</a>
+          </div>
+        </div>
+      </div>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <div class="nav-inner">
+          <a class="brand" href="#">
+            <img src="../../attached_assets/IEN_LogoNavbar.png" alt="Indiana Esports Network logo" />
+            <span class="brand-copy">
+              <span class="brand-title">Indiana Esports</span>
+              <span class="brand-subtitle">Network</span>
+            </span>
+          </a>
+          <div class="nav-links">
+            <a href="#leagues">Leagues</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#schools">Schools</a>
+            <a href="#champions">Champions</a>
+            <a href="#news">News</a>
+            <a href="#partners">Partners</a>
+          </div>
+          <div class="nav-actions">
+            <a class="button secondary" href="#news">Read News</a>
+            <a class="button" href="#join">Join</a>
+          </div>
+        </div>
+      </nav>
+
+      <main>
+        <section class="hero" id="join">
+          <div class="hero-grid">
+            <div>
+              <div class="eyebrow"><span class="pulse" aria-hidden="true"></span> 2026-2027 registration open</div>
+              <h1>Indiana Esports <span>Network</span></h1>
+              <p class="hero-copy">
+                Indiana's home for scholastic esports, connecting schools, coaches, students, partners, and families through league play, live events, and championship moments.
+              </p>
+              <div class="hero-actions">
+                <a class="button" href="#leagues">Explore Leagues</a>
+                <a class="button secondary" href="#schedule">View Calendar</a>
+              </div>
+            </div>
+
+            <aside class="hero-panel" aria-label="Featured event">
+              <div class="panel-heading">
+                <strong>Featured Event</strong>
+                <span class="season-pill">State Finals</span>
+              </div>
+              <div class="hero-event">
+                <div class="event-date">April 2027 - Indianapolis</div>
+                <h2>IEN State Finals</h2>
+                <p>
+                  Championship brackets, college and career exhibitors, sponsors, livestreams, and public event details in one official event hub.
+                </p>
+              </div>
+              <div class="scoreboard">
+                <div class="score">
+                  <b>180+</b>
+                  <span>Schools</span>
+                </div>
+                <div class="score">
+                  <b>7K+</b>
+                  <span>Students</span>
+                </div>
+                <div class="score">
+                  <b>12</b>
+                  <span>Titles</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="content-band" id="leagues">
+          <div class="section-inner">
+            <div class="section-header">
+              <div>
+                <div class="section-label">League landing pages</div>
+                <h2>One home for every IEN division</h2>
+              </div>
+              <p>
+                Each league gets a dedicated home for season details, game titles, eligibility, calendars, rulesets, and calls to action.
+              </p>
+            </div>
+
+            <div class="league-grid">
+              <a class="league-card" href="#">
+                <img src="../../attached_assets/IHSEN%20Current.png" alt="IHSEN players and branding" />
+                <div class="league-body">
+                  <div class="league-tag">High School</div>
+                  <h3>IHSEN</h3>
+                  <p>Varsity and club competition for Indiana high schools across the state.</p>
+                </div>
+              </a>
+              <a class="league-card" href="#">
+                <img src="../../attached_assets/IMSEN%20Current.png" alt="IMSEN players and branding" />
+                <div class="league-body">
+                  <div class="league-tag">Middle School</div>
+                  <h3>IMSEN</h3>
+                  <p>Structured middle school competition with clear schedules and school support.</p>
+                </div>
+              </a>
+              <a class="league-card" href="#">
+                <img src="../../attached_assets/IUEN%20Current.png" alt="IUEN players and branding" />
+                <div class="league-body">
+                  <div class="league-tag">Unified</div>
+                  <h3>IUEN</h3>
+                  <p>Inclusive esports in partnership with Indiana Special Olympics.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-band alt" id="news">
+          <div class="section-inner">
+            <div class="section-header">
+              <div>
+                <div class="section-label">Posts and events</div>
+                <h2>News that feels official, not bolted on</h2>
+              </div>
+              <p>
+                League announcements, tournament recaps, featured schools, and event updates can all live in one polished news stream.
+              </p>
+            </div>
+
+            <div class="news-layout">
+              <article class="featured-post">
+                <img src="../../attached_assets/state-finals/04-drew-rhoda-coach-of-year.jpg" alt="Coach of the Year winner at IEN State Finals" />
+                <div class="post-body">
+                  <div class="post-meta">Featured Story - Awards</div>
+                  <h3>IEN names 2025-2026 Coach of the Year</h3>
+                  <p>
+                    Celebrating the coaches who build programs, mentor students, and keep scholastic esports growing across Indiana.
+                  </p>
+                </div>
+              </article>
+
+              <div class="post-list">
+                <article class="mini-post">
+                  <img src="../../attached_assets/state-finals/02-central-hs-1200.jpg" alt="Students competing at state finals" />
+                  <div>
+                    <div class="post-meta">Tournament</div>
+                    <h3>State Finals brackets and travel details</h3>
+                  </div>
+                </article>
+                <article class="mini-post">
+                  <img src="../../attached_assets/state-finals/03-marvel-rivals-1200.jpg" alt="Marvel Rivals trophies" />
+                  <div>
+                    <div class="post-meta">Championships</div>
+                    <h3>Marvel Rivals joins the finals stage</h3>
+                  </div>
+                </article>
+                <article class="mini-post">
+                  <img src="../../attached_assets/LeagueOS_1776776398973.jpg" alt="LeagueOS branding" />
+                  <div>
+                    <div class="post-meta">LeagueOS</div>
+                    <h3>Registration workflow for new schools</h3>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-band" id="schedule">
+          <div class="section-inner">
+            <div class="section-header">
+              <div>
+                <div class="section-label">Calendar templates</div>
+                <h2>Season dates without code changes</h2>
+              </div>
+              <p>
+                Calendars, PDFs, fee notes, and deadlines stay organized across every league and season.
+              </p>
+            </div>
+
+            <div class="schedule-grid">
+              <article class="schedule-box">
+                <div>
+                  <div class="month">August</div>
+                  <h3>School registration opens</h3>
+                  <p>Onboarding meetings, LeagueOS setup, and school verification.</p>
+                </div>
+                <span class="league-chip">All Leagues</span>
+              </article>
+              <article class="schedule-box">
+                <div>
+                  <div class="month">October</div>
+                  <h3>Fall regular season</h3>
+                  <p>Weekly matches begin for high school, middle school, and unified teams.</p>
+                </div>
+                <span class="league-chip">Fall</span>
+              </article>
+              <article class="schedule-box">
+                <div>
+                  <div class="month">January</div>
+                  <h3>Spring registration</h3>
+                  <p>New schools join and returning programs prepare rosters.</p>
+                </div>
+                <span class="league-chip">Spring</span>
+              </article>
+              <article class="schedule-box">
+                <div>
+                  <div class="month">April</div>
+                  <h3>State championships</h3>
+                  <p>Top teams qualify for in-person finals and public celebration.</p>
+                </div>
+                <span class="league-chip">Finals</span>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-band alt" id="schools">
+          <div class="section-inner">
+            <div class="directory-layout">
+              <div class="schools-card">
+                <div class="section-label">School directory</div>
+                <h3>Searchable member schools</h3>
+                <p>
+                  Explore participating programs by school, city, division, and active-season status.
+                </p>
+                <div class="school-search">
+                  <input type="search" placeholder="Search schools or cities" aria-label="Search schools or cities" />
+                  <a class="button" href="#">Search</a>
+                </div>
+                <div class="school-logos" aria-label="Featured school logos">
+                  <div><img src="../../artifacts/ien-website/public/schools/greencastle.webp" alt="Greencastle High School logo" /></div>
+                  <div><img src="../../artifacts/ien-website/public/schools/ben-davis.webp" alt="Ben Davis logo" /></div>
+                  <div><img src="../../artifacts/ien-website/public/schools/hobart.webp" alt="Hobart logo" /></div>
+                  <div><img src="../../artifacts/ien-website/public/schools/penn.png" alt="Penn logo" /></div>
+                </div>
+              </div>
+
+              <div class="map-panel" aria-label="Indiana member school map preview">
+                <div class="map-label">180+ member schools</div>
+                <span class="pin"></span>
+                <span class="pin"></span>
+                <span class="pin"></span>
+                <span class="pin"></span>
+                <span class="pin"></span>
+                <span class="pin"></span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-band" id="champions">
+          <div class="section-inner">
+            <div class="champions-layout">
+              <div class="champion-card">
+                <img src="../../attached_assets/state-finals/03-marvel-rivals-1200.jpg" alt="State finals trophies" />
+              </div>
+              <div class="champions-panel">
+                <div class="champions-header">
+                  <div class="section-label">Championship archive</div>
+                  <h3>Hall of Champions</h3>
+                </div>
+                <article class="champion-row">
+                  <div class="year">2026</div>
+                  <div>
+                    <h4>Greencastle High School</h4>
+                    <p>Rocket League - IHSEN A champion</p>
+                  </div>
+                  <span class="badge">Champion</span>
+                </article>
+                <article class="champion-row">
+                  <div class="year">2026</div>
+                  <div>
+                    <h4>Ben Davis</h4>
+                    <p>Marvel Rivals - IHSEN AAA champion</p>
+                  </div>
+                  <span class="badge">Champion</span>
+                </article>
+                <article class="champion-row">
+                  <div class="year">2026</div>
+                  <div>
+                    <h4>North Side Middle School</h4>
+                    <p>Marvel Rivals - IMSEN champion</p>
+                  </div>
+                  <span class="badge">Champion</span>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-band alt" id="partners">
+          <div class="section-inner">
+            <div class="partner-grid">
+              <div class="partner-card">
+                <div class="section-label">Sponsors and partners</div>
+                <h3>Built for supporters, too</h3>
+                <p>
+                  Sponsor recognition, partner categories, campaign pages, and benefit tiers stay visible throughout the site.
+                </p>
+                <div class="hero-actions">
+                  <a class="button" href="#">Partner With IEN</a>
+                  <a class="button secondary" href="#">View Packages</a>
+                </div>
+              </div>
+              <div class="partner-logos" aria-label="Partner logos">
+                <div><img src="../../attached_assets/White_SPIN_Icon_1776776398973.png" alt="SPIN logo" /></div>
+                <div><img src="../../attached_assets/Zotac_Vertical_Logo_1776776398973.png" alt="Zotac logo" /></div>
+                <div><img src="../../attached_assets/Gravity_Gaming_Logo_1776776398973.png" alt="Gravity Gaming logo" /></div>
+                <div><img src="../../attached_assets/Sponsor_Logo_01_1776776398973.png" alt="Sponsor logo" /></div>
+                <div><img src="../../attached_assets/McDonald%27s_Golden_Arches_1776776398973.png" alt="McDonald's Golden Arches logo" /></div>
+                <div><img src="../../attached_assets/IEN_LogoFooter.png" alt="Indiana Esports Network logo" /></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <section class="footer-cta">
+        <div class="section-inner">
+          <div class="newsletter">
+            <div>
+              <div class="section-label">Newsletter</div>
+              <h3>League updates in one inbox</h3>
+              <p>News, event announcements, registration reminders, and championship results.</p>
+            </div>
+            <form class="newsletter-form">
+              <input type="email" placeholder="coach@school.edu" aria-label="Email address" />
+              <button class="button" type="button">Sign Up</button>
+            </form>
+          </div>
+        </div>
+
+        <footer>
+          <div class="section-inner footer-grid">
+            <div>
+              <img class="footer-logo" src="../../attached_assets/Banner.png" alt="Indiana Esports Network" />
+              <p>Education first. Esports always. Built for Indiana schools, coaches, students, families, and the partners who support them.</p>
+            </div>
+            <div>
+              <h4>Leagues</h4>
+              <ul>
+                <li><a href="#">IHSEN</a></li>
+                <li><a href="#">IMSEN</a></li>
+                <li><a href="#">IUEN</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Resources</h4>
+              <ul>
+                <li><a href="#">Schedule</a></li>
+                <li><a href="#">Rulesets</a></li>
+                <li><a href="#">Member Schools</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>IEN</h4>
+              <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Partners</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </section>
+    </div>
+  </body>
+</html>

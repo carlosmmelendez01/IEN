@@ -211,8 +211,8 @@ export default function StartAProgram() {
               <h3 className="font-heading font-bold text-lg text-white mb-3">School Divisions</h3>
               <p className="text-sm text-muted-foreground mb-4">IHSEN Varsity is split into two divisions to keep competition balanced:</p>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="flex gap-2"><span className="text-primary font-bold">A</span> <span>Generally smaller-enrollment schools</span></li>
-                <li className="flex gap-2"><span className="text-primary font-bold">AA</span> <span>Generally larger-enrollment schools</span></li>
+                <li className="flex gap-2"><span className="text-primary font-bold">1A</span> <span>Generally smaller-enrollment schools</span></li>
+                <li className="flex gap-2"><span className="text-primary font-bold">2A</span> <span>Generally larger-enrollment schools</span></li>
               </ul>
               <p className="text-xs text-muted-foreground mt-4 italic">Placement is set per title each season — the dividing line is adjusted based on which schools register for that title to keep brackets competitive. Club, IMSEN, and IUEN are not divided this way.</p>
             </div>

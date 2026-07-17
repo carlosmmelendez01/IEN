@@ -20,6 +20,8 @@ const ROUTES = [
   "/hall-of-champions",
   "/schools",
   "/partners",
+  "/sponsor",
+  "/support",
   "/partner-with-ien",
   "/start-a-program",
   "/contact",
