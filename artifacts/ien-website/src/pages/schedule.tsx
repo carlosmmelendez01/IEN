@@ -180,7 +180,7 @@ function SeasonRow({
               >
                 <a href={GAME_RULESET_LIBRARY_HREF}>
                   <FileText className="w-4 h-4" />
-                  VIEW GAME RULESETS
+                  RULESETS STATUS
                 </a>
               </Button>
             </div>

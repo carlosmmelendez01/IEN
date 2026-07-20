@@ -35,8 +35,12 @@ export type RotationData = {
   secondaryRows?: RotationRow[];
 };
 
-export const RULEBOOK_HREF = "/documents/ien-bylaws-general-rules-2025-26.pdf";
+export const RULEBOOK_HREF = "";
 export const GAME_RULESET_LIBRARY_HREF = "/leagues#rules-resources";
+export const RULES_DOCUMENTS_AVAILABLE = false;
+export const RULES_UPDATE_SHORT_LABEL = "Currently being updated";
+export const RULES_UPDATE_NOTICE =
+  "IEN rulesets, bylaws, and general rules are currently being updated for the 2026-27 season. Final documents will be posted here when they are ready.";
 
 export const rulesetGames: RulesetGame[] = [
   {
@@ -49,7 +53,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Best of 1 regular season",
     matchWindow: "Wednesdays, 5 PM ET / 4 PM CT",
     leagues: ["IHSEN"],
-    ruleDocHref: "https://docs.google.com/document/d/1drf2X272vg_66Cx8EmR3M82kkA-AVHsh76xsb59eP6g/edit?usp=drive_link",
   },
   {
     id: "apex-legends",
@@ -73,7 +76,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Best of 5 match series",
     matchWindow: "Mondays, 5 PM ET / 4 PM CT",
     leagues: ["IHSEN", "IMSEN"],
-    ruleDocHref: "https://docs.google.com/document/d/1P9632X7dEml4CQnSdGfFg7xYabKvLypIoYWu0J6xzjE/edit?usp=drive_link",
   },
   {
     id: "league-of-legends",
@@ -85,7 +87,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Best of 1 regular season",
     matchWindow: "Tuesdays, 5 PM ET / 4 PM CT",
     leagues: ["IHSEN"],
-    ruleDocHref: "https://docs.google.com/document/d/11ZLzCRId6X6SW4fFw0aichKb21ulGlSgZ1LJQK5LFIQ/edit?usp=drive_link",
   },
   {
     id: "overwatch-2",
@@ -97,7 +98,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Map-set match format",
     matchWindow: "Thursdays, 5 PM ET / 4 PM CT",
     leagues: ["IHSEN"],
-    ruleDocHref: "https://docs.google.com/document/d/1SGbB6YIxRAJpEgGUBClSlROoIzGc81xMoAgjk1jzjzM/edit?usp=drive_link",
   },
   {
     id: "super-smash-bros",
@@ -109,7 +109,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Crew battle format",
     matchWindow: "Tuesdays, 5 PM ET / 4 PM CT",
     leagues: ["IHSEN", "IMSEN"],
-    ruleDocHref: "https://docs.google.com/document/d/1vLeBYJY2HqKxFRoYAujUBdgjoThrudRjsmfpnSPDc8o/edit?usp=drive_link",
   },
   {
     id: "mario-kart-8-deluxe",
@@ -121,7 +120,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Cup-based team scoring",
     matchWindow: "Wednesdays, 5 PM ET / 4 PM CT",
     leagues: ["IHSEN", "IMSEN"],
-    ruleDocHref: "https://docs.google.com/document/d/1bS88IxzWJI4A6ZgqN91DfcSFRRYSH2mdrowfpjZnh9s/edit?usp=drive_link",
   },
   {
     id: "minecraft",
@@ -133,7 +131,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Challenge-based scoring",
     matchWindow: "Season event windows",
     leagues: ["IHSEN", "IMSEN"],
-    ruleDocHref: "https://docs.google.com/document/d/1QPW2s0uU3h5wKw5KvzWcxufJZpzspqrYglVAYgbsegE/edit?usp=drive_link",
   },
   {
     id: "marvel-rivals",
@@ -145,7 +142,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Best of 3 map series",
     matchWindow: "Mondays, 5 PM ET / 4 PM CT",
     leagues: ["IHSEN", "IMSEN"],
-    ruleDocHref: "https://docs.google.com/document/d/1nMhy5eqxOKdWXxgVCcTQ2AAmY4OdRwNA6gFHIpPAwRc/edit?usp=drive_link",
   },
   {
     id: "chess",
@@ -157,7 +153,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Swiss-style tournament",
     matchWindow: "Published tournament windows",
     leagues: ["IHSEN", "IMSEN"],
-    ruleDocHref: "https://docs.google.com/document/d/1an-Z865T7qqldrXsd5am_4GG963gRp1iogfi7vnfC8M/edit?usp=drive_link",
   },
   {
     id: "tetris",
@@ -169,7 +164,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Head-to-head rounds",
     matchWindow: "Published tournament windows",
     leagues: ["IHSEN", "IMSEN"],
-    ruleDocHref: "https://docs.google.com/document/d/12MNFwRooHLvc7SplY2uHD7X_LP-qdlj9Ev77pEBEK2E/edit?usp=drive_link",
   },
   {
     id: "iracing",
@@ -181,7 +175,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Race event scoring",
     matchWindow: "Published race windows",
     leagues: ["IHSEN"],
-    ruleDocHref: "https://docs.google.com/document/d/1CzHMEajlYhxi6NmdLr0_kyHGfBorQq0vu_xM2CNkuYk/edit?usp=drive_link",
   },
   {
     id: "fortnite",
@@ -193,7 +186,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Custom match scoring",
     matchWindow: "Published season windows",
     leagues: ["IMSEN"],
-    ruleDocHref: "https://docs.google.com/document/d/1m6oT8Zg07SdhW8kJaeC3o3NrzENMR1Z4SDfa2FvaFro/edit?usp=drive_link",
   },
   {
     id: "unified-rocket-league",
@@ -205,7 +197,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Best of 5 match series",
     matchWindow: "Tuesdays, 4:30 PM ET / 3:30 PM CT",
     leagues: ["IUEN"],
-    ruleDocHref: "https://docs.google.com/document/d/1u12NH-fOBrf-nbubeZohtwqFLHwAWDzfxfG9OfgSuFE/edit?usp=drive_link",
   },
   {
     id: "unified-super-smash-bros",
@@ -217,7 +208,6 @@ export const rulesetGames: RulesetGame[] = [
     format: "Crew battle format",
     matchWindow: "Tuesdays, 4:30 PM ET / 3:30 PM CT",
     leagues: ["IUEN"],
-    ruleDocHref: "https://docs.google.com/document/d/1SbsqlLlF1L_iPlRLb4PWzsBizga2X-UDcUOS3d-i4YA/edit?usp=drive_link",
   },
 ];
 

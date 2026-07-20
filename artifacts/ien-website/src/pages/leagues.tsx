@@ -4,13 +4,16 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { FileText, Download, ExternalLink } from "lucide-react";
+import { AlertCircle, FileText, Download, ExternalLink } from "lucide-react";
 import {
   RulesDialog,
   defaultTabForGame,
 } from "@/components/rulesets/RulesetQuickView";
 import {
   RULEBOOK_HREF,
+  RULES_DOCUMENTS_AVAILABLE,
+  RULES_UPDATE_NOTICE,
+  RULES_UPDATE_SHORT_LABEL,
   getRulesetGame,
   type LeagueKey,
   type RulesTab,
@@ -54,15 +57,17 @@ const iuenGames = [
 const resources = [
   {
     title: "IEN Bylaws & General Rules",
-    desc: "Official IEN bylaws, competition policies, and general league rules for the 2025-26 season.",
+    desc: "Official IEN bylaws, competition policies, and general league rules for the 2026-27 season.",
     href: RULEBOOK_HREF,
     external: false,
+    available: RULES_DOCUMENTS_AVAILABLE,
   },
   {
     title: "LeagueOS Platform Guide",
     desc: "How to register, manage rosters, and navigate the LeagueOS platform.",
     href: "https://leagueos.gg",
     external: true,
+    available: true,
   },
 ];
 
@@ -437,6 +442,16 @@ export default function Leagues() {
           Official rulebooks, platform guides, and policy documents for coaches, administrators, and players
         </p>
 
+        <div className="mx-auto mb-8 flex max-w-4xl items-start gap-3 rounded-xl border border-primary/30 bg-primary/10 p-4 text-left">
+          <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
+          <p className="text-sm leading-6 text-muted-foreground">
+            <span className="font-heading font-bold uppercase tracking-[0.14em] text-primary">
+              Rules update:
+            </span>{" "}
+            {RULES_UPDATE_NOTICE}
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {resources.map((res, i) => (
             <motion.div
@@ -459,24 +474,31 @@ export default function Leagues() {
                 </div>
               </div>
 
-              <a
-                href={res.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto flex items-center gap-2 text-xs font-heading font-bold text-primary tracking-wide hover:text-primary/80 transition-colors"
-              >
-                {res.external ? (
-                  <>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                    OPEN PLATFORM
-                  </>
-                ) : (
-                  <>
-                    <Download className="w-3.5 h-3.5" />
-                    DOWNLOAD PDF
-                  </>
-                )}
-              </a>
+              {res.available ? (
+                <a
+                  href={res.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto flex items-center gap-2 text-xs font-heading font-bold text-primary tracking-wide hover:text-primary/80 transition-colors"
+                >
+                  {res.external ? (
+                    <>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      OPEN PLATFORM
+                    </>
+                  ) : (
+                    <>
+                      <Download className="w-3.5 h-3.5" />
+                      DOWNLOAD PDF
+                    </>
+                  )}
+                </a>
+              ) : (
+                <div className="mt-auto inline-flex w-fit items-center gap-2 rounded-md border border-primary/20 px-3 py-2 text-[0.65rem] font-heading font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                  <AlertCircle className="h-3.5 w-3.5 text-primary" aria-hidden />
+                  {RULES_UPDATE_SHORT_LABEL}
+                </div>
+              )}
             </motion.div>
           ))}
         </div>

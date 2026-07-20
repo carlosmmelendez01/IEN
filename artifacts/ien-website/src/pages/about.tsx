@@ -2,18 +2,10 @@ import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import { Users, Target, Shield, Heart, Star, Scale } from "lucide-react";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 import { getSchoolNetworkStat, schoolNetworkConfig } from "@/lib/schoolCharter";
-import { useState } from "react";
 
 const boardMembers: {
   name: string;
@@ -79,8 +71,6 @@ const boardMembers: {
   },
 ];
 
-type BoardMember = (typeof boardMembers)[number];
-
 const developmentCommittee = [
   { name: "Kristen Ritter", org: "Brebeuf High School", initials: "KR" },
   { name: "Haley Mullins", org: "LANFest", initials: "HM" },
@@ -127,10 +117,6 @@ const values = [
 ];
 
 export default function About() {
-  const [selectedMember, setSelectedMember] = useState<BoardMember | null>(
-    null,
-  );
-
   return (
     <Layout>
       <SEO
@@ -264,16 +250,13 @@ export default function About() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-5xl mx-auto mb-16">
             {boardMembers.map((person, i) => (
-              <motion.button
+              <motion.div
                 key={i}
-                type="button"
-                onClick={() => setSelectedMember(person)}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05, duration: 0.35 }}
-                className="flex flex-col items-center text-center group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-2 -m-2 hover:bg-primary/5 transition-colors"
-                aria-label={`View bio for ${person.name}`}
+                className="flex flex-col items-center text-center group rounded-lg p-2 -m-2"
               >
                 <div className="w-20 h-20 rounded-full overflow-hidden bg-background border-2 border-primary/40 group-hover:border-primary flex items-center justify-center mb-3 shadow-[0_0_15px_rgba(212,175,55,0.1)] transition-colors">
                   {person.photo ? (
@@ -294,7 +277,7 @@ export default function About() {
                 <p className="text-sm text-muted-foreground mt-1 leading-tight">
                   {person.title}
                 </p>
-              </motion.button>
+              </motion.div>
             ))}
           </div>
 
@@ -371,47 +354,6 @@ export default function About() {
         </motion.div>
       </section>
 
-      <Dialog
-        open={selectedMember !== null}
-        onOpenChange={(open) => !open && setSelectedMember(null)}
-      >
-        <DialogContent className="bg-card border-primary/30 max-w-lg">
-          {selectedMember && (
-            <>
-              <DialogHeader>
-                <div className="flex items-center gap-4 mb-2">
-                  <div className="w-16 h-16 rounded-full overflow-hidden bg-background border-2 border-primary/40 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
-                    {selectedMember.photo ? (
-                      <img
-                        src={selectedMember.photo}
-                        alt={selectedMember.name}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <span className="font-heading font-bold text-primary text-lg">
-                        {selectedMember.initials}
-                      </span>
-                    )}
-                  </div>
-                  <div className="text-left">
-                    <DialogTitle className="font-heading text-white text-2xl">
-                      {selectedMember.name}
-                    </DialogTitle>
-                    <DialogDescription className="text-primary font-semibold mt-1">
-                      {selectedMember.title}
-                    </DialogDescription>
-                  </div>
-                </div>
-              </DialogHeader>
-              {selectedMember.bio && (
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {selectedMember.bio}
-                </p>
-              )}
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
     </Layout>
   );
 }

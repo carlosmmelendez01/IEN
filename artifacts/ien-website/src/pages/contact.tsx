@@ -3,6 +3,7 @@ import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Headphones, Shield, Handshake, Mic, Mail } from "lucide-react";
+import { Link } from "wouter";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 import NewsletterSignup from "@/components/contact/NewsletterSignup";
 
@@ -81,13 +82,7 @@ export default function Contact() {
               asChild
               className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest"
             >
-              <a
-                href={ONBOARDING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                SCHEDULE ONBOARDING CALL
-              </a>
+              <Link href="/start-a-program">START A PROGRAM</Link>
             </Button>
           </div>
 
@@ -106,7 +101,7 @@ export default function Contact() {
               asChild
               className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest"
             >
-              <a href="mailto:ienboard@indianaesportsnetwork.org">
+              <a href="mailto:konnor@indianaesportsnetwork.org,trevor@indianaesportsnetwork.org">
                 EMAIL LEAGUE OPERATIONS
               </a>
             </Button>
@@ -117,7 +112,7 @@ export default function Contact() {
               <Handshake className="w-8 h-8 text-primary" />
             </div>
             <h3 className="text-xl font-heading font-bold text-white mb-2">
-              Sponsorship & Partnerships
+              Sponsorships & Partnerships
             </h3>
             <p className="text-sm text-muted-foreground mb-6 flex-grow">
               Event sponsorship, unified program support, or brand integration.
@@ -127,7 +122,7 @@ export default function Contact() {
               asChild
               className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest"
             >
-              <a href="mailto:ienboard@indianaesportsnetwork.org">
+              <a href="mailto:carlos@indianaesportsnetwork.org">
                 CONTACT PARTNERSHIPS
               </a>
             </Button>
@@ -148,7 +143,7 @@ export default function Contact() {
               asChild
               className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest"
             >
-              <a href="mailto:ienboard@indianaesportsnetwork.org">
+              <a href="mailto:carlos@indianaesportsnetwork.org">
                 CONTACT MARKETING
               </a>
             </Button>

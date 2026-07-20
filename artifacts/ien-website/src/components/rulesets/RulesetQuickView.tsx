@@ -16,6 +16,9 @@ import {
 import {
   GAME_RULESET_LIBRARY_HREF,
   RULEBOOK_HREF,
+  RULES_DOCUMENTS_AVAILABLE,
+  RULES_UPDATE_NOTICE,
+  RULES_UPDATE_SHORT_LABEL,
   rotationData,
   type RotationRow,
   type RulesTab,
@@ -282,7 +285,7 @@ function FullRulesPanel({ game }: { game: RulesetGame }) {
         <p className="text-sm leading-6 text-muted-foreground">
           Use the official rules document for edge cases, postseason rulings, penalties, and formal procedures.
         </p>
-        {game.ruleDocHref ? (
+        {RULES_DOCUMENTS_AVAILABLE && game.ruleDocHref ? (
           <a
             href={game.ruleDocHref}
             target="_blank"
@@ -294,7 +297,9 @@ function FullRulesPanel({ game }: { game: RulesetGame }) {
           </a>
         ) : (
           <div className="mt-5 rounded-md border border-primary/20 bg-card px-4 py-3 text-sm font-semibold text-muted-foreground">
-            {game.status ?? "Official rules document pending"}
+            {RULES_DOCUMENTS_AVAILABLE
+              ? game.status ?? "Official rules document pending"
+              : RULES_UPDATE_NOTICE}
           </div>
         )}
       </section>
@@ -302,15 +307,21 @@ function FullRulesPanel({ game }: { game: RulesetGame }) {
       <section className="rounded-lg border border-primary/20 bg-card p-6">
         <h3 className="font-heading text-lg font-bold text-white">Related Documents</h3>
         <div className="mt-4 space-y-2">
-          <a
-            href={RULEBOOK_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-between gap-3 rounded-md border border-primary/20 px-3 py-2 text-sm font-semibold text-muted-foreground transition hover:bg-primary/10 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-          >
-            IEN Bylaws & General Rules
-            <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-          </a>
+          {RULES_DOCUMENTS_AVAILABLE ? (
+            <a
+              href={RULEBOOK_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between gap-3 rounded-md border border-primary/20 px-3 py-2 text-sm font-semibold text-muted-foreground transition hover:bg-primary/10 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              IEN Bylaws & General Rules
+              <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+            </a>
+          ) : (
+            <div className="rounded-md border border-primary/20 px-3 py-2 text-sm font-semibold text-muted-foreground">
+              IEN Bylaws & General Rules: {RULES_UPDATE_SHORT_LABEL}
+            </div>
+          )}
           <a
             href="https://leagueos.gg"
             target="_blank"
@@ -390,7 +401,7 @@ export function RulesDialog({
           </div>
 
           <div className="flex shrink-0 items-center gap-2">
-            {game.ruleDocHref ? (
+            {RULES_DOCUMENTS_AVAILABLE && game.ruleDocHref ? (
               <a
                 href={game.ruleDocHref}
                 target="_blank"
@@ -402,7 +413,7 @@ export function RulesDialog({
               </a>
             ) : (
               <span className="inline-flex min-h-10 items-center rounded-md border border-primary/20 px-4 text-xs font-heading font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                Pending
+                {RULES_UPDATE_SHORT_LABEL}
               </span>
             )}
             <button
@@ -501,7 +512,7 @@ export function RulesetLibrary({
               <FileText className="h-4 w-4" aria-hidden />
               QUICK VIEW
             </button>
-            {game.ruleDocHref ? (
+            {RULES_DOCUMENTS_AVAILABLE && game.ruleDocHref ? (
               <a
                 href={game.ruleDocHref}
                 target="_blank"
@@ -513,7 +524,9 @@ export function RulesetLibrary({
               </a>
             ) : (
               <span className="inline-flex min-h-10 items-center rounded-md border border-primary/20 px-3 text-[0.65rem] font-heading font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                {game.status ?? "Pending"}
+                {RULES_DOCUMENTS_AVAILABLE
+                  ? game.status ?? "Pending"
+                  : RULES_UPDATE_SHORT_LABEL}
               </span>
             )}
           </div>
