@@ -190,7 +190,7 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "unified-rocket-league",
     name: "Rocket League",
-    type: "Unified",
+    type: "Unified Spring",
     color: "#4da0ff",
     platform: "Cross-platform",
     roster: "3 starters / 2 substitutes",
@@ -201,7 +201,7 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "unified-super-smash-bros",
     name: "Super Smash Bros.",
-    type: "Unified",
+    type: "Unified Fall",
     color: "#ff5eb8",
     platform: "Nintendo Switch",
     roster: "4 starters / 2 substitutes",

@@ -2,17 +2,16 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Headphones, Shield, Handshake, Mic, Mail } from "lucide-react";
+import { Headphones, Shield, Handshake, Mic } from "lucide-react";
 import { Link } from "wouter";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
-import NewsletterSignup from "@/components/contact/NewsletterSignup";
 
 export default function Contact() {
   return (
     <Layout>
       <SEO
         title="Contact"
-        description="Contact the Indiana Esports Network. Email ienboard@indianaesportsnetwork.org or subscribe to IEN updates."
+        description="Contact the Indiana Esports Network. Email ienboard@indianaesportsnetwork.org for general inquiries or use the contact topics below."
         path="/contact"
       />
 
@@ -148,35 +147,6 @@ export default function Contact() {
               </a>
             </Button>
           </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-card border-y border-primary/30 relative">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-10 max-w-2xl mx-auto"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/15 border border-primary/40 rounded-full text-[10px] font-heading font-bold tracking-widest uppercase text-primary mb-4">
-              <Mail className="w-3 h-3" />
-              Stay in the loop
-            </div>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4 tracking-tight uppercase">
-              STAY CONNECTED <span className="text-primary">WITH IEN</span>
-            </h2>
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
-              Tell us who you are and what you are interested in. Receive
-              relevant updates about IEN programs, league announcements, State
-              Finals, partnership opportunities, and scholastic esports across
-              Indiana.
-            </p>
-          </motion.div>
-
-          <NewsletterSignup />
         </div>
       </section>
 

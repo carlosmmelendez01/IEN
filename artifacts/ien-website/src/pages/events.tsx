@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Clock, FileText, MapPin, Newspaper, Trophy } from "lucide-react";
+import { ArrowRight, Calendar, Clock, FileText, MapPin, Trophy } from "lucide-react";
 import drewRhodaPhoto from "@assets/state-finals/04-drew-rhoda-1200.jpg";
 
 export default function Events() {
@@ -164,57 +164,6 @@ export default function Events() {
                   <h3 className="text-2xl font-heading font-bold text-white">IEN STATE FINALS</h3>
                </div>
             </div>
-         </div>
-      </section>
-
-      <div className="flex items-center justify-center my-12 container mx-auto px-4">
-         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Newsletter</span>
-         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
-      </div>
-
-      <section className="py-8 container mx-auto px-4 mb-20">
-         <div className="max-w-3xl mx-auto bg-card border border-primary/30 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-8">
-            <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0">
-               <Newspaper className="w-10 h-10 text-primary" />
-            </div>
-            <div className="flex-1 text-center md:text-left">
-               <h3 className="text-2xl font-heading font-bold text-white mb-2">IEN Newsletter</h3>
-               <p className="text-muted-foreground mb-4">
-                  Catch up on the latest from IEN: league updates, featured schools, tournament results, and what's next for Indiana scholastic esports.
-               </p>
-               <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest">
-                  <a href="/events/ien-newsletter.pdf" target="_blank" rel="noopener noreferrer">
-                     <FileText className="w-4 h-4 mr-2" /> READ LATEST ISSUE
-                  </a>
-               </Button>
-            </div>
-         </div>
-      </section>
-
-      <div className="flex items-center justify-center my-12 container mx-auto px-4">
-         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Champions</span>
-         <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
-      </div>
-
-      <section className="py-8 container mx-auto px-4 mb-20">
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-               { school: "Penn High School", game: "Valorant", color: "text-red-500" },
-               { school: "Zionsville High School", game: "Rocket League", color: "text-blue-500" },
-               { school: "Carmel High School", game: "Super Smash Bros", color: "text-gray-300" }
-            ].map((champ, i) => (
-               <div key={i} className="bg-card border border-primary/20 p-6 rounded-xl flex items-center gap-4 hover:border-primary transition-colors">
-                  <div className="w-12 h-16 bg-background border border-primary rounded-md flex items-center justify-center shrink-0">
-                     <span className="text-primary font-bold">#1</span>
-                  </div>
-                  <div>
-                     <h4 className="font-bold text-white mb-1">{champ.school}</h4>
-                     <p className={`text-sm font-heading font-bold ${champ.color}`}>{champ.game} State Champion</p>
-                  </div>
-               </div>
-            ))}
          </div>
       </section>
 

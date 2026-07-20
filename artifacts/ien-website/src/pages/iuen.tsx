@@ -105,7 +105,7 @@ const HOW_UNIFIED_WORKS: Array<{ title: string; desc: string; icon: React.ReactN
   { title: "Build a Team",       desc: "Pair Unified Athletes with Unified Partners on a single roster — full teammates, not helpers.", icon: <Users className="w-5 h-5" /> },
   { title: "Practice Together",  desc: "Train weekly with your coach. One playbook for everyone, one team identity.",                  icon: <Lightbulb className="w-5 h-5" /> },
   { title: "Compete Together",   desc: "Play official IEN matches against other Unified rosters across Indiana.",                       icon: <Gamepad2 className="w-5 h-5" /> },
-  { title: "State Finals",       desc: "Top teams play for a state championship alongside IHSEN and IMSEN at IEN State Finals.",       icon: <Trophy className="w-5 h-5" /> },
+  { title: "State Finals",       desc: "Fall Super Smash Bros. finalists compete Dec. 12; spring Rocket League finalists compete Apr. 24.", icon: <Trophy className="w-5 h-5" /> },
   { title: "Celebrate Success",  desc: "Every Unified athlete and partner is recognized at season end. Wins and growth both count.",  icon: <Crown className="w-5 h-5" /> },
 ];
 
@@ -116,6 +116,24 @@ const ADMIN_VALUE_PROPS: Array<{ title: string; desc: string; icon: React.ReactN
   { title: "Expands Participation",                  desc: "Reaches students who don&rsquo;t see themselves in traditional athletics.",                                         icon: <TrendingUp className="w-6 h-6" /> },
   { title: "Low Barrier to Entry",                   desc: "Free for IHSEN and IMSEN schools. Two accessible titles, two-player team minimum, existing coach.",                icon: <CheckCircle2 className="w-6 h-6" /> },
   { title: "Supports Unified Champion Schools Goals", desc: "Counts toward Special Olympics Unified Champion Schools recognition and reporting.",                              icon: <Star className="w-6 h-6" /> },
+];
+
+const IUEN_SEASONS: Array<{ phase: string; dates: string; desc: string }> = [
+  {
+    phase: "Fall Season",
+    dates: "Aug 10 – Dec 12",
+    desc: "IUEN follows the middle school fall format. Super Smash Bros. Ultimate is the fall title, with finals on Dec. 12.",
+  },
+  {
+    phase: "Spring Season",
+    dates: "January – Apr 24",
+    desc: "Rocket League begins in January for the spring season and concludes at IEN State Finals on Apr. 24.",
+  },
+  {
+    phase: "Season Format",
+    dates: "Middle School Calendar",
+    desc: "Unified teams follow the IMSEN-style season cadence so schools can plan rosters, coaches, and match nights alongside their middle school programs.",
+  },
 ];
 
 export default function IUEN() {
@@ -168,7 +186,9 @@ export default function IUEN() {
             <p className="text-lg text-gray-200 max-w-2xl mx-auto font-light leading-relaxed">
               In partnership with Indiana Special Olympics, IUEN creates competitive
               esports opportunities where students with and without intellectual
-              disabilities compete side by side.
+              disabilities compete side by side. The league follows the middle school
+              season format, with Super Smash Bros. in the fall and Rocket League in
+              the spring.
             </p>
           </motion.div>
         </div>
@@ -380,27 +400,12 @@ export default function IUEN() {
           </span>
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
         </div>
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center max-w-lg mx-auto">
-          <div className="bg-card border border-blue-500/40 p-8 rounded-xl text-center flex-1 hover:border-blue-400 transition-colors shadow-lg">
-            <Gamepad2 className="w-10 h-10 text-blue-400 mx-auto mb-3" />
-            <h4 className="font-heading font-bold text-xl text-blue-300 mb-1">Rocket League</h4>
-            <p className="text-xs text-muted-foreground">3 starters | 2 subs</p>
-            <p className="text-xs text-primary mt-2">Crossplay</p>
-            <button
-              type="button"
-              onClick={() => openRuleset("Rocket League")}
-              className="mt-5 inline-flex items-center justify-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
-              aria-haspopup="dialog"
-            >
-              <FileText className="w-3.5 h-3.5" aria-hidden />
-              VIEW RULESET
-            </button>
-          </div>
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-stretch max-w-2xl mx-auto">
           <div className="bg-card border border-pink-500/40 p-8 rounded-xl text-center flex-1 hover:border-pink-400 transition-colors shadow-lg">
             <Gamepad2 className="w-10 h-10 text-pink-400 mx-auto mb-3" />
             <h4 className="font-heading font-bold text-xl text-pink-300 mb-1">Super Smash Bros.</h4>
-            <p className="text-xs text-muted-foreground">4 starters | 2 subs</p>
-            <p className="text-xs text-primary mt-2">Nintendo Switch</p>
+            <p className="text-xs text-muted-foreground">Fall Season</p>
+            <p className="text-xs text-primary mt-2">Finals Dec. 12</p>
             <button
               type="button"
               onClick={() => openRuleset("Super Smash Bros.")}
@@ -408,7 +413,22 @@ export default function IUEN() {
               aria-haspopup="dialog"
             >
               <FileText className="w-3.5 h-3.5" aria-hidden />
-              VIEW RULESET
+              RULESET STATUS
+            </button>
+          </div>
+          <div className="bg-card border border-blue-500/40 p-8 rounded-xl text-center flex-1 hover:border-blue-400 transition-colors shadow-lg">
+            <Gamepad2 className="w-10 h-10 text-blue-400 mx-auto mb-3" />
+            <h4 className="font-heading font-bold text-xl text-blue-300 mb-1">Rocket League</h4>
+            <p className="text-xs text-muted-foreground">Starts in January</p>
+            <p className="text-xs text-primary mt-2">Finals Apr. 24</p>
+            <button
+              type="button"
+              onClick={() => openRuleset("Rocket League")}
+              className="mt-5 inline-flex items-center justify-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+              aria-haspopup="dialog"
+            >
+              <FileText className="w-3.5 h-3.5" aria-hidden />
+              RULESET STATUS
             </button>
           </div>
         </div>
@@ -488,11 +508,7 @@ export default function IUEN() {
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { phase: "Fall Season",   dates: "Oct – Dec", desc: "Unified rosters practice and play exhibition matches through LeagueOS. New teams ease into competition at club level alongside their IHSEN and IMSEN programs." },
-              { phase: "Spring Season", dates: "Jan – Apr", desc: "Regular season matches run league-wide across Rocket League and Super Smash Bros. Athletes and partners compete as full teammates in every match." },
-              { phase: "State Finals",  dates: "May",       desc: "Top Unified teams compete for Indiana state championships alongside IHSEN and IMSEN. An in-person finals event celebrates inclusive competition at its highest level." },
-            ].map((s, i) => (
+            {IUEN_SEASONS.map((s, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 16 }}
