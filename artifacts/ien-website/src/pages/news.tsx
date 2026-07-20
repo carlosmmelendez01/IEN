@@ -38,18 +38,24 @@ type Category =
   | "Program Spotlight"
   | "Hiring";
 
-const CATEGORY_STYLES: Record<Category, { icon: React.ComponentType<{ className?: string }>; tone: "solid" | "outline" }> = {
-  "Season Announcement": { icon: Megaphone,      tone: "solid"   },
-  "Game Announcement":   { icon: Gamepad2,       tone: "solid"   },
-  "Coach Spotlight":     { icon: Award,          tone: "outline" },
-  "League Operations":   { icon: Layers,         tone: "outline" },
-  "Registration Update": { icon: ClipboardList,  tone: "outline" },
-  "Website Update":      { icon: Monitor,        tone: "outline" },
-  "Press Release":       { icon: Newspaper,      tone: "solid"   },
-  "Community":           { icon: Users,          tone: "outline" },
-  "Event Recap":         { icon: Trophy,         tone: "solid"   },
-  "Program Spotlight":   { icon: Sparkles,       tone: "outline" },
-  "Hiring":              { icon: Briefcase,      tone: "outline" },
+const CATEGORY_STYLES: Record<
+  Category,
+  {
+    icon: React.ComponentType<{ className?: string }>;
+    tone: "solid" | "outline";
+  }
+> = {
+  "Season Announcement": { icon: Megaphone, tone: "solid" },
+  "Game Announcement": { icon: Gamepad2, tone: "solid" },
+  "Coach Spotlight": { icon: Award, tone: "outline" },
+  "League Operations": { icon: Layers, tone: "outline" },
+  "Registration Update": { icon: ClipboardList, tone: "outline" },
+  "Website Update": { icon: Monitor, tone: "outline" },
+  "Press Release": { icon: Newspaper, tone: "solid" },
+  Community: { icon: Users, tone: "outline" },
+  "Event Recap": { icon: Trophy, tone: "solid" },
+  "Program Spotlight": { icon: Sparkles, tone: "outline" },
+  Hiring: { icon: Briefcase, tone: "outline" },
 };
 
 function CategoryBadge({
@@ -65,8 +71,8 @@ function CategoryBadge({
     size === "xs"
       ? "h-6 px-2.5 text-[0.6rem] gap-1"
       : size === "md"
-      ? "h-9 px-4 text-xs gap-2"
-      : "h-7 px-3 text-[0.65rem] gap-1.5";
+        ? "h-9 px-4 text-xs gap-2"
+        : "h-7 px-3 text-[0.65rem] gap-1.5";
   const palette =
     meta.tone === "solid"
       ? "bg-primary text-primary-foreground border border-primary"
@@ -90,7 +96,7 @@ interface NewsPost {
   excerpt: string;
   body: string;
   image: string;
-imageFocal?: string;
+  imageFocal?: string;
   featured?: boolean;
 }
 
@@ -102,7 +108,7 @@ More than a logo change, the rebrand reflects IEN's continued organizational gro
 
 "Indiana Esports Network has grown from an educator-led idea into a statewide community connecting schools and students through competition, leadership, and belonging," said Carlos Melendez, President of the Indiana Esports Network. "Our new identity honors the foundation built by the educators and volunteers who came before us while giving IEN a stronger, more unified presence for the future."
 
-IEN serves more than 200 schools across over 150 Indiana school districts through three primary networks:
+IEN connects schools and scholastic esports programs across Indiana through three primary networks:
 
 • The Indiana High School Esports Network
 • The Indiana Middle School Esports Network
@@ -149,7 +155,7 @@ indianaesportsnetwork.org`;
 
 const FEATURED_BODY = `The Indiana Esports Network is preparing for one of the biggest evolutions in organization history. The 2026–27 season will introduce sweeping updates to divisions, game titles, registration workflows, support systems, and the broader infrastructure that powers Indiana scholastic esports.
 
-This year-long preview marks a turning point for IEN. After three years of rapid growth — from 30 founding programs to nearly 200 schools across IHSEN, IMSEN, and IUEN — the organization is doubling down on the systems that make competition feel professional, fair, and accessible to every Indiana student.
+This year-long preview marks a turning point for IEN. After three years of rapid growth — from 30 founding programs to a statewide scholastic esports network across IHSEN, IMSEN, and IUEN — the organization is doubling down on the systems that make competition feel professional, fair, and accessible to every Indiana student.
 
 Headline changes for 2026–27:
 
@@ -317,7 +323,8 @@ const POSTS: NewsPost[] = [
     excerpt:
       "The Indiana Esports Network is preparing for one of the biggest evolutions in organization history with updates to divisions, games, registration, support systems, and the future of Indiana scholastic esports.",
     body: FEATURED_BODY,
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=2400",
+    image:
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=2400",
   },
   {
     id: 2,
@@ -328,7 +335,8 @@ const POSTS: NewsPost[] = [
     excerpt:
       "Apex Legends will replace Fortnite at the high school level while Fortnite remains available for middle school competition.",
     body: APEX_BODY,
-    image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&q=80&w=1600",
+    image:
+      "https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&q=80&w=1600",
   },
   {
     id: 3,
@@ -351,7 +359,8 @@ const POSTS: NewsPost[] = [
     excerpt:
       "IHSEN Varsity moves from three divisions to two — 1A and 2A — with per-title placement to keep brackets competitive.",
     body: DIVISION_BODY,
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=1600",
+    image:
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=1600",
   },
   {
     id: 5,
@@ -362,7 +371,8 @@ const POSTS: NewsPost[] = [
     excerpt:
       "IEN will move toward a streamlined Google Forms-based registration process for schools, coaches, and teams.",
     body: REGISTRATION_BODY,
-    image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=1600",
+    image:
+      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=1600",
   },
   {
     id: 6,
@@ -373,7 +383,8 @@ const POSTS: NewsPost[] = [
     excerpt:
       "The redesigned IEN website improves school resources, sponsor presentation, Hall of Champions access, and community storytelling.",
     body: WEBSITE_BODY,
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&q=80&w=1600",
+    image:
+      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&q=80&w=1600",
   },
   {
     id: 7,
@@ -384,7 +395,8 @@ const POSTS: NewsPost[] = [
     excerpt:
       "IEN will return to the HECC Conference with booth presence, community engagement, and potential Apex Legends demonstrations.",
     body: HECC_BODY,
-    image: "https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&q=80&w=1600",
+    image:
+      "https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&q=80&w=1600",
   },
 ];
 
@@ -407,16 +419,21 @@ export default function News() {
     () => [ALL, ...Array.from(new Set(POSTS.map((p) => p.category)))],
     [],
   );
-  const visible = filter === ALL ? rest : rest.filter((p) => p.category === filter);
+  const visible =
+    filter === ALL ? rest : rest.filter((p) => p.category === filter);
   useEffect(() => {
     if (!activePost) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = prev; };
+    return () => {
+      document.body.style.overflow = prev;
+    };
   }, [activePost]);
   useEffect(() => {
     if (!activePost) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setActivePost(null); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActivePost(null);
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [activePost]);
@@ -465,7 +482,8 @@ export default function News() {
             className="max-w-4xl"
           >
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 border border-primary/40 bg-primary/10 text-primary text-xs font-bold tracking-[0.25em] rounded-full uppercase">
-              <Megaphone className="w-3.5 h-3.5" /> Indiana Esports Network · Newsroom
+              <Megaphone className="w-3.5 h-3.5" /> Indiana Esports Network ·
+              Newsroom
             </div>
             <h1 className="font-heading font-bold text-white tracking-tight leading-[0.95] text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
               <span className="block">LATEST</span>
@@ -474,17 +492,23 @@ export default function News() {
               </span>
             </h1>
             <p className="mt-6 text-lg md:text-xl text-gray-200 max-w-2xl leading-relaxed">
-              Season announcements, league operations, coach spotlights, and the stories driving Indiana scholastic esports forward.
+              Season announcements, league operations, coach spotlights, and the
+              stories driving Indiana scholastic esports forward.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm">
               <span className="inline-flex items-center gap-2 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                <span className="font-heading font-bold tracking-widest uppercase">Live newsroom</span>
+                <span className="font-heading font-bold tracking-widest uppercase">
+                  Live newsroom
+                </span>
               </span>
               <span className="text-muted-foreground">
-                <span className="text-primary font-bold">{POSTS.length}</span> stories ·{" "}
-                <span className="text-primary font-bold">{categoryOptions.length - 1}</span> categories
+                <span className="text-primary font-bold">{POSTS.length}</span>{" "}
+                stories ·{" "}
+                <span className="text-primary font-bold">
+                  {categoryOptions.length - 1}
+                </span>{" "}
+                categories
               </span>
             </div>
           </motion.div>
@@ -515,7 +539,10 @@ export default function News() {
 
       {featured && (filter === ALL || filter === featured.category) && (
         <section className="py-12 md:py-16 container mx-auto px-4">
-          <FeaturedCard post={featured} onOpen={() => setActivePost(featured)} />
+          <FeaturedCard
+            post={featured}
+            onOpen={() => setActivePost(featured)}
+          />
         </section>
       )}
 
@@ -525,7 +552,8 @@ export default function News() {
             {filter === ALL ? "More Stories" : filter}
           </h2>
           <span className="text-sm text-muted-foreground">
-            <span className="text-primary font-bold">{visible.length}</span> {visible.length === 1 ? "story" : "stories"}
+            <span className="text-primary font-bold">{visible.length}</span>{" "}
+            {visible.length === 1 ? "story" : "stories"}
           </span>
         </div>
 
@@ -536,7 +564,11 @@ export default function News() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {visible.map((post) => (
-              <NewsCard key={post.id} post={post} onOpen={() => setActivePost(post)} />
+              <NewsCard
+                key={post.id}
+                post={post}
+                onOpen={() => setActivePost(post)}
+              />
             ))}
           </div>
         )}
@@ -577,7 +609,13 @@ export default function News() {
   );
 }
 
-function FeaturedCard({ post, onOpen }: { post: NewsPost; onOpen: () => void }) {
+function FeaturedCard({
+  post,
+  onOpen,
+}: {
+  post: NewsPost;
+  onOpen: () => void;
+}) {
   return (
     <motion.button
       type="button"
@@ -613,13 +651,20 @@ function FeaturedCard({ post, onOpen }: { post: NewsPost; onOpen: () => void }) 
           </p>
 
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs md:text-sm text-muted-foreground mb-6">
-            <Meta icon={<Calendar className="w-3.5 h-3.5" />} label={post.date} />
+            <Meta
+              icon={<Calendar className="w-3.5 h-3.5" />}
+              label={post.date}
+            />
             <Meta icon={<User className="w-3.5 h-3.5" />} label={post.author} />
-            <Meta icon={<Clock className="w-3.5 h-3.5" />} label={readTime(post.body)} />
+            <Meta
+              icon={<Clock className="w-3.5 h-3.5" />}
+              label={readTime(post.body)}
+            />
           </div>
 
           <div className="inline-flex items-center gap-2 self-start h-12 px-6 rounded-md bg-primary text-primary-foreground font-heading font-bold tracking-[0.2em] text-sm uppercase group-hover:bg-primary/90 transition-colors">
-            Read Story <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            Read Story{" "}
+            <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
           </div>
         </div>
       </div>
@@ -655,8 +700,16 @@ function NewsCard({ post, onOpen }: { post: NewsPost; onOpen: () => void }) {
 
       <div className="p-5 flex flex-col flex-grow">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground mb-3">
-          <Meta icon={<Calendar className="w-3 h-3" />} label={post.date} small />
-          <Meta icon={<Clock className="w-3 h-3" />} label={readTime(post.body)} small />
+          <Meta
+            icon={<Calendar className="w-3 h-3" />}
+            label={post.date}
+            small
+          />
+          <Meta
+            icon={<Clock className="w-3 h-3" />}
+            label={readTime(post.body)}
+            small
+          />
         </div>
 
         <h3 className="font-heading font-bold text-lg md:text-xl text-white leading-snug mb-2 tracking-tight group-hover:text-primary transition-colors line-clamp-2">
@@ -674,9 +727,19 @@ function NewsCard({ post, onOpen }: { post: NewsPost; onOpen: () => void }) {
   );
 }
 
-function Meta({ icon, label, small }: { icon: React.ReactNode; label: string; small?: boolean }) {
+function Meta({
+  icon,
+  label,
+  small,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  small?: boolean;
+}) {
   return (
-    <span className={`inline-flex items-center gap-1.5 ${small ? "text-xs" : ""}`}>
+    <span
+      className={`inline-flex items-center gap-1.5 ${small ? "text-xs" : ""}`}
+    >
       <span className="text-primary/80">{icon}</span> {label}
     </span>
   );
@@ -709,7 +772,6 @@ function NewsModal({
         className="relative bg-card border border-primary/40 rounded-2xl overflow-hidden max-w-4xl w-full my-4 md:my-8 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]"
         onClick={(e) => e.stopPropagation()}
       >
-
         <div className="relative h-64 md:h-[22rem] overflow-hidden">
           <img
             src={post.image}
@@ -752,7 +814,10 @@ function NewsModal({
           <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground border-b border-primary/15 pb-5">
             <Meta icon={<Calendar className="w-4 h-4" />} label={post.date} />
             <Meta icon={<User className="w-4 h-4" />} label={post.author} />
-            <Meta icon={<Clock className="w-4 h-4" />} label={readTime(post.body)} />
+            <Meta
+              icon={<Clock className="w-4 h-4" />}
+              label={readTime(post.body)}
+            />
           </div>
 
           <motion.div
@@ -783,7 +848,12 @@ function NewsModal({
                     className="group text-left bg-background/60 border border-primary/15 rounded-lg overflow-hidden hover:border-primary/50 hover:bg-card transition-colors"
                   >
                     <div className="relative h-24 overflow-hidden">
-                      <img src={r.image} alt="" style={{ objectPosition: r.imageFocal ?? "center" }} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500 mix-blend-luminosity" />
+                      <img
+                        src={r.image}
+                        alt=""
+                        style={{ objectPosition: r.imageFocal ?? "center" }}
+                        className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-500 mix-blend-luminosity"
+                      />
                       <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
                       <div className="absolute top-2 left-2">
                         <CategoryBadge category={r.category} size="xs" />

@@ -2,10 +2,17 @@ import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import { Users, Target, Shield, Heart, Star, Scale } from "lucide-react";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
+import { getSchoolNetworkStat, schoolNetworkConfig } from "@/lib/schoolCharter";
 import { useState } from "react";
 
 const boardMembers: {
@@ -15,60 +22,114 @@ const boardMembers: {
   bio?: string;
   photo?: string;
 }[] = [
-  { name: "Carlos Melendez",  title: "Board President",                    initials: "CM", bio: "Carlos Melendez is the Board President of the Indiana Esports Network and Head Coach of Wolves Esports at Michigan City High School. Coming from an educational and competitive gaming background with a degree in computer science and digital media, Carlos is devoted to the development of scholastic esports across Indiana and creating avenues for high schoolers across the state. With a specialization in building scholastic esports programs that nurture teamwork, leadership, communication skills, and career ready development both in and outside of games, Carlos works tirelessly to manage events, create broadcast content, develop players, and broaden initiatives across the state, driven by a mission to influence the future of esports and provide a space for students to compete, belong, and develop.", photo: "/board/Carlos.png" },
-  { name: "Ryan Dunfee",      title: "Vice President",                     initials: "RD", photo: "/board/Ryan.jpg" },
-  { name: "Chris King",       title: "Treasurer",                          initials: "CK", photo: "/board/Chris.png" },
-  { name: "Matt Mills",       title: "Secretary",                          initials: "MM", photo: "/board/Matt.png" },
-  { name: "Shaun Doyle",      title: "Director of Governance",             initials: "SD", photo: "/board/Shaun.jpg" },
-  { name: "Konnor Powell",    title: "Director of League Management",      initials: "KP", photo: "/board/Konnor.jpg" },
-  { name: "Jonathan Morgan",  title: "Director of Technology Operations",  initials: "JM", photo: "/board/Jonathan.png" },
-  { name: "Trevor Smith",     title: "Director of Support",                initials: "TS", photo: "/board/Trevor.jpg" },
-  { name: "Dylan Gentilcore", title: "Director At Large",                  initials: "DG", photo: "/board/Dylan.jpg" },
+  {
+    name: "Carlos Melendez",
+    title: "Board President",
+    initials: "CM",
+    bio: "Carlos Melendez is the Board President of the Indiana Esports Network and Head Coach of Wolves Esports at Michigan City High School. Coming from an educational and competitive gaming background with a degree in computer science and digital media, Carlos is devoted to the development of scholastic esports across Indiana and creating avenues for high schoolers across the state. With a specialization in building scholastic esports programs that nurture teamwork, leadership, communication skills, and career ready development both in and outside of games, Carlos works tirelessly to manage events, create broadcast content, develop players, and broaden initiatives across the state, driven by a mission to influence the future of esports and provide a space for students to compete, belong, and develop.",
+    photo: "/board/Carlos.png",
+  },
+  {
+    name: "Ryan Dunfee",
+    title: "Vice President",
+    initials: "RD",
+    photo: "/board/Ryan.jpg",
+  },
+  {
+    name: "Chris King",
+    title: "Treasurer",
+    initials: "CK",
+    photo: "/board/Chris.png",
+  },
+  {
+    name: "Matt Mills",
+    title: "Secretary",
+    initials: "MM",
+    photo: "/board/Matt.png",
+  },
+  {
+    name: "Shaun Doyle",
+    title: "Director of Governance",
+    initials: "SD",
+    photo: "/board/Shaun.jpg",
+  },
+  {
+    name: "Konnor Powell",
+    title: "Director of League Management",
+    initials: "KP",
+    photo: "/board/Konnor.jpg",
+  },
+  {
+    name: "Jonathan Morgan",
+    title: "Director of Technology Operations",
+    initials: "JM",
+    photo: "/board/Jonathan.png",
+  },
+  {
+    name: "Trevor Smith",
+    title: "Director of Support",
+    initials: "TS",
+    photo: "/board/Trevor.jpg",
+  },
+  {
+    name: "Dylan Gentilcore",
+    title: "Director At Large",
+    initials: "DG",
+    photo: "/board/Dylan.jpg",
+  },
 ];
 
 type BoardMember = (typeof boardMembers)[number];
 
 const developmentCommittee = [
   { name: "Kristen Ritter", org: "Brebeuf High School", initials: "KR" },
-  { name: "Haley Mullins",  org: "LANFest",             initials: "HM" },
-  { name: "Kyle McGinniss", org: "Cap Group",           initials: "KM" },
+  { name: "Haley Mullins", org: "LANFest", initials: "HM" },
+  { name: "Kyle McGinniss", org: "Cap Group", initials: "KM" },
 ];
 
 const values = [
   {
     icon: Star,
     title: "Students Are #1",
-    description: "Every decision IEN makes is filtered through one question: is this good for students? Their growth, safety, and success drive everything we do.",
+    description:
+      "Every decision IEN makes is filtered through one question: is this good for students? Their growth, safety, and success drive everything we do.",
   },
   {
     icon: Heart,
     title: "Positivity in the Community",
-    description: "We set the standard for scholastic esports in Indiana, fostering a culture of sportsmanship, respect, and genuine community.",
+    description:
+      "We set the standard for scholastic esports in Indiana, fostering a culture of sportsmanship, respect, and genuine community.",
   },
   {
     icon: Users,
     title: "Inclusivity",
-    description: "Gaming is for everyone. IEN ensures that every student, regardless of background or ability, has a place to compete and belong.",
+    description:
+      "Gaming is for everyone. IEN ensures that every student, regardless of background or ability, has a place to compete and belong.",
   },
   {
     icon: Scale,
     title: "Fair Play",
-    description: "Consistent rules and a level playing field, no matter the school size or resources. Every team gets a fair shot.",
+    description:
+      "Consistent rules and a level playing field, no matter the school size or resources. Every team gets a fair shot.",
   },
   {
     icon: Shield,
     title: "Integrity First",
-    description: "IEN operates with transparency and accountability, led by Indiana educators who are trusted advocates for the students they serve.",
+    description:
+      "IEN operates with transparency and accountability, led by Indiana educators who are trusted advocates for the students they serve.",
   },
   {
     icon: Target,
     title: "Fostering Guidance",
-    description: "From equipment selection to administrative buy-in, we help schools build sustainable esports programs from the ground up.",
+    description:
+      "From equipment selection to administrative buy-in, we help schools build sustainable esports programs from the ground up.",
   },
 ];
 
 export default function About() {
-  const [selectedMember, setSelectedMember] = useState<BoardMember | null>(null);
+  const [selectedMember, setSelectedMember] = useState<BoardMember | null>(
+    null,
+  );
 
   return (
     <Layout>
@@ -82,7 +143,11 @@ export default function About() {
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         <div className="container relative z-20 mx-auto px-4 text-center">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
             <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 tracking-tight">
               ABOUT <span className="text-primary">IEN</span>
             </h1>
@@ -90,8 +155,11 @@ export default function About() {
               "To prepare students for the future through{" "}
               <span className="text-primary font-semibold">collaboration</span>,{" "}
               <span className="text-primary font-semibold">communication</span>,{" "}
-              <span className="text-primary font-semibold">creativity</span>, and{" "}
-              <span className="text-primary font-semibold">critical thinking</span>{" "}
+              <span className="text-primary font-semibold">creativity</span>,
+              and{" "}
+              <span className="text-primary font-semibold">
+                critical thinking
+              </span>{" "}
               through video games and esports."
             </p>
           </motion.div>
@@ -106,10 +174,11 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="text-muted-foreground leading-relaxed max-w-3xl mx-auto text-center text-lg"
         >
-          Indiana Esports Network (IEN) is a nonprofit organization founded and led by Indiana educators. We operate
-          three scholastic esports leagues, IHSEN, IMSEN, and IUEN, serving more than 200 schools and 7,000+ student
-          athletes across the state. We believe esports is more than gaming; it's a platform for academic growth,
-          career exploration, and genuine human connection.
+          Indiana Esports Network (IEN) is a nonprofit organization founded and
+          led by Indiana educators. We operate three scholastic esports leagues,
+          IHSEN, IMSEN, and IUEN. {schoolNetworkConfig.connectedSchoolsCopy} We
+          believe esports is more than gaming; it's a platform for academic
+          growth, career exploration, and genuine human connection.
         </motion.p>
       </section>
 
@@ -117,7 +186,7 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-4xl mx-auto">
             {[
-              { value: "200+", label: "Member Schools" },
+              getSchoolNetworkStat(),
               { value: "7,000+", label: "Student Athletes" },
               { value: "3", label: "Active Leagues" },
               { value: "100%", label: "Indiana Nonprofit" },
@@ -129,8 +198,12 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
               >
-                <div className="text-3xl font-heading font-bold text-primary mb-1">{stat.value}</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-widest">{stat.label}</div>
+                <div className="text-3xl font-heading font-bold text-primary mb-1">
+                  {stat.value}
+                </div>
+                <div className="text-xs text-muted-foreground uppercase tracking-widest">
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -139,9 +212,13 @@ export default function About() {
 
       <section className="py-20 container mx-auto px-4">
         <div className="text-center mb-12">
-          <p className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">What We Stand For</p>
+          <p className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
+            What We Stand For
+          </p>
           <br></br>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white">OUR CORE VALUES</h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white">
+            OUR CORE VALUES
+          </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {values.map((v, i) => (
@@ -157,8 +234,12 @@ export default function About() {
                 <v.icon className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-heading font-bold text-white mb-2">{v.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{v.description}</p>
+                <h3 className="font-heading font-bold text-white mb-2">
+                  {v.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {v.description}
+                </p>
               </div>
             </motion.div>
           ))}
@@ -168,11 +249,17 @@ export default function About() {
       <section className="py-20 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-4">
-            <p className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Leadership</p>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white">BOARD OF DIRECTORS</h2>
+            <p className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
+              Leadership
+            </p>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-white">
+              BOARD OF DIRECTORS
+            </h2>
           </div>
           <p className="text-center text-muted-foreground text-sm mb-12 max-w-xl mx-auto">
-            IEN is governed by a volunteer board of Indiana educators and esports professionals dedicated to advancing scholastic gaming statewide.
+            IEN is governed by a volunteer board of Indiana educators and
+            esports professionals dedicated to advancing scholastic gaming
+            statewide.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-5xl mx-auto mb-16">
@@ -196,11 +283,17 @@ export default function About() {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <span className="font-heading font-bold text-primary text-lg">{person.initials}</span>
+                    <span className="font-heading font-bold text-primary text-lg">
+                      {person.initials}
+                    </span>
                   )}
                 </div>
-                <h4 className="font-heading font-bold text-white text-base md:text-lg leading-tight">{person.name}</h4>
-                <p className="text-sm text-muted-foreground mt-1 leading-tight">{person.title}</p>
+                <h4 className="font-heading font-bold text-white text-base md:text-lg leading-tight">
+                  {person.name}
+                </h4>
+                <p className="text-sm text-muted-foreground mt-1 leading-tight">
+                  {person.title}
+                </p>
               </motion.button>
             ))}
           </div>
@@ -224,9 +317,13 @@ export default function About() {
                 className="flex flex-col items-center text-center group"
               >
                 <div className="w-16 h-16 rounded-full bg-background border border-primary/30 group-hover:border-primary/60 flex items-center justify-center mb-3 transition-colors">
-                  <span className="font-heading font-bold text-primary/80 text-base">{person.initials}</span>
+                  <span className="font-heading font-bold text-primary/80 text-base">
+                    {person.initials}
+                  </span>
                 </div>
-                <h4 className="font-heading font-bold text-white text-base md:text-lg">{person.name}</h4>
+                <h4 className="font-heading font-bold text-white text-base md:text-lg">
+                  {person.name}
+                </h4>
                 <p className="text-sm text-primary/60 mt-0.5">{person.org}</p>
               </motion.div>
             ))}
@@ -241,16 +338,32 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">READY TO JOIN <span className="text-primary">IEN?</span></h2>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
+            READY TO JOIN <span className="text-primary">IEN?</span>
+          </h2>
           <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-            Schedule a meeting with our team and we'll help you find the right path, whether you're starting a program, joining a league, or exploring a partnership.
+            Schedule a meeting with our team and we'll help you find the right
+            path, whether you're starting a program, joining a league, or
+            exploring a partnership.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8 h-12">
-              <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE A MEETING</a>
+            <Button
+              asChild
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8 h-12"
+            >
+              <a
+                href={ONBOARDING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                SCHEDULE A MEETING
+              </a>
             </Button>
             <Link href="/contact">
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8 h-12">
+              <Button
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8 h-12"
+              >
                 CONTACT US
               </Button>
             </Link>
@@ -258,7 +371,10 @@ export default function About() {
         </motion.div>
       </section>
 
-      <Dialog open={selectedMember !== null} onOpenChange={(open) => !open && setSelectedMember(null)}>
+      <Dialog
+        open={selectedMember !== null}
+        onOpenChange={(open) => !open && setSelectedMember(null)}
+      >
         <DialogContent className="bg-card border-primary/30 max-w-lg">
           {selectedMember && (
             <>
@@ -272,12 +388,18 @@ export default function About() {
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <span className="font-heading font-bold text-primary text-lg">{selectedMember.initials}</span>
+                      <span className="font-heading font-bold text-primary text-lg">
+                        {selectedMember.initials}
+                      </span>
                     )}
                   </div>
                   <div className="text-left">
-                    <DialogTitle className="font-heading text-white text-2xl">{selectedMember.name}</DialogTitle>
-                    <DialogDescription className="text-primary font-semibold mt-1">{selectedMember.title}</DialogDescription>
+                    <DialogTitle className="font-heading text-white text-2xl">
+                      {selectedMember.name}
+                    </DialogTitle>
+                    <DialogDescription className="text-primary font-semibold mt-1">
+                      {selectedMember.title}
+                    </DialogDescription>
                   </div>
                 </div>
               </DialogHeader>

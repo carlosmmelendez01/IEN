@@ -109,6 +109,7 @@ export default function RegionalCollegeMap({ colleges }: RegionalCollegeMapProps
               key={i}
               position={[college.lat, college.lng]}
               icon={isPartnered ? partneredIcon : regionalIcon}
+              title={`${college.name} esports program in ${college.city}`}
             >
               <Popup>
                 <div style={{ fontFamily: "Rajdhani, sans-serif", minWidth: 180 }}>

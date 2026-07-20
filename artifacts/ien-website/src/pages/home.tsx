@@ -4,6 +4,9 @@ import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { socialLinks, ONBOARDING_URL } from "@/lib/socialLinks";
+import { SchoolCharterButton } from "@/components/schools/SchoolCharterButton";
+import { trackAnalyticsEvent } from "@/lib/analytics";
+import { getSchoolNetworkStat, schoolCharterConfig } from "@/lib/schoolCharter";
 import heroDesktop from "@assets/state-finals/01-greencastle-hero-2400.jpg";
 import heroMobile from "@assets/state-finals/01-greencastle-hero-1280.jpg";
 import gridCentralHs from "@assets/state-finals/02-central-hs-1200.jpg";
@@ -11,7 +14,7 @@ import gridTrophies from "@assets/state-finals/03-marvel-rivals-1200.jpg";
 import gridCoach from "@assets/state-finals/04-drew-rhoda-1200.jpg";
 
 const stats = [
-  { value: "200+", label: "Schools Competing", live: true },
+  getSchoolNetworkStat(),
   { value: "7,000+", label: "Student Athletes" },
   { value: "12", label: "Game Titles" },
 ];
@@ -21,12 +24,11 @@ export default function Home() {
     <Layout>
       <SEO
         title="Home"
-        description="Indiana's official scholastic esports league. IHSEN high school, IMSEN middle school, and IUEN unified — serving 200+ Indiana schools and 7,000+ student athletes since 2019."
+        description="Indiana's official scholastic esports league for IHSEN high school, IMSEN middle school, and IUEN unified programs."
         path="/"
       />
 
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-
         <img
           src={heroDesktop}
           srcSet={`${heroMobile} 1280w, ${heroDesktop} 2400w`}
@@ -58,9 +60,13 @@ export default function Home() {
             </h1>
 
             <p className="text-2xl md:text-3xl text-gray-200 mb-10 max-w-3xl mx-auto font-heading font-bold tracking-wide">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200">Education</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200">
+                Education
+              </span>
               <span className="text-gray-400"> First. </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200">Esports</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200">
+                Esports
+              </span>
               <span className="text-gray-400"> Always.</span>
             </p>
 
@@ -70,7 +76,16 @@ export default function Home() {
                 asChild
                 className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest text-lg h-14 px-8"
               >
-                <Link href="/start-a-program">JOIN THE LEAGUE</Link>
+                <Link
+                  href="/start-a-program"
+                  onClick={() =>
+                    trackAnalyticsEvent("start_school_button_click", {
+                      source: "homepage",
+                    })
+                  }
+                >
+                  JOIN THE LEAGUE
+                </Link>
               </Button>
               <Button
                 size="lg"
@@ -78,7 +93,16 @@ export default function Home() {
                 className="w-full sm:w-auto border-primary text-primary hover:bg-primary/10 font-heading tracking-widest text-lg h-14 px-8"
                 asChild
               >
-                <Link href="/start-a-program">START A PROGRAM</Link>
+                <Link
+                  href="/start-a-program"
+                  onClick={() =>
+                    trackAnalyticsEvent("start_school_button_click", {
+                      source: "homepage",
+                    })
+                  }
+                >
+                  START A PROGRAM
+                </Link>
               </Button>
             </div>
 
@@ -116,16 +140,9 @@ export default function Home() {
                 className="flex flex-col items-center px-6 py-2"
               >
                 <div className="flex items-center gap-2">
-                  {stat.live && (
-                    <span
-                      className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse shrink-0"
-                      aria-hidden="true"
-                    />
-                  )}
                   <span className="font-heading font-bold text-3xl md:text-4xl text-yellow-300 leading-none">
                     {stat.value}
                   </span>
-                  {stat.live && <span className="sr-only">(currently active)</span>}
                 </div>
                 <span className="text-xs text-gray-200 tracking-widest uppercase mt-1.5 font-semibold">
                   {stat.label}
@@ -135,6 +152,31 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {schoolCharterConfig.enabled && (
+        <section className="border-y border-primary/25 bg-card">
+          <div className="container mx-auto px-4 py-6">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+              <div>
+                <h2 className="font-heading font-bold text-2xl md:text-3xl text-white mb-2">
+                  {schoolCharterConfig.academicYear} School Chartering Is Open
+                </h2>
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl">
+                  All new and returning IEN schools should complete the annual
+                  School Census &amp; Charter before competition registration.
+                </p>
+              </div>
+              <SchoolCharterButton
+                source="homepage"
+                eventName="school_charter_banner_click"
+                className="w-full lg:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
+              >
+                COMPLETE SCHOOL CHARTER
+              </SchoolCharterButton>
+            </div>
+          </div>
+        </section>
+      )}
 
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
@@ -147,8 +189,9 @@ export default function Home() {
       <section className="py-8 container mx-auto px-4">
         <div className="text-center mb-10">
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-light">
-            Real moments from the 2026 IEN State Finals. Indiana schools competing,
-            celebrating, and earning recognition on a stage built for scholastic esports.
+            Real moments from the 2026 IEN State Finals. Indiana schools
+            competing, celebrating, and earning recognition on a stage built for
+            scholastic esports.
           </p>
         </div>
 
@@ -201,7 +244,11 @@ export default function Home() {
               </motion.div>
             );
             return tile.href ? (
-              <Link key={i} href={tile.href} className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl">
+              <Link
+                key={i}
+                href={tile.href}
+                className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl"
+              >
                 {card}
               </Link>
             ) : (
@@ -268,7 +315,9 @@ export default function Home() {
               <div className="w-16 h-16 mx-auto bg-background border-2 border-primary text-primary flex items-center justify-center rounded-full font-heading text-2xl font-bold mb-4 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(212,175,55,0.3)]">
                 {item.step}
               </div>
-              <h3 className="font-heading font-bold text-xl mb-2">{item.title}</h3>
+              <h3 className="font-heading font-bold text-xl mb-2">
+                {item.title}
+              </h3>
               <p className="text-muted-foreground text-sm">{item.desc}</p>
             </div>
           ))}
@@ -279,7 +328,16 @@ export default function Home() {
             asChild
             className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest"
           >
-            <Link href="/start-a-program">GET DETAILED GUIDE</Link>
+            <Link
+              href="/start-a-program"
+              onClick={() =>
+                trackAnalyticsEvent("start_school_button_click", {
+                  source: "homepage",
+                })
+              }
+            >
+              GET DETAILED GUIDE
+            </Link>
           </Button>
         </div>
       </section>
@@ -304,8 +362,9 @@ export default function Home() {
               Upcoming Event Registration
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Registration links for upcoming IEN events will be posted as soon as events are announced.
-              Check the Events page for tickets, schedules, venue details, and public attendee registration.
+              Registration links for upcoming IEN events will be posted as soon
+              as events are announced. Check the Events page for tickets,
+              schedules, venue details, and public attendee registration.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button

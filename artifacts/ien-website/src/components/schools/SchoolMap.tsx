@@ -94,6 +94,7 @@ export default function SchoolMap({ schools, selectedDivision }: SchoolMapProps)
             key={i}
             position={[school.lat, school.lng]}
             icon={createCustomIcon(markerDivisionFor(school))}
+            title={`${school.name} in ${school.city}`}
           >
             <Popup>
               <div style={{ fontFamily: "Rajdhani, sans-serif", minWidth: 160 }}>

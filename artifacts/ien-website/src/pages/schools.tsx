@@ -1,18 +1,43 @@
 import { useState, lazy, Suspense } from "react";
+import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
-import { Search, MapPin, Users, ExternalLink, GraduationCap, School as SchoolIcon, Sparkles } from "lucide-react";
+import {
+  Search,
+  MapPin,
+  Users,
+  ExternalLink,
+  GraduationCap,
+  School as SchoolIcon,
+  Sparkles,
+  Rocket,
+  ClipboardCheck,
+} from "lucide-react";
 import { SCHOOLS } from "@/data/schools";
 import { COLLEGES, type College } from "@/data/colleges";
+import { SchoolCharterButton } from "@/components/schools/SchoolCharterButton";
+import { trackAnalyticsEvent } from "@/lib/analytics";
+import {
+  getSchoolNetworkStat,
+  schoolCharterConfig,
+  schoolNetworkConfig,
+} from "@/lib/schoolCharter";
 
 const SchoolMap = lazy(() => import("@/components/schools/SchoolMap"));
 
-const RegionalCollegeMap = lazy(() => import("@/components/schools/RegionalCollegeMap"));
+const RegionalCollegeMap = lazy(
+  () => import("@/components/schools/RegionalCollegeMap"),
+);
 
-const DIVISIONS = ["All Divisions", "High School (IHSEN)", "Middle School (IMSEN)", "Unified (IUEN)"];
+const DIVISIONS = [
+  "All Divisions",
+  "High School (IHSEN)",
+  "Middle School (IMSEN)",
+  "Unified (IUEN)",
+];
 const PAGE_SIZE = 12;
 
 const divisionColor = (d: string) => {
@@ -22,10 +47,10 @@ const divisionColor = (d: string) => {
 };
 
 export default function Schools() {
-
   const [query, setQuery] = useState("");
   const [division, setDivision] = useState("All Divisions");
   const [showAll, setShowAll] = useState(false);
+  const schoolReachStat = getSchoolNetworkStat();
 
   const [regionalState, setRegionalState] = useState<string>("ALL");
   const [regionalQuery, setRegionalQuery] = useState("");
@@ -54,17 +79,28 @@ export default function Schools() {
 
   const visible = showAll ? filtered : filtered.slice(0, PAGE_SIZE);
 
-  const northCount = SCHOOLS.filter(s => s.lat > 40.9).length;
-  const centralCount = SCHOOLS.filter(s => s.lat >= 39.4 && s.lat <= 40.9).length;
-  const southCount = SCHOOLS.filter(s => s.lat < 39.4).length;
+  const northCount = SCHOOLS.filter((s) => s.lat > 40.9).length;
+  const centralCount = SCHOOLS.filter(
+    (s) => s.lat >= 39.4 && s.lat <= 40.9,
+  ).length;
+  const southCount = SCHOOLS.filter((s) => s.lat < 39.4).length;
 
   const STATE_NAMES: Record<string, string> = {
     IN: "Indiana",
-    IL: "Illinois", MI: "Michigan", OH: "Ohio", WI: "Wisconsin",
-    MN: "Minnesota", IA: "Iowa", MO: "Missouri", NE: "Nebraska",
+    IL: "Illinois",
+    MI: "Michigan",
+    OH: "Ohio",
+    WI: "Wisconsin",
+    MN: "Minnesota",
+    IA: "Iowa",
+    MO: "Missouri",
+    NE: "Nebraska",
   };
   const ALL_STATES: Array<[string, College[]]> = Object.keys(STATE_NAMES)
-    .map(code => [code, COLLEGES.filter(c => c.state === code)] as [string, College[]])
+    .map(
+      (code) =>
+        [code, COLLEGES.filter((c) => c.state === code)] as [string, College[]],
+    )
     .filter(([, list]) => list.length > 0);
 
   const PARTNERS_SCOPE = "PARTNERS";
@@ -72,9 +108,9 @@ export default function Schools() {
     regionalState === "ALL"
       ? COLLEGES
       : regionalState === PARTNERS_SCOPE
-      ? COLLEGES.filter(c => c.isPartner === true)
-      : COLLEGES.filter(c => c.state === regionalState);
-  const partnerCount = COLLEGES.filter(c => c.isPartner === true).length;
+        ? COLLEGES.filter((c) => c.isPartner === true)
+        : COLLEGES.filter((c) => c.state === regionalState);
+  const partnerCount = COLLEGES.filter((c) => c.isPartner === true).length;
   const filteredRegional = regionalScoped.filter((c) => {
     const q = regionalQuery.toLowerCase();
     return (
@@ -92,60 +128,191 @@ export default function Schools() {
     <Layout>
       <SEO
         title="Member Schools"
-        description="200+ schools competing across Indiana in the Indiana Esports Network's scholastic leagues."
+        description="IEN has connected schools and scholastic esports programs across Indiana through IHSEN, IMSEN, and IUEN."
         path="/schools"
       />
 
-      <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
+      <section
+        id="school-participation"
+        className="relative py-16 md:py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30 scroll-mt-20"
+      >
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-        <div className="container relative z-20 mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4 tracking-tight">
-            MEMBER <span className="text-primary">SCHOOLS</span>
-          </h1>
-          <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto mb-8">
-            200+ schools competing across Indiana in the Esports Network
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              asChild
-              size="lg"
-              className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest text-base h-12 px-8"
-            >
-              <a href="#member-directory">
-                <SchoolIcon className="w-4 h-4 mr-2" />
-                BROWSE MEMBER SCHOOLS
-              </a>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest text-base h-12 px-8"
-            >
-              <a href="#partnered-colleges">
-                <GraduationCap className="w-4 h-4 mr-2" />
-                BROWSE IEN PARTNERS &amp; COLLEGIATE PROGRAMS
-              </a>
-            </Button>
+        <div className="container relative z-20 mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4 tracking-tight">
+              MEMBER <span className="text-primary">SCHOOLS</span>
+            </h1>
+            <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto mb-4">
+              {schoolNetworkConfig.connectedSchoolsCopy}
+            </p>
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+              Whether your school is joining IEN for the first time or returning
+              for another year, use the options below to find the right next
+              step.
+            </p>
           </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 max-w-7xl mx-auto">
+            <article className="bg-card border border-primary/25 rounded-xl p-6 flex flex-col h-full">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary mb-5">
+                <Rocket className="w-6 h-6" aria-hidden="true" />
+              </div>
+              <p className="text-xs font-heading font-bold tracking-[0.2em] uppercase text-primary mb-2">
+                START A PROGRAM
+              </p>
+              <h3 className="text-2xl font-heading font-bold text-white mb-3">
+                New to IEN
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+                Learn how to bring scholastic esports to your middle school,
+                high school, or Unified program.
+              </p>
+              <Button
+                asChild
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest"
+              >
+                <Link
+                  href="/start-a-program"
+                  onClick={() =>
+                    trackAnalyticsEvent("start_school_button_click", {
+                      source: "member_schools",
+                    })
+                  }
+                >
+                  GET STARTED
+                </Link>
+              </Button>
+            </article>
+
+            <article className="bg-card border border-primary/40 rounded-xl p-6 flex flex-col h-full shadow-[0_0_24px_rgba(212,175,55,0.08)]">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary mb-5">
+                <ClipboardCheck className="w-6 h-6" aria-hidden="true" />
+              </div>
+              <p className="text-xs font-heading font-bold tracking-[0.2em] uppercase text-primary mb-2">
+                NEW &amp; RETURNING SCHOOLS
+              </p>
+              <h3 className="text-2xl font-heading font-bold text-white mb-3">
+                IEN Annual Charter
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+                Confirm your school, coach, program, mascot, logo, and
+                participation information for the{" "}
+                {schoolCharterConfig.academicYear} academic year.
+              </p>
+              <SchoolCharterButton
+                source="member_schools"
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest"
+              >
+                COMPLETE SCHOOL CHARTER
+              </SchoolCharterButton>
+            </article>
+
+            <article className="bg-card border border-primary/25 rounded-xl p-6 flex flex-col h-full">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary mb-5">
+                <SchoolIcon className="w-6 h-6" aria-hidden="true" />
+              </div>
+              <p className="text-xs font-heading font-bold tracking-[0.2em] uppercase text-primary mb-2">
+                MEMBER DIRECTORY
+              </p>
+              <h3 className="text-2xl font-heading font-bold text-white mb-3">
+                Browse Member Schools
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+                Explore schools and scholastic esports programs connected with
+                IEN across Indiana.
+              </p>
+              <Button
+                asChild
+                variant="outline"
+                className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest"
+              >
+                <a
+                  href="#member-directory"
+                  onClick={() =>
+                    trackAnalyticsEvent("browse_member_schools_click", {
+                      source: "member_schools",
+                    })
+                  }
+                >
+                  BROWSE MEMBER SCHOOLS
+                </a>
+              </Button>
+            </article>
+
+            <article className="bg-card border border-primary/25 rounded-xl p-6 flex flex-col h-full">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary mb-5">
+                <GraduationCap className="w-6 h-6" aria-hidden="true" />
+              </div>
+              <p className="text-xs font-heading font-bold tracking-[0.2em] uppercase text-primary mb-2">
+                COLLEGIATE PATHWAYS
+              </p>
+              <h3 className="text-2xl font-heading font-bold text-white mb-3">
+                Browse Collegiate Programs
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+                Explore IEN partner colleges and regional esports programs that
+                connect with Indiana students.
+              </p>
+              <Button
+                asChild
+                variant="outline"
+                className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest"
+              >
+                <a href="#partnered-colleges">BROWSE COLLEGIATE PROGRAMS</a>
+              </Button>
+            </article>
+          </div>
+
+          {schoolCharterConfig.enabled && (
+            <div className="max-w-6xl mx-auto mt-8 rounded-xl border border-primary/45 bg-primary/10 p-6 md:p-8">
+              <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+                <div className="flex-1">
+                  <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary mb-2">
+                    Annual Charter
+                  </p>
+                  <h3 className="text-2xl md:text-3xl font-heading font-bold text-white mb-3">
+                    {schoolCharterConfig.academicYear} School Chartering
+                  </h3>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-3">
+                    IEN is rebuilding its annual school records to ensure that
+                    our school, coach, program, and participation information is
+                    current and accurate. Every new and returning school should
+                    complete the annual School Census &amp; Charter.
+                  </p>
+                  <p className="text-sm font-heading font-bold tracking-[0.16em] uppercase text-primary">
+                    Competition registration is completed separately.
+                  </p>
+                </div>
+                <SchoolCharterButton
+                  source="member_schools"
+                  className="w-full lg:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
+                >
+                  COMPLETE THE {schoolCharterConfig.academicYear} CHARTER
+                </SchoolCharterButton>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
-      <section id="member-directory" className="py-12 container mx-auto px-4 scroll-mt-20">
+      <section
+        id="member-directory"
+        className="py-12 container mx-auto px-4 scroll-mt-20"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-
           <div className="lg:col-span-2 space-y-6">
-
             <div className="bg-card border border-primary/30 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.1)]">
               <div style={{ height: 480 }}>
-                <Suspense fallback={
-                  <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                    <div className="text-center">
-                      <MapPin className="w-8 h-8 text-primary mx-auto mb-2 animate-pulse" />
-                      <p className="text-sm">Loading map…</p>
+                <Suspense
+                  fallback={
+                    <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                      <div className="text-center">
+                        <MapPin className="w-8 h-8 text-primary mx-auto mb-2 animate-pulse" />
+                        <p className="text-sm">Loading map…</p>
+                      </div>
                     </div>
-                  </div>
-                }>
+                  }
+                >
                   <SchoolMap schools={SCHOOLS} selectedDivision={division} />
                 </Suspense>
               </div>
@@ -169,12 +336,20 @@ export default function Schools() {
             <div className="bg-card border border-primary/30 rounded-xl p-6 shadow-[0_0_20px_rgba(212,175,55,0.05)]">
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="text-center">
-                  <div className="text-4xl font-heading font-bold text-white">200+</div>
-                  <div className="text-xs text-primary tracking-widest uppercase mt-1">Schools</div>
+                  <div className="text-4xl font-heading font-bold text-white">
+                    {schoolReachStat.value}
+                  </div>
+                  <div className="text-xs text-primary tracking-widest uppercase mt-1">
+                    {schoolReachStat.label}
+                  </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-heading font-bold text-white">7,000+</div>
-                  <div className="text-xs text-primary tracking-widest uppercase mt-1">Student Athletes</div>
+                  <div className="text-4xl font-heading font-bold text-white">
+                    7,000+
+                  </div>
+                  <div className="text-xs text-primary tracking-widest uppercase mt-1">
+                    Student Athletes
+                  </div>
                 </div>
               </div>
               <div className="space-y-2 text-sm">
@@ -182,10 +357,15 @@ export default function Schools() {
                   { label: "North Region", count: northCount },
                   { label: "Central Region", count: centralCount },
                   { label: "South Region", count: southCount },
-                ].map(r => (
-                  <div key={r.label} className="flex items-center justify-between bg-background/60 px-3 py-2 rounded-lg">
+                ].map((r) => (
+                  <div
+                    key={r.label}
+                    className="flex items-center justify-between bg-background/60 px-3 py-2 rounded-lg"
+                  >
                     <span className="text-muted-foreground">{r.label}</span>
-                    <span className="font-heading font-bold text-primary">{r.count}</span>
+                    <span className="font-heading font-bold text-primary">
+                      {r.count}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -193,28 +373,44 @@ export default function Schools() {
           </div>
 
           <div className="lg:col-span-3">
-
             <div className="flex flex-col sm:flex-row gap-3 mb-6">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
+                  aria-label="Search schools or cities"
                   placeholder="Search schools or cities…"
                   value={query}
-                  onChange={e => { setQuery(e.target.value); setShowAll(false); }}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                    setShowAll(false);
+                  }}
                   className="pl-10 bg-card border-primary/30 focus-visible:ring-primary h-11"
                 />
               </div>
+              <label htmlFor="school-division-filter" className="sr-only">
+                Filter schools by division
+              </label>
               <select
+                id="school-division-filter"
                 value={division}
-                onChange={e => { setDivision(e.target.value); setShowAll(false); }}
+                onChange={(e) => {
+                  setDivision(e.target.value);
+                  setShowAll(false);
+                }}
                 className="bg-card border border-primary/30 rounded-md px-4 h-11 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-white"
               >
-                {DIVISIONS.map(d => <option key={d}>{d}</option>)}
+                {DIVISIONS.map((d) => (
+                  <option key={d}>{d}</option>
+                ))}
               </select>
             </div>
 
             <p className="text-xs text-muted-foreground mb-4">
-              Showing <span className="text-primary font-bold">{visible.length}</span> of <span className="text-primary font-bold">{filtered.length}</span> schools
+              Showing{" "}
+              <span className="text-primary font-bold">{visible.length}</span>{" "}
+              of{" "}
+              <span className="text-primary font-bold">{filtered.length}</span>{" "}
+              directory records
             </p>
 
             <div className="space-y-2 mb-6">
@@ -241,12 +437,21 @@ export default function Schools() {
                         )}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <h4 className="font-bold text-white text-sm leading-tight truncate">{school.name}</h4>
+                        <h4 className="font-bold text-white text-sm leading-tight truncate">
+                          {school.name}
+                        </h4>
                         <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                           <MapPin className="w-3 h-3 text-muted-foreground shrink-0" />
-                          <span className="text-xs text-muted-foreground truncate">{school.city}</span>
+                          <span className="text-xs text-muted-foreground truncate">
+                            {school.city}
+                          </span>
                           {school.divisions.map((d) => (
-                            <span key={d} className={`text-xs font-bold ${divisionColor(d)}`}>{d}</span>
+                            <span
+                              key={d}
+                              className={`text-xs font-bold ${divisionColor(d)}`}
+                            >
+                              {d}
+                            </span>
                           ))}
                         </div>
                       </div>
@@ -264,7 +469,7 @@ export default function Schools() {
                     className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8"
                     onClick={() => setShowAll(true)}
                   >
-                    VIEW ALL {filtered.length} SCHOOLS
+                    VIEW ALL {filtered.length} DIRECTORY RECORDS
                   </Button>
                 ) : (
                   <Button
@@ -278,11 +483,13 @@ export default function Schools() {
               </div>
             )}
           </div>
-
         </div>
       </section>
 
-      <section id="partnered-colleges" className="py-16 mb-20 container mx-auto px-4 scroll-mt-20">
+      <section
+        id="partnered-colleges"
+        className="py-16 mb-20 container mx-auto px-4 scroll-mt-20"
+      >
         <div className="flex items-center justify-center mb-4">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/40" />
           <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl text-center">
@@ -291,10 +498,10 @@ export default function Schools() {
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/40" />
         </div>
         <p className="text-center text-muted-foreground text-sm mb-8 max-w-2xl mx-auto">
-          Every Indiana partner and Midwest regional program in one place.
-          {" "}<span className="text-primary font-bold">IEN Partners</span> are
-          Indiana colleges that recruit directly from the league. Pick a state to
-          focus the map and directory.
+          Every Indiana partner and Midwest regional program in one place.{" "}
+          <span className="text-primary font-bold">IEN Partners</span> are
+          Indiana colleges that recruit directly from the league. Pick a state
+          to focus the map and directory.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
@@ -343,18 +550,19 @@ export default function Schools() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-card border border-primary/30 rounded-xl overflow-hidden shadow-[0_0_20px_rgba(212,175,55,0.1)]">
               <div style={{ height: 480 }}>
-                <Suspense fallback={
-                  <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                    <div className="text-center">
-                      <MapPin className="w-8 h-8 text-primary mx-auto mb-2 animate-pulse" />
-                      <p className="text-sm">Loading map…</p>
+                <Suspense
+                  fallback={
+                    <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                      <div className="text-center">
+                        <MapPin className="w-8 h-8 text-primary mx-auto mb-2 animate-pulse" />
+                        <p className="text-sm">Loading map…</p>
+                      </div>
                     </div>
-                  </div>
-                }>
+                  }
+                >
                   <RegionalCollegeMap colleges={regionalScoped} />
                 </Suspense>
               </div>
@@ -362,8 +570,16 @@ export default function Schools() {
               <div className="px-4 py-3 border-t border-primary/20 flex flex-wrap items-center justify-between gap-3 text-xs">
                 <div className="flex items-center gap-4">
                   <span className="flex items-center gap-1.5">
-                    <span className="w-3.5 h-3.5 rounded-full inline-block ring-1 ring-primary/50" style={{ background: "#f5d062", boxShadow: "0 0 6px rgba(245,208,98,0.6)" }} />
-                    <span className="text-foreground/90 font-bold">IEN Partner</span>
+                    <span
+                      className="w-3.5 h-3.5 rounded-full inline-block ring-1 ring-primary/50"
+                      style={{
+                        background: "#f5d062",
+                        boxShadow: "0 0 6px rgba(245,208,98,0.6)",
+                      }}
+                    />
+                    <span className="text-foreground/90 font-bold">
+                      IEN Partner
+                    </span>
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="w-3 h-3 rounded-full bg-primary inline-block" />
@@ -371,7 +587,10 @@ export default function Schools() {
                   </span>
                 </div>
                 <span className="text-muted-foreground">
-                  <span className="text-primary font-bold">{regionalScoped.length}</span> on map
+                  <span className="text-primary font-bold">
+                    {regionalScoped.length}
+                  </span>{" "}
+                  on map
                 </span>
               </div>
             </div>
@@ -379,25 +598,28 @@ export default function Schools() {
             <div className="bg-card border border-primary/30 rounded-xl p-6 shadow-[0_0_20px_rgba(212,175,55,0.05)]">
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="text-center">
-                  <div className="text-4xl font-heading font-bold text-white">{regionalScoped.length}</div>
+                  <div className="text-4xl font-heading font-bold text-white">
+                    {regionalScoped.length}
+                  </div>
                   <div className="text-xs text-primary tracking-widest uppercase mt-1">
                     {regionalState === "ALL"
                       ? "Programs"
                       : regionalState === PARTNERS_SCOPE
-                      ? "IEN Partners"
-                      : `${regionalState} Programs`}
+                        ? "IEN Partners"
+                        : `${regionalState} Programs`}
                   </div>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-heading font-bold text-white">
-                    {regionalScoped.filter(c => c.isPartner === true).length}
+                    {regionalScoped.filter((c) => c.isPartner === true).length}
                   </div>
-                  <div className="text-xs text-primary tracking-widest uppercase mt-1">In Scope</div>
+                  <div className="text-xs text-primary tracking-widest uppercase mt-1">
+                    In Scope
+                  </div>
                 </div>
               </div>
               {regionalState === "ALL" ? (
                 <div className="space-y-2 text-sm">
-
                   <button
                     type="button"
                     onClick={() => setRegionalScope(PARTNERS_SCOPE)}
@@ -406,7 +628,9 @@ export default function Schools() {
                     <span className="flex items-center gap-2 text-primary font-bold">
                       <Sparkles className="w-3.5 h-3.5" /> IEN Partners
                     </span>
-                    <span className="font-heading font-bold text-primary">{partnerCount}</span>
+                    <span className="font-heading font-bold text-primary">
+                      {partnerCount}
+                    </span>
                   </button>
                   {ALL_STATES.map(([code, list]) => (
                     <button
@@ -415,8 +639,12 @@ export default function Schools() {
                       onClick={() => setRegionalScope(code)}
                       className="w-full flex items-center justify-between bg-background/60 border-transparent hover:bg-background hover:border-primary/40 border px-3 py-2 rounded-lg transition-colors group"
                     >
-                      <span className="text-muted-foreground group-hover:text-foreground">{STATE_NAMES[code]}</span>
-                      <span className="font-heading font-bold text-primary">{list.length}</span>
+                      <span className="text-muted-foreground group-hover:text-foreground">
+                        {STATE_NAMES[code]}
+                      </span>
+                      <span className="font-heading font-bold text-primary">
+                        {list.length}
+                      </span>
                     </button>
                   ))}
                 </div>
@@ -433,41 +661,54 @@ export default function Schools() {
           </div>
 
           <div className="lg:col-span-3">
-
             <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-4">
               <div>
                 <div className="text-xs font-heading font-bold tracking-[0.18em] uppercase text-primary">
                   {regionalState === "ALL"
                     ? "Region · Midwest + Indiana"
                     : regionalState === PARTNERS_SCOPE
-                    ? "Scope · IEN Partners"
-                    : `Region · ${regionalState}`}
+                      ? "Scope · IEN Partners"
+                      : `Region · ${regionalState}`}
                 </div>
                 <h3 className="font-heading font-bold text-2xl text-white tracking-tight mt-1">
                   {regionalState === "ALL"
                     ? "All Programs"
                     : regionalState === PARTNERS_SCOPE
-                    ? "IEN Partner Programs"
-                    : STATE_NAMES[regionalState]}
+                      ? "IEN Partner Programs"
+                      : STATE_NAMES[regionalState]}
                 </h3>
               </div>
               <div className="relative w-full sm:w-72">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
+                  aria-label="Search collegiate esports programs"
                   placeholder="Search this list…"
                   value={regionalQuery}
-                  onChange={e => { setRegionalQuery(e.target.value); setShowAllRegional(false); }}
+                  onChange={(e) => {
+                    setRegionalQuery(e.target.value);
+                    setShowAllRegional(false);
+                  }}
                   className="pl-10 bg-card border-primary/30 focus-visible:ring-primary h-10 text-sm"
                 />
               </div>
             </div>
 
             <p className="text-xs text-muted-foreground mb-4">
-              Showing <span className="text-primary font-bold">{visibleRegional.length}</span> of <span className="text-primary font-bold">{filteredRegional.length}</span>
+              Showing{" "}
+              <span className="text-primary font-bold">
+                {visibleRegional.length}
+              </span>{" "}
+              of{" "}
+              <span className="text-primary font-bold">
+                {filteredRegional.length}
+              </span>
               {regionalQuery !== "" && <> matching</>}{" "}
               {filteredRegional.length === 1 ? "program" : "programs"}
               {filteredRegional.length !== regionalScoped.length && (
-                <span className="text-muted-foreground/70"> · {regionalScoped.length} total in scope</span>
+                <span className="text-muted-foreground/70">
+                  {" "}
+                  · {regionalScoped.length} total in scope
+                </span>
               )}
             </p>
 
@@ -493,11 +734,19 @@ export default function Schools() {
                       aria-label={`Visit ${college.name} esports page`}
                     >
                       <div className="flex items-start gap-3">
-                        <div className={`w-10 h-10 shrink-0 bg-background border rounded-full flex items-center justify-center overflow-hidden ${isPartner ? "border-primary/60" : "border-primary/20"}`}>
+                        <div
+                          className={`w-10 h-10 shrink-0 bg-background border rounded-full flex items-center justify-center overflow-hidden ${isPartner ? "border-primary/60" : "border-primary/20"}`}
+                        >
                           {college.logo ? (
-                            <img src={college.logo} alt={`${college.name} logo`} className="w-full h-full object-contain" />
+                            <img
+                              src={college.logo}
+                              alt={`${college.name} logo`}
+                              className="w-full h-full object-contain"
+                            />
                           ) : (
-                            <GraduationCap className={`w-4 h-4 ${isPartner ? "text-primary" : "text-primary/60"}`} />
+                            <GraduationCap
+                              className={`w-4 h-4 ${isPartner ? "text-primary" : "text-primary/60"}`}
+                            />
                           )}
                         </div>
                         <div className="min-w-0 flex-1">
@@ -549,22 +798,21 @@ export default function Schools() {
               </div>
             )}
 
-            <p className="text-xs text-muted-foreground/60 mt-6">
-              IEN Partner status reflects Indiana colleges that recruit directly from
-              the league. Click any program to visit its official page.
-              {" "}Know a program we should add?{" "}
+            <p className="text-xs text-muted-foreground mt-6">
+              IEN Partner status reflects Indiana colleges that recruit directly
+              from the league. Click any program to visit its official page.{" "}
+              Know a program we should add?{" "}
               <a
                 href="mailto:ienboard@indianaesportsnetwork.org?subject=Collegiate%20Program%20Addition"
-                className="text-primary hover:text-primary/80 underline-offset-2 hover:underline"
+                className="text-primary underline underline-offset-2 hover:text-primary/80"
               >
                 Let us know
-              </a>.
+              </a>
+              .
             </p>
           </div>
-
         </div>
       </section>
-
     </Layout>
   );
 }

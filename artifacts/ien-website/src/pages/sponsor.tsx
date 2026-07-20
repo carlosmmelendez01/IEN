@@ -11,9 +11,10 @@ import {
   Trophy,
   Users,
 } from "lucide-react";
+import { getSchoolNetworkStat } from "@/lib/schoolCharter";
 
 const sponsorMetrics = [
-  { value: "200+", label: "Member Schools" },
+  getSchoolNetworkStat(),
   { value: "7,000+", label: "Student-Athletes" },
   { value: "3", label: "Middle School, High School, and Unified Programs" },
   { value: "Statewide", label: "Indiana Competition and Championships" },
@@ -46,9 +47,14 @@ const sponsorReasons = [
   },
 ];
 
-export function SponsorPageContent({ canonicalPath = "/sponsor" }: { canonicalPath?: string }) {
+export function SponsorPageContent({
+  canonicalPath = "/sponsor",
+}: {
+  canonicalPath?: string;
+}) {
   const [location] = useLocation();
-  const path = location === "/partner-with-ien" ? "/partner-with-ien" : canonicalPath;
+  const path =
+    location === "/partner-with-ien" ? "/partner-with-ien" : canonicalPath;
 
   return (
     <Layout>
@@ -101,7 +107,10 @@ export function SponsorPageContent({ canonicalPath = "/sponsor" }: { canonicalPa
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {sponsorMetrics.map((metric) => (
-              <div key={metric.label} className="bg-card border border-primary/20 rounded-lg p-5">
+              <div
+                key={metric.label}
+                className="bg-card border border-primary/20 rounded-lg p-5"
+              >
                 <div className="text-3xl md:text-4xl font-heading font-bold text-primary mb-2">
                   {metric.value}
                 </div>

@@ -25,6 +25,7 @@ import {
   type Partner,
   type PartnerCategory,
 } from "@/data/partners";
+import { getSchoolNetworkStat } from "@/lib/schoolCharter";
 import ienMark from "@assets/IEN_Main Logo Transparent.png";
 
 const impactAreas: Array<{
@@ -34,7 +35,8 @@ const impactAreas: Array<{
 }> = [
   {
     title: "State Championships",
-    description: "Supporting professional-quality statewide competition experiences.",
+    description:
+      "Supporting professional-quality statewide competition experiences.",
     icon: Trophy,
   },
   {
@@ -70,10 +72,7 @@ const impactAreas: Array<{
 ];
 
 const partnerMetrics = [
-  {
-    value: "200+",
-    label: "Member Schools",
-  },
+  getSchoolNetworkStat(),
   {
     value: "7,000+",
     label: "Student-Athletes",
@@ -114,7 +113,13 @@ function SectionHeader({
   );
 }
 
-function LogoFrame({ partner, featured = false }: { partner: Partner; featured?: boolean }) {
+function LogoFrame({
+  partner,
+  featured = false,
+}: {
+  partner: Partner;
+  featured?: boolean;
+}) {
   const logoSize = featured ? "h-16 md:h-20" : "h-12";
   const wrapperClass =
     partner.logoTreatment === "light"
@@ -136,7 +141,7 @@ function LogoFrame({ partner, featured = false }: { partner: Partner; featured?:
           className={`${
             featured ? "w-24 h-24 text-2xl" : "w-16 h-16 text-lg"
           } rounded-lg border border-primary/30 bg-primary/10 text-primary font-heading font-bold flex items-center justify-center tracking-widest`}
-          aria-label={`${partner.name} text logo placeholder`}
+          aria-hidden="true"
         >
           {partner.initials ?? partner.name.slice(0, 2)}
         </div>
@@ -441,8 +446,8 @@ function PartnerCTA() {
               IEN works with organizations that believe esports can strengthen
               education, expand career awareness, and create meaningful
               opportunities for Indiana students. Partnerships may include event
-              sponsorship, technology support, student programming, scholarships,
-              recruiting, venue support, and community engagement.
+              sponsorship, technology support, student programming,
+              scholarships, recruiting, venue support, and community engagement.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button

@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Mail, CheckCircle2 } from "lucide-react";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 type Role = "" | "student" | "parent" | "educator" | "sponsor" | "community";
 
@@ -16,7 +18,9 @@ interface FormState {
     imsen: boolean;
     iuen: boolean;
     events: boolean;
+    college: boolean;
     sponsorship: boolean;
+    general: boolean;
   };
 }
 
@@ -29,49 +33,56 @@ const DEFAULT_STATE: FormState = {
     imsen: false,
     iuen: false,
     events: false,
+    college: false,
     sponsorship: false,
+    general: false,
   },
 };
 
 type Status = "idle" | "success";
 
-const INTEREST_OPTIONS: Array<{ key: keyof FormState["interests"]; label: string }> = [
-  { key: "ihsen",       label: "IHSEN: High School" },
-  { key: "imsen",       label: "IMSEN: Middle School" },
-  { key: "iuen",        label: "IUEN: Unified (Special Olympics)" },
-  { key: "events",      label: "Events & State Finals" },
-  { key: "sponsorship", label: "Sponsorship & Partnerships" },
+const INTEREST_OPTIONS: Array<{
+  key: keyof FormState["interests"];
+  label: string;
+}> = [
+  { key: "ihsen", label: "High School Esports" },
+  { key: "imsen", label: "Middle School Esports" },
+  { key: "iuen", label: "Unified Esports" },
+  { key: "events", label: "Events & State Finals" },
+  { key: "college", label: "College & Recruiting Opportunities" },
+  { key: "sponsorship", label: "Partnerships & Sponsorships" },
+  { key: "general", label: "General IEN News" },
 ];
 
 const ROLE_OPTIONS: Array<{ value: Role; label: string }> = [
-  { value: "",          label: "Select an option…" },
-  { value: "student",   label: "Student" },
-  { value: "parent",    label: "Parent / Family" },
-  { value: "educator",  label: "Coach or Educator" },
-  { value: "sponsor",   label: "Sponsor / Partner" },
+  { value: "", label: "Select an option…" },
+  { value: "student", label: "Student" },
+  { value: "parent", label: "Parent / Family" },
+  { value: "educator", label: "Coach or Educator" },
+  { value: "sponsor", label: "Sponsor / Partner" },
   { value: "community", label: "Community Member" },
 ];
 
 function isValidEmail(email: string): boolean {
-
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
 
 function buildNewsletterMailto(state: FormState): string {
-  const selectedInterests = INTEREST_OPTIONS
-    .filter((o) => state.interests[o.key])
+  const selectedInterests = INTEREST_OPTIONS.filter(
+    (o) => state.interests[o.key],
+  )
     .map((o) => o.label)
     .join(", ");
   const body = [
-    "Please add me to the Indiana Esports Network newsletter.",
+    "Please add me to Indiana Esports Network updates.",
     "",
     `Name:      ${state.name || "(not provided)"}`,
     `Email:     ${state.email}`,
     `Role:      ${ROLE_OPTIONS.find((r) => r.value === state.role)?.label ?? "(not provided)"}`,
-    `Interests: ${selectedInterests || "(none selected)"}`,
+    `Updates:   ${selectedInterests || "(none selected)"}`,
   ].join("\n");
   return `mailto:ienboard@indianaesportsnetwork.org?subject=${encodeURIComponent(
-    "Newsletter signup"
+    "IEN updates signup",
   )}&body=${encodeURIComponent(body)}`;
 }
 
@@ -93,6 +104,9 @@ export default function NewsletterSignup() {
     e.preventDefault();
     if (!canSubmit) return;
 
+    trackAnalyticsEvent("stay_connected_submit", {
+      source: "stay_connected",
+    });
     window.location.href = buildNewsletterMailto(state);
     setStatus("success");
   };
@@ -103,10 +117,13 @@ export default function NewsletterSignup() {
         <div className="w-14 h-14 rounded-full bg-primary/15 border border-primary/40 flex items-center justify-center mx-auto mb-5">
           <CheckCircle2 className="w-7 h-7 text-primary" />
         </div>
-        <h3 className="text-2xl font-heading font-bold text-white mb-2">YOU&rsquo;RE IN.</h3>
+        <h3 className="text-2xl font-heading font-bold text-white mb-2">
+          YOU&rsquo;RE IN.
+        </h3>
         <p className="text-muted-foreground text-sm max-w-md mx-auto mb-6">
-          Thanks for signing up. We&rsquo;ll send IEN news, league updates, and event announcements straight
-          to <span className="text-primary font-bold">{state.email}</span>.
+          Thanks for subscribing. We&rsquo;ll send IEN news, league updates, and
+          event announcements straight to{" "}
+          <span className="text-primary font-bold">{state.email}</span>.
         </p>
         <Button
           variant="outline"
@@ -130,7 +147,10 @@ export default function NewsletterSignup() {
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <div>
-          <Label htmlFor="ns-name" className="text-xs uppercase tracking-widest text-muted-foreground mb-1.5 block">
+          <Label
+            htmlFor="ns-name"
+            className="text-xs uppercase tracking-widest text-muted-foreground mb-1.5 block"
+          >
             Name
           </Label>
           <Input
@@ -144,7 +164,10 @@ export default function NewsletterSignup() {
           />
         </div>
         <div>
-          <Label htmlFor="ns-email" className="text-xs uppercase tracking-widest text-muted-foreground mb-1.5 block">
+          <Label
+            htmlFor="ns-email"
+            className="text-xs uppercase tracking-widest text-muted-foreground mb-1.5 block"
+          >
             Email <span className="text-primary">*</span>
           </Label>
           <Input
@@ -155,7 +178,9 @@ export default function NewsletterSignup() {
             value={state.email}
             onChange={(e) => setState((s) => ({ ...s, email: e.target.value }))}
             className={`bg-background focus-visible:ring-primary/40 h-11 ${
-              emailInvalid ? "border-red-500/60 focus-visible:ring-red-500/40" : "border-primary/20"
+              emailInvalid
+                ? "border-red-500/60 focus-visible:ring-red-500/40"
+                : "border-primary/20"
             }`}
             aria-invalid={emailInvalid || undefined}
             aria-describedby={emailInvalid ? "ns-email-error" : undefined}
@@ -170,17 +195,26 @@ export default function NewsletterSignup() {
       </div>
 
       <div className="mb-6">
-        <Label htmlFor="ns-role" className="text-xs uppercase tracking-widest text-muted-foreground mb-1.5 block">
-          I am a…
+        <Label
+          htmlFor="ns-role"
+          className="text-xs uppercase tracking-widest text-muted-foreground mb-1.5 block"
+        >
+          Which best describes you?
         </Label>
         <select
           id="ns-role"
           value={state.role}
-          onChange={(e) => setState((s) => ({ ...s, role: e.target.value as Role }))}
+          onChange={(e) =>
+            setState((s) => ({ ...s, role: e.target.value as Role }))
+          }
           className="w-full h-11 rounded-md bg-background border border-primary/20 px-3 text-sm text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/40"
         >
           {ROLE_OPTIONS.map((r) => (
-            <option key={r.value} value={r.value} className="bg-background text-foreground">
+            <option
+              key={r.value}
+              value={r.value}
+              className="bg-background text-foreground"
+            >
               {r.label}
             </option>
           ))}
@@ -189,7 +223,7 @@ export default function NewsletterSignup() {
 
       <fieldset className="mb-6">
         <legend className="text-xs uppercase tracking-widest text-muted-foreground mb-3">
-          What are you interested in? (optional)
+          What updates would you like to receive?
         </legend>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {INTEREST_OPTIONS.map((opt) => (
@@ -216,12 +250,25 @@ export default function NewsletterSignup() {
         className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 disabled:opacity-60"
       >
         <Mail className="w-4 h-4 mr-2" />
-        SUBSCRIBE TO IEN NEWS
+        SUBSCRIBE TO IEN UPDATES
       </Button>
 
       <p className="text-[11px] text-muted-foreground/70 mt-4 text-center leading-relaxed">
-        We&rsquo;ll send occasional newsletters, league updates, and event announcements. No spam, and you
-        can unsubscribe anytime. We never share your email.
+        We&rsquo;ll send occasional newsletters, league updates, and event
+        announcements. No spam, and you can unsubscribe anytime. We never share
+        your email.
+      </p>
+      <p className="text-xs text-muted-foreground mt-4 text-center leading-relaxed">
+        This form is for IEN news and updates. It does not charter or register a
+        school for competition.
+      </p>
+      <p className="text-xs text-center mt-2">
+        <Link
+          href="/schools#school-participation"
+          className="font-heading font-bold tracking-[0.14em] uppercase text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+        >
+          Looking to start or renew a school program? Visit Member Schools.
+        </Link>
       </p>
     </form>
   );
