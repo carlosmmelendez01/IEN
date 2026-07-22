@@ -56,6 +56,17 @@ export function Footer() {
             >
               ienboard@indianaesportsnetwork.org
             </a>
+            <div className="mt-6">
+              <img
+                src="/brand/candid-gold-transparency-seal-2026.png"
+                alt="Candid Gold Transparency Seal 2026"
+                width={96}
+                height={96}
+                loading="lazy"
+                decoding="async"
+                className="h-20 w-20 sm:h-24 sm:w-24 object-contain"
+              />
+            </div>
           </div>
 
           <div>
