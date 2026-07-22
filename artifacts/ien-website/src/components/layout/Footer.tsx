@@ -57,15 +57,23 @@ export function Footer() {
               ienboard@indianaesportsnetwork.org
             </a>
             <div className="mt-6">
-              <img
-                src="/brand/candid-gold-transparency-seal-2026.png"
-                alt="Candid Gold Transparency Seal 2026"
-                width={96}
-                height={96}
-                loading="lazy"
-                decoding="async"
-                className="h-20 w-20 sm:h-24 sm:w-24 object-contain"
-              />
+              <a
+                aria-label="Indiana Esports Network Candid profile"
+                href="https://app.candid.org/profile/10983331/indiana-esports-network-86-3901103/?pkId=31ad6aaf-f16e-40da-a8e3-750e106b4e85"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex"
+              >
+                <img
+                  alt=""
+                  src="https://widgets.guidestar.org/prod/v1/pdp/transparency-seal/10983331/svg"
+                  width={96}
+                  height={96}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-20 w-20 sm:h-24 sm:w-24 object-contain"
+                />
+              </a>
             </div>
           </div>
 
