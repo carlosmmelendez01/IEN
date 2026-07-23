@@ -26,7 +26,6 @@ import {
   type PartnerCategory,
 } from "@/data/partners";
 import { getSchoolNetworkStat } from "@/lib/schoolCharter";
-import ienMark from "@assets/IEN_Main Logo Transparent.png";
 
 const impactAreas: Array<{
   title: string;
@@ -275,6 +274,25 @@ function PartnerCategorySection({ category }: { category: PartnerCategory }) {
   );
 }
 
+function PartnerCategoryTile({ category }: { category: PartnerCategory }) {
+  const tileClass = category.limited
+    ? "border-dashed border-primary/60"
+    : "border-primary/15 border-t-primary";
+
+  return (
+    <article
+      className={`min-h-40 bg-card border border-t-4 ${tileClass} rounded-none px-5 py-6 text-center flex flex-col items-center justify-center`}
+    >
+      <h3 className="text-xl font-heading font-bold uppercase tracking-wider text-primary mb-2">
+        {category.title}
+      </h3>
+      <p className="text-sm text-gray-300 leading-relaxed">
+        {category.shortDescription}
+      </p>
+    </article>
+  );
+}
+
 function PartnerImpact() {
   return (
     <section className="py-20 border-y border-primary/15 bg-background/60">
@@ -339,12 +357,6 @@ function PartnersHero() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(212,175,55,0.16),transparent_26%),radial-gradient(circle_at_80%_70%,rgba(39,86,166,0.28),transparent_32%)]" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/20" />
-      <img
-        src={ienMark}
-        alt=""
-        aria-hidden="true"
-        className="absolute -right-16 md:right-8 bottom-4 w-64 md:w-96 opacity-[0.08] pointer-events-none"
-      />
 
       <div className="container relative z-20 mx-auto px-4 text-center">
         <motion.div
@@ -394,9 +406,9 @@ function FeaturedPartners() {
       <SectionHeader
         eyebrow="Featured Partners"
         title="Featured Partners"
-        description="These partners are prominently represented across IEN's current site content and help power student pathways, competition technology, and event operations."
+        description="These partners are prominently represented across IEN's current site content and help power student pathways, competition technology, communications, and event operations."
       />
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
         {featuredPartners.map((partner, index) => (
           <FeaturedPartnerCard
             key={partner.name}
@@ -418,6 +430,11 @@ function PartnerNetwork() {
           title="Our Partner Network"
           description="Every organization in IEN's partner network plays a distinct role in supporting Indiana students, schools, coaches, and competitions."
         />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 max-w-7xl mx-auto mb-12">
+          {partnerCategories.map((category) => (
+            <PartnerCategoryTile key={category.key} category={category} />
+          ))}
+        </div>
         <div className="space-y-6 max-w-6xl mx-auto">
           {partnerCategories.map((category) => (
             <PartnerCategorySection key={category.key} category={category} />
@@ -505,8 +522,8 @@ export default function Partners() {
       />
 
       <PartnersHero />
-      <PartnerImpact />
       <FeaturedPartners />
+      <PartnerImpact />
       <PartnerNetwork />
       <PartnerCTA />
     </Layout>
