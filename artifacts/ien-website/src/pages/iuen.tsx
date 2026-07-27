@@ -17,8 +17,6 @@ import {
   Crown,
   Lightbulb,
   GraduationCap,
-  HandHeart,
-  School,
   TrendingUp,
   ExternalLink,
   FileText,
@@ -30,21 +28,10 @@ import { CHAMPIONS, type Champion } from "@/data/champions";
 import { findSchoolLogo } from "@/lib/schoolLogos";
 
 const IUEN_CHAMPIONS: Champion[] = CHAMPIONS.filter((c) => c.league === "IUEN")
-
   .sort((a, b) => b.season.localeCompare(a.season));
 
-const TOTAL_STATE_TITLES = IUEN_CHAMPIONS.length;
-
-const BY_THE_NUMBERS: Array<{
-  icon: React.ReactNode;
-  value: string;
-  label: string;
-}> = [
-  { icon: <School className="w-6 h-6" />,       value: "—",                          label: "Schools Participating" },
-  { icon: <Users className="w-6 h-6" />,        value: "—",                          label: "Unified Teams" },
-  { icon: <HandHeart className="w-6 h-6" />,    value: "—",                          label: "Student Participants" },
-  { icon: <Trophy className="w-6 h-6" />,       value: TOTAL_STATE_TITLES.toString(), label: "State Championships" },
-];
+const UNIFIED_REGISTRATION_URL =
+  "https://soindiana.formstack.com/forms/unifiedesportsregistration_2025_26";
 
 const STORIES: Array<{
   eyebrow: string;
@@ -190,6 +177,18 @@ export default function IUEN() {
               season format, with Super Smash Bros. in the fall and Rocket League in
               the spring.
             </p>
+            <div className="mt-8 flex justify-center">
+              <Button
+                size="lg"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+                asChild
+              >
+                <a href={UNIFIED_REGISTRATION_URL} target="_blank" rel="noopener noreferrer">
+                  REGISTER UNIFIED TEAM
+                  <ExternalLink className="ml-2 w-4 h-4" aria-hidden />
+                </a>
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -217,41 +216,6 @@ export default function IUEN() {
             <span>Special Olympics Indiana · Unified Champion Schools</span>
             <ExternalLink className="w-3.5 h-3.5" aria-hidden />
           </a>
-        </div>
-      </section>
-
-      <section className="py-14 container mx-auto px-4">
-        <div className="flex items-center justify-center mb-3">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
-            IUEN By The Numbers
-          </span>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
-        </div>
-        <p className="text-center text-xs font-heading font-bold tracking-[0.25em] uppercase text-primary/80 mb-10">
-          Since 2024
-        </p>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
-          {BY_THE_NUMBERS.map((stat) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-              className="bg-card border border-primary/25 rounded-xl p-6 text-center hover:border-primary/60 transition-colors"
-            >
-              <div className="w-12 h-12 rounded-lg bg-primary/15 border border-primary/40 text-primary flex items-center justify-center mx-auto mb-4">
-                {stat.icon}
-              </div>
-              <div className="font-heading font-bold text-4xl text-white leading-none drop-shadow-[0_0_18px_rgba(212,175,55,0.4)] tabular-nums">
-                {stat.value}
-              </div>
-              <div className="mt-3 text-[0.7rem] tracking-[0.2em] uppercase text-muted-foreground font-heading font-bold">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
         </div>
       </section>
 
