@@ -27,7 +27,6 @@ const ihsenGames = [
   { name: "Valorant", type: "Varsity 1A/2A + Club", color: "border-red-500/60 text-red-400" },
   { name: "Apex Legends", type: "Varsity 1A/2A + Club", color: "border-purple-500/60 text-purple-400" },
   { name: "Rocket League", type: "Varsity 1A/2A + Club", color: "border-blue-500/60 text-blue-400" },
-  { name: "League of Legends", type: "Varsity 1A/2A + Club", color: "border-yellow-500/60 text-yellow-400" },
   { name: "Overwatch 2", type: "Varsity 1A/2A + Club", color: "border-orange-500/60 text-orange-400" },
   { name: "Super Smash Bros.", type: "Varsity 1A/2A + Club", color: "border-pink-500/60 text-pink-400" },
   { name: "Mario Kart 8 Deluxe", type: "Varsity 1A/2A + Club", color: "border-red-600/60 text-red-300" },
@@ -64,7 +63,7 @@ const resources = [
   },
   {
     title: "LeagueOS Platform Guide",
-    desc: "How to register, manage rosters, and navigate the LeagueOS platform.",
+    desc: "How to manage rosters, report scores, and navigate the LeagueOS platform.",
     href: "https://leagueos.gg",
     external: true,
     available: true,
@@ -186,7 +185,7 @@ export default function Leagues() {
             {
               title: "IHSEN",
               subtitle: "Indiana High School Esports Network",
-              desc: "Our flagship division featuring varsity and club competition for high schools across the state. Compete for Indiana state championships in 12 game titles. Open to grades 9–12.",
+              desc: "Our flagship division featuring varsity and club competition for high schools across the state. Compete for Indiana state championships in 11 game titles. Open to grades 9–12.",
               link: "/leagues/ihsen",
               logo: ihsenLogo,
             },

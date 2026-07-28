@@ -1,0 +1,200 @@
+status,playvs_school,website_school,website_city,website_divisions,playvs_teams,playvs_enrollment,playvs_division,contact_1_name,contact_1_email,contact_1_phone,contact_2_name,contact_2_email,contact_2_phone,contact_3_name,contact_3_email,contact_3_phone,contact_4_name,contact_4_email,contact_4_phone,notes
+PlayVS only,Bedford-North Lawrence,,,,6,1186,AA,George Sorrells,sorrellsg@nlcs.k12.in.us,812.416.9153,Nathaniel Bannister,bannistern@nlcs.k12.in.us,317.772.9074,,,,,,,No clear equivalent in website SCHOOLS data
+PlayVS only,Bloomfield,,,,1,199,A,Michelle Mattox,mmattox6@comcast.net,812.384.0268,Daniel Waggoner,waggodan2014@gmail.com,812.227.0504,,,,,,,No clear equivalent in website SCHOOLS data
+PlayVS only,Dekalb,,,,1,940,AA,Anthony Miller,amiller@dekalbcentral.net,260.249.4705,,,,,,,,,,No clear equivalent in website SCHOOLS data
+Matched,East Chicago Central,East Chicago Central High,"East Chicago, IN",IHSEN,2,1054,AA,Jorge Ontiveros,jontiveros@ecps.org,219.313.5724,Jose Lozano,joseelozano@scec.k12.in.us,219.218.5175,,,,,,,Manual alias match
+PlayVS only,Indiana Connections Academy,,,,18,3879,AA,Daniel Leinberger,dleinberger@inca.connectionsacademy.org,317.932.0413,Jenny Riley,jeriley@inca.connectionsacademy.org,317.759.0161,,,,,,,No clear equivalent in website SCHOOLS data
+Matched,Kokomo,Kokomo High School,"Kokomo, IN",IHSEN,3,1385,AA,Matthew Myers,mmyers@kokomo.k12.in.us,765.434.1669,,,,,,,,,,Manual alias match
+Matched,Lafayette Jeff,Lafayette Jefferson,"Lafayette, IN","IHSEN, IUEN",7,2008,AA,Kristen Van Laere,kvanlaere@lsc.k12.in.us,765.490.2147,Cameron Nunan,nunancameron@gmail.com,765.307.8891,,,,,,,Manual alias match
+Matched,Logansport,Logansport High School,"Logansport, IN","IHSEN, IUEN",4,1123,AA,David Packard,packardd@lcsc.k12.in.us,407.683.3183,Kevin Servin,servink@lcsc.k12.in.us,574.709.3624,,,,,,,Manual alias match
+PlayVS only,Noblesville,,,,3,3186,AA,Matt Craver,matthew_craver@nobl.k12.in.us,317.525.5884,,,,,,,,,,No clear equivalent in website SCHOOLS data
+PlayVS only,North Central (Indianapolis),,,,14,3664,AA,James Haworth,jhaworth@msdwt.k12.in.us,219.545.2420,Leland Lockhart,chance.lockhart7@gmail.com,775.400.8022,Jasmine Holliday,jholliday@msdwt.k12.in.us,317.809.7321,Philina Martinez,pmartinez@msdwt.k12.in.us,330.842.6378,No clear equivalent in website SCHOOLS data
+PlayVS only,North Central (Sullivan),,,,7,237,A,Matthew Newton,newtonm@nesc.k12.in.us,812.240.1177,,,,,,,,,,No clear equivalent in website SCHOOLS data
+Matched,North Judson-San Pierre,North Judson-San Pierre Jr./Sr. High School,"North Judson, IN",IHSEN,4,318,A,Kendrick Shepherd,keshepherd@njsp.k12.in.us,574.806.6881,Kimberly Miller,kmiller@njsp.k12.in.us,574.806.7333,Brody Tunis,btunis@njsp.k12.in.us,219.816.8140,,,,Manual alias match
+PlayVS only,North Putnam,,,,5,391,A,Vincent Brooks,vbrooks@nputnam.k12.in.us,,Bucky Kramer,bkramer@nputnam.k12.in.us,574.721.1865 / 765-522-2900 x 403,,,,,,,No clear equivalent in website SCHOOLS data
+PlayVS only,Northwestern,,,,1,539,A,Claire Wallace,claire.wallace@nwsc.k12.in.us,765.461.2199,,,,,,,,,,No clear equivalent in website SCHOOLS data
+PlayVS only,Rushville Consolidated,,,,6,562,A,Zachery Burchett,burchettz@rushville.k12.in.us,765.617.2337,,,,,,,,,,No clear equivalent in website SCHOOLS data
+Matched,South Bend Riley,Riley High School - Career and Technical Education,"South Bend, IN",IHSEN,5,1249,AA,Paul Penn,ppenn@sbcsc.k12.in.us,574.334.9352,Michael Kouroubetes,mkouroubetes@sbcsc.k12.in.us,574.360.1062,,,,,,,Manual alias match
+PlayVS only,Taylor,,,,4,348,A,Jeremy Kennedy,jkennedy@taylor.k12.in.us,765.409.1134,Joshua Barnes,jbarnes@taylor.k12.in.us,765.432.8342,,,,,,,No clear equivalent in website SCHOOLS data
+PlayVS only,Victory College Prep Academy,,,,5,342,A,Benjamin Elliott,benjamin.elliott@vcpindy.org,317.373.9859,,,,,,,,,,No clear equivalent in website SCHOOLS data
+PlayVS only,West Lafayette,,,,1,751,A,Bryan Rayl,raylb@wl.k12.in.us,219.204.6309,,,,,,,,,,No clear equivalent in website SCHOOLS data
+PlayVS only,West Vigo,,,,2,501,A,James Young,jamesyoungvo@gmail.com,812.239.8666,,,,,,,,,,No clear equivalent in website SCHOOLS data
+PlayVS only,Western,,,,2,773,A,Michael Putt,mputt@western.k12.in.us,,,,,,,,,,,No clear equivalent in website SCHOOLS data
+Matched,Whiteland Community,Whiteland Community High School,"Whiteland, IN",IHSEN,4,2105,AA,Taylor Elamon,telamon@cpcsc.k12.in.us,317.407.6945,,,,,,,,,,Manual alias match
+Matched,Franklin Central,Franklin Central,"Indianapolis, IN",IHSEN,9,3484,AA,Carissa Domrase,carissa.domrase@ftcsc.org,239.745.5560,,,,,,,,,,Normalized exact match
+Matched,Hamilton SE,Hamilton Southeastern High School,"Fishers, IN",IHSEN,1,3381,AA,Keaton Squires,ksquires@hse.k12.in.us,317.626.8846,,,,,,,,,,Manual alias match
+Matched,INGDA,Indiana Gateway Digital Academy,"Indianapolis, IN","IHSEN, IUEN",1,2643,AA,Daniel Ruanto,druanto@ingda.net,765.215.2948,,,,,,,,,,Manual alias match
+Matched,Jennings County,Jennings County High School,"North Vernon, IN","IHSEN, IUEN",1,1161,AA,Keenan Castetter,keenancastetter@jcsc.org,812.767.5400,,,,,,,,,,Manual alias match
+Matched,Knightstown,Knightstown Community High School,"Knightstown, IN",IHSEN,2,329,A,Ian Tyler,ian.tyler@cabeard.k12.in.us,260.452.9952,Ethan Davis,r.ethand@gmail.com,317.967.0160,,,,,,,Manual alias match
+Matched,Mishawaka,Mishawaka High School,"Mishawaka, IN",IHSEN,3,1249,AA,John-Raul Buison,buisonj@mishawaka.k12.in.us,,,,,,,,,,,Manual alias match
+Matched,Wabash,Wabash High School,"Wabash, IN","IHSEN, IUEN",1,457,A,James Burns,jtburns86@gmail.com,765.437.0645,,,,,,,,,,Manual alias match
+Website only,,Adams Central Community Schools,"Monroe, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Alexandria-Monroe Junior/Senior High School,"Alexandria, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Anderson High School,"Anderson, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Anderson Preparatory Academy,"Anderson, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Andrean High School,"Merrillville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Angola High School,"Angola, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Area 30 Career Center,"Clinton, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Argos Jr. Sr. High School,"Argos, IN","IHSEN, IUEN",,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Attica Jr/Sr High School,"Attica, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Barker Middle School,"Michigan City, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Batchelor Middle School,"Bloomington, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Batesville Middle School,"Batesville, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Ben Davis High School,"Indianapolis, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Ben Davis University High School,"Indianapolis, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Blackford Junior Senior High School,"Hartford City, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Bloomington High School North,"Bloomington, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Bloomington High School South,"Bloomington, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Blue River Valley Jr/Sr High School,"Mount Summit, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Blue River Valley Middle School,"Mount Summit, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Bluffton Harrison High School,"Bluffton, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Bluffton Harrison Middle School,"Bluffton, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Brebeuf Jesuit Preparatory School,"Indianapolis, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Bremen Senior High School,"Bremen, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Burris Laboratory School,"Muncie, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Canaan Community Academy,"Canaan, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Carmel High School,"Carmel, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Carmel Middle School,"Carmel, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Chapel Hill 7th & 8th Grade Center,"Indianapolis, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Clark Pleasant Middle School,"Whiteland, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Clay Middle School,"Carmel, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Columbia City High School,"Columbia City, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Columbus East High School,"Columbus, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Concord Community High School,"Elkhart, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Connersville High School,"Connersville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Creekside Middle School,"Carmel, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Crown Point High School,"Crown Point, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Culver Community Middle/High School,"Culver, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Daleville Jr/Sr High School,"Daleville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Danville Community Middle School,"Danville, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Delta High School,"Muncie, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Discovery Middle School,"Granger, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Driver Middle School,"Fort Wayne, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,East Tipp Middle School,"Lafayette, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Eastern Greene High School,"Bloomfield, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Eastern Hancock,"Charlottesville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Fairfield High School,"Goshen, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Fall Creek Valley Middle School,"Indianapolis, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Fishers High School,"Fishers, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Frankfort High School,"Frankfort, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Franklin Community High School,"Franklin, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Franklin County High School,"Brookville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Gibson Southern High School,"Fort Branch, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Greater Lafayette Career Academy,"Lafayette, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Greencastle High School,"Greencastle, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Greensburg High School,"Greensburg, IN","IHSEN, IUEN",,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Greensburg Jr. High School,"Greensburg, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Griffith Jr./Sr. High School,"Griffith, IN","IHSEN, IUEN",,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Guion Creek Middle School,"Indianapolis, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Hanover Central,"Cedar Lake, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Heartland Christian School,"Amo, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Hebron High School,"Hebron, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Hebron Middle School,"Hebron, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Heritage High School,"Monroeville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Hobart High School,"Hobart, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Hobart Middle School,"Hobart, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Hoosier Academy (formerly Insight Indiana),"Indianapolis, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Huntington North High School,"Huntington, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Indiana Digital Learning School,"Indianapolis, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Jackson Creek Middle School,"Bloomington, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,John Glenn High School,"Walkerton, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Kankakee Valley High School,"Wheatfield, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Knightstown Middle School,"Knightstown, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Lake Central High School,"St. John, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Lakeland Jr/Sr High School,"LaGrange, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,LaVille Jr/Sr High School,"Lakeville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Lawrence Central High School,"Indianapolis, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Lawrence North High School,"Indianapolis, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Lawrenceburg High School,"Lawrenceburg, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Leo High School,"Leo, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Lincoln Jr High School,"Vincennes, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Logansport Junior High School,"Logansport, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Lowell Senior High School,"Lowell, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Lynhurst 7th and 8th Grade Center,"Indianapolis, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Maconaquah High School,"Bunker Hill, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Madison Consolidated Junior High,"Madison, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Martinsville High School,"Martinsville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Michigan City High School,"Michigan City, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Milan Community Schools,"Milan, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Mississinewa Community School Corporation,"Gas City, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Mitchell Community Schools,"Mitchell, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Mooresville High School,"Mooresville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Morristown Jr. Sr. High School,"Morristown, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,MSD of Mt. Vernon,"Mt. Vernon, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Mt Vernon Middle School,"Fortville, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Muncie Central High School,"Muncie, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Munster High School,"Munster, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,New Castle High School,"New Castle, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,New Prairie High School,"New Carlisle, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,North Decatur Jr/Sr High School,"Westport, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,North High School Evansville,"Evansville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,North Manchester Jr-Sr High School,"North Manchester, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,North Miami Jr/Sr High School,"Denver, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,North Newton Jr/Sr High School,"Morocco, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,North Side High School,"Fort Wayne, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,North Vermillion High School,"Cayuga, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,North Vermillion Jr High School,"Cayuga, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Northeastern High School,"Fountain City, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Northfield Jr/Sr High School,"Wabash, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Northrop High School,"Fort Wayne, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Northside Middle School,"Muncie, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Norwell High School,"Ossian, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Oregon-Davis School Corporation,"Hamlet, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Park Tudor,"Indianapolis, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Pendleton Heights High School,"Pendleton, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Penn High School,"Mishawaka, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Perry Central Jr-Sr High School,"Tell City, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Pike High School,"Indianapolis, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Plainfield Community Public Schools,"Plainfield, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Plainfield High School,"Plainfield, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Plainfield Middle School,"Plainfield, IN","IMSEN, IUEN",,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Plymouth High School,"Plymouth, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Portage High School,"Portage, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,PPHS Englewood,"Indianapolis, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Prairie Heights High School,"LaGrange, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Purdue Polytechnic South Bend,"South Bend, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Queen of All Saints,"Mishawaka, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,R.J. Basket Middle School,"Fort Wayne, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Rensselaer Central High School,"Rensselaer, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Rensselaer Central Middle School,"Rensselaer, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Richmond High School,"Richmond, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Rossville Consolidated School District,"Rossville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Saint Joseph High School,"South Bend, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Saint Monica Catholic School,"Indianapolis, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Salem High School,"Salem, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Scottsburg High School,"Scottsburg, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Seeger Memorial Jr/Sr High School,"West Lebanon, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Shenandoah High School,"Middletown, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Shenandoah Middle School,"Middletown, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Snider High School,"Fort Wayne, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,South Adams High School (and Middle School),"Berne, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,South Dearborn High School,"Aurora, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,South Ripley High School,"Versailles, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,South Side High School,"Fort Wayne, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Southridge Middle School,"Huntingburg, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Southside Middle School,"Muncie, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Southwood Jr/Sr,"Akron, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Speedway High School,"Speedway, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Springs Valley High School,"French Lick, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Springs Valley Jr High School,"French Lick, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,St. Theodore Guerin High School (aka Guerin Catholic High School),"Noblesville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Switzerland County High school,"Vevay, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Switzerland County Middle school,"Vevay, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,The Academy of Science and Entrepreneurship,"Bloomington, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Tippecanoe Valley High School,"Akron, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Tri-Central Jr/Sr High School,"Sharpsville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Tri-North Middle School,"Bloomington, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Tri-Township High School,"New Harmony, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Triton Central High School,"Fairland, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Union City Jr/Sr High School,"Union City, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Union County High School,"Liberty, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,University High School of Indiana,"Carmel, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Urey Middle School,"Walkerton, IN",IMSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Waldron Jr. Sr. High School,"Waldron, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Wawasee High School,"Syracuse, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Wayne High School / New Tech Academy,"Fort Wayne, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Wes-Del High School,"Gaston, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Westfield High School,"Westfield, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,William Henry Harrison High School,"West Lafayette, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Winchester Community High School,"Winchester, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab
+Website only,,Zionsville Community High School,"Zionsville, IN",IHSEN,,,,,,,,,,,,,,,,No equivalent in PlayVS School Information tab

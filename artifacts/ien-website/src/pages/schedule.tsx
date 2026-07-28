@@ -7,8 +7,8 @@ import { Calendar, School, DollarSign, Clock, ZoomIn, X, Download, ExternalLink,
 import { GAME_RULESET_LIBRARY_HREF } from "@/data/gameRules";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
 
-import ihsenSeason from "@assets/IHSEN.png";
-import ihsenPlayoffs from "@assets/IHSEN Playoffs.png";
+import ihsenSeason from "@assets/IHSEN Schedule.png";
+import ihsenPlayoffs from "@assets/IHSEN Playoff Schedule.png";
 import imsenFall from "@assets/IMSEN Fall.png";
 import iuenFall from "@assets/IUEN Fall.png";
 import imsenSpring from "@assets/IMSEN Spring.png";
@@ -58,7 +58,6 @@ interface SeasonRowProps {
   matchTime: string;
   pdfHref?: string;
   pdfLabel?: string;
-  registerLabel?: string;
   index: number;
 }
 
@@ -66,7 +65,6 @@ function SeasonRow({
   image, alt, badge, title, subtitle,
   dateRange, level, cost, matchTime,
   pdfHref, pdfLabel = "VIEW FULL CALENDAR PDF",
-  registerLabel = "REGISTER ON LEAGUEOS",
   index,
 }: SeasonRowProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -134,16 +132,6 @@ function SeasonRow({
             </div>
 
             <div className="flex flex-wrap gap-3 pt-1">
-              <Button
-                size="sm"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest"
-                asChild
-              >
-                <a href="https://leagueos.gg" target="_blank" rel="noopener noreferrer">
-                  {registerLabel}
-                </a>
-              </Button>
-
               {pdfHref && (
                 <Button
                   size="sm"
@@ -189,7 +177,7 @@ function SeasonRow({
               <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-primary/80">
                 Schedule your onboarding meeting first
               </a>{" "}
-              LeagueOS registration opens after onboarding is complete.
+              and we&rsquo;ll help you prepare for the next registration window.
             </p>
           </div>
         </div>
@@ -249,7 +237,7 @@ export default function Schedule() {
           badge="IHSEN · Fall / Winter 2026"
           title="IHSEN Regular Season"
           subtitle="High school competition across Apex Legends, Rocket League, Marvel Rivals, Chess, Minecraft, Smash Bros., Tetris, Valorant, Overwatch 2, Mario Kart, and iRacing. Varsity teams earn playoff seeding. Preseason begins October 12."
-          dateRange="Oct 12, 2026 – Feb 8, 2027 (Registration opens Aug 10)"
+          dateRange="Oct 12, 2026 – Feb 8, 2027 (Registration opens Aug 12)"
           level="High School (Grades 9–12)"
           cost="$100 / school for Varsity · Free for Club"
           matchTime="Mon–Thu · Varsity 4:00 PM CT / 5:00 PM ET"
@@ -270,7 +258,6 @@ export default function Schedule() {
           matchTime="Same days as regular season · Mon–Thu"
           pdfHref="/IHSEN_Calendar_2026-2027.pdf"
           pdfLabel="VIEW IHSEN CALENDAR"
-          registerLabel="VIEW LEAGUEOS"
         />
 
         <SectionDivider label="Indiana Middle School Esports Network (IMSEN)" />
@@ -282,7 +269,7 @@ export default function Schedule() {
           badge="IMSEN · Fall 2026"
           title="IMSEN Fall Season"
           subtitle="Middle school fall competition featuring Marvel Rivals, Mario Kart 8 Deluxe, Minecraft, and Tetris. Fall season wraps with IMSEN Finals on December 12."
-          dateRange="Aug 10 – Dec 12, 2026"
+          dateRange="Aug 12 – Dec 12, 2026"
           level="Middle School (Grades 6–8)"
           cost="$100 / school for Varsity · Free for Club"
           matchTime="Mon–Thu · Varsity 3:30 PM CT / 4:30 PM ET"
@@ -314,7 +301,7 @@ export default function Schedule() {
           badge="IUEN · Fall 2026"
           title="IUEN Fall Season"
           subtitle="Unified Athletes and Partners compete together in Super Smash Bros. Ultimate on Tuesdays. A Special Olympics Indiana partnership. IUEN Finals on December 12."
-          dateRange="Aug 10 – Dec 12, 2026"
+          dateRange="Aug 12 – Dec 12, 2026"
           level="High School & Middle School · Unified"
           cost="Free to all schools and students"
           matchTime="Tuesdays · 3:30 PM CT / 4:30 PM ET"
@@ -329,7 +316,7 @@ export default function Schedule() {
           badge="IUEN · Spring 2027"
           title="IUEN Spring Season"
           subtitle="Spring Unified competition features Rocket League on Tuesdays, starting in January and concluding at IEN State Finals on April 24."
-          dateRange="Jan 2027 – Apr 24, 2027"
+          dateRange="Nov 30, 2026 – Apr 24, 2027"
           level="High School & Middle School · Unified"
           cost="Free to all schools and students"
           matchTime="Tuesdays · 3:30 PM CT / 4:30 PM ET"
@@ -361,18 +348,8 @@ export default function Schedule() {
                 SCHEDULE ONBOARDING
               </a>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-14 px-10"
-              asChild
-            >
-              <a href="https://leagueos.gg" target="_blank" rel="noopener noreferrer">
-                REGISTER ON LEAGUEOS
-              </a>
-            </Button>
           </div>
-          <p className="text-xs text-muted-foreground mt-4">New schools must complete an onboarding meeting before registering on LeagueOS.</p>
+          <p className="text-xs text-muted-foreground mt-4">New schools should complete an onboarding meeting before the season begins.</p>
         </div>
       </section>
     </Layout>

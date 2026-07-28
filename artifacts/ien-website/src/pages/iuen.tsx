@@ -108,12 +108,12 @@ const ADMIN_VALUE_PROPS: Array<{ title: string; desc: string; icon: React.ReactN
 const IUEN_SEASONS: Array<{ phase: string; dates: string; desc: string }> = [
   {
     phase: "Fall Season",
-    dates: "Aug 10 – Dec 12",
+    dates: "Aug 12 – Dec 12",
     desc: "IUEN follows the middle school fall format. Super Smash Bros. Ultimate is the fall title, with finals on Dec. 12.",
   },
   {
     phase: "Spring Season",
-    dates: "January – Apr 24",
+    dates: "Nov 30 – Apr 24",
     desc: "Rocket League begins in January for the spring season and concludes at IEN State Finals on Apr. 24.",
   },
   {

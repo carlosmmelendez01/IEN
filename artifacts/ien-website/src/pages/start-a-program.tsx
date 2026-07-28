@@ -173,7 +173,7 @@ export default function StartAProgram() {
             <ul className="space-y-3 text-sm text-muted-foreground mb-8 flex-grow">
               <li className="flex items-start gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></div>
-                <span>Register your teams on LeagueOS</span>
+                <span>Submit your team and game registrations</span>
               </li>
               <li className="flex items-start gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></div>

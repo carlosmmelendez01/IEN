@@ -122,7 +122,7 @@ export default function IMSEN() {
                 <li className="flex gap-2"><span className="text-primary">✓</span> New schools must play Club for 1 semester first</li>
               </ul>
               <div className="bg-primary/10 border border-primary/30 rounded-lg p-3 text-sm text-primary font-medium">
-                School registration through LeagueOS, contact IEN for middle school pricing
+                Contact IEN for middle school pricing and registration support
               </div>
             </div>
             <div className="bg-background border border-primary/30 p-8 rounded-xl">
@@ -227,7 +227,7 @@ export default function IMSEN() {
       <section className="py-20 container mx-auto px-4 max-w-3xl text-center">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Start Your Middle School Program</h2>
         <p className="text-muted-foreground mb-10 leading-relaxed">
-          Any Indiana middle school can join IMSEN. Register on LeagueOS or reach out, we'll walk you through everything from forming a roster to scheduling your first match.
+          Any Indiana middle school can join IMSEN. Reach out and we'll walk you through everything from forming a roster to scheduling your first match.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Button

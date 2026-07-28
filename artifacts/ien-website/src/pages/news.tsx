@@ -261,7 +261,7 @@ WHAT'S NEW
 • A single "submit and confirm" path that emails the coach a registration receipt and forwards a copy to IEN operations
 
 WHEN
-The new registration system launches in early August 2026 ahead of the official August 10 registration window. Returning schools will receive direct outreach with login links and instructions; new schools will be onboarded through their initial intake meeting as before.
+The new registration system launches in early August 2026 ahead of the official August registration windows. Returning schools will receive direct outreach with login links and instructions; new schools will be onboarded through their initial intake meeting as before.
 
 WHAT STAYS THE SAME
 LeagueOS remains IEN's match operations and standings platform. Registration is the only piece moving — everything from match scheduling to playoff brackets continues to live where coaches expect it.`;

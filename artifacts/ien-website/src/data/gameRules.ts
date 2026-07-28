@@ -62,7 +62,7 @@ export const rulesetGames: RulesetGame[] = [
     platform: "PC",
     roster: "3 starters / 2 substitutes",
     format: "Placement + elimination scoring",
-    matchWindow: "Thursdays, 5 PM ET / 4 PM CT",
+    matchWindow: "Mondays, 5 PM ET / 4 PM CT",
     leagues: ["IHSEN"],
     status: "Official ruleset scheduled for July 2026",
   },
@@ -74,7 +74,7 @@ export const rulesetGames: RulesetGame[] = [
     platform: "Cross-platform",
     roster: "3 starters / 2 substitutes",
     format: "Best of 5 match series",
-    matchWindow: "Mondays, 5 PM ET / 4 PM CT",
+    matchWindow: "IHSEN Mondays 5 PM ET / IMSEN Wednesdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
   },
   {
@@ -107,7 +107,7 @@ export const rulesetGames: RulesetGame[] = [
     platform: "Nintendo Switch",
     roster: "4 starters / 2 substitutes",
     format: "Crew battle format",
-    matchWindow: "Tuesdays, 5 PM ET / 4 PM CT",
+    matchWindow: "IHSEN Wednesdays 5 PM ET / IMSEN Tuesdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
   },
   {
@@ -118,7 +118,7 @@ export const rulesetGames: RulesetGame[] = [
     platform: "Nintendo Switch",
     roster: "4 starters / 2 substitutes",
     format: "Cup-based team scoring",
-    matchWindow: "Wednesdays, 5 PM ET / 4 PM CT",
+    matchWindow: "IHSEN Thursdays 5 PM ET / IMSEN Tuesdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
   },
   {
@@ -129,7 +129,7 @@ export const rulesetGames: RulesetGame[] = [
     platform: "PC",
     roster: "Varies by format",
     format: "Challenge-based scoring",
-    matchWindow: "Season event windows",
+    matchWindow: "IHSEN Tuesdays 5 PM ET / IMSEN Wednesdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
   },
   {
@@ -140,7 +140,7 @@ export const rulesetGames: RulesetGame[] = [
     platform: "PC",
     roster: "6 starters / 2 substitutes",
     format: "Best of 3 map series",
-    matchWindow: "Mondays, 5 PM ET / 4 PM CT",
+    matchWindow: "IHSEN Tuesdays 5 PM ET / IMSEN Mondays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
   },
   {
@@ -151,7 +151,7 @@ export const rulesetGames: RulesetGame[] = [
     platform: "Chess.com",
     roster: "Individual competitors",
     format: "Swiss-style tournament",
-    matchWindow: "Published tournament windows",
+    matchWindow: "IHSEN Tuesdays 5 PM ET / IMSEN Thursdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
   },
   {
@@ -162,7 +162,7 @@ export const rulesetGames: RulesetGame[] = [
     platform: "Jstris / TETR.IO",
     roster: "Individual competitors",
     format: "Head-to-head rounds",
-    matchWindow: "Published tournament windows",
+    matchWindow: "IHSEN Wednesdays 5 PM ET / IMSEN Thursdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
   },
   {
@@ -173,7 +173,7 @@ export const rulesetGames: RulesetGame[] = [
     platform: "PC",
     roster: "Individual drivers",
     format: "Race event scoring",
-    matchWindow: "Published race windows",
+    matchWindow: "Thursdays, 5 PM ET / 4 PM CT",
     leagues: ["IHSEN"],
   },
   {
@@ -184,7 +184,7 @@ export const rulesetGames: RulesetGame[] = [
     platform: "Cross-platform",
     roster: "3 starters / 2 substitutes",
     format: "Custom match scoring",
-    matchWindow: "Published season windows",
+    matchWindow: "Mondays, 4:30 PM ET / 3:30 PM CT",
     leagues: ["IMSEN"],
   },
   {
@@ -264,7 +264,7 @@ export const rotationData: Record<string, RotationData> = {
       { week: "Playoffs Week 1", values: ["Feb 22", "Nov 16", "Turnip Cup (DLC)"] },
       { week: "Playoffs Week 2", values: ["Mar 1", "Nov 30", "Lucky Cat Cup (DLC)"] },
       { week: "Playoffs Week 3", values: ["Mar 8", "Dec 7", "Rock Cup (DLC)"] },
-      { week: "Playoffs Week 4", values: ["Mar 14", "-", "Fruit Cup (DLC)"] },
+      { week: "Playoffs Week 4", values: ["Mar 15", "-", "Fruit Cup (DLC)"] },
       { week: "Finals", values: ["Apr 24", "Dec 12", "Rainbow Road 3DS, Rainbow Road, SNES Rainbow Road, Rainbow Road Wii"] },
     ],
     note: "If the wrong track is selected before the race begins, restart and select the correct track. If the race is completed, results stand.",
@@ -288,7 +288,7 @@ export const rotationData: Record<string, RotationData> = {
       { week: "Round 1", values: ["Feb 22", "Busan", "Watchpoint: Gibraltar", "New Junk City", "Colosseo", "Hollywood"] },
       { week: "Round 2", values: ["Mar 1", "Ilios", "Circuit Royal", "Suravasa", "Runasapi", "Midtown"] },
       { week: "Round 3", values: ["Mar 8", "Oasis", "Dorado", "New Junk City", "New Queen St", "Paraiso"] },
-      { week: "Round 4", values: ["Mar 14", "Lijiang Tower", "Junkertown", "Suravasa", "Esperanca", "Eichenwalde"] },
+      { week: "Round 4", values: ["Mar 15", "Lijiang Tower", "Junkertown", "Suravasa", "Esperanca", "Eichenwalde"] },
       { week: "Finals", values: ["Apr 24", "Ilios", "Circuit Royal", "New Junk City", "Runasapi", "King's Row"] },
     ],
     note: "Match structure follows Control, Escort, Flashpoint, Push, Hybrid. Push and Hybrid are played only if necessary.",

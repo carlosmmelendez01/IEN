@@ -13,7 +13,6 @@ const games = [
   { name: "Valorant",            type: "Varsity 1A/2A + Club", color: "text-red-400",    border: "border-red-500/50",    roster: "5 starters | 2 subs",    platform: "PC" },
   { name: "Apex Legends",        type: "Varsity 1A/2A + Club", color: "text-purple-400", border: "border-purple-500/50", roster: "3 starters | 2 subs",    platform: "PC" },
   { name: "Rocket League",       type: "Varsity 1A/2A + Club", color: "text-blue-400",   border: "border-blue-500/50",   roster: "3 starters | 2 subs",    platform: "Cross-platform" },
-  { name: "League of Legends",   type: "Varsity 1A/2A + Club", color: "text-yellow-400", border: "border-yellow-500/50", roster: "5 starters | 2 subs",    platform: "PC" },
   { name: "Overwatch 2",         type: "Varsity 1A/2A + Club", color: "text-orange-400", border: "border-orange-500/50", roster: "5 starters | 2 subs",    platform: "Cross-platform" },
   { name: "Super Smash Bros.",   type: "Varsity 1A/2A + Club", color: "text-pink-400",   border: "border-pink-500/50",   roster: "4 starters | 2 subs",    platform: "Nintendo Switch" },
   { name: "Mario Kart 8 Deluxe", type: "Varsity 1A/2A + Club", color: "text-red-300",    border: "border-red-600/50",    roster: "4 starters | 2 subs",    platform: "Nintendo Switch" },
@@ -27,7 +26,7 @@ const games = [
 const highlights = [
   { icon: Trophy,   title: "State Finals",         desc: "Season culminates in an in-person State Finals championship event for varsity teams." },
   { icon: Users,    title: "Varsity & Club",        desc: "Compete at varsity level for playoffs, or start at club level in your first semester." },
-  { icon: Gamepad2, title: "12 Game Titles",        desc: "The largest selection of competitive titles in any Indiana scholastic esports league." },
+  { icon: Gamepad2, title: "11 Game Titles",        desc: "The largest selection of competitive titles in any Indiana scholastic esports league." },
   { icon: Star,     title: "Grades 9–12",           desc: "Open to all high school students. All skill levels are welcome." },
 ];
 
@@ -44,7 +43,7 @@ export default function IHSEN() {
     <Layout>
       <SEO
         title="IHSEN — High School"
-        description="Indiana High School Esports Network. 12 game titles, Varsity Divisions 1A and 2A plus Club, season-ending State Finals championship."
+        description="Indiana High School Esports Network. 11 game titles, Varsity Divisions 1A and 2A plus Club, season-ending State Finals championship."
         path="/leagues/ihsen"
       />
 
@@ -79,7 +78,7 @@ export default function IHSEN() {
               INDIANA HIGH SCHOOL ESPORTS NETWORK · GRADES 9–12
             </p>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
-              IEN's flagship division, bringing varsity and club esports competition to high schools across Indiana with 12 game titles and a season-ending State Finals championship.
+              IEN's flagship division, bringing varsity and club esports competition to high schools across Indiana with 11 game titles and a season-ending State Finals championship.
             </p>
           </motion.div>
         </div>
@@ -153,7 +152,7 @@ export default function IHSEN() {
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
         </div>
         <p className="text-center text-muted-foreground text-sm mb-10">
-          All 12 IHSEN titles, across Varsity (1A &amp; 2A), Club, and Club+ divisions
+          All 11 IHSEN titles, across Varsity (1A &amp; 2A), Club, and Club+ divisions
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {games.map((game, i) => (
@@ -233,7 +232,7 @@ export default function IHSEN() {
       <section className="py-20 container mx-auto px-4 max-w-3xl text-center">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Ready to Compete?</h2>
         <p className="text-muted-foreground mb-10 leading-relaxed">
-          Register your school for IHSEN on LeagueOS or start a new program, we're here to help every step of the way.
+          Join IHSEN or start a new program, we're here to help every step of the way.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Button
