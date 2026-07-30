@@ -1,8 +1,6 @@
 import { useMemo, useState } from "react";
-import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
-import { Button } from "@/components/ui/button";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   Trophy,
@@ -11,7 +9,6 @@ import {
   Crown,
   Medal,
   Flame,
-  Play,
   ChevronDown,
   ArrowUpRight,
   X,
@@ -31,7 +28,6 @@ import {
 import { findSchoolLogo } from "@/lib/schoolLogos";
 import { CHAMPIONS, type Champion, type League, type Tier } from "@/data/champions";
 import heroBackdrop from "@assets/state-finals/03-marvel-rivals-1200.jpg";
-import championshipMomentsImg from "@assets/state-finals/01-greencastle-hero-1280.jpg";
 
 type GameStyle = {
   color: string;
@@ -69,13 +65,6 @@ const FEATURED_PICKS: Array<{ game: string; tier: Tier }> = [
 ];
 
 const LATEST_SEASON = "2025-2026";
-
-const ALUMNI = [
-  { name: "Jacob B.",  school: "Carmel HS",         gradYear: "2023", role: "Esports Athlete",     org: "Purdue University",          accent: "from-yellow-700/30 to-yellow-900/40" },
-  { name: "Lily W.",   school: "Warren Central HS", gradYear: "2022", role: "Esports Athlete",     org: "Indiana University",         accent: "from-red-800/30 to-red-950/40" },
-  { name: "Ethan M.",  school: "Hobart HS",         gradYear: "2022", role: "Esports Analyst",     org: "University of Notre Dame",   accent: "from-emerald-800/30 to-emerald-950/40" },
-  { name: "Maddie S.", school: "Ben Davis HS",      gradYear: "2021", role: "Broadcast Producer",  org: "Butler University",          accent: "from-blue-900/30 to-blue-950/40" },
-];
 
 const ANY = "All";
 
@@ -125,7 +114,7 @@ export default function HallOfChampions() {
     { value: new Set(CHAMPIONS.map(c => c.school)).size.toString(), label: "CHAMPIONS CROWNED", icon: <Shield   className="w-5 h-5" /> },
     { value: `${new Set(CHAMPIONS.map(c => c.game)).size}+`,        label: "ESPORTS TITLES",    icon: <Gamepad2 className="w-5 h-5" /> },
   ];
-  const dynastyByLeague = useMemo(() => {
+  const recordBookByLeague = useMemo(() => {
     const seasonOrder = ["2022-2023", "2023-2024", "2024-2025", "2025-2026"];
 
     function compute(league: League) {
@@ -248,42 +237,8 @@ export default function HallOfChampions() {
               <ChampionsBySeason bySeason={bySeason} />
             </div>
             <div className="lg:col-span-8">
-              <DynastyTracker data={dynastyByLeague} />
+              <ChampionshipRecordBook data={recordBookByLeague} />
             </div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div className="lg:col-span-4">
-              <ChampionshipMoments />
-            </div>
-            <div className="lg:col-span-8">
-              <AlumniSpotlight />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden border-t border-primary/20">
-        <div className="container relative z-10 mx-auto px-4 py-10 md:py-12">
-          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
-            <div className="w-14 h-14 md:w-16 md:h-16 shrink-0 rounded-xl bg-primary/15 border border-primary/40 flex items-center justify-center text-primary">
-              <Trophy className="w-7 h-7 md:w-8 md:h-8" />
-            </div>
-            <div className="flex-1 text-center md:text-left">
-              <h2 className="font-heading font-bold text-2xl md:text-4xl text-white tracking-tight leading-tight">
-                LEGACY.{" "}
-                <span className="text-primary">PRIDE.</span>{" "}
-                CHAMPIONS.
-              </h2>
-              <p className="text-muted-foreground mt-1">Compete. Win. Be remembered.</p>
-            </div>
-            <Button
-              asChild
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest text-base h-12 px-8"
-            >
-              <Link href="/start-a-program">JOIN THE LEAGUE</Link>
-            </Button>
           </div>
         </div>
       </section>
@@ -794,7 +749,7 @@ function ChampionLine({ champion }: { champion: Champion }) {
   );
 }
 
-type LeagueDynasty = {
+type LeagueRecord = {
   league: League;
   totalTitles: number;
   titles:      Array<{ school: string; value: number }>;
@@ -802,29 +757,29 @@ type LeagueDynasty = {
   streaks:     Array<{ school: string; value: number }>;
 };
 
-function DynastyTracker({ data }: { data: Record<League, LeagueDynasty> }) {
+function ChampionshipRecordBook({ data }: { data: Record<League, LeagueRecord> }) {
   return (
     <div>
       <SectionHeader
-        title="Dynasty Tracker"
+        title="Championship Record Book"
         action={
           <span className="hidden md:inline text-xs font-heading tracking-widest uppercase text-muted-foreground">
-            Top 5 by league
+            All-time leaders by league
           </span>
         }
       />
       <div className="space-y-6">
         {LEAGUE_ORDER.map((league) => (
-          <DynastyLeagueSection key={league} dynasty={data[league]} />
+          <RecordBookLeagueSection key={league} record={data[league]} />
         ))}
       </div>
     </div>
   );
 }
 
-function DynastyLeagueSection({ dynasty }: { dynasty: LeagueDynasty }) {
-  const meta = LEAGUE_META[dynasty.league];
-  const isEmpty = dynasty.totalTitles === 0;
+function RecordBookLeagueSection({ record }: { record: LeagueRecord }) {
+  const meta = LEAGUE_META[record.league];
+  const isEmpty = record.totalTitles === 0;
 
   return (
     <div className={`bg-card border ${meta.border} rounded-xl overflow-hidden`}>
@@ -838,7 +793,7 @@ function DynastyLeagueSection({ dynasty }: { dynasty: LeagueDynasty }) {
             {meta.label}
           </div>
           <div className="text-xs font-medium text-muted-foreground mt-0.5">
-            {meta.sublabel} · {dynasty.totalTitles} {dynasty.totalTitles === 1 ? "title" : "titles"} all-time
+            {meta.sublabel} · {record.totalTitles} {record.totalTitles === 1 ? "title" : "titles"} all-time
           </div>
         </div>
       </div>
@@ -849,23 +804,23 @@ function DynastyLeagueSection({ dynasty }: { dynasty: LeagueDynasty }) {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-primary/10">
-          <DynastyColumn
+          <RecordBookColumn
             icon={<Crown className="w-4 h-4" />}
             label="Most State Titles"
             accent={meta.color}
-            entries={dynasty.titles.map(e => ({ school: e.school, value: e.value.toString() }))}
+            entries={record.titles.map(e => ({ school: e.school, value: e.value.toString() }))}
           />
-          <DynastyColumn
+          <RecordBookColumn
             icon={<Medal className="w-4 h-4" />}
             label="Most Final Appearances"
             accent={meta.color}
-            entries={dynasty.appearances.map(e => ({ school: e.school, value: e.value.toString() }))}
+            entries={record.appearances.map(e => ({ school: e.school, value: e.value.toString() }))}
           />
-          <DynastyColumn
+          <RecordBookColumn
             icon={<Flame className="w-4 h-4" />}
             label="Longest Win Streak"
             accent={meta.color}
-            entries={dynasty.streaks.map(e => ({ school: e.school, value: `${e.value} seasons` }))}
+            entries={record.streaks.map(e => ({ school: e.school, value: `${e.value} seasons` }))}
           />
         </div>
       )}
@@ -873,7 +828,7 @@ function DynastyLeagueSection({ dynasty }: { dynasty: LeagueDynasty }) {
   );
 }
 
-function DynastyColumn({
+function RecordBookColumn({
   icon, label, entries, accent,
 }: {
   icon: React.ReactNode;
@@ -903,81 +858,6 @@ function DynastyColumn({
           </li>
         ))}
       </ol>
-    </div>
-  );
-}
-
-function ChampionshipMoments() {
-  return (
-    <div>
-      <SectionHeader title="Championship Moments" />
-      <a
-        href="https://www.youtube.com/@EsportsIndiana"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group block bg-card border border-primary/20 rounded-xl overflow-hidden hover:border-primary/60 hover:shadow-[0_20px_50px_-12px_rgba(212,175,55,0.3)] transition-all"
-      >
-        <div className="relative h-48 overflow-hidden">
-          <img src={championshipMomentsImg} alt="2025–2026 IEN State Finals highlights" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
-          <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-primary/95 text-primary-foreground flex items-center justify-center shadow-[0_0_40px_rgba(212,175,55,0.6)] group-hover:scale-110 transition-transform">
-              <Play className="w-6 h-6 ml-1" fill="currentColor" />
-            </div>
-          </div>
-        </div>
-        <div className="p-5">
-          <div className="font-heading font-bold text-lg text-white tracking-wide leading-tight">
-            2025–2026 IEN FINALS HIGHLIGHTS
-          </div>
-          <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-            Relive the biggest moments from an unforgettable season.
-          </p>
-          <div className="mt-4 inline-flex items-center gap-2 px-4 h-10 rounded-md bg-primary text-primary-foreground font-heading font-bold tracking-widest text-xs uppercase shadow-[0_0_20px_rgba(212,175,55,0.3)] group-hover:bg-primary/90 transition-colors">
-            <Play className="w-3.5 h-3.5" fill="currentColor" /> Watch Now
-          </div>
-        </div>
-      </a>
-    </div>
-  );
-}
-
-function AlumniSpotlight() {
-  return (
-    <div>
-      <SectionHeader
-        title="Alumni Spotlight"
-        action={
-          <a href="#" onClick={(e) => e.preventDefault()} className="inline-flex items-center gap-1 text-sm font-heading tracking-[0.18em] uppercase text-primary hover:text-yellow-200 transition-colors">
-            View All Alumni <ArrowUpRight className="w-4 h-4" />
-          </a>
-        }
-      />
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {ALUMNI.map((a) => <AlumniCard key={a.name} alum={a} />)}
-      </div>
-    </div>
-  );
-}
-
-function AlumniCard({ alum }: { alum: typeof ALUMNI[number] }) {
-  const initials = alum.name.split(" ").map(s => s[0]).join("").toUpperCase().slice(0, 2);
-  return (
-    <div className="group bg-card border border-primary/15 rounded-xl overflow-hidden hover:border-primary/50 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(212,175,55,0.25)] transition-all">
-      <div className={`relative h-40 bg-gradient-to-br ${alum.accent} flex items-center justify-center overflow-hidden`}>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_60%)]" />
-        <div className="relative w-20 h-20 rounded-full bg-background/80 border-2 border-primary/40 backdrop-blur flex items-center justify-center font-heading font-bold text-2xl text-primary tracking-widest shadow-[0_0_30px_rgba(212,175,55,0.3)] group-hover:scale-105 transition-transform">
-          {initials}
-        </div>
-      </div>
-      <div className="p-4">
-        <div className="font-heading font-bold text-base text-white tracking-wide leading-tight">{alum.name}</div>
-        <div className="text-xs text-muted-foreground mt-0.5">{alum.school} '{alum.gradYear.slice(2)}</div>
-        <div className="mt-3 pt-3 border-t border-primary/10">
-          <div className="text-sm text-foreground/90 leading-tight">{alum.org}</div>
-          <div className="text-[0.6rem] tracking-widest uppercase text-primary font-heading font-bold mt-1">{alum.role}</div>
-        </div>
-      </div>
     </div>
   );
 }
