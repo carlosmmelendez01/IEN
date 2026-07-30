@@ -95,6 +95,7 @@ export function Footer() {
               <li><Link href="/" className="hover:text-primary transition-colors">Home</Link></li>
               <li><Link href="/why-esports" className="hover:text-primary transition-colors">About IEN</Link></li>
               <li><Link href="/leagues" className="hover:text-primary transition-colors">Leagues</Link></li>
+              <li><Link href="/rules-policies" className="hover:text-primary transition-colors">Rules &amp; Policies</Link></li>
               <li><Link href="/events" className="hover:text-primary transition-colors">Events</Link></li>
               <li><Link href="/news" className="hover:text-primary transition-colors">News</Link></li>
               <li><Link href="/schedule" className="hover:text-primary transition-colors">Schedule</Link></li>

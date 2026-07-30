@@ -11,6 +11,8 @@ const ROUTES = [
   "/about",
   "/why-esports",
   "/leagues",
+  "/rules-policies",
+  "/league-resources",
   "/leagues/ihsen",
   "/leagues/imsen",
   "/leagues/iuen",

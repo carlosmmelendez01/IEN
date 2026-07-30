@@ -36,7 +36,7 @@ export type RotationData = {
 };
 
 export const RULEBOOK_HREF = "";
-export const GAME_RULESET_LIBRARY_HREF = "/leagues#rules-resources";
+export const GAME_RULESET_LIBRARY_HREF = "/rules-policies#ruleset-library";
 export const RULES_DOCUMENTS_AVAILABLE = false;
 export const RULES_UPDATE_SHORT_LABEL = "Currently being updated";
 export const RULES_UPDATE_NOTICE =
@@ -325,5 +325,5 @@ export function getRulesetGame(gameName: string, league: LeagueKey = "ihsen") {
 }
 
 export function getRulesetPath(gameName: string, league: LeagueKey = "ihsen") {
-  return `/leagues#ruleset-${getRulesetGame(gameName, league).id}`;
+  return `/rules-policies#ruleset-${getRulesetGame(gameName, league).id}`;
 }

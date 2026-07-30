@@ -201,11 +201,12 @@ export default function IHSEN() {
             <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Season Structure</span>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { phase: "Fall Season", dates: "Aug – Dec", desc: "Registration opens in August. Regular season matches kick off in October and run weekly through December. New schools begin at club level." },
-              { phase: "Spring Season", dates: "Jan – Apr", desc: "Varsity teams enter playoff brackets. Club+ championships run concurrently. Top varsity teams qualify for State Finals." },
-              { phase: "State Finals", dates: "April", desc: "Top varsity teams compete in-person for Indiana state championships across each game title." },
+              { phase: "Preseason", dates: "October", desc: "Three weeks of preseason matches help teams test rosters, confirm platform setup, and prepare for regular season play." },
+              { phase: "Regular Season", dates: "November – February", desc: "Weekly matches determine varsity standings and playoff seeding. New schools begin at club level during their first semester." },
+              { phase: "Playoffs", dates: "March", desc: "Varsity teams enter postseason brackets, with top teams advancing toward in-person State Finals qualification." },
+              { phase: "State Finals", dates: "April", desc: "Top varsity teams compete in person for Indiana state championships across each game title." },
             ].map((s, i) => (
               <motion.div
                 key={i}
@@ -248,7 +249,7 @@ export default function IHSEN() {
             className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-14 px-8"
             asChild
           >
-            <Link href="/leagues#rules-resources">
+            <Link href="/rules-policies">
               <FileText className="w-4 h-4 mr-2" />
               RULES &amp; RESOURCES
             </Link>

@@ -10,20 +10,33 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import ienLogo from "@assets/IEN_Horizontal Logo Transparent.png";
 
+type NavChild = {
+  label: string;
+  href: string;
+  hashAware?: boolean;
+};
+
 type NavItem = {
   label: string;
   href: string;
-
   hashAware?: boolean;
-
-  children?: Array<{ label: string; href: string }>;
+  children?: NavChild[];
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "Home",      href: "/" },
   { label: "About IEN", href: "/about" },
-  { label: "Leagues",   href: "/leagues" },
-  { label: "Games",     href: "/leagues#game-titles", hashAware: true },
+  {
+    label: "Leagues",
+    href: "/leagues",
+    children: [
+      { label: "Overview", href: "/leagues" },
+      { label: "Rules & Policies", href: "/rules-policies" },
+      { label: "Game Titles", href: "/leagues#game-titles", hashAware: true },
+      { label: "High School", href: "/leagues/ihsen" },
+      { label: "Middle School", href: "/leagues/imsen" },
+      { label: "Unified Schools", href: "/leagues/iuen" },
+    ],
+  },
   {
     label: "Community",
     href: "/news",
@@ -69,6 +82,15 @@ function isActive(
 
   if (target === "/") return pathname === "/";
   return pathname === target || pathname.startsWith(target + "/");
+}
+
+function isChildActive(pathname: string, currentHash: string, child: NavChild): boolean {
+  const target = child.href.split("#")[0] || "/";
+  const targetHash = child.href.split("#")[1] ?? "";
+  if (child.hashAware) {
+    return pathname === target && currentHash === targetHash;
+  }
+  return pathname === target && currentHash === "";
 }
 
 export function Navbar() {
@@ -122,7 +144,7 @@ export function Navbar() {
           />
         </Link>
 
-        <nav aria-label="Primary" className="hidden lg:flex items-center gap-6">
+        <nav aria-label="Primary" className="hidden lg:flex items-center gap-4 xl:gap-6">
           {NAV_ITEMS.map((item) => {
             const active = isActive(location, hash, item, NAV_ITEMS);
             if (item.children && item.children.length > 0) {
@@ -144,6 +166,7 @@ export function Navbar() {
                         <Link
                           href={child.href}
                           className="w-full cursor-pointer text-sm font-medium text-foreground"
+                          onClick={child.hashAware ? () => handleHashNav(child.href) : undefined}
                         >
                           {child.label}
                         </Link>
@@ -166,7 +189,7 @@ export function Navbar() {
               </Link>
             );
           })}
-          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-6 ml-4">
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-5 xl:px-6 ml-2 xl:ml-4">
              <Link href="/start-a-program">JOIN THE LEAGUE</Link>
           </Button>
         </nav>
@@ -200,14 +223,17 @@ export function Navbar() {
                   </div>
                   <div className="pl-3 space-y-3 border-l border-primary/20">
                     {item.children.map((child) => {
-                      const childActive = location === child.href || location.startsWith(child.href + "/");
+                      const childActive = isChildActive(location, hash, child);
                       return (
                         <Link
                           key={child.href}
                           href={child.href}
                           className={linkClassMobile(childActive)}
                           aria-current={childActive ? "page" : undefined}
-                          onClick={() => setIsOpen(false)}
+                          onClick={() => {
+                            setIsOpen(false);
+                            if (child.hashAware) handleHashNav(child.href);
+                          }}
                         >
                           {child.label}
                         </Link>

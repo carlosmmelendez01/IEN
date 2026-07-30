@@ -4,16 +4,12 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { AlertCircle, FileText, Download, ExternalLink } from "lucide-react";
+import { FileText } from "lucide-react";
 import {
   RulesDialog,
   defaultTabForGame,
 } from "@/components/rulesets/RulesetQuickView";
 import {
-  RULEBOOK_HREF,
-  RULES_DOCUMENTS_AVAILABLE,
-  RULES_UPDATE_NOTICE,
-  RULES_UPDATE_SHORT_LABEL,
   getRulesetGame,
   type LeagueKey,
   type RulesTab,
@@ -51,23 +47,6 @@ const imsenGames = [
 const iuenGames = [
   { name: "Rocket League", color: "border-blue-500/60 text-blue-400" },
   { name: "Super Smash Bros.", color: "border-pink-500/60 text-pink-400" },
-];
-
-const resources = [
-  {
-    title: "IEN Bylaws & General Rules",
-    desc: "Official IEN bylaws, competition policies, and general league rules for the 2026-27 season.",
-    href: RULEBOOK_HREF,
-    external: false,
-    available: RULES_DOCUMENTS_AVAILABLE,
-  },
-  {
-    title: "LeagueOS Platform Guide",
-    desc: "How to manage rosters, report scores, and navigate the LeagueOS platform.",
-    href: "https://leagueos.gg",
-    external: true,
-    available: true,
-  },
 ];
 
 function GameTile({
@@ -429,77 +408,25 @@ export default function Leagues() {
         </div>
       </section>
 
-      <section className="py-16 container mx-auto px-4" id="rules-resources">
-        <div className="flex items-center justify-center mb-4">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-          <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
-            League Resources
-          </span>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
-        </div>
-        <p className="text-center text-muted-foreground text-sm mb-10">
-          Official rulebooks, platform guides, and policy documents for coaches, administrators, and players
-        </p>
-
-        <div className="mx-auto mb-8 flex max-w-4xl items-start gap-3 rounded-xl border border-primary/30 bg-primary/10 p-4 text-left">
-          <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-          <p className="text-sm leading-6 text-muted-foreground">
-            <span className="font-heading font-bold uppercase tracking-[0.14em] text-primary">
-              Rules update:
-            </span>{" "}
-            {RULES_UPDATE_NOTICE}
+      <section className="py-16 container mx-auto px-4">
+        <div className="max-w-4xl mx-auto rounded-lg border border-primary/30 bg-card p-6 md:p-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
+            Looking for rules and policies?
+          </h2>
+          <p className="text-muted-foreground leading-7 mb-8">
+            Official rulebooks, ruleset status, policy documents, and LeagueOS
+            guidance now live on the Rules & Policies page.
           </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
-          {resources.map((res, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.07, duration: 0.4 }}
-              className="bg-card border border-primary/20 rounded-xl p-6 flex flex-col gap-4 hover:border-primary transition-colors group"
-            >
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                  <FileText className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-heading font-bold text-white text-sm leading-snug">
-                    {res.title}
-                  </h3>
-                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{res.desc}</p>
-                </div>
-              </div>
-
-              {res.available ? (
-                <a
-                  href={res.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto flex items-center gap-2 text-xs font-heading font-bold text-primary tracking-wide hover:text-primary/80 transition-colors"
-                >
-                  {res.external ? (
-                    <>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      OPEN PLATFORM
-                    </>
-                  ) : (
-                    <>
-                      <Download className="w-3.5 h-3.5" />
-                      DOWNLOAD PDF
-                    </>
-                  )}
-                </a>
-              ) : (
-                <div className="mt-auto inline-flex w-fit items-center gap-2 rounded-md border border-primary/20 px-3 py-2 text-[0.65rem] font-heading font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                  <AlertCircle className="h-3.5 w-3.5 text-primary" aria-hidden />
-                  {RULES_UPDATE_SHORT_LABEL}
-                </div>
-              )}
-            </motion.div>
-          ))}
+          <Button
+            variant="outline"
+            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest"
+            asChild
+          >
+            <Link href="/rules-policies">
+              <FileText className="w-4 h-4 mr-2" />
+              RULES &amp; POLICIES
+            </Link>
+          </Button>
         </div>
       </section>
 

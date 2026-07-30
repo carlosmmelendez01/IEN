@@ -243,7 +243,7 @@ export default function IMSEN() {
             className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-14 px-8"
             asChild
           >
-            <Link href="/leagues#rules-resources">
+            <Link href="/rules-policies">
               <FileText className="w-4 h-4 mr-2" />
               RULES &amp; RESOURCES
             </Link>
