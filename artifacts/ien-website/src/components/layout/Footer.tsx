@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import ienLogo from "@assets/IEN_Horizontal Logo Transparent.png";
-import { socialLinks, ONBOARDING_URL } from "@/lib/socialLinks";
+import { socialLinks, ISEA_URL, ONBOARDING_URL } from "@/lib/socialLinks";
 
 export function Footer() {
   return (
@@ -49,6 +49,18 @@ export function Footer() {
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mb-5">
               Indiana's official scholastic esports league, fostering community, competition, and career pathways through gaming since 2019.
+            </p>
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mb-5">
+              Proud member of the{" "}
+              <a
+                href={ISEA_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                Interstate Scholastic Esports Alliance (ISEA)
+              </a>
+              .
             </p>
             <a
               href="mailto:ienboard@indianaesportsnetwork.org"

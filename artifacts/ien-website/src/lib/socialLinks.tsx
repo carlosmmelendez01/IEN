@@ -1,5 +1,6 @@
 export const ONBOARDING_URL = "https://calendar.app.google/9equTEK5Cp1NeoWh9";
 export const DONATE_URL = "https://www.paypal.com/donate/?hosted_button_id=PLACEHOLDER";
+export const ISEA_URL = "https://www.iseaesports.org/about/";
 
 export interface SocialLink {
   name: string;

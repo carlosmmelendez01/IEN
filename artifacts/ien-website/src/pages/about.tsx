@@ -3,8 +3,8 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Users, Target, Shield, Heart, Star, Scale } from "lucide-react";
-import { ONBOARDING_URL } from "@/lib/socialLinks";
+import { Users, Target, Shield, Heart, Star, Scale, ArrowUpRight } from "lucide-react";
+import { ISEA_URL, ONBOARDING_URL } from "@/lib/socialLinks";
 import { getSchoolNetworkStat, schoolNetworkConfig } from "@/lib/schoolCharter";
 
 const boardMembers: {
@@ -166,6 +166,29 @@ export default function About() {
           believe esports is more than gaming; it's a platform for academic
           growth, career exploration, and genuine human connection.
         </motion.p>
+        <motion.a
+          href={ISEA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1, duration: 0.6 }}
+          className="mt-8 mx-auto flex w-fit max-w-full items-center gap-3 rounded-lg border border-primary/30 bg-card px-4 py-3 text-left text-sm text-foreground transition-colors hover:border-primary/60 hover:bg-primary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        >
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/15 text-primary">
+            <Shield className="h-4 w-4" />
+          </span>
+          <span className="min-w-0">
+            <span className="block font-heading text-xs font-bold uppercase tracking-[0.14em] text-primary">
+              Proud ISEA Member
+            </span>
+            <span className="block leading-snug text-muted-foreground">
+              IEN is a proud member of the Interstate Scholastic Esports Alliance.
+            </span>
+          </span>
+          <ArrowUpRight className="h-4 w-4 shrink-0 text-primary" />
+        </motion.a>
       </section>
 
       <section className="py-10 bg-card border-y border-primary/20">
