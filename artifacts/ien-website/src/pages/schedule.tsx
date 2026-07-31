@@ -56,6 +56,7 @@ interface SeasonRowProps {
   level: string;
   cost: string;
   matchTime: string;
+  clubTime?: string;
   pdfHref?: string;
   pdfLabel?: string;
   index: number;
@@ -63,7 +64,7 @@ interface SeasonRowProps {
 
 function SeasonRow({
   image, alt, badge, title, subtitle,
-  dateRange, level, cost, matchTime,
+  dateRange, level, cost, matchTime, clubTime,
   pdfHref, pdfLabel = "VIEW FULL CALENDAR PDF",
   index,
 }: SeasonRowProps) {
@@ -127,7 +128,10 @@ function SeasonRow({
               </div>
               <div className="flex items-start gap-3 text-sm">
                 <Clock className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                <span className="text-white/90">{matchTime}</span>
+                <span className="text-white/90 flex flex-col gap-1">
+                  <span>{matchTime}</span>
+                  {clubTime && <span>{clubTime}</span>}
+                </span>
               </div>
             </div>
 
@@ -241,6 +245,7 @@ export default function Schedule() {
           level="High School (Grades 9–12)"
           cost="$100 / school for Varsity · Free for Club"
           matchTime="Mon–Thu · Varsity 4:00 PM CT / 5:00 PM ET"
+          clubTime="Club queues: 3:00 PM CT / 4:00 PM ET or 4:00 PM CT / 5:00 PM ET"
           pdfHref="/IHSEN_Calendar_2026-2027.pdf"
           pdfLabel="VIEW IHSEN CALENDAR"
         />
@@ -273,6 +278,7 @@ export default function Schedule() {
           level="Middle School (Grades 6–8)"
           cost="$100 / school for Varsity · Free for Club"
           matchTime="Mon–Thu · Varsity 3:30 PM CT / 4:30 PM ET"
+          clubTime="Club queue: 3:30 PM CT / 4:30 PM ET"
           pdfHref="/IMSEN_Calendar_2026-2027.pdf"
           pdfLabel="VIEW IMSEN CALENDAR"
         />
@@ -288,6 +294,7 @@ export default function Schedule() {
           level="Middle School (Grades 6–8)"
           cost="$100 / school for Varsity · Free for Club"
           matchTime="Mon–Thu · Varsity 3:30 PM CT / 4:30 PM ET"
+          clubTime="Club queue: 3:30 PM CT / 4:30 PM ET"
           pdfHref="/IMSEN_Calendar_2026-2027.pdf"
           pdfLabel="VIEW IMSEN CALENDAR"
         />
