@@ -56,7 +56,7 @@ const createClusterIcon = (cluster: any) =>
       color:#c9a227;
       font-weight:bold;
       font-size:13px;
-      font-family:'Rajdhani',sans-serif;
+      font-family:'Oswald',sans-serif;
       width:36px;height:36px;
       border-radius:50%;
       display:flex;align-items:center;justify-content:center;
@@ -112,7 +112,7 @@ export default function RegionalCollegeMap({ colleges }: RegionalCollegeMapProps
               title={`${college.name} esports program in ${college.city}`}
             >
               <Popup>
-                <div style={{ fontFamily: "Rajdhani, sans-serif", minWidth: 180 }}>
+                <div style={{ fontFamily: "Oswald, sans-serif", minWidth: 180 }}>
                   {isPartnered && (
                     <div style={{
                       display: "inline-block",

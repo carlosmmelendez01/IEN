@@ -2,6 +2,7 @@ import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
 import { lazy, Suspense, useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
@@ -26,6 +27,7 @@ const Schedule = lazy(() => import("@/pages/schedule"));
 const Contact = lazy(() => import("@/pages/contact"));
 const News = lazy(() => import("@/pages/news"));
 const HallOfChampions = lazy(() => import("@/pages/hall-of-champions"));
+const BrandKit = lazy(() => import("@/pages/brand-kit"));
 const Privacy = lazy(() => import("@/pages/privacy"));
 const Terms = lazy(() => import("@/pages/terms"));
 
@@ -60,6 +62,7 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/news" component={News} />
       <Route path="/hall-of-champions" component={HallOfChampions} />
+      <Route path="/brand-kit" component={BrandKit} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/terms" component={Terms} />
       <Route component={NotFound} />
@@ -79,6 +82,7 @@ function App() {
         </WouterRouter>
         <Toaster />
         <Analytics />
+        <SpeedInsights />
       </TooltipProvider>
     </HelmetProvider>
   );

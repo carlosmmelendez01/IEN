@@ -12,6 +12,7 @@
   <url><loc>https://indianaesportsnetwork.org/events</loc>            <changefreq>weekly</changefreq>  <priority>0.8</priority></url>
   <url><loc>https://indianaesportsnetwork.org/news</loc>              <changefreq>weekly</changefreq>  <priority>0.8</priority></url>
   <url><loc>https://indianaesportsnetwork.org/hall-of-champions</loc> <changefreq>monthly</changefreq> <priority>0.8</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/brand-kit</loc>         <changefreq>monthly</changefreq> <priority>0.6</priority></url>
   <url><loc>https://indianaesportsnetwork.org/schools</loc>           <changefreq>monthly</changefreq> <priority>0.7</priority></url>
   <url><loc>https://indianaesportsnetwork.org/partners</loc>          <changefreq>monthly</changefreq> <priority>0.7</priority></url>
   <url><loc>https://indianaesportsnetwork.org/sponsor</loc>           <changefreq>monthly</changefreq> <priority>0.6</priority></url>

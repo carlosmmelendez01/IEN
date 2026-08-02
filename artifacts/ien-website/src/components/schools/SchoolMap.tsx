@@ -35,7 +35,7 @@ const createClusterIcon = (cluster: any) =>
       color:#c9a227;
       font-weight:bold;
       font-size:13px;
-      font-family:'Rajdhani',sans-serif;
+      font-family:'Oswald',sans-serif;
       width:36px;height:36px;
       border-radius:50%;
       display:flex;align-items:center;justify-content:center;
@@ -97,7 +97,7 @@ export default function SchoolMap({ schools, selectedDivision }: SchoolMapProps)
             title={`${school.name} in ${school.city}`}
           >
             <Popup>
-              <div style={{ fontFamily: "Rajdhani, sans-serif", minWidth: 160 }}>
+              <div style={{ fontFamily: "Oswald, sans-serif", minWidth: 160 }}>
                 <strong style={{ fontSize: 14 }}>{school.name}</strong>
                 <br />
                 <span style={{ color: "#888", fontSize: 12 }}>{school.city}</span>

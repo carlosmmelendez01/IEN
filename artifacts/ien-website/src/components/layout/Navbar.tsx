@@ -44,6 +44,7 @@ const NAV_ITEMS: NavItem[] = [
       { label: "News",                href: "/news" },
       { label: "Events",              href: "/events" },
       { label: "Hall of Champions",   href: "/hall-of-champions" },
+      { label: "Brand Kit",           href: "/brand-kit" },
     ],
   },
   { label: "Schedule",  href: "/schedule" },
