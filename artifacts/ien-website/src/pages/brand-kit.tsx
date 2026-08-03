@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import {
   BRAND_ASSET_ZIP,
   BRAND_CONTACT_EMAIL,
-  BRAND_GUIDE_PDF,
   BRAND_KIT_UPDATED,
   brandBoilerplate,
   coachChecklist,
@@ -19,7 +18,6 @@ import {
 import {
   CheckCircle2,
   Download,
-  FileDown,
   Image as ImageIcon,
   Mail,
   Palette,
@@ -187,16 +185,6 @@ export default function BrandKit() {
               Last updated {BRAND_KIT_UPDATED}
             </p>
             <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row lg:justify-start">
-              <Button
-                asChild
-                size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest"
-              >
-                <a href={BRAND_GUIDE_PDF} target="_blank" rel="noopener noreferrer">
-                  <FileDown className="mr-2 h-4 w-4" aria-hidden />
-                  Download PDF
-                </a>
-              </Button>
               <Button
                 asChild
                 size="lg"
@@ -489,7 +477,6 @@ export default function BrandKit() {
                 stream overlay, or newsletter item.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <DownloadLink href={BRAND_GUIDE_PDF}>Guide PDF</DownloadLink>
                 <DownloadLink href={BRAND_ASSET_ZIP}>Logo Pack</DownloadLink>
               </div>
             </div>

@@ -1,6 +1,5 @@
 export const BRAND_KIT_UPDATED = "August 2, 2026";
 
-export const BRAND_GUIDE_PDF = "/documents/ien-brand-kit-guidelines.pdf";
 export const BRAND_ASSET_ZIP = "/brand-kit/ien-brand-assets.zip";
 export const BRAND_CONTACT_EMAIL = "ienboard@indianaesportsnetwork.org";
 
