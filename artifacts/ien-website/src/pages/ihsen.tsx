@@ -9,24 +9,35 @@ import { RulesDialog, defaultTabForGame } from "@/components/rulesets/RulesetQui
 import { getRulesetGame, type RulesTab, type RulesetGame } from "@/data/gameRules";
 import ihsenLogo from "@assets/IEN_IHSEN White Text.png";
 
-const games = [
+type GameTitle = {
+  name: string;
+  displayName?: string;
+  type: string;
+  color: string;
+  border: string;
+  roster: string;
+  platform: string;
+};
+
+const games: GameTitle[] = [
   { name: "Valorant",            type: "Varsity 1A/2A + Club", color: "text-red-400",    border: "border-red-500/50",    roster: "5 starters | 2 subs",    platform: "PC" },
   { name: "Apex Legends",        type: "Varsity 1A/2A + Club", color: "text-purple-400", border: "border-purple-500/50", roster: "3 starters | 2 subs",    platform: "PC" },
   { name: "Rocket League",       type: "Varsity 1A/2A + Club", color: "text-blue-400",   border: "border-blue-500/50",   roster: "3 starters | 2 subs",    platform: "Cross-platform" },
+  { name: "League of Legends",    displayName: "League of Legends*", type: "Cross-state Competition", color: "text-yellow-300", border: "border-yellow-500/50", roster: "5 starters | 2 subs", platform: "PC" },
   { name: "Overwatch 2",         type: "Varsity 1A/2A + Club", color: "text-orange-400", border: "border-orange-500/50", roster: "5 starters | 2 subs",    platform: "Cross-platform" },
   { name: "Super Smash Bros.",   type: "Varsity 1A/2A + Club", color: "text-pink-400",   border: "border-pink-500/50",   roster: "4 starters | 2 subs",    platform: "Nintendo Switch" },
   { name: "Mario Kart 8 Deluxe", type: "Varsity 1A/2A + Club", color: "text-red-300",    border: "border-red-600/50",    roster: "4 starters | 2 subs",    platform: "Nintendo Switch" },
   { name: "Minecraft",           type: "Varsity 1A/2A",        color: "text-green-400",  border: "border-green-500/50",  roster: "Varies by format",       platform: "PC" },
   { name: "Marvel Rivals",       type: "Varsity 1A/2A + Club", color: "text-rose-400",   border: "border-rose-500/50",   roster: "6 starters | 2 subs",    platform: "PC" },
-  { name: "Chess",               type: "Club+",          color: "text-gray-300",   border: "border-gray-400/50",   roster: "Board-style format",     platform: "Chess.com" },
-  { name: "Tetris",              type: "Club+",          color: "text-cyan-400",   border: "border-cyan-500/50",   roster: "Individual / team",      platform: "Jstris / TETR.IO" },
-  { name: "iRacing",             type: "Club+",          color: "text-amber-400",  border: "border-amber-500/50",  roster: "Individual / team",      platform: "PC" },
+  { name: "Chess",               type: "Tournament",     color: "text-gray-300",   border: "border-gray-400/50",   roster: "Board-style format",     platform: "Chess.com" },
+  { name: "Tetris",              type: "Tournament",     color: "text-cyan-400",   border: "border-cyan-500/50",   roster: "Individual / team",      platform: "TETR.IO" },
+  { name: "iRacing",             type: "Tournament",     color: "text-amber-400",  border: "border-amber-500/50",  roster: "Individual / team",      platform: "PC" },
 ];
 
 const highlights = [
   { icon: Trophy,   title: "State Finals",         desc: "Season culminates in an in-person State Finals championship event for varsity teams." },
   { icon: Users,    title: "Varsity & Club",        desc: "Compete at varsity level for playoffs, or start at club level in your first semester." },
-  { icon: Gamepad2, title: "11 Game Titles",        desc: "The largest selection of competitive titles in any Indiana scholastic esports league." },
+  { icon: Gamepad2, title: "12 Game Titles",        desc: "The largest selection of competitive titles in any Indiana scholastic esports league." },
   { icon: Star,     title: "Grades 9–12",           desc: "Open to all high school students. All skill levels are welcome." },
 ];
 
@@ -43,7 +54,7 @@ export default function IHSEN() {
     <Layout>
       <SEO
         title="IHSEN — High School"
-        description="Indiana High School Esports Network. 11 game titles, Varsity Divisions 1A and 2A plus Club, season-ending State Finals championship."
+        description="Indiana High School Esports Network. 12 game titles, Varsity Divisions 1A and 2A plus Club, season-ending State Finals championship."
         path="/leagues/ihsen"
       />
 
@@ -78,7 +89,7 @@ export default function IHSEN() {
               INDIANA HIGH SCHOOL ESPORTS NETWORK · GRADES 9–12
             </p>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
-              IEN's flagship division, bringing varsity and club esports competition to high schools across Indiana with 11 game titles and a season-ending State Finals championship.
+              IEN's flagship division, bringing varsity and club esports competition to high schools across Indiana with 12 game titles and a season-ending State Finals championship.
             </p>
           </motion.div>
         </div>
@@ -132,13 +143,13 @@ export default function IHSEN() {
             <div className="bg-background border border-primary/30 p-8 rounded-xl">
               <h3 className="font-heading font-bold text-2xl text-white mb-4">Club</h3>
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                Lower-stakes competition with no limit on the number of club teams per school. Club+ titles run their own spring championship bracket.
+                Lower-stakes competition with no limit on the number of club teams per school. Tournament titles run their own spring championship bracket.
               </p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex gap-2"><span className="text-primary">✓</span> Unlimited club teams per title</li>
                 <li className="flex gap-2"><span className="text-primary">✓</span> Required for all new schools' first semester</li>
                 <li className="flex gap-2"><span className="text-primary">✓</span> Club players can sub for varsity during regular season</li>
-                <li className="flex gap-2"><span className="text-primary">✓</span> Club+ divisions have their own spring championship</li>
+                <li className="flex gap-2"><span className="text-primary">✓</span> Tournament divisions have their own spring championship</li>
               </ul>
             </div>
           </div>
@@ -152,7 +163,7 @@ export default function IHSEN() {
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
         </div>
         <p className="text-center text-muted-foreground text-sm mb-10">
-          All 11 IHSEN titles, across Varsity (1A &amp; 2A), Club, and Club+ divisions
+          All 12 IHSEN titles, across Varsity (1A &amp; 2A), Club, Tournament, and cross-state competition formats
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {games.map((game, i) => (
@@ -166,7 +177,7 @@ export default function IHSEN() {
             >
               <div className="flex items-start justify-between mb-3">
                 <div>
-                  <h4 className={`font-heading font-bold text-base ${game.color}`}>{game.name}</h4>
+                  <h4 className={`font-heading font-bold text-base ${game.color}`}>{game.displayName ?? game.name}</h4>
                   <span className="text-xs text-muted-foreground">{game.type}</span>
                 </div>
               </div>
@@ -192,6 +203,9 @@ export default function IHSEN() {
             </motion.div>
           ))}
         </div>
+        <p className="mt-6 text-center text-xs font-semibold leading-5 text-primary">
+          *League of Legends will be cross-state competition. Full rule-set will be released.
+        </p>
       </section>
 
       <section className="py-16 bg-card border-y border-primary/20">

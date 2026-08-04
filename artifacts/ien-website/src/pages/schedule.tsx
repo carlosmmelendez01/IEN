@@ -52,6 +52,7 @@ interface SeasonRowProps {
   badge: string;
   title: string;
   subtitle: string;
+  note?: string;
   dateRange: string;
   level: string;
   cost: string;
@@ -64,7 +65,7 @@ interface SeasonRowProps {
 
 function SeasonRow({
   image, alt, badge, title, subtitle,
-  dateRange, level, cost, matchTime, clubTime,
+  note, dateRange, level, cost, matchTime, clubTime,
   pdfHref, pdfLabel = "VIEW FULL CALENDAR PDF",
   index,
 }: SeasonRowProps) {
@@ -111,6 +112,7 @@ function SeasonRow({
                 {title}
               </h2>
               <p className="text-muted-foreground text-sm leading-relaxed">{subtitle}</p>
+              {note && <p className="mt-2 text-xs font-semibold leading-5 text-primary">{note}</p>}
             </div>
 
             <div className="space-y-2.5">
@@ -240,7 +242,8 @@ export default function Schedule() {
           alt="IHSEN 2026-2027 Regular Season Schedule"
           badge="IHSEN · Fall / Winter 2026"
           title="IHSEN Regular Season"
-          subtitle="High school competition across Apex Legends, Rocket League, Marvel Rivals, Chess, Minecraft, Smash Bros., Tetris, Valorant, Overwatch 2, Mario Kart, and iRacing. Varsity teams earn playoff seeding. Preseason begins October 12."
+          subtitle="High school competition across Apex Legends, Rocket League, Marvel Rivals, League of Legends*, Chess, Minecraft, Smash Bros., Tetris, Valorant, Overwatch 2, Mario Kart, and iRacing. Varsity teams earn playoff seeding. Preseason begins October 12."
+          note="*League of Legends will be cross-state competition. Full rule-set will be released."
           dateRange="Oct 12, 2026 – Feb 8, 2027 (Registration opens Aug 12)"
           level="High School (Grades 9–12)"
           cost="$100 / school for Varsity · Free for Club"

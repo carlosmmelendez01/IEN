@@ -19,10 +19,18 @@ import ihsenLogo from "@assets/IEN_IHSEN White Text.png";
 import imsenLogo from "@assets/IEN_IMSEN White Text .png";
 import iuenLogo from "@assets/IEN_IUEN White Text.png";
 
-const ihsenGames = [
+type GameTitle = {
+  name: string;
+  displayName?: string;
+  type?: string;
+  color: string;
+};
+
+const ihsenGames: GameTitle[] = [
   { name: "Valorant", type: "Varsity 1A/2A + Club", color: "border-red-500/60 text-red-400" },
   { name: "Apex Legends", type: "Varsity 1A/2A + Club", color: "border-purple-500/60 text-purple-400" },
   { name: "Rocket League", type: "Varsity 1A/2A + Club", color: "border-blue-500/60 text-blue-400" },
+  { name: "League of Legends", displayName: "League of Legends*", type: "Cross-state Competition", color: "border-yellow-500/60 text-yellow-300" },
   { name: "Overwatch 2", type: "Varsity 1A/2A + Club", color: "border-orange-500/60 text-orange-400" },
   { name: "Super Smash Bros.", type: "Varsity 1A/2A + Club", color: "border-pink-500/60 text-pink-400" },
   { name: "Mario Kart 8 Deluxe", type: "Varsity 1A/2A + Club", color: "border-red-600/60 text-red-300" },
@@ -33,7 +41,7 @@ const ihsenGames = [
   { name: "iRacing", type: "Tournament", color: "border-amber-500/60 text-amber-400" },
 ];
 
-const imsenGames = [
+const imsenGames: GameTitle[] = [
   { name: "Rocket League", type: "Varsity + Club", color: "border-blue-500/60 text-blue-400" },
   { name: "Super Smash Bros.", type: "Varsity + Club", color: "border-pink-500/60 text-pink-400" },
   { name: "Fortnite", type: "Varsity + Club", color: "border-purple-500/60 text-purple-400" },
@@ -44,19 +52,21 @@ const imsenGames = [
   { name: "Tetris", type: "Tournament", color: "border-cyan-500/60 text-cyan-400" },
 ];
 
-const iuenGames = [
+const iuenGames: GameTitle[] = [
   { name: "Rocket League", color: "border-blue-500/60 text-blue-400" },
   { name: "Super Smash Bros.", color: "border-pink-500/60 text-pink-400" },
 ];
 
 function GameTile({
   name,
+  displayName,
   type,
   color,
   index,
   onRulesClick,
 }: {
   name: string;
+  displayName?: string;
   type?: string;
   color: string;
   index: number;
@@ -73,7 +83,7 @@ function GameTile({
       className={`bg-card border ${borderClass} p-4 rounded-xl flex flex-col items-center justify-between text-center shadow-lg hover:bg-background transition-colors gap-2`}
     >
       <div className="flex flex-col items-center gap-1">
-        <span className={`font-heading font-bold text-base md:text-lg ${textClass} leading-tight`}>{name}</span>
+        <span className={`font-heading font-bold text-base md:text-lg ${textClass} leading-tight`}>{displayName ?? name}</span>
         {type && <span className="text-sm text-muted-foreground">{type}</span>}
       </div>
       {onRulesClick && (
@@ -164,7 +174,7 @@ export default function Leagues() {
             {
               title: "IHSEN",
               subtitle: "Indiana High School Esports Network",
-              desc: "Our flagship division featuring varsity and club competition for high schools across the state. Compete for Indiana state championships in 11 game titles. Open to grades 9–12.",
+              desc: "Our flagship division featuring varsity and club competition for high schools across the state. Compete for Indiana state championships in 12 game titles. Open to grades 9–12.",
               link: "/leagues/ihsen",
               logo: ihsenLogo,
             },
@@ -305,12 +315,16 @@ export default function Leagues() {
               key={i}
               index={i}
               name={game.name}
+              displayName={game.displayName}
               type={game.type}
               color={game.color}
               onRulesClick={() => openRuleset(game.name, "ihsen")}
             />
           ))}
         </div>
+        <p className="mt-6 text-center text-xs font-semibold leading-5 text-primary">
+          *League of Legends will be cross-state competition. Full rule-set will be released.
+        </p>
       </section>
 
       <section className="py-4 pb-16 container mx-auto px-4">
@@ -330,6 +344,7 @@ export default function Leagues() {
               key={i}
               index={i}
               name={game.name}
+              displayName={game.displayName}
               type={game.type}
               color={game.color}
               onRulesClick={() => openRuleset(game.name, "imsen")}
@@ -371,6 +386,7 @@ export default function Leagues() {
                       key={i}
                       index={i}
                       name={game.name}
+                      displayName={game.displayName}
                       color={game.color}
                       onRulesClick={() => openRuleset(game.name, "iuen")}
                     />

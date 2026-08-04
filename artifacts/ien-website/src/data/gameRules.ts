@@ -5,6 +5,7 @@ export type RulesTab = "quick" | "rotation" | "full";
 export type RulesetGame = {
   id: string;
   name: string;
+  displayName?: string;
   type: string;
   color: string;
   platform: string;
@@ -13,6 +14,7 @@ export type RulesetGame = {
   matchWindow: string;
   leagues: string[];
   ruleDocHref?: string;
+  note?: string;
   status?: string;
 };
 
@@ -80,13 +82,15 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "league-of-legends",
     name: "League of Legends",
-    type: "Varsity 1A/2A + Club",
+    displayName: "League of Legends*",
+    type: "Cross-state Competition",
     color: "#f5c542",
     platform: "PC",
     roster: "5 starters / 2 substitutes",
-    format: "Best of 1 regular season",
-    matchWindow: "Tuesdays, 5 PM ET / 4 PM CT",
+    format: "Full rule-set will be released",
+    matchWindow: "To be announced",
     leagues: ["IHSEN"],
+    note: "Cross-state competition. Full rule-set will be released.",
   },
   {
     id: "overwatch-2",
@@ -159,7 +163,7 @@ export const rulesetGames: RulesetGame[] = [
     name: "Tetris",
     type: "Tournament",
     color: "#14c8df",
-    platform: "Jstris / TETR.IO",
+    platform: "TETR.IO",
     roster: "Individual competitors",
     format: "Head-to-head rounds",
     matchWindow: "IHSEN Wednesdays 5 PM ET / IMSEN Thursdays 4:30 PM ET",

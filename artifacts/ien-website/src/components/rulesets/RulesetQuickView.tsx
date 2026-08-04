@@ -25,6 +25,8 @@ import {
   type RulesetGame,
 } from "@/data/gameRules";
 
+const displayNameForGame = (game: RulesetGame) => game.displayName ?? game.name;
+
 export function defaultTabForGame(game: RulesetGame): RulesTab {
   return rotationData[game.id] ? "rotation" : "quick";
 }
@@ -393,11 +395,16 @@ export function RulesDialog({
               </span>
             </div>
             <h2 id="rules-dialog-title" className="font-heading text-3xl font-bold text-white sm:text-4xl">
-              {game.name} Rules
+              {displayNameForGame(game)} Rules
             </h2>
             <p id="rules-dialog-description" className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
               Coach reference for match setup, roster checks, scoring, and common reminders.
             </p>
+            {game.note && (
+              <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-primary">
+                {game.note}
+              </p>
+            )}
           </div>
 
           <div className="flex shrink-0 items-center gap-2">
@@ -428,7 +435,7 @@ export function RulesDialog({
         </header>
 
         <div className="border-b border-primary/20 bg-card px-5 py-3 sm:px-6">
-          <div className="flex gap-2 overflow-x-auto" role="tablist" aria-label={`${game.name} rules sections`}>
+          <div className="flex gap-2 overflow-x-auto" role="tablist" aria-label={`${displayNameForGame(game)} rules sections`}>
             {tabs.map((tab) => (
               <TabButton key={tab.id} active={activeTab === tab.id} onClick={() => onTabChange(tab.id)}>
                 {tab.label}
@@ -486,9 +493,10 @@ export function RulesetLibrary({
 
           <div>
             <h3 className="font-heading text-xl font-bold leading-tight" style={{ color: game.color }}>
-              {game.name}
+              {displayNameForGame(game)}
             </h3>
             <p className="mt-1 text-xs text-muted-foreground">{game.type}</p>
+            {game.note && <p className="mt-2 text-xs font-semibold leading-5 text-primary">{game.note}</p>}
           </div>
 
           <dl className="grid grid-cols-2 gap-3 text-xs">

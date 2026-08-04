@@ -16,8 +16,8 @@ const games = [
   { name: "Minecraft",           type: "Varsity",        color: "text-green-400",  border: "border-green-500/50",  roster: "Varies by format",     platform: "PC" },
   { name: "Marvel Rivals",       type: "Varsity + Club", color: "text-rose-400",   border: "border-rose-500/50",   roster: "6 starters | 2 subs",  platform: "PC" },
   { name: "Mario Kart 8 Deluxe", type: "Club",           color: "text-red-300",    border: "border-red-600/50",    roster: "4 starters | 2 subs",  platform: "Nintendo Switch" },
-  { name: "Chess",               type: "Club+",          color: "text-gray-300",   border: "border-gray-400/50",   roster: "Board-style format",   platform: "Chess.com" },
-  { name: "Tetris",              type: "Club+",          color: "text-cyan-400",   border: "border-cyan-500/50",   roster: "Individual / team",    platform: "Jstris / TETR.IO" },
+  { name: "Chess",               type: "Tournament",     color: "text-gray-300",   border: "border-gray-400/50",   roster: "Board-style format",   platform: "Chess.com" },
+  { name: "Tetris",              type: "Tournament",     color: "text-cyan-400",   border: "border-cyan-500/50",   roster: "Individual / team",    platform: "TETR.IO" },
 ];
 
 const highlights = [
@@ -128,13 +128,13 @@ export default function IMSEN() {
             <div className="bg-background border border-primary/30 p-8 rounded-xl">
               <h3 className="font-heading font-bold text-2xl text-white mb-4">Club</h3>
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                Lower-stakes competition with no limit on the number of club teams per school. Club+ titles run their own spring championship bracket.
+                Lower-stakes competition with no limit on the number of club teams per school. Tournament titles run their own spring championship bracket.
               </p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex gap-2"><span className="text-primary">✓</span> Unlimited club teams per title</li>
                 <li className="flex gap-2"><span className="text-primary">✓</span> Required for all new schools' first semester</li>
                 <li className="flex gap-2"><span className="text-primary">✓</span> Club players can sub for varsity during regular season</li>
-                <li className="flex gap-2"><span className="text-primary">✓</span> Club+ divisions have their own spring championship</li>
+                <li className="flex gap-2"><span className="text-primary">✓</span> Tournament divisions have their own spring championship</li>
               </ul>
             </div>
           </div>
