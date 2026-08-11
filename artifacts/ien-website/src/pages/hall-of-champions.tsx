@@ -163,7 +163,7 @@ export default function HallOfChampions() {
     <Layout>
       <SEO
         title="Hall of Champions"
-        description="Indiana scholastic esports champions since 2019. 93+ state titles across 12+ game titles in IHSEN, IMSEN, and IUEN."
+        description="Indiana scholastic esports champions tracked since the 2022-23 season. 93+ state titles across 12+ game titles in IHSEN, IMSEN, and IUEN."
         path="/hall-of-champions"
       />
 
@@ -262,18 +262,6 @@ function HeroSection({ stats, backdrop }: { stats: Array<{ value: string; label:
 
       <div className="container relative z-10 mx-auto px-4 pt-16 pb-12 md:pt-24 md:pb-16">
 
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center gap-3 text-[0.65rem] font-heading font-bold tracking-[0.3em] uppercase text-primary/80 mb-6"
-        >
-          <Archive className="w-3.5 h-3.5" />
-          <span>Indiana Esports Network</span>
-          <span className="h-px w-10 bg-primary/40" />
-          <span className="text-primary">2019 — Present</span>
-        </motion.div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -295,7 +283,7 @@ function HeroSection({ stats, backdrop }: { stats: Array<{ value: string; label:
             <div className="mt-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/50 bg-primary/10 backdrop-blur shadow-[0_0_25px_rgba(212,175,55,0.15)]">
               <Trophy className="w-3.5 h-3.5 text-primary" />
               <span className="text-[0.65rem] font-heading font-bold tracking-[0.25em] uppercase text-primary">
-                Celebrating Champions Since 2019
+                Championship Tracking Since 2022-23
               </span>
             </div>
 
@@ -316,7 +304,7 @@ function HeroSection({ stats, backdrop }: { stats: Array<{ value: string; label:
                       {s.label}
                     </div>
                     <div className="text-[0.6rem] tracking-[0.22em] uppercase text-primary/80 font-heading font-bold mt-0.5">
-                      Since 2019
+                      Since 2022-23
                     </div>
                   </div>
                 </div>
@@ -793,7 +781,7 @@ function RecordBookLeagueSection({ record }: { record: LeagueRecord }) {
             {meta.label}
           </div>
           <div className="text-xs font-medium text-muted-foreground mt-0.5">
-            {meta.sublabel} · {record.totalTitles} {record.totalTitles === 1 ? "title" : "titles"} all-time
+            {meta.sublabel} · {record.totalTitles} {record.totalTitles === 1 ? "title" : "titles"} all-time · Tracked since 2022-23
           </div>
         </div>
       </div>
