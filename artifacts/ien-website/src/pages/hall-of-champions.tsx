@@ -45,6 +45,7 @@ const GAME_STYLES: Record<string, GameStyle> = {
   "League of Legends": { color: "text-yellow-300",  bg: "bg-yellow-500/15",  border: "border-yellow-500/40",  icon: Sword },
   "Marvel Rivals":     { color: "text-red-300",     bg: "bg-red-500/15",     border: "border-red-500/40",     icon: Shield },
   "Minecraft":         { color: "text-lime-400",    bg: "bg-lime-500/15",    border: "border-lime-500/40",    icon: Box },
+  "Minecraft Bedwars": { color: "text-lime-400",    bg: "bg-lime-500/15",    border: "border-lime-500/40",    icon: Box },
   "Mario Kart":        { color: "text-pink-400",    bg: "bg-pink-500/15",    border: "border-pink-500/40",    icon: Flag },
   "Chess":             { color: "text-slate-300",   bg: "bg-slate-500/15",   border: "border-slate-500/40",   icon: Castle },
   "Tetris":            { color: "text-cyan-300",    bg: "bg-cyan-500/15",    border: "border-cyan-500/40",    icon: LayoutGrid },
