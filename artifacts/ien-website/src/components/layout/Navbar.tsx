@@ -31,6 +31,7 @@ const NAV_ITEMS: NavItem[] = [
     children: [
       { label: "Overview", href: "/leagues" },
       { label: "Rules & Policies", href: "/rules-policies" },
+      { label: "Forms", href: "/forms" },
       { label: "Game Titles", href: "/leagues#game-titles", hashAware: true },
       { label: "High School", href: "/leagues/ihsen" },
       { label: "Middle School", href: "/leagues/imsen" },

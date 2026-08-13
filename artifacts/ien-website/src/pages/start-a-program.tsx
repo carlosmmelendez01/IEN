@@ -362,9 +362,18 @@ export default function StartAProgram() {
             registration is completed separately.
           </p>
           <div className="flex flex-col items-center gap-4">
-            <SchoolCharterButton source="start_program">
-              COMPLETE SCHOOL CHARTER
-            </SchoolCharterButton>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <SchoolCharterButton source="start_program">
+                COMPLETE SCHOOL CHARTER
+              </SchoolCharterButton>
+              <Button
+                asChild
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-8"
+              >
+                <Link href="/forms">VIEW ALL FORMS</Link>
+              </Button>
+            </div>
             <Link
               href="/schools#school-participation"
               className="text-sm font-heading font-bold tracking-[0.16em] uppercase text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"

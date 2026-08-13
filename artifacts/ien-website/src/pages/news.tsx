@@ -1012,6 +1012,11 @@ function KickoffContent() {
         <h3 className="font-heading text-xl font-bold uppercase text-white">
           Forms And Links
         </h3>
+        <p>
+          For the current form list, use the{" "}
+          <ArticleLink href="/forms">IEN Forms hub</ArticleLink>. The links
+          below are the kickoff essentials.
+        </p>
         <div className="grid gap-5 md:grid-cols-2">
           <div>
             <h4 className="font-heading text-sm font-bold uppercase text-white">
