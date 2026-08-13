@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import type { ComponentType, ReactNode } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
@@ -41,7 +42,7 @@ type Category =
 const CATEGORY_STYLES: Record<
   Category,
   {
-    icon: React.ComponentType<{ className?: string }>;
+    icon: ComponentType<{ className?: string }>;
     tone: "solid" | "outline";
   }
 > = {
@@ -95,10 +96,52 @@ interface NewsPost {
   headline: string;
   excerpt: string;
   body: string;
+  content?: ReactNode;
   image: string;
   imageFocal?: string;
   featured?: boolean;
 }
+
+const KICKOFF_BODY = `We held the mandatory 2026-27 season coaches meeting on August 12, 2026. If you missed it, or if you just want the short version to forward to your athletic director, here is everything that matters.
+
+Watch the full kickoff recording: https://www.youtube.com/watch?v=jK1VoXu3gvE
+
+WHERE WE ARE
+180+ schools across Indiana. Every one of them run by an educator, not a corporation. Last season IEN awarded 32 state championships: 24 high school, 6 middle school, and 2 Unified.
+
+FIVE THINGS ARE DIFFERENT THIS SEASON
+1. The Championship Record Book is live. Every title, finals appearance, and active win streak is now permanent and public across IHSEN, IMSEN, and IUEN.
+2. Students can now be recruited through IEN's signed partnership with SPIN. Students build their own profiles, college coaches search for the titles and roles they need, and contact happens directly on the platform.
+3. Championship Weekend will bring state finals into a real stage, real venue, and real crowd experience.
+4. The whole season is on one page with a published calendar from registration through state finals.
+5. Support moved to email. Discord ticketing is retired. Use support@indianaesportsnetwork.org for searchable, forwardable support from your school account. Every email gets a reply within five business days.
+
+DIVISION CHANGES
+IHSEN High School splits into 1A and 2A with a ten-week regular season from November through February.
+IUEN now spans middle school and high school, with Unified registration run jointly by IEN and Special Olympics Indiana.
+IMSEN Middle School remains grades 6-8 with the same overall structure.
+
+RULES
+Three things changed: substitutes and bench, live coaching, and a condensed general rules document. The updated rulebook is still being finalized. IEN will post it and email every coach the day it goes live.
+
+DATES TO MARK NOW
+August 12: Registration opens for all divisions.
+September 4: Middle School and Unified registration deadline.
+October 19: High School registration deadline.
+September-December: Middle School and Unified regular season.
+October-February: High School regular season.
+Playoffs: Roster lock. Lineups final. Two warnings, no exceptions.
+December 12: IMSEN and IUEN State Finals.
+
+REGISTRATION AND COST
+Registration opens August 12 for all divisions and runs in LeagueOS. Charter your school, then enter teams and rosters before the division deadline. Club Division is free. Varsity Division is $100 flat per school, per year.
+
+YOUR FIRST SEVEN DAYS
+Charter your school for 2026-27. Register teams in LeagueOS before the deadline. Confirm eligibility for every student.
+
+General questions go to support@indianaesportsnetwork.org.
+
+Education First. Esports Always.`;
 
 const BRAND_RELEASE_BODY = `INDIANA — July 17, 2026 — The Indiana Esports Network (IEN), a volunteer-driven, educator-led nonprofit serving scholastic esports programs across Indiana, has officially adopted a new brand identity and launched a redesigned website.
 
@@ -303,6 +346,20 @@ More information — booth location, daily schedule, demo windows — will be pu
 
 const POSTS: NewsPost[] = [
   {
+    id: 9,
+    date: "August 13, 2026",
+    author: "IEN Staff",
+    category: "Event Recap",
+    headline: "2026-27 Season Kickoff: The TL;DR for Coaches",
+    excerpt:
+      "Missed the mandatory kickoff event? Here are the dates, registration steps, division changes, support contacts, and links coaches need for the 2026-27 season.",
+    body: KICKOFF_BODY,
+    content: <KickoffContent />,
+    image:
+      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1800",
+    featured: true,
+  },
+  {
     id: 8,
     date: "July 17, 2026",
     author: "Indiana Esports Network",
@@ -312,7 +369,6 @@ const POSTS: NewsPost[] = [
       "IEN's new visual identity reflects continued growth, statewide reach, and its commitment to education-first scholastic esports across Indiana.",
     body: BRAND_RELEASE_BODY,
     image: brandIdentityImage,
-    featured: true,
   },
   {
     id: 1,
@@ -732,7 +788,7 @@ function Meta({
   label,
   small,
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   label: string;
   small?: boolean;
 }) {
@@ -742,6 +798,342 @@ function Meta({
     >
       <span className="text-primary/80">{icon}</span> {label}
     </span>
+  );
+}
+
+function ArticleLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
+  const opensNewTab = /^https?:\/\//.test(href);
+
+  return (
+    <a
+      href={href}
+      target={opensNewTab ? "_blank" : undefined}
+      rel={opensNewTab ? "noopener noreferrer" : undefined}
+      className="inline-flex items-center gap-1 font-semibold text-primary underline decoration-primary/40 underline-offset-4 hover:text-primary/80 hover:decoration-primary"
+    >
+      {children}
+      {opensNewTab && <ArrowUpRight className="h-3.5 w-3.5" />}
+    </a>
+  );
+}
+
+function KickoffContent() {
+  const updates = [
+    {
+      title: "The Championship Record Book is live.",
+      copy: "Every title, finals appearance, and active win streak is now permanent and public across IHSEN, IMSEN, and IUEN.",
+    },
+    {
+      title: "Students can now be recruited.",
+      copy: "IEN has a signed partnership with SPIN. Students build recruiting profiles, college coaches search by title and role, and contact happens directly on the platform.",
+    },
+    {
+      title: "Championship Weekend gets bigger.",
+      copy: "State finals are moving toward the stage, venue, and crowd experience Indiana students deserve.",
+    },
+    {
+      title: "The whole season is on one page.",
+      copy: "A published calendar now tracks registration, regular seasons, playoffs, and finals deadlines in one place.",
+    },
+    {
+      title: "Support moved to email.",
+      copy: "Discord ticketing is retired. Use support@indianaesportsnetwork.org so issues are searchable, forwardable, and school-account friendly.",
+    },
+  ];
+
+  const dates = [
+    ["Aug. 12", "Registration opens for all divisions"],
+    ["Sept. 4", "Registration deadline: Middle School and Unified"],
+    ["Oct. 19", "Registration deadline: High School"],
+    ["Sept.-Dec.", "Regular season: Middle School and Unified"],
+    ["Oct.-Feb.", "Regular season: High School"],
+    ["Playoffs", "Roster lock: lineups final, two warnings, no exceptions"],
+    ["Dec. 12", "IMSEN and IUEN State Finals"],
+  ];
+
+  const contacts = [
+    ["Competition", "Konnor Powell", "Schedules, rules, disputes"],
+    ["Technology", "Jonathan Morgan", "LeagueOS, accounts, registration"],
+    ["Support", "Trevor Smith", "New programs, anything stuck"],
+    ["Governance", "Shaun Doyle", "Policy, eligibility, appeals"],
+    ["Finance", "Chris King", "Invoices, fees, purchase orders"],
+    ["Collegiate", "Dylan Gentilcore", "SPIN, pathways, initiatives"],
+  ];
+
+  return (
+    <div className="space-y-8">
+      <p>
+        We held the mandatory 2026-27 season coaches meeting on August 12, 2026.
+        If you missed it, or if you just want the short version to forward to
+        your athletic director, here is everything that matters.
+      </p>
+
+      <p>
+        <ArticleLink href="https://www.youtube.com/watch?v=jK1VoXu3gvE">
+          Watch the full kickoff recording
+        </ArticleLink>{" "}
+        when you have the hour. Everything below is covered there.
+      </p>
+
+      <section className="space-y-3">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Where We Are
+        </h3>
+        <p>
+          IEN now connects 180+ schools across Indiana. Every program is run by
+          an educator, not a corporation. Last season, IEN awarded{" "}
+          <strong>32 state championships</strong>: 24 high school, 6 middle
+          school, and 2 Unified.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Five Things Are Different
+        </h3>
+        <ol className="not-prose space-y-3">
+          {updates.map((item) => (
+            <li key={item.title} className="border-l-2 border-primary/70 pl-4">
+              <span className="block font-heading text-sm font-bold uppercase text-white">
+                {item.title}
+              </span>
+              <span className="mt-1 block text-sm leading-6 text-muted-foreground md:text-base">
+                {item.copy}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Division Changes
+        </h3>
+        <ul className="space-y-2">
+          <li>
+            <strong>IHSEN High School:</strong> splitting into 1A and 2A with a
+            ten-week regular season from November through February.
+          </li>
+          <li>
+            <strong>IUEN Unified:</strong> now spans middle school and high
+            school, with registration run jointly by IEN and Special Olympics
+            Indiana.
+          </li>
+          <li>
+            <strong>IMSEN Middle School:</strong> grades 6-8, unchanged in
+            structure.
+          </li>
+        </ul>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Rules
+        </h3>
+        <p>
+          Three things changed: substitutes and bench, live coaching, and a
+          condensed general rules document. The updated rulebook is still being
+          finalized; IEN will post it and email every coach the day it goes
+          live.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Dates To Mark Now
+        </h3>
+        <div className="not-prose overflow-x-auto border-y border-primary/20">
+          <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
+            <tbody>
+              {dates.map(([date, what]) => (
+                <tr
+                  key={date}
+                  className="border-b border-primary/10 last:border-0"
+                >
+                  <th className="w-36 px-3 py-3 font-heading text-xs font-bold uppercase text-primary">
+                    {date}
+                  </th>
+                  <td className="px-3 py-3 text-muted-foreground">{what}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Registration And Cost
+        </h3>
+        <p>
+          Registration opened August 12 for all divisions and runs through
+          LeagueOS. Charter your school, then enter your teams and rosters
+          before your division's deadline.
+        </p>
+        <ul className="space-y-2">
+          <li>
+            <strong>Club Division:</strong> free.
+          </li>
+          <li>
+            <strong>Varsity Division:</strong> $100 flat per school, per year.
+            Not per student, title, or season.
+          </li>
+        </ul>
+        <p>
+          If your business office needs an invoice or purchase order, submit the{" "}
+          <ArticleLink href="https://docs.google.com/forms/d/e/1FAIpQLScuvMFtFMdcLSpFTNeqG-oLDi4RJ14cURIdkJSz56fC6qedmQ/viewform">
+            2026-27 Invoice Request Form
+          </ArticleLink>
+          .
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Your First Seven Days
+        </h3>
+        <ol>
+          <li>Charter your school for 2026-27.</li>
+          <li>Register teams in LeagueOS before your division's deadline.</li>
+          <li>
+            Confirm eligibility for every student. This is the one thing that
+            ends seasons early.
+          </li>
+        </ol>
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Forms And Links
+        </h3>
+        <div className="grid gap-5 md:grid-cols-2">
+          <div>
+            <h4 className="font-heading text-sm font-bold uppercase text-white">
+              Start Here
+            </h4>
+            <ul className="mt-2 space-y-2">
+              <li>
+                <ArticleLink href="https://forms.gle/xYBFUvaex5veaQ2FA">
+                  2026-27 Annual Charter
+                </ArticleLink>
+              </li>
+              <li>
+                <ArticleLink href="https://leagueos.gg">
+                  LeagueOS Registration
+                </ArticleLink>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-heading text-sm font-bold uppercase text-white">
+              Required Before You Compete
+            </h4>
+            <ul className="mt-2 space-y-2">
+              <li>
+                <ArticleLink href="https://forms.gle/S5FWfho6DTNu5AyT7">
+                  Nintendo Ethernet Verification Form
+                </ArticleLink>
+              </li>
+              <li>
+                <ArticleLink href="https://docs.google.com/forms/d/e/1FAIpQLSdsBvpSzpFfoCxD1bsVrg0ypWiLIC5sSZlMUfCQFhQrV7lw4Q/viewform">
+                  Verified Streaming Form
+                </ArticleLink>
+              </li>
+              <li>
+                Student eligibility confirmation is completed through
+                registration.
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-heading text-sm font-bold uppercase text-white">
+              Reference
+            </h4>
+            <ul className="mt-2 space-y-2">
+              <li>
+                <ArticleLink href="/schedule">
+                  2026-27 Season Calendar
+                </ArticleLink>
+              </li>
+              <li>
+                <ArticleLink href="/hall-of-champions">
+                  Championship Record Book
+                </ArticleLink>
+              </li>
+              <li>General Rules: coming soon by coach email.</li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-heading text-sm font-bold uppercase text-white">
+              Opportunities
+            </h4>
+            <ul className="mt-2 space-y-2">
+              <li>
+                <ArticleLink href="https://www.staypluggedin.com">
+                  SPIN Recruiting Profiles
+                </ArticleLink>
+              </li>
+              <li>
+                <ArticleLink href="/iuen">Unified Registration</ArticleLink>
+              </li>
+              <li>
+                GuardianProline coach jersey offer: details coming by coach
+                email.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Who To Email
+        </h3>
+        <div className="not-prose overflow-x-auto border-y border-primary/20">
+          <table className="w-full min-w-[42rem] border-collapse text-left text-sm">
+            <tbody>
+              {contacts.map(([area, person, need]) => (
+                <tr
+                  key={area}
+                  className="border-b border-primary/10 last:border-0"
+                >
+                  <th className="w-36 px-3 py-3 font-heading text-xs font-bold uppercase text-primary">
+                    {area}
+                  </th>
+                  <td className="w-44 px-3 py-3 font-semibold text-white">
+                    {person}
+                  </td>
+                  <td className="px-3 py-3 text-muted-foreground">{need}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          General questions go to{" "}
+          <ArticleLink href="mailto:support@indianaesportsnetwork.org">
+            support@indianaesportsnetwork.org
+          </ArticleLink>
+          .
+        </p>
+      </section>
+
+      <section className="border-l-2 border-primary pl-4">
+        <p className="font-heading text-lg font-bold uppercase text-white">
+          Education First. Esports Always.
+        </p>
+        <p className="mt-2">
+          Thank you for the hours you put into this. We know exactly what it
+          costs you.
+        </p>
+      </section>
+    </div>
   );
 }
 
@@ -824,9 +1216,11 @@ function NewsModal({
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, delay: 0.18 }}
-            className="mt-6 prose prose-invert max-w-none text-base md:text-[1.05rem] text-muted-foreground leading-[1.75] whitespace-pre-line [&_p]:my-4"
+            className={`mt-6 prose prose-invert max-w-none text-base md:text-[1.05rem] text-muted-foreground leading-[1.75] ${
+              post.content ? "" : "whitespace-pre-line [&_p]:my-4"
+            }`}
           >
-            {post.body}
+            {post.content ?? post.body}
           </motion.div>
 
           {related.length > 0 && (
