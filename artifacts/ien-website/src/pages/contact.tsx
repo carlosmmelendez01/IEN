@@ -2,16 +2,18 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Headphones, Shield, Handshake, Mic } from "lucide-react";
+import { Headphones, Shield, Handshake, LifeBuoy, Mic } from "lucide-react";
 import { Link } from "wouter";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
+
+const SUPPORT_EMAIL = "support@indianaesportsnetwork.org";
 
 export default function Contact() {
   return (
     <Layout>
       <SEO
         title="Contact"
-        description="Contact the Indiana Esports Network. Email ienboard@indianaesportsnetwork.org for general inquiries or use the contact topics below."
+        description="Contact the Indiana Esports Network. Email support@indianaesportsnetwork.org for general inquiries or use the contact topics below."
         path="/contact"
       />
 
@@ -49,7 +51,7 @@ export default function Contact() {
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8 h-12"
                 asChild
               >
-                <a href="mailto:ienboard@indianaesportsnetwork.org">EMAIL US</a>
+                <a href={`mailto:${SUPPORT_EMAIL}`}>EMAIL US</a>
               </Button>
             </div>
           </motion.div>
@@ -62,6 +64,28 @@ export default function Contact() {
             CONTACT BY TOPIC
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto mt-4" />
+        </div>
+
+        <div className="max-w-4xl mx-auto mb-6 bg-card border border-primary/20 p-8 rounded-xl flex flex-col md:flex-row items-center text-center md:text-left gap-6 hover:border-primary transition-colors group">
+          <div className="w-16 h-16 bg-background rounded-full flex shrink-0 items-center justify-center group-hover:scale-110 transition-transform">
+            <LifeBuoy className="w-8 h-8 text-primary" />
+          </div>
+          <div className="flex-1">
+            <h3 className="text-2xl font-heading font-bold text-white mb-2">
+              Contact Support
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              General questions, account help, school support, or anything that
+              needs to be routed to the right IEN team member.
+            </p>
+          </div>
+          <Button
+            variant="outline"
+            asChild
+            className="w-full md:w-auto border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest"
+          >
+            <a href={`mailto:${SUPPORT_EMAIL}`}>EMAIL SUPPORT</a>
+          </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -153,13 +177,13 @@ export default function Contact() {
       <section className="py-14 container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-muted-foreground text-sm mb-2">
-            General inquiries
+            General inquiries and support
           </p>
           <a
-            href="mailto:ienboard@indianaesportsnetwork.org"
+            href={`mailto:${SUPPORT_EMAIL}`}
             className="font-heading font-bold text-primary text-lg hover:underline tracking-wide"
           >
-            ienboard@indianaesportsnetwork.org
+            {SUPPORT_EMAIL}
           </a>
         </div>
       </section>
