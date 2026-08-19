@@ -27,7 +27,11 @@ import {
 
 const displayNameForGame = (game: RulesetGame) => game.displayName ?? game.name;
 const fullRulesLabel = (game: RulesetGame) =>
-  game.ruleDocVersion ? `Full Rules v${game.ruleDocVersion}` : "Full Rules";
+  game.ruleDocVersion
+    ? `Full Rules v${game.ruleDocVersion}`
+    : game.ruleDocLabel
+      ? `Full Rules - ${game.ruleDocLabel}`
+      : "Full Rules";
 
 export function defaultTabForGame(game: RulesetGame): RulesTab {
   return rotationData[game.id] ? "rotation" : "quick";
@@ -292,6 +296,11 @@ function FullRulesPanel({ game }: { game: RulesetGame }) {
         {game.ruleDocVersion && (
           <p className="mt-3 text-xs font-heading font-bold uppercase tracking-[0.16em] text-primary">
             Ruleset version v{game.ruleDocVersion}
+          </p>
+        )}
+        {!game.ruleDocVersion && game.ruleDocLabel && (
+          <p className="mt-3 text-xs font-heading font-bold uppercase tracking-[0.16em] text-primary">
+            Ruleset document: {game.ruleDocLabel}
           </p>
         )}
         {RULES_DOCUMENTS_AVAILABLE && game.ruleDocHref ? (

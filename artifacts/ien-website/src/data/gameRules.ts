@@ -14,6 +14,7 @@ export type RulesetGame = {
   matchWindow: string;
   leagues: string[];
   ruleDocHref?: string;
+  ruleDocLabel?: string;
   ruleDocVersion?: string;
   note?: string;
   status?: string;
@@ -87,15 +88,16 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "league-of-legends",
     name: "League of Legends",
-    displayName: "League of Legends*",
     type: "Cross-state Competition",
     color: "#f5c542",
     platform: "PC",
-    roster: "5 starters / 2 substitutes",
-    format: "Full rule-set will be released",
+    roster: "5 players",
+    format: "Bo3 regular season/playoffs; Bo5 grand finals",
     matchWindow: "To be announced",
     leagues: ["IHSEN"],
-    note: "Cross-state competition. Full rule-set will be released.",
+    ruleDocHref: "/documents/rulesets/league-of-legends-trials-rule-book.pdf",
+    ruleDocLabel: "Trials Rule Book",
+    note: "Cross-state ISEA Trials competition.",
   },
   {
     id: "overwatch-2",
