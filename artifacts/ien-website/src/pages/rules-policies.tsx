@@ -162,9 +162,9 @@ export default function LeagueResources() {
               <div className="hidden md:block h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
             </div>
             <p className="text-muted-foreground leading-7">
-              Quick references are available while official 2026-27 documents are
-              being finalized. Open a title to review roster, format, match
-              window, and rotation details.
+              Open a title to review roster, format, match window, and rotation
+              details. Official PDFs are available for posted 2026-27 title
+              rulesets.
             </p>
           </div>
 

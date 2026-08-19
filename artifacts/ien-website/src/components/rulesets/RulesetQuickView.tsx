@@ -26,6 +26,8 @@ import {
 } from "@/data/gameRules";
 
 const displayNameForGame = (game: RulesetGame) => game.displayName ?? game.name;
+const fullRulesLabel = (game: RulesetGame) =>
+  game.ruleDocVersion ? `Full Rules v${game.ruleDocVersion}` : "Full Rules";
 
 export function defaultTabForGame(game: RulesetGame): RulesTab {
   return rotationData[game.id] ? "rotation" : "quick";
@@ -287,6 +289,11 @@ function FullRulesPanel({ game }: { game: RulesetGame }) {
         <p className="text-sm leading-6 text-muted-foreground">
           Use the official rules document for edge cases, postseason rulings, penalties, and formal procedures.
         </p>
+        {game.ruleDocVersion && (
+          <p className="mt-3 text-xs font-heading font-bold uppercase tracking-[0.16em] text-primary">
+            Ruleset version v{game.ruleDocVersion}
+          </p>
+        )}
         {RULES_DOCUMENTS_AVAILABLE && game.ruleDocHref ? (
           <a
             href={game.ruleDocHref}
@@ -295,7 +302,7 @@ function FullRulesPanel({ game }: { game: RulesetGame }) {
             className="mt-5 inline-flex h-11 items-center gap-2 rounded-md bg-primary px-4 text-sm font-heading font-bold text-primary-foreground transition hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             <ExternalLink className="h-4 w-4" aria-hidden />
-            Open Official Rules
+            Open {fullRulesLabel(game)}
           </a>
         ) : (
           <div className="mt-5 rounded-md border border-primary/20 bg-card px-4 py-3 text-sm font-semibold text-muted-foreground">
@@ -354,7 +361,7 @@ export function RulesDialog({
   const tabs: Array<{ id: RulesTab; label: string }> = [
     { id: "quick", label: "Quick Guide" },
     { id: "rotation", label: rotation ? `${rotation.tabLabel} of Week` : "Maps / Tracks" },
-    { id: "full", label: "Full Rules" },
+    { id: "full", label: fullRulesLabel(game) },
   ];
 
   useEffect(() => {
@@ -416,7 +423,7 @@ export function RulesDialog({
                 className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-heading font-bold text-primary-foreground transition hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 <ExternalLink className="h-4 w-4" aria-hidden />
-                <span>Full Rules</span>
+                <span>{fullRulesLabel(game)}</span>
               </a>
             ) : (
               <span className="inline-flex min-h-10 items-center rounded-md border border-primary/20 px-4 text-xs font-heading font-bold uppercase tracking-[0.14em] text-muted-foreground">
@@ -528,7 +535,7 @@ export function RulesetLibrary({
                 className="inline-flex h-10 items-center gap-2 rounded-md border border-primary/30 px-3 text-xs font-heading font-bold tracking-[0.14em] text-primary transition hover:bg-primary hover:text-primary-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 <ExternalLink className="h-4 w-4" aria-hidden />
-                FULL RULES
+                {fullRulesLabel(game).toUpperCase()}
               </a>
             ) : (
               <span className="inline-flex min-h-10 items-center rounded-md border border-primary/20 px-3 text-[0.65rem] font-heading font-bold uppercase tracking-[0.14em] text-muted-foreground">

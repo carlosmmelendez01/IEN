@@ -14,6 +14,7 @@ export type RulesetGame = {
   matchWindow: string;
   leagues: string[];
   ruleDocHref?: string;
+  ruleDocVersion?: string;
   note?: string;
   status?: string;
 };
@@ -37,12 +38,12 @@ export type RotationData = {
   secondaryRows?: RotationRow[];
 };
 
-export const RULEBOOK_HREF = "";
+export const RULEBOOK_HREF = "/documents/ien-bylaws-general-rules-2026-27.pdf";
 export const GAME_RULESET_LIBRARY_HREF = "/rules-policies#ruleset-library";
-export const RULES_DOCUMENTS_AVAILABLE = false;
-export const RULES_UPDATE_SHORT_LABEL = "Currently being updated";
+export const RULES_DOCUMENTS_AVAILABLE = true;
+export const RULES_UPDATE_SHORT_LABEL = "Rules pending";
 export const RULES_UPDATE_NOTICE =
-  "IEN rulesets, bylaws, and general rules are currently being updated for the 2026-27 season. Final documents will be posted here when they are ready.";
+  "Updated 2026-27 IEN bylaws and available title rulesets have been posted. Additional title documents will be added here as they are finalized.";
 
 export const rulesetGames: RulesetGame[] = [
   {
@@ -51,33 +52,37 @@ export const rulesetGames: RulesetGame[] = [
     type: "Varsity 1A/2A + Club",
     color: "#ff5d67",
     platform: "PC",
-    roster: "5 starters / 2 substitutes",
-    format: "Best of 1 regular season",
+    roster: "5 starters / 3 substitutes",
+    format: "Regular season Bo1; playoffs Bo3",
     matchWindow: "Wednesdays, 5 PM ET / 4 PM CT",
     leagues: ["IHSEN"],
+    ruleDocHref: "/documents/rulesets/valorant-bylaws-game-rules-2026-27.pdf",
+    ruleDocVersion: "1.0",
   },
   {
     id: "apex-legends",
     name: "Apex Legends",
     type: "Varsity 1A/2A + Club",
     color: "#b56dff",
-    platform: "PC",
+    platform: "PC, Xbox, PlayStation",
     roster: "3 starters / 2 substitutes",
     format: "Placement + elimination scoring",
     matchWindow: "Mondays, 5 PM ET / 4 PM CT",
     leagues: ["IHSEN"],
-    status: "Official ruleset scheduled for July 2026",
+    status: "Official rules document pending",
   },
   {
     id: "rocket-league",
     name: "Rocket League",
     type: "Varsity 1A/2A + Club",
     color: "#4da0ff",
-    platform: "Cross-platform",
+    platform: "PC, Xbox, PlayStation, Nintendo Switch",
     roster: "3 starters / 2 substitutes",
-    format: "Best of 5 match series",
+    format: "Bo5 match series; championship Bo7",
     matchWindow: "IHSEN Mondays 5 PM ET / IMSEN Wednesdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
+    ruleDocHref: "/documents/rulesets/rocket-league-bylaws-game-rules-2026-27.pdf",
+    ruleDocVersion: "1.0",
   },
   {
     id: "league-of-legends",
@@ -97,11 +102,13 @@ export const rulesetGames: RulesetGame[] = [
     name: "Overwatch 2",
     type: "Varsity 1A/2A + Club",
     color: "#ff8a24",
-    platform: "Cross-platform",
-    roster: "5 starters / 2 substitutes",
-    format: "Map-set match format",
+    platform: "PC, Xbox, PlayStation, Nintendo Switch",
+    roster: "5 starters / 3 substitutes",
+    format: "Competitive preset Bo5; grand finals Bo7",
     matchWindow: "Thursdays, 5 PM ET / 4 PM CT",
     leagues: ["IHSEN"],
+    ruleDocHref: "/documents/rulesets/overwatch-2-ruleset-2026-27.pdf",
+    ruleDocVersion: "1.0",
   },
   {
     id: "super-smash-bros",
@@ -110,9 +117,11 @@ export const rulesetGames: RulesetGame[] = [
     color: "#ff5eb8",
     platform: "Nintendo Switch",
     roster: "4 starters / 2 substitutes",
-    format: "Crew battle format",
+    format: "4v4 crew battles; playoffs Bo3",
     matchWindow: "IHSEN Wednesdays 5 PM ET / IMSEN Tuesdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
+    ruleDocHref: "/documents/rulesets/super-smash-bros-ultimate-bylaws-game-rules-2026-27.pdf",
+    ruleDocVersion: "1.0",
   },
   {
     id: "mario-kart-8-deluxe",
@@ -141,11 +150,13 @@ export const rulesetGames: RulesetGame[] = [
     name: "Marvel Rivals",
     type: "Varsity 1A/2A + Club",
     color: "#ff5275",
-    platform: "PC",
-    roster: "6 starters / 2 substitutes",
-    format: "Best of 3 map series",
+    platform: "PC, Xbox, PlayStation",
+    roster: "6 starters / 3 substitutes",
+    format: "Bo3 match series; championship Bo5",
     matchWindow: "IHSEN Tuesdays 5 PM ET / IMSEN Mondays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
+    ruleDocHref: "/documents/rulesets/marvel-rivals-bylaws-game-rules-2026-27.pdf",
+    ruleDocVersion: "1.0",
   },
   {
     id: "chess",
@@ -196,11 +207,13 @@ export const rulesetGames: RulesetGame[] = [
     name: "Rocket League",
     type: "Unified Spring",
     color: "#4da0ff",
-    platform: "Cross-platform",
-    roster: "3 starters / 2 substitutes",
-    format: "Best of 5 match series",
+    platform: "PC, Xbox, PlayStation, Nintendo Switch",
+    roster: "3 starters (2 athletes / 1 partner) / 2 substitutes",
+    format: "Bo5 match series; championship Bo7",
     matchWindow: "Tuesdays, 4:30 PM ET / 3:30 PM CT",
     leagues: ["IUEN"],
+    ruleDocHref: "/documents/rulesets/unified-rocket-league-bylaws-game-rules-2026-27.pdf",
+    ruleDocVersion: "1.0",
   },
   {
     id: "unified-super-smash-bros",
@@ -208,10 +221,12 @@ export const rulesetGames: RulesetGame[] = [
     type: "Unified Fall",
     color: "#ff5eb8",
     platform: "Nintendo Switch",
-    roster: "4 starters / 2 substitutes",
-    format: "Crew battle format",
+    roster: "4 starters (2 athletes / 2 partners) / 2 substitutes",
+    format: "4v4 crew battles; playoffs Bo3",
     matchWindow: "Tuesdays, 4:30 PM ET / 3:30 PM CT",
     leagues: ["IUEN"],
+    ruleDocHref: "/documents/rulesets/unified-super-smash-bros-ultimate-bylaws-game-rules-2026-27.pdf",
+    ruleDocVersion: "1.0",
   },
 ];
 
