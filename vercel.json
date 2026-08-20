@@ -3,6 +3,13 @@
   "installCommand": "pnpm install",
   "outputDirectory": "artifacts/ien-website/dist/public",
   "framework": "vite",
+  "redirects": [
+    {
+      "source": "/documents/ien-bylaws-general-rules-2025-26.pdf",
+      "destination": "/documents/ien-bylaws-general-rules-2026-27.pdf",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

@@ -30,7 +30,7 @@ const ihsenGames: GameTitle[] = [
   { name: "Valorant", type: "Varsity 1A/2A + Club", color: "border-red-500/60 text-red-400" },
   { name: "Apex Legends", type: "Varsity 1A/2A + Club", color: "border-purple-500/60 text-purple-400" },
   { name: "Rocket League", type: "Varsity 1A/2A + Club", color: "border-blue-500/60 text-blue-400" },
-  { name: "League of Legends", displayName: "League of Legends*", type: "Cross-state Competition", color: "border-yellow-500/60 text-yellow-300" },
+  { name: "League of Legends", type: "Cross-state Competition", color: "border-yellow-500/60 text-yellow-300" },
   { name: "Overwatch 2", type: "Varsity 1A/2A + Club", color: "border-orange-500/60 text-orange-400" },
   { name: "Super Smash Bros.", type: "Varsity 1A/2A + Club", color: "border-pink-500/60 text-pink-400" },
   { name: "Mario Kart 8 Deluxe", type: "Varsity 1A/2A + Club", color: "border-red-600/60 text-red-300" },
@@ -323,7 +323,7 @@ export default function Leagues() {
           ))}
         </div>
         <p className="mt-6 text-center text-xs font-semibold leading-5 text-primary">
-          *League of Legends will be cross-state competition. Full rule-set will be released.
+          League of Legends uses the cross-state ISEA Trials Rule Book.
         </p>
       </section>
 

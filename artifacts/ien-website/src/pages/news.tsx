@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import drewRhodaPhoto from "@assets/state-finals/04-drew-rhoda-1200.jpg";
 import brandIdentityImage from "@assets/IEN_Horizontal Logo Transparent.png";
+import { GAME_RULESET_LIBRARY_HREF, RULEBOOK_HREF } from "@/data/gameRules";
 
 type Category =
   | "Season Announcement"
@@ -122,7 +123,7 @@ IUEN now spans middle school and high school, with Unified registration run join
 IMSEN Middle School remains grades 6-8 with the same overall structure.
 
 RULES
-Three things changed: substitutes and bench, live coaching, and a condensed general rules document. The updated rulebook is still being finalized. IEN will post it and email every coach the day it goes live.
+Three things changed: substitutes and bench, live coaching, and a condensed general rules document. The 2026-27 IEN Bylaws & General Rules and posted title rulesets are live on the Rules & Policies page.
 
 DATES TO MARK NOW
 August 12: Registration opens for all divisions.
@@ -221,7 +222,7 @@ ORGANIZATION
 • A redesigned IEN website launches this summer with deeper school resources, sponsor presentation, and the Hall of Champions
 • IEN returns to the HECC Conference with booth presence, community engagement, and live game demos
 
-Each of these stories is covered in depth in the articles below. Stay tuned to /news as more details — schedules, divisional alignments, the official Apex Legends ruleset, and sponsor announcements — roll out across the summer.`;
+Each of these stories is covered in depth in the articles below. Current schedules, posted rulebooks, ruleset versions, and policy documents are maintained on the Rules & Policies page as additional season details roll out.`;
 
 const APEX_BODY = `Apex Legends will officially join the IHSEN title roster for the 2026–27 season, replacing Fortnite at the high school level. The decision follows a community survey, coach feedback sessions, and a competitive review of the high school esports landscape across the country.
 
@@ -234,7 +235,7 @@ WHAT TO EXPECT
 • Three-player squads competing in custom IEN lobbies
 • A regular season + playoff format consistent with other IHSEN titles
 • Tier structure pending the broader divisional review now underway
-• A full ruleset, scrim guidelines, and PC/peripheral standards rolling out before Fall registration
+• PC, Xbox, and PlayStation support, with ruleset and scrim guidance maintained in the rules library
 
 ROLLOUT TIMELINE
 • June 2026: Coach feedback window opens
@@ -938,9 +939,12 @@ function KickoffContent() {
         </h3>
         <p>
           Three things changed: substitutes and bench, live coaching, and a
-          condensed general rules document. The updated rulebook is still being
-          finalized; IEN will post it and email every coach the day it goes
-          live.
+          condensed general rules document. The current bylaws and posted title
+          rulesets are live on the{" "}
+          <ArticleLink href={GAME_RULESET_LIBRARY_HREF}>
+            Rules & Policies page
+          </ArticleLink>
+          .
         </p>
       </section>
 
@@ -1071,7 +1075,11 @@ function KickoffContent() {
                   Championship Record Book
                 </ArticleLink>
               </li>
-              <li>General Rules: coming soon by coach email.</li>
+              <li>
+                <ArticleLink href={RULEBOOK_HREF}>
+                  2026-27 IEN Bylaws & General Rules
+                </ArticleLink>
+              </li>
             </ul>
           </div>
           <div>

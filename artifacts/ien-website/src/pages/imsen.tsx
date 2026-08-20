@@ -151,40 +151,43 @@ export default function IMSEN() {
           All 8 IMSEN titles, selected for accessibility and competitive depth at the middle school level
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-4xl mx-auto">
-          {games.map((game, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05, duration: 0.35 }}
-              className={`bg-card border ${game.border} p-5 rounded-xl hover:bg-background transition-colors`}
-            >
-              <div className="mb-3">
-                <h4 className={`font-heading font-bold text-base ${game.color}`}>{game.name}</h4>
-                <span className="text-xs text-muted-foreground">{game.type}</span>
-              </div>
-              <div className="space-y-1 text-xs text-muted-foreground">
-                <div className="flex justify-between">
-                  <span>Roster</span>
-                  <span className="text-white/70">{game.roster}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Platform</span>
-                  <span className="text-white/70">{game.platform}</span>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => openRuleset(game.name)}
-                className="mt-4 inline-flex items-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
-                aria-haspopup="dialog"
+          {games.map((game, i) => {
+            const ruleset = getRulesetGame(game.name, "imsen");
+            return (
+              <motion.div
+                key={game.name}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05, duration: 0.35 }}
+                className={`bg-card border ${game.border} p-5 rounded-xl hover:bg-background transition-colors`}
               >
-                <FileText className="w-3.5 h-3.5" aria-hidden />
-                VIEW RULESET
-              </button>
-            </motion.div>
-          ))}
+                <div className="mb-3">
+                  <h4 className={`font-heading font-bold text-base ${game.color}`}>{game.name}</h4>
+                  <span className="text-xs text-muted-foreground">{game.type}</span>
+                </div>
+                <dl className="grid gap-2 text-xs text-muted-foreground">
+                  <div>
+                    <dt className="font-heading font-bold uppercase tracking-[0.14em]">Roster</dt>
+                    <dd className="mt-0.5 text-white/80 leading-snug">{ruleset.roster}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-heading font-bold uppercase tracking-[0.14em]">Platform</dt>
+                    <dd className="mt-0.5 text-white/80 leading-snug">{ruleset.platform}</dd>
+                  </div>
+                </dl>
+                <button
+                  type="button"
+                  onClick={() => openRuleset(game.name)}
+                  className="mt-4 inline-flex items-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                  aria-haspopup="dialog"
+                >
+                  <FileText className="w-3.5 h-3.5" aria-hidden />
+                  VIEW RULESET
+                </button>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 

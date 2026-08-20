@@ -377,7 +377,7 @@ export default function IUEN() {
               aria-haspopup="dialog"
             >
               <FileText className="w-3.5 h-3.5" aria-hidden />
-              RULESET STATUS
+              VIEW RULESET
             </button>
           </div>
           <div className="bg-card border border-blue-500/40 p-8 rounded-xl text-center flex-1 hover:border-blue-400 transition-colors shadow-lg">
@@ -392,7 +392,7 @@ export default function IUEN() {
               aria-haspopup="dialog"
             >
               <FileText className="w-3.5 h-3.5" aria-hidden />
-              RULESET STATUS
+              VIEW RULESET
             </button>
           </div>
         </div>

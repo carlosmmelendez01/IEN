@@ -11,27 +11,23 @@ import ihsenLogo from "@assets/IEN_IHSEN White Text.png";
 
 type GameTitle = {
   name: string;
-  displayName?: string;
-  type: string;
   color: string;
   border: string;
-  roster: string;
-  platform: string;
 };
 
 const games: GameTitle[] = [
-  { name: "Valorant",            type: "Varsity 1A/2A + Club", color: "text-red-400",    border: "border-red-500/50",    roster: "5 starters | 2 subs",    platform: "PC" },
-  { name: "Apex Legends",        type: "Varsity 1A/2A + Club", color: "text-purple-400", border: "border-purple-500/50", roster: "3 starters | 2 subs",    platform: "PC" },
-  { name: "Rocket League",       type: "Varsity 1A/2A + Club", color: "text-blue-400",   border: "border-blue-500/50",   roster: "3 starters | 2 subs",    platform: "Cross-platform" },
-  { name: "League of Legends",    displayName: "League of Legends*", type: "Cross-state Competition", color: "text-yellow-300", border: "border-yellow-500/50", roster: "5 starters | 2 subs", platform: "PC" },
-  { name: "Overwatch 2",         type: "Varsity 1A/2A + Club", color: "text-orange-400", border: "border-orange-500/50", roster: "5 starters | 2 subs",    platform: "Cross-platform" },
-  { name: "Super Smash Bros.",   type: "Varsity 1A/2A + Club", color: "text-pink-400",   border: "border-pink-500/50",   roster: "4 starters | 2 subs",    platform: "Nintendo Switch" },
-  { name: "Mario Kart 8 Deluxe", type: "Varsity 1A/2A + Club", color: "text-red-300",    border: "border-red-600/50",    roster: "4 starters | 2 subs",    platform: "Nintendo Switch" },
-  { name: "Minecraft",           type: "Varsity 1A/2A",        color: "text-green-400",  border: "border-green-500/50",  roster: "Varies by format",       platform: "PC" },
-  { name: "Marvel Rivals",       type: "Varsity 1A/2A + Club", color: "text-rose-400",   border: "border-rose-500/50",   roster: "6 starters | 2 subs",    platform: "PC" },
-  { name: "Chess",               type: "Tournament",     color: "text-gray-300",   border: "border-gray-400/50",   roster: "Board-style format",     platform: "Chess.com" },
-  { name: "Tetris",              type: "Tournament",     color: "text-cyan-400",   border: "border-cyan-500/50",   roster: "Individual / team",      platform: "TETR.IO" },
-  { name: "iRacing",             type: "Tournament",     color: "text-amber-400",  border: "border-amber-500/50",  roster: "Individual / team",      platform: "PC" },
+  { name: "Valorant",            color: "text-red-400",    border: "border-red-500/50" },
+  { name: "Apex Legends",        color: "text-purple-400", border: "border-purple-500/50" },
+  { name: "Rocket League",       color: "text-blue-400",   border: "border-blue-500/50" },
+  { name: "League of Legends",   color: "text-yellow-300", border: "border-yellow-500/50" },
+  { name: "Overwatch 2",         color: "text-orange-400", border: "border-orange-500/50" },
+  { name: "Super Smash Bros.",   color: "text-pink-400",   border: "border-pink-500/50" },
+  { name: "Mario Kart 8 Deluxe", color: "text-red-300",    border: "border-red-600/50" },
+  { name: "Minecraft",           color: "text-green-400",  border: "border-green-500/50" },
+  { name: "Marvel Rivals",       color: "text-rose-400",   border: "border-rose-500/50" },
+  { name: "Chess",               color: "text-gray-300",   border: "border-gray-400/50" },
+  { name: "Tetris",              color: "text-cyan-400",   border: "border-cyan-500/50" },
+  { name: "iRacing",             color: "text-amber-400",  border: "border-amber-500/50" },
 ];
 
 const highlights = [
@@ -166,45 +162,48 @@ export default function IHSEN() {
           All 12 IHSEN titles, across Varsity (1A &amp; 2A), Club, Tournament, and cross-state competition formats
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
-          {games.map((game, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05, duration: 0.35 }}
-              className={`bg-card border ${game.border} p-5 rounded-xl hover:bg-background transition-colors`}
-            >
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <h4 className={`font-heading font-bold text-base ${game.color}`}>{game.displayName ?? game.name}</h4>
-                  <span className="text-xs text-muted-foreground">{game.type}</span>
-                </div>
-              </div>
-              <div className="space-y-1 text-xs text-muted-foreground">
-                <div className="flex justify-between">
-                  <span>Roster</span>
-                  <span className="text-white/70">{game.roster}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Platform</span>
-                  <span className="text-white/70">{game.platform}</span>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => openRuleset(game.name)}
-                className="mt-4 inline-flex items-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
-                aria-haspopup="dialog"
+          {games.map((game, i) => {
+            const ruleset = getRulesetGame(game.name, "ihsen");
+            return (
+              <motion.div
+                key={game.name}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05, duration: 0.35 }}
+                className={`bg-card border ${game.border} p-5 rounded-xl hover:bg-background transition-colors`}
               >
-                <FileText className="w-3.5 h-3.5" aria-hidden />
-                VIEW RULESET
-              </button>
-            </motion.div>
-          ))}
+                <div className="mb-3">
+                  <h4 className={`font-heading font-bold text-base ${game.color}`}>
+                    {ruleset.displayName ?? ruleset.name}
+                  </h4>
+                  <span className="text-xs text-muted-foreground">{ruleset.type}</span>
+                </div>
+                <dl className="grid gap-2 text-xs text-muted-foreground">
+                  <div>
+                    <dt className="font-heading font-bold uppercase tracking-[0.14em]">Roster</dt>
+                    <dd className="mt-0.5 text-white/80 leading-snug">{ruleset.roster}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-heading font-bold uppercase tracking-[0.14em]">Platform</dt>
+                    <dd className="mt-0.5 text-white/80 leading-snug">{ruleset.platform}</dd>
+                  </div>
+                </dl>
+                <button
+                  type="button"
+                  onClick={() => openRuleset(game.name)}
+                  className="mt-4 inline-flex items-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                  aria-haspopup="dialog"
+                >
+                  <FileText className="w-3.5 h-3.5" aria-hidden />
+                  VIEW RULESET
+                </button>
+              </motion.div>
+            );
+          })}
         </div>
         <p className="mt-6 text-center text-xs font-semibold leading-5 text-primary">
-          *League of Legends will be cross-state competition. Full rule-set will be released.
+          League of Legends uses the cross-state ISEA Trials Rule Book.
         </p>
       </section>
 
