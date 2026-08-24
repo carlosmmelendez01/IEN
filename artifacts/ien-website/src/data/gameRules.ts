@@ -150,7 +150,7 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "marvel-rivals",
     name: "Marvel Rivals",
-    type: "Varsity 1A/2A + Club",
+    type: "Varsity / JV",
     color: "#ff5275",
     platform: "PC, Xbox, PlayStation",
     roster: "6 starters / 3 substitutes",
@@ -158,7 +158,7 @@ export const rulesetGames: RulesetGame[] = [
     matchWindow: "IHSEN Tuesdays 5 PM ET / IMSEN Mondays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
     ruleDocHref: "/documents/rulesets/marvel-rivals-bylaws-game-rules-2026-27.pdf",
-    ruleDocVersion: "1.0",
+    ruleDocVersion: "1.01",
   },
   {
     id: "chess",
@@ -166,10 +166,12 @@ export const rulesetGames: RulesetGame[] = [
     type: "Tournament",
     color: "#9ba7b7",
     platform: "Chess.com",
-    roster: "Individual competitors",
-    format: "Swiss-style tournament",
+    roster: "1 active player / unlimited roster",
+    format: "Swiss splits; Bo3 10+3 games",
     matchWindow: "IHSEN Tuesdays 5 PM ET / IMSEN Thursdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
+    ruleDocHref: "/documents/rulesets/chess-ruleset-2026-27.pdf",
+    ruleDocVersion: "1.0",
   },
   {
     id: "tetris",
