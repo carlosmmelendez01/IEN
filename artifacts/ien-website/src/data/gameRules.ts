@@ -63,14 +63,15 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "apex-legends",
     name: "Apex Legends",
-    type: "Varsity 1A/2A + Club",
+    type: "Varsity / JV",
     color: "#b56dff",
     platform: "PC, Xbox, PlayStation",
     roster: "3 starters / 2 substitutes",
-    format: "Placement + elimination scoring",
+    format: "3 Battle Royale rounds; placement + eliminations",
     matchWindow: "Mondays, 5 PM ET / 4 PM CT",
     leagues: ["IHSEN"],
-    status: "Official rules document pending",
+    ruleDocHref: "/documents/rulesets/apex-legends-ruleset-2026-27.pdf",
+    ruleDocVersion: "1.0",
   },
   {
     id: "rocket-league",
