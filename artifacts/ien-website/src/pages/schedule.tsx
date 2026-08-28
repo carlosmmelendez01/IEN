@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Calendar,
   School,
+  GraduationCap,
   DollarSign,
   Clock,
   ZoomIn,
@@ -13,6 +14,7 @@ import {
   Download,
   ExternalLink,
   FileText,
+  UsersRound,
 } from "lucide-react";
 import { GAME_RULESET_LIBRARY_HREF } from "@/data/gameRules";
 import { ONBOARDING_URL } from "@/lib/socialLinks";
@@ -23,6 +25,12 @@ import imsenFall from "@assets/IMSEN Fall.png";
 import iuenFall from "@assets/IUEN Fall.png";
 import imsenSpring from "@assets/IMSEN Spring.png";
 import iuenSpring from "@assets/IUEN Spring.png";
+
+const scheduleQuickLinks = [
+  { href: "#high-school-schedules", label: "High School", icon: GraduationCap },
+  { href: "#middle-school-schedules", label: "Middle School", icon: School },
+  { href: "#unified-schedules", label: "Unified", icon: UsersRound },
+];
 
 function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
   return (
@@ -202,9 +210,41 @@ function SeasonRow({
   );
 }
 
-function SectionDivider({ label }: { label: string }) {
+function ScheduleQuickLinks() {
   return (
-    <div className="flex items-center gap-2 md:gap-4 pt-10 pb-2">
+    <section className="border-b border-primary/10 bg-background/80">
+      <div className="container mx-auto px-4 py-5">
+        <nav
+          aria-label="Schedule sections"
+          className="flex flex-col items-stretch gap-3 md:flex-row md:items-center md:justify-center"
+        >
+          <span className="text-center font-heading text-xs font-bold uppercase tracking-widest text-muted-foreground md:text-left">
+            Jump to schedules
+          </span>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {scheduleQuickLinks.map(({ href, label, icon: Icon }) => (
+              <Button
+                key={href}
+                variant="outline"
+                className="h-11 border-primary/40 bg-card/70 px-5 font-heading tracking-widest text-white hover:bg-primary hover:text-primary-foreground"
+                asChild
+              >
+                <a href={href}>
+                  <Icon className="w-4 h-4" aria-hidden />
+                  {label}
+                </a>
+              </Button>
+            ))}
+          </div>
+        </nav>
+      </div>
+    </section>
+  );
+}
+
+function SectionDivider({ label, id }: { label: string; id: string }) {
+  return (
+    <div id={id} className="flex scroll-mt-24 items-center gap-2 pt-10 pb-2 md:gap-4">
 
       <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50 hidden md:block" />
       <span className="font-heading font-bold text-primary tracking-widest uppercase text-lg md:text-3xl px-2 md:px-4 text-center md:whitespace-nowrap">
@@ -242,9 +282,11 @@ export default function Schedule() {
         </div>
       </section>
 
+      <ScheduleQuickLinks />
+
       <div className="container mx-auto px-4 pb-8">
 
-        <SectionDivider label="Indiana High School Esports Network (IHSEN)" />
+        <SectionDivider id="high-school-schedules" label="Indiana High School Esports Network (IHSEN)" />
 
         <SeasonRow
           index={0}
@@ -277,7 +319,7 @@ export default function Schedule() {
           pdfLabel="VIEW IHSEN CALENDAR"
         />
 
-        <SectionDivider label="Indiana Middle School Esports Network (IMSEN)" />
+        <SectionDivider id="middle-school-schedules" label="Indiana Middle School Esports Network (IMSEN)" />
 
         <SeasonRow
           index={2}
@@ -311,7 +353,7 @@ export default function Schedule() {
           pdfLabel="VIEW IMSEN CALENDAR"
         />
 
-        <SectionDivider label="Indiana Unified Esports Network (IUEN)" />
+        <SectionDivider id="unified-schedules" label="Indiana Unified Esports Network (IUEN)" />
 
         <SeasonRow
           index={4}
