@@ -50,10 +50,10 @@ export default function Privacy() {
           <ul>
             <li>
               <strong>Newsletter signup.</strong> If you fill out the newsletter form on the Contact
-              page, we collect your name (optional), email address, role (student / parent / educator /
-              sponsor / community), and the topics you indicated interest in. Today, this form opens
-              your email client with the information pre-filled so you can send it to us; we do not
-              store the submission until you press send and we receive the email.
+              page, we collect your first name, email address, and whether you are signing up as a
+              coach or community member so we can send IEN newsletters, league updates, event
+              announcements, and other opted-in communications. The form is provided by
+              EmailOctopus, which processes newsletter signups for us.
             </li>
             <li>
               <strong>Direct email contact.</strong> If you email us at{" "}
@@ -72,8 +72,9 @@ export default function Privacy() {
           <h2>INFORMATION WE DON&rsquo;T COLLECT</h2>
           <ul>
             <li>
-              <strong>No analytics, no tracking.</strong> The Site does not load Google Analytics,
-              Facebook Pixel, Hotjar, advertising trackers, or any third-party analytics tool.
+              <strong>No advertising trackers.</strong> The Site does not load Google Analytics,
+              Facebook Pixel, Hotjar, or advertising trackers. We use Vercel Analytics and Speed
+              Insights for aggregate site usage and performance information.
             </li>
             <li>
               <strong>No cookies are set by IEN.</strong> The Site itself does not write cookies to
@@ -114,9 +115,17 @@ export default function Privacy() {
               </a>
             </li>
             <li>
-              <strong>Vercel</strong> hosts the Site and serves its files.{" "}
+              <strong>Vercel</strong> hosts the Site, serves its files, and provides aggregate
+              analytics and performance insights.{" "}
               <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
                 Vercel Privacy Policy
+              </a>
+            </li>
+            <li>
+              <strong>EmailOctopus</strong> provides the newsletter signup form and manages email
+              subscription records.{" "}
+              <a href="https://emailoctopus.com/legal/privacy" target="_blank" rel="noopener noreferrer">
+                EmailOctopus Privacy Policy
               </a>
             </li>
             <li>

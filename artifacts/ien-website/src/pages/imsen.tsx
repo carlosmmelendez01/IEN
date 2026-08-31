@@ -44,7 +44,7 @@ export default function IMSEN() {
         path="/leagues/imsen"
       />
 
-      <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
+      <section className="relative py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
 
@@ -77,7 +77,75 @@ export default function IMSEN() {
             <p className="text-lg text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
               Building the foundation of scholastic esports in Indiana: a developmental league focused on sportsmanship, digital citizenship, and competitive growth for middle schoolers.
             </p>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button
+                asChild
+                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
+              >
+                <Link href="/start-a-program">JOIN IMSEN</Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-8"
+              >
+                <a href="/schedule#middle-school-schedules">VIEW SCHEDULE</a>
+              </Button>
+            </div>
           </motion.div>
+        </div>
+      </section>
+
+      <section className="py-10 border-b border-primary/10 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.75fr_1.25fr] gap-6 max-w-6xl mx-auto items-center">
+            <div>
+              <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary mb-2">
+                Coach Quick Start
+              </p>
+              <h2 className="text-2xl md:text-4xl font-heading font-bold text-white">
+                Middle school coaches can start here.
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <Link
+                href="/start-a-program"
+                className="bg-card border border-primary/25 rounded-lg p-5 hover:border-primary transition-colors"
+              >
+                <Users className="w-5 h-5 text-primary mb-3" aria-hidden />
+                <span className="block font-heading font-bold text-white">
+                  Join the League
+                </span>
+                <span className="mt-1 block text-xs text-muted-foreground leading-relaxed">
+                  Start or renew your middle school program.
+                </span>
+              </Link>
+              <a
+                href="/schedule#middle-school-schedules"
+                className="bg-card border border-primary/25 rounded-lg p-5 hover:border-primary transition-colors"
+              >
+                <Calendar className="w-5 h-5 text-primary mb-3" aria-hidden />
+                <span className="block font-heading font-bold text-white">
+                  Season Schedule
+                </span>
+                <span className="mt-1 block text-xs text-muted-foreground leading-relaxed">
+                  See fall, spring, and finals dates.
+                </span>
+              </a>
+              <Link
+                href="/rules-policies"
+                className="bg-card border border-primary/25 rounded-lg p-5 hover:border-primary transition-colors"
+              >
+                <FileText className="w-5 h-5 text-primary mb-3" aria-hidden />
+                <span className="block font-heading font-bold text-white">
+                  Rules Library
+                </span>
+                <span className="mt-1 block text-xs text-muted-foreground leading-relaxed">
+                  Review title-specific rules before registering teams.
+                </span>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

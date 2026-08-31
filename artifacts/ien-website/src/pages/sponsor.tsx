@@ -1,13 +1,13 @@
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { SponsorTiers } from "@/components/partners/SponsorTiers";
 import {
-  ArrowRight,
   Building2,
   GraduationCap,
   HeartHandshake,
+  Mail,
   Trophy,
   Users,
 } from "lucide-react";
@@ -64,7 +64,7 @@ export function SponsorPageContent({
         path={path}
       />
 
-      <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
+      <section className="relative py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 opacity-35 bg-[linear-gradient(rgba(212,175,55,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.08)_1px,transparent_1px)] bg-[size:56px_56px]" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/20" />
         <div className="container relative z-20 mx-auto px-4 text-center">
@@ -73,7 +73,7 @@ export function SponsorPageContent({
             Sponsor IEN
           </div>
           <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6 tracking-tight">
-            Partnership Opportunities for Indiana Scholastic Esports
+            Sponsor Indiana Scholastic Esports
           </h1>
           <p className="text-lg md:text-xl text-gray-300 font-light max-w-3xl mx-auto mb-8 leading-relaxed">
             IEN works with organizations that want to strengthen education,
@@ -86,7 +86,10 @@ export function SponsorPageContent({
               size="lg"
               className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
             >
-              <a href="#sponsorship-opportunities">View Opportunities</a>
+              <a href="mailto:ienboard@indianaesportsnetwork.org?subject=IEN%20Sponsorship%20Inquiry">
+                <Mail className="w-4 h-4 mr-2" />
+                Contact Partnerships
+              </a>
             </Button>
             <Button
               asChild
@@ -94,10 +97,7 @@ export function SponsorPageContent({
               variant="outline"
               className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-8"
             >
-              <Link href="/partners">
-                View Partners
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
+              <a href="#sponsorship-opportunities">View Sponsorship Tiers</a>
             </Button>
           </div>
         </div>
@@ -122,6 +122,8 @@ export function SponsorPageContent({
           </div>
         </div>
       </section>
+
+      <SponsorTiers />
 
       <section className="py-20 container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-12">
@@ -160,8 +162,6 @@ export function SponsorPageContent({
           })}
         </div>
       </section>
-
-      <SponsorTiers />
     </Layout>
   );
 }

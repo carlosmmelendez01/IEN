@@ -152,8 +152,33 @@ export default function Schools() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 max-w-7xl mx-auto">
-            <article className="bg-card border border-primary/25 rounded-xl p-6 flex flex-col h-full">
+          <div className="grid grid-cols-1 lg:grid-cols-6 gap-5 max-w-7xl mx-auto">
+            <article className="bg-primary/10 border-2 border-primary/50 rounded-xl p-6 md:p-8 flex flex-col h-full shadow-[0_0_24px_rgba(212,175,55,0.1)] lg:col-span-4">
+              <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary mb-5">
+                <ClipboardCheck className="w-6 h-6" aria-hidden="true" />
+              </div>
+              <p className="text-xs font-heading font-bold tracking-[0.2em] uppercase text-primary mb-2">
+                Highest Priority · New &amp; Returning Schools
+              </p>
+              <h3 className="text-3xl md:text-4xl font-heading font-bold text-white mb-3">
+                Complete the {schoolCharterConfig.academicYear} Annual Charter
+              </h3>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4 flex-1">
+                Confirm your school, coach, program, mascot, logo, and
+                participation information before competition registration.
+              </p>
+              <p className="text-sm font-heading font-bold tracking-[0.16em] uppercase text-primary mb-6">
+                Team and game registration is completed separately.
+              </p>
+              <SchoolCharterButton
+                source="member_schools"
+                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8 self-start"
+              >
+                COMPLETE SCHOOL CHARTER
+              </SchoolCharterButton>
+            </article>
+
+            <article className="bg-card border border-primary/30 rounded-xl p-6 flex flex-col h-full lg:col-span-2">
               <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary mb-5">
                 <Rocket className="w-6 h-6" aria-hidden="true" />
               </div>
@@ -184,30 +209,7 @@ export default function Schools() {
               </Button>
             </article>
 
-            <article className="bg-card border border-primary/40 rounded-xl p-6 flex flex-col h-full shadow-[0_0_24px_rgba(212,175,55,0.08)]">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary mb-5">
-                <ClipboardCheck className="w-6 h-6" aria-hidden="true" />
-              </div>
-              <p className="text-xs font-heading font-bold tracking-[0.2em] uppercase text-primary mb-2">
-                NEW &amp; RETURNING SCHOOLS
-              </p>
-              <h3 className="text-2xl font-heading font-bold text-white mb-3">
-                IEN Annual Charter
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
-                Confirm your school, coach, program, mascot, logo, and
-                participation information for the{" "}
-                {schoolCharterConfig.academicYear} academic year.
-              </p>
-              <SchoolCharterButton
-                source="member_schools"
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest"
-              >
-                COMPLETE SCHOOL CHARTER
-              </SchoolCharterButton>
-            </article>
-
-            <article className="bg-card border border-primary/25 rounded-xl p-6 flex flex-col h-full">
+            <article className="bg-card border border-primary/25 rounded-xl p-6 flex flex-col h-full lg:col-span-3">
               <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary mb-5">
                 <SchoolIcon className="w-6 h-6" aria-hidden="true" />
               </div>
@@ -239,7 +241,7 @@ export default function Schools() {
               </Button>
             </article>
 
-            <article className="bg-card border border-primary/25 rounded-xl p-6 flex flex-col h-full">
+            <article className="bg-card border border-primary/25 rounded-xl p-6 flex flex-col h-full lg:col-span-3">
               <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary mb-5">
                 <GraduationCap className="w-6 h-6" aria-hidden="true" />
               </div>
@@ -262,36 +264,6 @@ export default function Schools() {
               </Button>
             </article>
           </div>
-
-          {schoolCharterConfig.enabled && (
-            <div className="max-w-6xl mx-auto mt-8 rounded-xl border border-primary/45 bg-primary/10 p-6 md:p-8">
-              <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-                <div className="flex-1">
-                  <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary mb-2">
-                    Annual Charter
-                  </p>
-                  <h3 className="text-2xl md:text-3xl font-heading font-bold text-white mb-3">
-                    {schoolCharterConfig.academicYear} School Chartering
-                  </h3>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-3">
-                    IEN is rebuilding its annual school records to ensure that
-                    our school, coach, program, and participation information is
-                    current and accurate. Every new and returning school should
-                    complete the annual School Census &amp; Charter.
-                  </p>
-                  <p className="text-sm font-heading font-bold tracking-[0.16em] uppercase text-primary">
-                    Competition registration is completed separately.
-                  </p>
-                </div>
-                <SchoolCharterButton
-                  source="member_schools"
-                  className="w-full lg:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
-                >
-                  COMPLETE THE {schoolCharterConfig.academicYear} CHARTER
-                </SchoolCharterButton>
-              </div>
-            </div>
-          )}
         </div>
       </section>
 

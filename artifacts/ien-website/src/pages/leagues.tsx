@@ -140,7 +140,7 @@ export default function Leagues() {
         path="/leagues"
       />
 
-      <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card">
+      <section className="relative py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
 
@@ -162,35 +162,73 @@ export default function Leagues() {
             </p>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               The Indiana Esports Network offers competitive esports leagues for middle school, high
-              school, and unified programs across Indiana. Select your league below to learn more.
+              school, and unified programs across Indiana. Start by choosing the division that fits
+              your students, then review titles and rules.
             </p>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button
+                asChild
+                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
+              >
+                <a href="#choose-league">CHOOSE YOUR LEAGUE</a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-8"
+              >
+                <a href="#game-titles">VIEW GAME TITLES</a>
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-16 container mx-auto px-4">
+      <section
+        id="choose-league"
+        className="py-14 container mx-auto px-4 scroll-mt-24"
+      >
+        <div className="text-center mb-10">
+          <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary mb-3">
+            Start Here
+          </p>
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-white tracking-wider uppercase">
+            Choose Your League
+          </h2>
+          <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+            Division comes first. Game titles, rulesets, and registration flow
+            from the league your students are eligible to join.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             {
               title: "IHSEN",
+              meta: "Grades 9-12",
               subtitle: "Indiana High School Esports Network",
               desc: "Our flagship division featuring varsity and club competition for high schools across the state. Compete for Indiana state championships in 12 game titles. Open to grades 9–12.",
               link: "/leagues/ihsen",
               logo: ihsenLogo,
+              cta: "OPEN IHSEN",
             },
             {
               title: "IMSEN",
+              meta: "Grades 6-8",
               subtitle: "Indiana Middle School Esports Network",
               desc: "Building the foundation of scholastic esports. A developmental league focused on sportsmanship, digital citizenship, and competitive fundamentals. Open to grades 6–8.",
               link: "/leagues/imsen",
               logo: imsenLogo,
+              cta: "OPEN IMSEN",
             },
             {
               title: "IUEN",
+              meta: "Unified Teams",
               subtitle: "Indiana Unified Esports Network",
               desc: "In partnership with Indiana Special Olympics, IUEN provides competitive esports for students with and without intellectual disabilities, competing together as teammates.",
               link: "/leagues/iuen",
               logo: iuenLogo,
+              cta: "OPEN IUEN",
             },
           ].map((league, i) => (
             <motion.div
@@ -200,6 +238,9 @@ export default function Leagues() {
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className="bg-card border border-primary/30 p-8 rounded-xl flex flex-col items-center text-center shadow-lg hover:border-primary transition-all hover:-translate-y-1"
             >
+              <p className="mb-4 text-xs font-heading font-bold tracking-[0.2em] uppercase text-primary">
+                {league.meta}
+              </p>
               <img
                 src={league.logo}
                 alt={`${league.title} logo`}
@@ -212,14 +253,47 @@ export default function Leagues() {
                 className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest"
                 asChild
               >
-                <Link href={league.link}>LEARN MORE</Link>
+                <Link href={league.link}>{league.cta}</Link>
               </Button>
             </motion.div>
           ))}
         </div>
+
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+          <a
+            href="#game-titles"
+            className="rounded-xl border border-primary/30 bg-card p-5 text-center hover:border-primary transition-colors"
+          >
+            <p className="font-heading font-bold tracking-[0.18em] uppercase text-primary text-xs mb-2">
+              Next Step
+            </p>
+            <h3 className="font-heading font-bold text-2xl text-white mb-2">
+              Review Game Titles
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              See the titles offered by IHSEN, IMSEN, and IUEN, with quick
+              ruleset buttons on each game tile.
+            </p>
+          </a>
+          <Link
+            href="/rules-policies"
+            className="rounded-xl border border-primary/30 bg-card p-5 text-center hover:border-primary transition-colors"
+          >
+            <p className="font-heading font-bold tracking-[0.18em] uppercase text-primary text-xs mb-2">
+              Rules Hub
+            </p>
+            <h3 className="font-heading font-bold text-2xl text-white mb-2">
+              Open Rules &amp; Policies
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Use the official rules hub for rulebooks, policy documents,
+              ruleset status, and LeagueOS guidance.
+            </p>
+          </Link>
+        </div>
       </section>
 
-      <section className="py-16 bg-card border-y border-primary/20">
+      <section className="py-14 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
@@ -421,28 +495,6 @@ export default function Leagues() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="py-16 container mx-auto px-4">
-        <div className="max-w-4xl mx-auto rounded-lg border border-primary/30 bg-card p-6 md:p-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
-            Looking for rules and policies?
-          </h2>
-          <p className="text-muted-foreground leading-7 mb-8">
-            Official rulebooks, ruleset status, policy documents, and LeagueOS
-            guidance now live on the Rules & Policies page.
-          </p>
-          <Button
-            variant="outline"
-            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest"
-            asChild
-          >
-            <Link href="/rules-policies">
-              <FileText className="w-4 h-4 mr-2" />
-              RULES &amp; POLICIES
-            </Link>
-          </Button>
         </div>
       </section>
 

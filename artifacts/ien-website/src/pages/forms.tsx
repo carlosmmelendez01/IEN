@@ -154,20 +154,21 @@ export default function Forms() {
 
       <section className="py-16 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center mb-4">
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-            <h1 className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
-              Forms
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary mb-3">
+              Coach Resource Hub
+            </p>
+            <h1 className="font-heading text-white font-bold tracking-tight uppercase text-4xl md:text-6xl mb-4">
+              Start with Registration
             </h1>
-            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
+            <p className="text-muted-foreground leading-relaxed">
+              The highest-priority forms are school chartering and LeagueOS
+              registration. Competition and billing links sit underneath for the
+              next steps coaches need after setup.
+            </p>
           </div>
 
-          <p className="text-center text-muted-foreground text-sm mb-10">
-            The core links coaches need for registration, competition, billing,
-            and support.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {formCards.map((card) => {
               const Icon = card.icon;
               return (
@@ -175,31 +176,50 @@ export default function Forms() {
                   key={card.title}
                   className={`bg-background p-8 rounded-xl ${
                     card.featured
-                      ? "border-2 border-primary shadow-[0_0_20px_rgba(212,175,55,0.1)]"
+                      ? "border-2 border-primary shadow-[0_0_20px_rgba(212,175,55,0.1)] md:col-span-2"
                       : "border border-primary/30"
                   }`}
                 >
-                  <Icon className="w-9 h-9 text-primary mb-5" aria-hidden />
-                  <h2
-                    className={`font-heading font-bold text-2xl mb-4 ${
-                      card.featured ? "text-primary" : "text-white"
-                    }`}
+                  <div
+                    className={
+                      card.featured
+                        ? "grid grid-cols-1 lg:grid-cols-[0.75fr_1fr] gap-8 items-start"
+                        : undefined
+                    }
                   >
-                    {card.title}
-                  </h2>
-                  <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
-                    {card.desc}
-                  </p>
-                  <div className="space-y-2 mb-6">
-                    {card.links.map((item) => (
-                      <ResourceLink key={item.label} item={item} />
-                    ))}
-                  </div>
-                  {card.footer && (
-                    <div className="bg-primary/10 border border-primary/30 rounded-lg p-3 text-sm text-primary font-medium leading-6">
-                      {card.footer}
+                    <div>
+                      <Icon className="w-9 h-9 text-primary mb-5" aria-hidden />
+                      {card.featured && (
+                        <div className="mb-3 inline-flex rounded border border-primary/40 bg-primary/10 px-2.5 py-1 text-[10px] font-heading font-bold uppercase tracking-widest text-primary">
+                          First Action
+                        </div>
+                      )}
+                      <h2
+                        className={`font-heading font-bold mb-4 ${
+                          card.featured
+                            ? "text-3xl md:text-4xl text-primary"
+                            : "text-2xl text-white"
+                        }`}
+                      >
+                        {card.title}
+                      </h2>
+                      <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
+                        {card.desc}
+                      </p>
                     </div>
-                  )}
+                    <div>
+                      <div className="space-y-2 mb-6">
+                        {card.links.map((item) => (
+                          <ResourceLink key={item.label} item={item} />
+                        ))}
+                      </div>
+                      {card.footer && (
+                        <div className="bg-primary/10 border border-primary/30 rounded-lg p-3 text-sm text-primary font-medium leading-6">
+                          {card.footer}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </article>
               );
             })}

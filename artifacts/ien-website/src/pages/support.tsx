@@ -14,7 +14,7 @@ export default function Support() {
         path="/support"
       />
 
-      <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
+      <section className="relative py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 opacity-35 bg-[linear-gradient(rgba(212,175,55,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.08)_1px,transparent_1px)] bg-[size:56px_56px]" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/20" />
         <div className="container relative z-20 mx-auto px-4 text-center">
@@ -54,20 +54,29 @@ export default function Support() {
       </section>
 
       <section className="py-16 container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          <article className="bg-card border border-primary/20 rounded-lg p-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-6 max-w-5xl mx-auto items-stretch">
+          <article className="bg-card border-2 border-primary rounded-lg p-8 shadow-[0_0_20px_rgba(212,175,55,0.1)]">
             <div className="w-12 h-12 rounded-lg border border-primary/30 bg-primary/10 flex items-center justify-center mb-4">
               <Heart className="w-6 h-6 text-primary" />
+            </div>
+            <div className="mb-3 inline-flex rounded border border-primary/40 bg-primary/10 px-2.5 py-1 text-[10px] font-heading font-bold uppercase tracking-widest text-primary">
+              Easiest Way to Help
             </div>
             <h2 className="text-2xl font-heading font-bold text-white mb-3">
               Direct Donation Options
             </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-5">
               Use Walmart Spark Good, Kroger Community Rewards, or PayPal Giving
               Fund to support IEN through everyday purchases and direct giving.
             </p>
+            <Button
+              asChild
+              className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest"
+            >
+              <a href="#ways-to-support">VIEW GIVING OPTIONS</a>
+            </Button>
           </article>
-          <article className="bg-card border border-primary/20 rounded-lg p-6">
+          <article className="bg-card border border-primary/20 rounded-lg p-8">
             <div className="w-12 h-12 rounded-lg border border-primary/30 bg-primary/10 flex items-center justify-center mb-4">
               <Users className="w-6 h-6 text-primary" />
             </div>

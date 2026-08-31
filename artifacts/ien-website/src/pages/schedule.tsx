@@ -27,9 +27,24 @@ import imsenSpring from "@assets/IMSEN Spring.png";
 import iuenSpring from "@assets/IUEN Spring.png";
 
 const scheduleQuickLinks = [
-  { href: "#high-school-schedules", label: "High School", icon: GraduationCap },
-  { href: "#middle-school-schedules", label: "Middle School", icon: School },
-  { href: "#unified-schedules", label: "Unified", icon: UsersRound },
+  {
+    href: "#high-school-schedules",
+    label: "High School",
+    desc: "IHSEN regular season, playoffs, and State Finals path.",
+    icon: GraduationCap,
+  },
+  {
+    href: "#middle-school-schedules",
+    label: "Middle School",
+    desc: "IMSEN fall and spring schedules for grades 6-8.",
+    icon: School,
+  },
+  {
+    href: "#unified-schedules",
+    label: "Unified",
+    desc: "IUEN fall and spring schedules for Unified teams.",
+    icon: UsersRound,
+  },
 ];
 
 function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
@@ -213,30 +228,40 @@ function SeasonRow({
 function ScheduleQuickLinks() {
   return (
     <section className="border-b border-primary/10 bg-background/80">
-      <div className="container mx-auto px-4 py-5">
-        <nav
-          aria-label="Schedule sections"
-          className="flex flex-col items-stretch gap-3 md:flex-row md:items-center md:justify-center"
-        >
-          <span className="text-center font-heading text-xs font-bold uppercase tracking-widest text-muted-foreground md:text-left">
-            Jump to schedules
-          </span>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-            {scheduleQuickLinks.map(({ href, label, icon: Icon }) => (
+      <div className="container mx-auto px-4 py-8">
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-5 text-center">
+            <p className="font-heading text-xs font-bold uppercase tracking-[0.22em] text-primary mb-2">
+              Choose a Schedule
+            </p>
+            <h2 className="text-2xl md:text-4xl font-heading font-bold text-white">
+              Start with your division
+            </h2>
+          </div>
+          <nav
+            aria-label="Schedule sections"
+            className="grid grid-cols-1 gap-4 md:grid-cols-3"
+          >
+            {scheduleQuickLinks.map(({ href, label, desc, icon: Icon }) => (
               <Button
                 key={href}
                 variant="outline"
-                className="h-11 border-primary/40 bg-card/70 px-5 font-heading tracking-widest text-white hover:bg-primary hover:text-primary-foreground"
+                className="h-auto justify-start border-primary/40 bg-card/70 p-5 text-left font-heading tracking-widest text-white hover:bg-primary hover:text-primary-foreground"
                 asChild
               >
                 <a href={href}>
-                  <Icon className="w-4 h-4" aria-hidden />
-                  {label}
+                  <Icon className="w-5 h-5 shrink-0" aria-hidden />
+                  <span>
+                    <span className="block text-base">{label}</span>
+                    <span className="mt-1 block font-sans text-xs normal-case tracking-normal opacity-75">
+                      {desc}
+                    </span>
+                  </span>
                 </a>
               </Button>
             ))}
-          </div>
-        </nav>
+          </nav>
+        </div>
       </div>
     </section>
   );
@@ -278,6 +303,21 @@ export default function Schedule() {
             <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto">
               2026–2027 Indiana Esports Network · Official Season Schedule
             </p>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button
+                asChild
+                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
+              >
+                <a href="#high-school-schedules">VIEW SCHEDULES</a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-8"
+              >
+                <a href={GAME_RULESET_LIBRARY_HREF}>RULESET LIBRARY</a>
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>

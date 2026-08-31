@@ -26,16 +26,32 @@ export default function StartAProgram() {
             at Your School
           </h1>
           <p className="text-xl text-primary mb-8 font-light">
-            Review the path for new coaches, then use the onboarding meeting in
-            step one when your school is ready.
+            The first move for a new school is an onboarding meeting with IEN.
+            Chartering and team registration come after that.
           </p>
-          <Button
-            size="lg"
-            asChild
-            className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]"
-          >
-            <a href="#get-connected">VIEW STARTER STEPS</a>
-          </Button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button
+              size="lg"
+              asChild
+              className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+            >
+              <a
+                href={ONBOARDING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                SCHEDULE ONBOARDING
+              </a>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-14 px-8"
+            >
+              <a href="#get-connected">VIEW STARTER STEPS</a>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -47,12 +63,14 @@ export default function StartAProgram() {
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4 uppercase tracking-wider">
             Get Your School Connected
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Three Steps to Starting Your Esports Club or Team
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            New coaches should complete these in order. Returning schools can
+            move straight to the annual charter when their program details are
+            ready.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.9fr_0.9fr] gap-8 mb-16 relative">
           <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-primary/20 z-0"></div>
 
           <motion.div
@@ -60,12 +78,15 @@ export default function StartAProgram() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-card border border-primary/40 rounded-xl p-8 relative z-10 flex flex-col h-full hover:border-primary transition-colors"
+            className="bg-primary/10 border-2 border-primary/60 rounded-xl p-8 md:p-10 relative z-10 flex flex-col h-full shadow-[0_0_28px_rgba(212,175,55,0.12)] hover:border-primary transition-colors"
           >
+            <p className="mb-4 text-center font-heading text-xs font-bold uppercase tracking-[0.22em] text-primary">
+              First Action
+            </p>
             <div className="w-16 h-16 bg-background border-2 border-primary text-primary flex items-center justify-center rounded-full font-heading text-2xl font-bold mb-6 mx-auto shadow-[0_0_15px_rgba(212,175,55,0.2)]">
               1
             </div>
-            <h3 className="font-heading font-bold text-xl text-white text-center mb-6">
+            <h3 className="font-heading font-bold text-2xl text-white text-center mb-6">
               SCHEDULE AN ONBOARDING MEETING
             </h3>
             <p className="text-sm text-muted-foreground mb-4">
@@ -113,7 +134,7 @@ export default function StartAProgram() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="bg-card border border-primary/40 rounded-xl p-8 relative z-10 flex flex-col h-full hover:border-primary transition-colors"
+            className="bg-card border border-primary/25 rounded-xl p-8 relative z-10 flex flex-col h-full hover:border-primary transition-colors"
           >
             <div className="w-16 h-16 bg-background border-2 border-primary text-primary flex items-center justify-center rounded-full font-heading text-2xl font-bold mb-6 mx-auto shadow-[0_0_15px_rgba(212,175,55,0.2)]">
               2
@@ -158,7 +179,7 @@ export default function StartAProgram() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="bg-card border border-primary/40 rounded-xl p-8 relative z-10 flex flex-col h-full hover:border-primary transition-colors"
+            className="bg-card border border-primary/25 rounded-xl p-8 relative z-10 flex flex-col h-full hover:border-primary transition-colors"
           >
             <div className="w-16 h-16 bg-background border-2 border-primary text-primary flex items-center justify-center rounded-full font-heading text-2xl font-bold mb-6 mx-auto shadow-[0_0_15px_rgba(212,175,55,0.2)]">
               3

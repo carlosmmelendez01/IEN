@@ -140,7 +140,7 @@ export default function IUEN() {
         path="/leagues/iuen"
       />
 
-      <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
+      <section className="relative py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
 
@@ -177,16 +177,24 @@ export default function IUEN() {
               season format, with Super Smash Bros. in the fall and Rocket League in
               the spring.
             </p>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <Button
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]"
                 asChild
               >
                 <a href={UNIFIED_REGISTRATION_URL} target="_blank" rel="noopener noreferrer">
                   REGISTER UNIFIED TEAM
                   <ExternalLink className="ml-2 w-4 h-4" aria-hidden />
                 </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-14 px-8"
+                asChild
+              >
+                <a href="#unified-quick-start">SEE HOW IT WORKS</a>
               </Button>
             </div>
           </motion.div>
@@ -216,6 +224,61 @@ export default function IUEN() {
             <span>Special Olympics Indiana · Unified Champion Schools</span>
             <ExternalLink className="w-3.5 h-3.5" aria-hidden />
           </a>
+        </div>
+      </section>
+
+      <section id="unified-quick-start" className="py-10 border-b border-primary/10 bg-background scroll-mt-24">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.75fr_1.25fr] gap-6 max-w-6xl mx-auto items-center">
+            <div>
+              <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary mb-2">
+                Unified Quick Start
+              </p>
+              <h2 className="text-2xl md:text-4xl font-heading font-bold text-white">
+                Build the roster, choose the title, register the team.
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <a
+                href={UNIFIED_REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-card border border-primary/25 rounded-lg p-5 hover:border-primary transition-colors"
+              >
+                <CheckCircle2 className="w-5 h-5 text-primary mb-3" aria-hidden />
+                <span className="block font-heading font-bold text-white">
+                  Register Unified
+                </span>
+                <span className="mt-1 block text-xs text-muted-foreground leading-relaxed">
+                  Complete the Special Olympics Indiana registration form.
+                </span>
+              </a>
+              <a
+                href="#athletes-partners"
+                className="bg-card border border-primary/25 rounded-lg p-5 hover:border-primary transition-colors"
+              >
+                <Users className="w-5 h-5 text-primary mb-3" aria-hidden />
+                <span className="block font-heading font-bold text-white">
+                  Roster Model
+                </span>
+                <span className="mt-1 block text-xs text-muted-foreground leading-relaxed">
+                  Confirm athlete and partner roles.
+                </span>
+              </a>
+              <a
+                href="#unified-game-titles"
+                className="bg-card border border-primary/25 rounded-lg p-5 hover:border-primary transition-colors"
+              >
+                <Gamepad2 className="w-5 h-5 text-primary mb-3" aria-hidden />
+                <span className="block font-heading font-bold text-white">
+                  Game Titles
+                </span>
+                <span className="mt-1 block text-xs text-muted-foreground leading-relaxed">
+                  Review fall and spring title options.
+                </span>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -265,7 +328,7 @@ export default function IUEN() {
         </div>
       </section>
 
-      <section className="py-16 container mx-auto px-4">
+      <section id="how-unified-works" className="py-16 container mx-auto px-4 scroll-mt-24">
         <div className="flex items-center justify-center mb-12">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
           <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
@@ -301,7 +364,7 @@ export default function IUEN() {
         </ol>
       </section>
 
-      <section className="py-14 bg-card border-y border-primary/20">
+      <section id="athletes-partners" className="py-14 bg-card border-y border-primary/20 scroll-mt-24">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-12">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
@@ -356,7 +419,7 @@ export default function IUEN() {
         </div>
       </section>
 
-      <section className="py-14 container mx-auto px-4">
+      <section id="unified-game-titles" className="py-14 container mx-auto px-4 scroll-mt-24">
         <div className="flex items-center justify-center mb-10">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
           <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">

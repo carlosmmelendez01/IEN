@@ -125,7 +125,7 @@ export default function About() {
         path="/about"
       />
 
-      <section className="relative py-28 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
+      <section className="relative py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         <div className="container relative z-20 mx-auto px-4 text-center">
@@ -148,74 +148,102 @@ export default function About() {
               </span>{" "}
               through video games and esports."
             </p>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button
+                asChild
+                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
+              >
+                <a
+                  href={ONBOARDING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  SCHEDULE A MEETING
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-8"
+              >
+                <a href="#leadership">MEET THE BOARD</a>
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-16 container mx-auto px-4">
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-muted-foreground leading-relaxed max-w-3xl mx-auto text-center text-lg"
-        >
-          Indiana Esports Network (IEN) is a nonprofit organization founded and
-          led by Indiana educators. We operate three scholastic esports leagues,
-          IHSEN, IMSEN, and IUEN. {schoolNetworkConfig.connectedSchoolsCopy} We
-          believe esports is more than gaming; it's a platform for academic
-          growth, career exploration, and genuine human connection.
-        </motion.p>
-        <motion.a
-          href={ISEA_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1, duration: 0.6 }}
-          className="mt-8 mx-auto flex w-fit max-w-full items-center gap-3 rounded-lg border border-primary/30 bg-card px-4 py-3 text-left text-sm text-foreground transition-colors hover:border-primary/60 hover:bg-primary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-        >
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/15 text-primary">
-            <Shield className="h-4 w-4" />
-          </span>
-          <span className="min-w-0">
-            <span className="block font-heading text-xs font-bold uppercase tracking-[0.14em] text-primary">
-              Proud ISEA Member
-            </span>
-            <span className="block leading-snug text-muted-foreground">
-              IEN is a proud member of the Interstate Scholastic Esports Alliance.
-            </span>
-          </span>
-          <ArrowUpRight className="h-4 w-4 shrink-0 text-primary" />
-        </motion.a>
-      </section>
-
-      <section className="py-10 bg-card border-y border-primary/20">
+      <section className="py-12 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center max-w-4xl mx-auto">
-            {[
-              getSchoolNetworkStat(),
-              { value: "7,000+", label: "Student Athletes" },
-              { value: "3", label: "Active Leagues" },
-              { value: "100%", label: "Indiana Nonprofit" },
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.4 }}
-              >
-                <div className="text-3xl font-heading font-bold text-primary mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-xs text-muted-foreground uppercase tracking-widest">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary mb-3">
+                What IEN Is
+              </p>
+              <p className="text-muted-foreground leading-relaxed text-lg">
+                Indiana Esports Network (IEN) is a nonprofit organization
+                founded and led by Indiana educators. We operate three
+                scholastic esports leagues, IHSEN, IMSEN, and IUEN.{" "}
+                {schoolNetworkConfig.connectedSchoolsCopy} We believe esports is
+                more than gaming; it's a platform for academic growth, career
+                exploration, and genuine human connection.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-2 gap-4 text-center">
+              {[
+                getSchoolNetworkStat(),
+                { value: "7,000+", label: "Student Athletes" },
+                { value: "3", label: "Active Leagues" },
+                { value: "100%", label: "Indiana Nonprofit" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.4 }}
+                  className="rounded-lg border border-primary/20 bg-background/70 p-5"
+                >
+                  <div className="text-3xl font-heading font-bold text-primary mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-widest">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
+
+          <motion.a
+            href={ISEA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+            className="mt-8 mx-auto flex w-fit max-w-full items-center gap-3 rounded-lg border border-primary/30 bg-background/70 px-4 py-3 text-left text-sm text-foreground transition-colors hover:border-primary/60 hover:bg-primary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          >
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/15 text-primary">
+              <Shield className="h-4 w-4" />
+            </span>
+            <span className="min-w-0">
+              <span className="block font-heading text-xs font-bold uppercase tracking-[0.14em] text-primary">
+                Proud ISEA Member
+              </span>
+              <span className="block leading-snug text-muted-foreground">
+                IEN is a proud member of the Interstate Scholastic Esports Alliance.
+              </span>
+            </span>
+            <ArrowUpRight className="h-4 w-4 shrink-0 text-primary" />
+          </motion.a>
         </div>
       </section>
 
@@ -255,7 +283,10 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-20 bg-card border-y border-primary/20">
+      <section
+        id="leadership"
+        className="py-20 bg-card border-y border-primary/20 scroll-mt-24"
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-4">
             <p className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">

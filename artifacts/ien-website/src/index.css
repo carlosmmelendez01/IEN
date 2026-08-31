@@ -151,3 +151,179 @@
 
   .leaflet-container    { isolation: isolate; }
 }
+
+@layer components {
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] {
+    --background-color: transparent !important;
+    --base-font-size: 16px !important;
+    --button-colour: hsl(var(--primary)) !important;
+    --button-text-colour: hsl(var(--primary-foreground)) !important;
+    --field-border-colour: hsl(var(--primary) / 0.25) !important;
+    --field-colour: hsl(var(--background)) !important;
+    --font-family: var(--app-font-sans) !important;
+    --heading-colour: hsl(var(--foreground)) !important;
+    --label-colour: hsl(var(--foreground)) !important;
+    --text-colour: hsl(var(--muted-foreground)) !important;
+    color: hsl(var(--foreground)) !important;
+    max-width: none !important;
+    width: 100% !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .nurture-container {
+    background: transparent !important;
+    display: block !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] [eo-block="title"],
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] [eo-block="text"],
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .eo-image {
+    display: none !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .align-mid,
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .p-3,
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .p-4,
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .pt-5,
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .pb-5 {
+    padding: 0 !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .emailoctopus-form-wrapper {
+    margin-top: 0 !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .emailoctopus-form-row {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .emailoctopus-form-row label,
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .emailoctopus-form-row label span,
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .emailoctopus-form-row label p {
+    color: hsl(var(--foreground)) !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .ien-emailoctopus-audience {
+    border: 0 !important;
+    margin: 0 0 0.9rem !important;
+    padding: 0 !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .ien-emailoctopus-audience legend {
+    color: hsl(var(--muted-foreground)) !important;
+    font-family: var(--font-heading) !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+    margin-bottom: 0.55rem !important;
+    text-transform: uppercase !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .ien-emailoctopus-audience-options {
+    display: grid !important;
+    gap: 0.6rem !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  @media (min-width: 640px) {
+    .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .ien-emailoctopus-audience-options {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .ien-emailoctopus-audience-option {
+    align-items: center !important;
+    background: hsl(var(--card)) !important;
+    border: 1px solid hsl(var(--primary) / 0.22) !important;
+    border-radius: 0.375rem !important;
+    color: hsl(var(--foreground)) !important;
+    cursor: pointer !important;
+    display: flex !important;
+    gap: 0.55rem !important;
+    min-height: 2.75rem !important;
+    padding: 0.7rem 0.8rem !important;
+    transition: border-color 150ms ease, background-color 150ms ease !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .ien-emailoctopus-audience-option:hover {
+    background: hsl(var(--primary) / 0.08) !important;
+    border-color: hsl(var(--primary) / 0.5) !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .ien-emailoctopus-audience-option input {
+    accent-color: hsl(var(--primary)) !important;
+    flex: 0 0 auto !important;
+    height: 1rem !important;
+    width: 1rem !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .ien-emailoctopus-audience-option span {
+    font-size: 0.9rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .form-control {
+    background: hsl(var(--background)) !important;
+    border: 1px solid hsl(var(--primary) / 0.25) !important;
+    border-radius: 0.375rem !important;
+    color: hsl(var(--foreground)) !important;
+    font-family: var(--app-font-sans) !important;
+    height: 2.75rem !important;
+    padding: 0 0.875rem !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .form-control::placeholder {
+    color: hsl(var(--muted-foreground) / 0.75) !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .form-control:focus {
+    border-color: hsl(var(--primary) / 0.6) !important;
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.35) !important;
+    outline: none !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] input[type="submit"] {
+    background: hsl(var(--primary)) !important;
+    border-color: hsl(var(--primary)) !important;
+    border-radius: 0.375rem !important;
+    color: hsl(var(--primary-foreground)) !important;
+    cursor: pointer !important;
+    font-family: var(--font-heading) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    min-height: 3rem !important;
+    text-transform: uppercase !important;
+    transition: background-color 150ms ease, transform 150ms ease !important;
+    width: 100% !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] input[type="submit"]:hover {
+    background: hsl(var(--primary) / 0.9) !important;
+    transform: translateY(-1px);
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .emailoctopus-error-message {
+    color: rgb(248 113 113) !important;
+    font-size: 0.875rem !important;
+    margin-bottom: 0.75rem !important;
+    text-align: center !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .emailoctopus-success-message {
+    color: hsl(var(--primary)) !important;
+    font-family: var(--font-heading) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .mastfoot {
+    margin-top: 0.75rem !important;
+  }
+
+  .ien-emailoctopus-embed [data-form="6084ae70-a563-11f1-a72e-95a7378c618c"] .mastfoot p {
+    background: transparent !important;
+    border: 0 !important;
+    color: hsl(var(--muted-foreground) / 0.7) !important;
+    line-height: 1.4 !important;
+    padding: 0 !important;
+  }
+}

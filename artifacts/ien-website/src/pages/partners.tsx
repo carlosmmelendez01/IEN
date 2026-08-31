@@ -256,7 +256,7 @@ function PartnerCategorySection({ category }: { category: PartnerCategory }) {
   if (category.partners.length === 0) return null;
 
   return (
-    <section className="border border-primary/15 bg-card/50 rounded-lg p-5 md:p-6">
+    <section className="border-t border-primary/15 pt-6">
       <div className="mb-6">
         <h3 className="text-2xl font-heading font-bold text-white mb-2">
           {category.title}
@@ -351,10 +351,9 @@ function PartnerImpact() {
 
 function PartnersHero() {
   return (
-    <section className="relative min-h-[620px] py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
+    <section className="relative min-h-[540px] py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
       <div className="absolute inset-0 opacity-35">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.08)_1px,transparent_1px)] bg-[size:56px_56px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(212,175,55,0.16),transparent_26%),radial-gradient(circle_at_80%_70%,rgba(39,86,166,0.28),transparent_32%)]" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/20" />
 
@@ -383,7 +382,7 @@ function PartnersHero() {
               size="lg"
               className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest text-base h-12 px-8"
             >
-              <a href="#partner-with-ien">Partner With IEN</a>
+              <a href="#partner-with-ien">Become a Partner</a>
             </Button>
             <Button
               asChild
@@ -391,7 +390,7 @@ function PartnersHero() {
               variant="outline"
               className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest text-base h-12 px-8"
             >
-              <Link href="/support">Support IEN</Link>
+              <a href="#featured-partners">View Current Partners</a>
             </Button>
           </div>
         </motion.div>
@@ -402,10 +401,10 @@ function PartnersHero() {
 
 function FeaturedPartners() {
   return (
-    <section className="py-20 container mx-auto px-4">
+    <section id="featured-partners" className="py-16 container mx-auto px-4 scroll-mt-20">
       <SectionHeader
         eyebrow="Featured Partners"
-        title="Featured Partners"
+        title="Current Featured Partners"
         description="These partners are prominently represented across IEN's current site content and help power student pathways, competition technology, communications, and event operations."
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">

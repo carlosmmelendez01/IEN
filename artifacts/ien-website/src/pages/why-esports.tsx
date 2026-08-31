@@ -43,7 +43,7 @@ export default function WhyEsports() {
         path="/why-esports"
       />
 
-      <section className="relative py-24 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
+      <section className="relative py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
 
@@ -52,42 +52,113 @@ export default function WhyEsports() {
             Why Start Esports <br/>at Your School?
           </h1>
           <p className="text-xl text-gray-300 mb-8 font-light leading-relaxed">
-            Esports is more than just playing games. It's a platform for inclusion, academic growth, and future career pathways for a demographic of students often disconnected from traditional school activities.
+            A practical case for administrators, coaches, and families:
+            esports creates belonging, career pathways, and structured
+            after-school engagement for students who may not connect elsewhere.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8" asChild>
-               <Link href="/start-a-program">START A PROGRAM</Link>
+             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest px-8 h-12" asChild>
+               <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE ONBOARDING</a>
              </Button>
-             <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8">
-                <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">SCHEDULE AN ONBOARDING MEETING</a>
+             <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest px-8 h-12">
+                <a href="#school-benefits">SEE SCHOOL BENEFITS</a>
              </Button>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-card border-b border-primary/20">
-        <div className="container mx-auto px-4 max-w-3xl text-center">
-          <div className="flex items-center justify-center my-4 mb-10">
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
-            <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Our Mission</span>
-            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50"></div>
+      <section className="py-14 bg-card border-b border-primary/20">
+        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-8 items-center">
+          <div>
+            <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary mb-3">
+              Our Mission
+            </p>
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4 uppercase">
+              Prepare Students for the Future
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              IEN uses organized esports as the structure for collaboration,
+              communication, creativity, and critical thinking.
+            </p>
           </div>
           <motion.blockquote
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-2xl md:text-3xl font-heading font-bold text-white leading-snug"
+            className="rounded-xl border border-primary/30 bg-background/70 p-6 text-2xl md:text-3xl font-heading font-bold text-white leading-snug"
           >
             "To prepare students for the future through{" "}
             <span className="text-primary">collaboration, communication, creativity,</span>{" "}
             and <span className="text-primary">critical thinking</span> through video games and esports."
           </motion.blockquote>
-          <p className="mt-6 text-muted-foreground">Indiana Esports Network</p>
         </div>
       </section>
 
-      <section className="py-20 container mx-auto px-4">
+      <section
+        id="school-benefits"
+        className="py-16 container mx-auto px-4 scroll-mt-24"
+      >
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+               <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary mb-3">
+                 Administrator Case
+               </p>
+               <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-8 uppercase">Why Schools Are Investing in Esports</h2>
+               <ul className="space-y-4">
+                  {[
+                     "Improves student attendance and engagement",
+                     "Creates new leadership opportunities for students",
+                     "Supports attendance and sense of belonging",
+                     "Connects to CTE/STEM career pathways",
+                     "Builds school community across diverse student groups",
+                     "Provides an inclusive environment for all backgrounds"
+                  ].map((item, i) => (
+                     <li key={i} className="flex items-center gap-3 bg-card border border-primary/10 p-4 rounded-lg">
+                        <div className="w-6 h-6 bg-primary/20 text-primary flex items-center justify-center rounded-full shrink-0 text-sm font-bold">✓</div>
+                        <span className="text-gray-200 font-medium">{item}</span>
+                     </li>
+                  ))}
+               </ul>
+            </div>
+
+            <div className="bg-card border-2 border-primary rounded-xl p-8 shadow-[0_0_20px_rgba(212,175,55,0.15)] relative overflow-hidden">
+               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-full"></div>
+               <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary mb-3 relative z-10">
+                 IEN Support
+               </p>
+               <h2 className="text-3xl font-heading font-bold text-white mb-6 uppercase relative z-10">What Schools Receive When They Join IEN</h2>
+               <ul className="space-y-4 text-muted-foreground relative z-10">
+                  <li className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>
+                     <span>Structured competition seasons (Fall & Spring)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>
+                     <span>Weekly match schedules through LeagueOS</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>
+                     <span>State championship events at the end of each season</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>
+                     <span>Coach community support via Discord</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>
+                     <span>Program development guidance and onboarding support</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>
+                     <span>Access to LeagueOS competition platform</span>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </section>
+
+      <section className="py-20 container mx-auto px-4 border-t border-primary/10">
         <div className="flex items-center justify-center mb-12">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50"></div>
           <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">Our Vision</span>
@@ -156,60 +227,6 @@ export default function WhyEsports() {
                      Beyond playing, esports programs need shoutcasters, stream managers, graphic designers, team managers, and data analysts, opening doors to modern media and tech careers.
                   </p>
                </div>
-            </div>
-         </div>
-      </section>
-
-      <section className="py-20 container mx-auto px-4 mb-10">
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-               <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-8 uppercase">Why Schools Are Investing in Esports</h2>
-               <ul className="space-y-4">
-                  {[
-                     "Improves student attendance and engagement",
-                     "Creates new leadership opportunities for students",
-                     "Supports attendance and sense of belonging",
-                     "Connects to CTE/STEM career pathways",
-                     "Builds school community across diverse student groups",
-                     "Provides an inclusive environment for all backgrounds"
-                  ].map((item, i) => (
-                     <li key={i} className="flex items-center gap-3 bg-card border border-primary/10 p-4 rounded-lg">
-                        <div className="w-6 h-6 bg-primary/20 text-primary flex items-center justify-center rounded-full shrink-0 text-sm font-bold">✓</div>
-                        <span className="text-gray-200 font-medium">{item}</span>
-                     </li>
-                  ))}
-               </ul>
-            </div>
-
-            <div className="bg-card border-2 border-primary rounded-xl p-8 shadow-[0_0_20px_rgba(212,175,55,0.15)] relative overflow-hidden">
-               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-full"></div>
-               <h2 className="text-3xl font-heading font-bold text-white mb-6 uppercase relative z-10">What Schools Receive When They Join IEN</h2>
-               <ul className="space-y-4 text-muted-foreground relative z-10">
-                  <li className="flex items-start gap-2">
-                     <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>
-                     <span>Structured competition seasons (Fall & Spring)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                     <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>
-                     <span>Weekly match schedules through LeagueOS</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                     <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>
-                     <span>State championship events at the end of each season</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                     <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>
-                     <span>Coach community support via Discord</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                     <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>
-                     <span>Program development guidance and onboarding support</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                     <div className="w-2 h-2 bg-primary mt-2 rounded-full shrink-0"></div>
-                     <span>Access to LeagueOS competition platform</span>
-                  </li>
-               </ul>
             </div>
          </div>
       </section>

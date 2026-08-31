@@ -84,26 +84,16 @@ export default function Home() {
                     })
                   }
                 >
-                  JOIN THE LEAGUE
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full sm:w-auto border-primary text-primary hover:bg-primary/10 font-heading tracking-widest text-lg h-14 px-8"
-                asChild
-              >
-                <Link
-                  href="/start-a-program"
-                  onClick={() =>
-                    trackAnalyticsEvent("start_school_button_click", {
-                      source: "homepage",
-                    })
-                  }
-                >
                   START A PROGRAM
                 </Link>
               </Button>
+              <SchoolCharterButton
+                source="homepage"
+                variant="outline"
+                className="w-full sm:w-auto border-primary text-primary hover:bg-primary/10 font-heading tracking-widest text-lg h-14 px-8"
+              >
+                COMPLETE SCHOOL CHARTER
+              </SchoolCharterButton>
             </div>
 
             <div className="flex items-center justify-center gap-3 mt-8">
