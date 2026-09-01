@@ -78,7 +78,7 @@ export default function Events() {
           <article className="rounded-xl border-2 border-[#ef4343]/70 bg-[#ef4343]/10 p-6 md:p-8 shadow-[0_0_28px_rgba(239,67,67,0.12)]">
             <div className="inline-flex items-center gap-2 rounded-sm bg-[#ef4343] px-3 py-1 font-heading text-xs font-bold uppercase tracking-[0.18em] text-[#0d1623] mb-5">
               <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
-              Upcoming · Tomorrow
+              Upcoming · Today
             </div>
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
               Unified Coaches Meeting

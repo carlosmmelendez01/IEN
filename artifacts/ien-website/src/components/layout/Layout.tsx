@@ -21,7 +21,7 @@ function UnifiedCoachesBanner() {
       <div className="container mx-auto flex min-h-[3.75rem] flex-col items-center justify-center gap-2 px-4 py-3 text-center sm:min-h-14 sm:flex-row sm:gap-4 sm:py-2">
         <span className="inline-flex items-center gap-2 rounded-sm bg-[#0d1623] px-3 py-1 font-heading text-[0.7rem] font-bold uppercase tracking-[0.18em] text-white shadow-sm">
           <CalendarClock className="h-3.5 w-3.5 shrink-0 text-[#ecbf1a]" aria-hidden="true" />
-          Tomorrow
+          Today
         </span>
         <span className="flex flex-col items-center gap-0.5 text-sm font-black uppercase tracking-normal sm:flex-row sm:gap-2 sm:text-base">
           <span>Unified Coaches Meeting</span>
