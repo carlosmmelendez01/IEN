@@ -1,458 +1,90 @@
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { CalendarDays, Download, FileText } from "lucide-react";
+
+import { CoachScheduleOverview } from "@/components/schedule/CoachScheduleOverview";
+import { InteractiveScheduleCalendar } from "@/components/schedule/InteractiveScheduleCalendar";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Calendar,
-  School,
-  GraduationCap,
-  DollarSign,
-  Clock,
-  ZoomIn,
-  X,
-  Download,
-  ExternalLink,
-  FileText,
-  UsersRound,
-} from "lucide-react";
-import { GAME_RULESET_LIBRARY_HREF } from "@/data/gameRules";
-import { ONBOARDING_URL } from "@/lib/socialLinks";
-
-import ihsenSeason from "@assets/IHSEN Schedule.png";
-import ihsenPlayoffs from "@assets/IHSEN Playoff Schedule.png";
-import imsenFall from "@assets/IMSEN Fall.png";
-import iuenFall from "@assets/IUEN Fall.png";
-import imsenSpring from "@assets/IMSEN Spring.png";
-import iuenSpring from "@assets/IUEN Spring.png";
-
-const scheduleQuickLinks = [
-  {
-    href: "#high-school-schedules",
-    label: "High School",
-    desc: "IHSEN regular season, playoffs, and State Finals path.",
-    icon: GraduationCap,
-  },
-  {
-    href: "#middle-school-schedules",
-    label: "Middle School",
-    desc: "IMSEN fall and spring schedules for grades 6-8.",
-    icon: School,
-  },
-  {
-    href: "#unified-schedules",
-    label: "Unified",
-    desc: "IUEN fall and spring schedules for Unified teams.",
-    icon: UsersRound,
-  },
-];
-
-function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
-  return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 md:p-10"
-        onClick={onClose}
-      >
-        <button
-          className="absolute top-4 right-4 text-white bg-black/50 hover:bg-primary rounded-full p-2 transition-colors"
-          onClick={onClose}
-          aria-label="Close"
-        >
-          <X className="w-6 h-6" />
-        </button>
-        <motion.img
-          initial={{ scale: 0.85, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.85, opacity: 0 }}
-          transition={{ duration: 0.25 }}
-          src={src}
-          alt={alt}
-          className="max-h-[90vh] max-w-full object-contain rounded-xl shadow-2xl"
-          onClick={(e) => e.stopPropagation()}
-        />
-      </motion.div>
-    </AnimatePresence>
-  );
-}
-
-interface SeasonRowProps {
-  image: string;
-  alt: string;
-  badge: string;
-  title: string;
-  subtitle: string;
-  note?: string;
-  dateRange: string;
-  level: string;
-  cost: string;
-  matchTime: string;
-  clubTime?: string;
-  pdfHref?: string;
-  pdfLabel?: string;
-  index: number;
-}
-
-function SeasonRow({
-  image, alt, badge, title, subtitle,
-  note, dateRange, level, cost, matchTime, clubTime,
-  pdfHref, pdfLabel = "VIEW FULL CALENDAR PDF",
-  index,
-}: SeasonRowProps) {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-
-  return (
-    <>
-      {lightboxOpen && (
-        <Lightbox src={image} alt={alt} onClose={() => setLightboxOpen(false)} />
-      )}
-
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: index * 0.08, duration: 0.45 }}
-        className="py-10 border-b border-primary/10 last:border-b-0"
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 items-start">
-
-          <button
-            onClick={() => setLightboxOpen(true)}
-            className="group relative rounded-xl overflow-hidden border border-primary/20 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary w-full lg:w-[280px] shrink-0"
-            aria-label={`View full ${alt}`}
-          >
-            <img
-              src={image}
-              alt={alt}
-              className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
-            />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-primary/90 text-primary-foreground rounded-full p-3 shadow-lg">
-                <ZoomIn className="w-5 h-5" />
-              </div>
-            </div>
-          </button>
-
-          <div className="flex flex-col gap-5">
-            <div>
-              <div className="inline-block px-3 py-1 bg-primary/10 border border-primary/30 text-primary text-xs font-bold tracking-widest rounded-full uppercase mb-3">
-                {badge}
-              </div>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-2 leading-tight">
-                {title}
-              </h2>
-              <p className="text-muted-foreground text-sm leading-relaxed">{subtitle}</p>
-              {note && <p className="mt-2 text-xs font-semibold leading-5 text-primary">{note}</p>}
-            </div>
-
-            <div className="space-y-2.5">
-              <div className="flex items-start gap-3 text-sm">
-                <Calendar className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                <span className="text-white/90">{dateRange}</span>
-              </div>
-              <div className="flex items-start gap-3 text-sm">
-                <School className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                <span className="text-white/90">{level}</span>
-              </div>
-              <div className="flex items-start gap-3 text-sm">
-                <DollarSign className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                <span className="text-white/90">{cost}</span>
-              </div>
-              <div className="flex items-start gap-3 text-sm">
-                <Clock className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                <span className="text-white/90 flex flex-col gap-1">
-                  <span>{matchTime}</span>
-                  {clubTime && <span>{clubTime}</span>}
-                </span>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-3 pt-1">
-              {pdfHref && (
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest gap-2"
-                  asChild
-                >
-                  <a href={pdfHref} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-4 h-4" />
-                    {pdfLabel}
-                  </a>
-                </Button>
-              )}
-
-              {pdfHref && (
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  className="text-muted-foreground hover:text-primary font-heading tracking-widest gap-2"
-                  asChild
-                >
-                  <a href={pdfHref} download>
-                    <Download className="w-4 h-4" />
-                    DOWNLOAD PDF
-                  </a>
-                </Button>
-              )}
-
-              <Button
-                size="sm"
-                variant="outline"
-                className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest gap-2"
-                asChild
-              >
-                <a href={GAME_RULESET_LIBRARY_HREF}>
-                  <FileText className="w-4 h-4" />
-                  RULESET LIBRARY
-                </a>
-              </Button>
-            </div>
-            <p className="text-xs text-muted-foreground mt-2">
-              New to IEN?{" "}
-              <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-primary/80">
-                Schedule your onboarding meeting first
-              </a>{" "}
-              and we&rsquo;ll help you prepare for the next registration window.
-            </p>
-          </div>
-        </div>
-      </motion.div>
-    </>
-  );
-}
-
-function ScheduleQuickLinks() {
-  return (
-    <section className="border-b border-primary/10 bg-background/80">
-      <div className="container mx-auto px-4 py-8">
-        <div className="mx-auto max-w-5xl">
-          <div className="mb-5 text-center">
-            <p className="font-heading text-xs font-bold uppercase tracking-[0.22em] text-primary mb-2">
-              Choose a Schedule
-            </p>
-            <h2 className="text-2xl md:text-4xl font-heading font-bold text-white">
-              Start with your division
-            </h2>
-          </div>
-          <nav
-            aria-label="Schedule sections"
-            className="grid grid-cols-1 gap-4 md:grid-cols-3"
-          >
-            {scheduleQuickLinks.map(({ href, label, desc, icon: Icon }) => (
-              <Button
-                key={href}
-                variant="outline"
-                className="h-auto justify-start border-primary/40 bg-card/70 p-5 text-left font-heading tracking-widest text-white hover:bg-primary hover:text-primary-foreground"
-                asChild
-              >
-                <a href={href}>
-                  <Icon className="w-5 h-5 shrink-0" aria-hidden />
-                  <span>
-                    <span className="block text-base">{label}</span>
-                    <span className="mt-1 block font-sans text-xs normal-case tracking-normal opacity-75">
-                      {desc}
-                    </span>
-                  </span>
-                </a>
-              </Button>
-            ))}
-          </nav>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function SectionDivider({ label, id }: { label: string; id: string }) {
-  return (
-    <div id={id} className="flex scroll-mt-24 items-center gap-2 pt-10 pb-2 md:gap-4">
-
-      <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50 hidden md:block" />
-      <span className="font-heading font-bold text-primary tracking-widest uppercase text-lg md:text-3xl px-2 md:px-4 text-center md:whitespace-nowrap">
-        {label}
-      </span>
-      <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50 hidden md:block" />
-    </div>
-  );
-}
 
 export default function Schedule() {
   return (
     <Layout>
       <SEO
         title="Schedule"
-        description="2026–2027 season schedule for IHSEN, IMSEN, and IUEN — registration dates, season calendars, and downloadable PDFs."
+        description="Interactive 2026-2027 Indiana Esports Network season calendar with IHSEN, IMSEN, and IUEN game weeks, meetings, finals, one-page overviews, and official PDFs."
         path="/schedule"
       />
 
-      <section className="relative py-20 flex items-center justify-center overflow-hidden bg-card border-b border-primary/30">
+      <section className="relative overflow-hidden border-b border-primary/25 bg-card">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80')] bg-cover bg-center opacity-10 mix-blend-luminosity" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-        <div className="container relative z-20 mx-auto px-4 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4 tracking-tight">
-              SEASON{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200">
-                SCHEDULES
-              </span>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/20" />
+
+        <div className="container relative z-10 mx-auto px-4 py-12 md:py-14">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-4xl"
+          >
+            <div className="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase text-primary">
+              <CalendarDays className="h-4 w-4" aria-hidden="true" />
+              2026-2027 official season schedule
+            </div>
+            <h1 className="text-4xl font-heading font-bold leading-none text-white md:text-6xl">
+              Season schedules, now built for coaches
             </h1>
-            <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto">
-              2026–2027 Indiana Esports Network · Official Season Schedule
+            <p className="mt-5 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+              Browse the calendar for planning, then grab the one-page
+              overviews or official PDFs when you need a clean reference.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Button
                 asChild
-                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
+                className="h-12 bg-primary px-7 font-heading uppercase text-primary-foreground hover:bg-primary/90"
               >
-                <a href="#high-school-schedules">VIEW SCHEDULES</a>
+                <a href="#interactive-calendar">
+                  <CalendarDays className="h-4 w-4" aria-hidden="true" />
+                  Browse Calendar
+                </a>
               </Button>
               <Button
                 asChild
                 variant="outline"
-                className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-8"
+                className="h-12 border-primary/50 px-7 font-heading uppercase text-primary hover:bg-primary hover:text-primary-foreground"
               >
-                <a href={GAME_RULESET_LIBRARY_HREF}>RULESET LIBRARY</a>
+                <a href="#coach-resources">
+                  <FileText className="h-4 w-4" aria-hidden="true" />
+                  Coach Resources
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="ghost"
+                className="h-12 px-7 font-heading uppercase text-muted-foreground hover:text-primary"
+              >
+                <a href="#official-pdfs">
+                  <Download className="h-4 w-4" aria-hidden="true" />
+                  PDFs
+                </a>
               </Button>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <ScheduleQuickLinks />
+      <main>
+        <section className="container mx-auto px-4 py-8">
+          <InteractiveScheduleCalendar />
+        </section>
 
-      <div className="container mx-auto px-4 pb-8">
-
-        <SectionDivider id="high-school-schedules" label="Indiana High School Esports Network (IHSEN)" />
-
-        <SeasonRow
-          index={0}
-          image={ihsenSeason}
-          alt="IHSEN 2026-2027 Regular Season Schedule"
-          badge="IHSEN · Fall / Winter 2026"
-          title="IHSEN Regular Season"
-          subtitle="High school competition across Apex Legends, Rocket League, Marvel Rivals, Chess, Minecraft, Smash Bros., Tetris, Valorant, Overwatch 2, Mario Kart, and iRacing. Varsity teams earn playoff seeding. Preseason begins October 12."
-          dateRange="Oct 12, 2026 – Feb 8, 2027 (Registration opens Aug 12)"
-          level="High School (Grades 9–12)"
-          cost="$100 / school for Varsity · Free for Club"
-          matchTime="Mon–Thu · Varsity 4:00 PM CT / 5:00 PM ET"
-          clubTime="Club queues: 3:00 PM CT / 4:00 PM ET or 4:00 PM CT / 5:00 PM ET"
-          pdfHref="/IHSEN_Calendar_2026-2027.pdf"
-          pdfLabel="VIEW IHSEN CALENDAR"
-        />
-
-        <SeasonRow
-          index={1}
-          image={ihsenPlayoffs}
-          alt="IHSEN 2026-2027 Playoffs Schedule"
-          badge="IHSEN · Playoffs 2027"
-          title="IHSEN Playoffs & State Finals"
-          subtitle="Top Varsity teams advance through four playoff rounds. The season concludes at the IEN State Finals on April 24, 2027."
-          dateRange="Feb 22 – Apr 24, 2027"
-          level="High School Varsity Teams"
-          cost="Included with regular season registration"
-          matchTime="Same days as regular season · Mon–Thu"
-          pdfHref="/IHSEN_Calendar_2026-2027.pdf"
-          pdfLabel="VIEW IHSEN CALENDAR"
-        />
-
-        <SectionDivider id="middle-school-schedules" label="Indiana Middle School Esports Network (IMSEN)" />
-
-        <SeasonRow
-          index={2}
-          image={imsenFall}
-          alt="IMSEN 2026-2027 Fall Schedule"
-          badge="IMSEN · Fall 2026"
-          title="IMSEN Fall Season"
-          subtitle="Middle school fall competition featuring Marvel Rivals, Mario Kart 8 Deluxe, Minecraft, and Tetris. Fall season wraps with IMSEN Finals on December 12."
-          dateRange="Aug 12 – Dec 12, 2026"
-          level="Middle School (Grades 6–8)"
-          cost="$100 / school for Varsity · Free for Club"
-          matchTime="Mon–Thu · Varsity 3:30 PM CT / 4:30 PM ET"
-          clubTime="Club queue: 3:30 PM CT / 4:30 PM ET"
-          pdfHref="/IMSEN_Calendar_2026-2027.pdf"
-          pdfLabel="VIEW IMSEN CALENDAR"
-        />
-
-        <SeasonRow
-          index={3}
-          image={imsenSpring}
-          alt="IMSEN 2026-2027 Spring Schedule"
-          badge="IMSEN · Spring 2027"
-          title="IMSEN Spring Season"
-          subtitle="Spring competition features Fortnite, Super Smash Bros. Ultimate, Rocket League, and Chess. Spring registration opens November 30. Playoffs run March–April into the State Finals."
-          dateRange="Nov 30, 2026 – Apr 24, 2027"
-          level="Middle School (Grades 6–8)"
-          cost="$100 / school for Varsity · Free for Club"
-          matchTime="Mon–Thu · Varsity 3:30 PM CT / 4:30 PM ET"
-          clubTime="Club queue: 3:30 PM CT / 4:30 PM ET"
-          pdfHref="/IMSEN_Calendar_2026-2027.pdf"
-          pdfLabel="VIEW IMSEN CALENDAR"
-        />
-
-        <SectionDivider id="unified-schedules" label="Indiana Unified Esports Network (IUEN)" />
-
-        <SeasonRow
-          index={4}
-          image={iuenFall}
-          alt="IUEN 2026-2027 Fall Schedule"
-          badge="IUEN · Fall 2026"
-          title="IUEN Fall Season"
-          subtitle="Unified Athletes and Partners compete together in Super Smash Bros. Ultimate on Tuesdays. A Special Olympics Indiana partnership. IUEN Finals on December 12."
-          dateRange="Aug 12 – Dec 12, 2026"
-          level="High School & Middle School · Unified"
-          cost="Free to all schools and students"
-          matchTime="Tuesdays · 3:30 PM CT / 4:30 PM ET"
-          pdfHref="/IUEN_Calendar_2026-2027.pdf"
-          pdfLabel="VIEW IUEN CALENDAR"
-        />
-
-        <SeasonRow
-          index={5}
-          image={iuenSpring}
-          alt="IUEN 2026-2027 Spring Schedule"
-          badge="IUEN · Spring 2027"
-          title="IUEN Spring Season"
-          subtitle="Spring Unified competition features Rocket League on Tuesdays, starting in January and concluding at IEN State Finals on April 24."
-          dateRange="Nov 30, 2026 – Apr 24, 2027"
-          level="High School & Middle School · Unified"
-          cost="Free to all schools and students"
-          matchTime="Tuesdays · 3:30 PM CT / 4:30 PM ET"
-          pdfHref="/IUEN_Calendar_2026-2027.pdf"
-          pdfLabel="VIEW IUEN CALENDAR"
-        />
-
-      </div>
-
-      <section className="py-20 bg-card border-y border-primary/20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="inline-block px-4 py-1 bg-primary/10 border border-primary/30 text-primary text-xs font-bold tracking-widest rounded-full uppercase mb-6">
-            Season Finale
+        <section className="border-y border-primary/15 bg-card/45 py-10">
+          <div className="container mx-auto px-4">
+            <CoachScheduleOverview />
           </div>
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-3">
-            IEN STATE FINALS 2027
-          </h2>
-          <p className="text-xl text-primary font-heading tracking-wider mb-5">April 24, 2027</p>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-            IHSEN, IMSEN, and IUEN champions are crowned at the annual IEN State Finals, Indiana's premier in-person scholastic esports championship.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-10 shadow-[0_0_20px_rgba(212,175,55,0.3)]"
-              asChild
-            >
-              <a href={ONBOARDING_URL} target="_blank" rel="noopener noreferrer">
-                SCHEDULE ONBOARDING
-              </a>
-            </Button>
-          </div>
-          <p className="text-xs text-muted-foreground mt-4">New schools should complete an onboarding meeting before the season begins.</p>
-        </div>
-      </section>
+        </section>
+      </main>
     </Layout>
   );
 }
