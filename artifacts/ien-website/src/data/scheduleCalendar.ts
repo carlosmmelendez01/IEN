@@ -492,6 +492,12 @@ const keyDates: ScheduleEvent[] = [
     "2026-09-10",
     allDivisions,
     "Monthly coaches meeting listed on the official season calendars.",
+    "Time TBA",
+    {
+      label: "Join Google Meet",
+      href: "https://meet.google.com/msa-qnbq-qju",
+      external: true,
+    },
   ),
   meetingEvent(
     "coaches-october",

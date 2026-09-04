@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import drewRhodaPhoto from "@assets/state-finals/04-drew-rhoda-1200.jpg";
 
-const UNIFIED_COACHES_MEET_URL = "https://meet.google.com/vuc-injb-nzz";
+const SEPTEMBER_COACHES_MEET_URL = "https://meet.google.com/msa-qnbq-qju";
 
 export default function Events() {
   return (
@@ -51,7 +51,7 @@ export default function Events() {
                 className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
               >
                 <a
-                  href={UNIFIED_COACHES_MEET_URL}
+                  href={SEPTEMBER_COACHES_MEET_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -78,14 +78,13 @@ export default function Events() {
           <article className="rounded-xl border-2 border-[#ef4343]/70 bg-[#ef4343]/10 p-6 md:p-8 shadow-[0_0_28px_rgba(239,67,67,0.12)]">
             <div className="inline-flex items-center gap-2 rounded-sm bg-[#ef4343] px-3 py-1 font-heading text-xs font-bold uppercase tracking-[0.18em] text-[#0d1623] mb-5">
               <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
-              Upcoming · Today
+              Upcoming
             </div>
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
-              Unified Coaches Meeting
+              September Coaches Meeting
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-6 max-w-2xl">
-              We will discuss this fall season, registration, and Unified
-              program updates with coaches.
+              Monthly coaches meeting for IHSEN, IMSEN, and IUEN coaches.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
               <div className="rounded-lg border border-[#ef4343]/35 bg-background/70 p-4">
@@ -94,7 +93,7 @@ export default function Events() {
                   Date
                 </p>
                 <p className="text-sm text-white font-semibold">
-                  Tuesday, September 1, 2026
+                  Thursday, September 10, 2026
                 </p>
               </div>
               <div className="rounded-lg border border-[#ef4343]/35 bg-background/70 p-4">
@@ -103,7 +102,7 @@ export default function Events() {
                   Time
                 </p>
                 <p className="text-sm text-white font-semibold">
-                  6:30 PM Central / 7:30 PM Eastern
+                  Time TBA
                 </p>
               </div>
               <div className="rounded-lg border border-[#ef4343]/35 bg-background/70 p-4">
@@ -121,7 +120,7 @@ export default function Events() {
               className="w-full sm:w-auto bg-[#ef4343] text-[#0d1623] hover:bg-[#f05a5a] font-heading tracking-widest h-12 px-8"
             >
               <a
-                href={UNIFIED_COACHES_MEET_URL}
+                href={SEPTEMBER_COACHES_MEET_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
