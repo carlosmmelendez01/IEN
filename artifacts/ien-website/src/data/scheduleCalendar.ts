@@ -4,6 +4,7 @@ import imsenFallImage from "@assets/IMSEN Fall.png";
 import imsenSpringImage from "@assets/IMSEN Spring.png";
 import iuenFallImage from "@assets/IUEN Fall.png";
 import iuenSpringImage from "@assets/IUEN Spring.png";
+import { REGISTRATION_EXTENSION } from "@/lib/registration";
 
 export type ScheduleDivision = "IHSEN" | "IMSEN" | "IUEN";
 
@@ -441,9 +442,9 @@ const keyDates: ScheduleEvent[] = [
   registrationEvent(
     "fall-registration-closes-imsen-iuen",
     "IMSEN & IUEN fall registration closes",
-    "2026-09-04",
+    "2026-09-18",
     ["IMSEN", "IUEN"],
-    "Fall registration closes for middle school and Unified programs.",
+    "Extended deadline: fall registration closes for middle school and Unified programs.",
   ),
   registrationEvent(
     "ihsen-registration-closes",
@@ -707,7 +708,7 @@ export const coachOverviewCards: CoachOverviewCard[] = [
     title: "IMSEN Fall Season",
     subtitle:
       "Middle school fall competition featuring Marvel Rivals, Mario Kart 8 Deluxe, Minecraft, and Tetris.",
-    dateRange: "Aug 12 - Dec 12, 2026",
+    dateRange: `Aug 12 - Dec 12, 2026 | Registration closes ${REGISTRATION_EXTENSION.deadlineShort}`,
     level: "Middle School | Grades 6-8",
     cost: "$100 / school for Varsity | Club is free",
     matchTime: "Mon-Thu | 3:30 PM CT / 4:30 PM ET",
@@ -741,7 +742,7 @@ export const coachOverviewCards: CoachOverviewCard[] = [
     title: "IUEN Fall Season",
     subtitle:
       "Unified Athletes and Partners compete together in Super Smash Bros on Tuesdays.",
-    dateRange: "Aug 12 - Dec 12, 2026",
+    dateRange: `Aug 12 - Dec 12, 2026 | Registration closes ${REGISTRATION_EXTENSION.deadlineShort}`,
     level: "High School & Middle School | Unified",
     cost: "Free to all schools and students",
     matchTime: "Tuesdays | 3:30 PM CT / 4:30 PM ET",

@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
+import { RegistrationExtensionNotice } from "@/components/registration/RegistrationExtensionNotice";
 import { schoolCharterConfig } from "@/lib/schoolCharter";
 import {
   ArrowRight,
@@ -47,7 +48,7 @@ const formCards: FormCard[] = [
       },
     ],
     footer:
-      "Deadlines: Sept. 4 for Middle School and Unified. Oct. 19 for High School.",
+      "Deadlines: Sept. 18 for Middle School and Unified. Oct. 19 for High School.",
   },
   {
     title: "Competition",
@@ -167,6 +168,11 @@ export default function Forms() {
               next steps coaches need after setup.
             </p>
           </div>
+
+          <RegistrationExtensionNotice
+            className="mb-8"
+            showFormsLink={false}
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {formCards.map((card) => {

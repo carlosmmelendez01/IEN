@@ -25,7 +25,9 @@ import {
 } from "lucide-react";
 import drewRhodaPhoto from "@assets/state-finals/04-drew-rhoda-1200.jpg";
 import brandIdentityImage from "@assets/IEN_Horizontal Logo Transparent.png";
+import registrationExtensionImage from "@assets/registration-extension-ms-unified.png";
 import { GAME_RULESET_LIBRARY_HREF, RULEBOOK_HREF } from "@/data/gameRules";
+import { REGISTRATION_EXTENSION } from "@/lib/registration";
 
 type Category =
   | "Season Announcement"
@@ -127,7 +129,7 @@ Three things changed: substitutes and bench, live coaching, and a condensed gene
 
 DATES TO MARK NOW
 August 12: Registration opens for all divisions.
-September 4: Middle School and Unified registration deadline.
+September 18: Middle School and Unified registration deadline.
 October 19: High School registration deadline.
 September-December: Middle School and Unified regular season.
 October-February: High School regular season.
@@ -143,6 +145,12 @@ Charter your school for 2026-27. Register teams in LeagueOS before the deadline.
 General questions go to support@indianaesportsnetwork.org.
 
 Education First. Esports Always.`;
+
+const REGISTRATION_EXTENSION_BODY = `We've heard from several schools that there have been some challenges getting teams registered, and we understand that the start of the school year can be hectic.
+
+To give everyone a little more time, Middle School and Unified registration is extended through September 18, 2026.
+
+Middle school teams should register in LeagueOS. Unified teams should complete the Special Olympics Indiana Unified Esports registration form.`;
 
 const BRAND_RELEASE_BODY = `INDIANA — July 17, 2026 — The Indiana Esports Network (IEN), a volunteer-driven, educator-led nonprofit serving scholastic esports programs across Indiana, has officially adopted a new brand identity and launched a redesigned website.
 
@@ -347,6 +355,19 @@ More information — booth location, daily schedule, demo windows — will be pu
 
 const POSTS: NewsPost[] = [
   {
+    id: 10,
+    date: "September 7, 2026",
+    author: "IEN Staff",
+    category: "Registration Update",
+    headline: REGISTRATION_EXTENSION.title,
+    excerpt:
+      "Middle School and Unified teams now have until September 18, 2026 to complete registration.",
+    body: REGISTRATION_EXTENSION_BODY,
+    content: <RegistrationExtensionContent />,
+    image: registrationExtensionImage,
+    featured: true,
+  },
+  {
     id: 9,
     date: "August 13, 2026",
     author: "IEN Staff",
@@ -358,7 +379,6 @@ const POSTS: NewsPost[] = [
     content: <KickoffContent />,
     image:
       "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1800",
-    featured: true,
   },
   {
     id: 8,
@@ -824,6 +844,51 @@ function ArticleLink({
   );
 }
 
+function RegistrationExtensionContent() {
+  return (
+    <div className="space-y-6">
+      <section className="border-l-2 border-primary pl-4">
+        <p className="font-heading text-lg font-bold uppercase text-white">
+          {REGISTRATION_EXTENSION.shortTitle}
+        </p>
+        <p className="mt-2">
+          Middle School and Unified registration is open through{" "}
+          <strong>{REGISTRATION_EXTENSION.deadline}</strong>.
+        </p>
+      </section>
+
+      <p>
+        We have heard from several schools that getting teams registered has
+        been challenging during the start of the school year. To give everyone a
+        little more time, the deadline for Middle School and Unified teams has
+        been extended.
+      </p>
+
+      <section className="space-y-3">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Register Now
+        </h3>
+        <div className="not-prose grid gap-3 sm:grid-cols-2">
+          <ArticleLink href={REGISTRATION_EXTENSION.middleSchoolUrl}>
+            {REGISTRATION_EXTENSION.middleSchoolLabel}
+          </ArticleLink>
+          <ArticleLink href={REGISTRATION_EXTENSION.unifiedUrl}>
+            {REGISTRATION_EXTENSION.unifiedLabel}
+          </ArticleLink>
+        </div>
+      </section>
+
+      <p>
+        Coaches who run into account or registration issues can contact{" "}
+        <ArticleLink href="mailto:support@indianaesportsnetwork.org">
+          support@indianaesportsnetwork.org
+        </ArticleLink>
+        .
+      </p>
+    </div>
+  );
+}
+
 function KickoffContent() {
   const updates = [
     {
@@ -850,7 +915,7 @@ function KickoffContent() {
 
   const dates = [
     ["Aug. 12", "Registration opens for all divisions"],
-    ["Sept. 4", "Registration deadline: Middle School and Unified"],
+    ["Sept. 18", "Registration deadline: Middle School and Unified"],
     ["Oct. 19", "Registration deadline: High School"],
     ["Sept.-Dec.", "Regular season: Middle School and Unified"],
     ["Oct.-Feb.", "Regular season: High School"],
@@ -1093,7 +1158,7 @@ function KickoffContent() {
                 </ArticleLink>
               </li>
               <li>
-                <ArticleLink href="/iuen">Unified Registration</ArticleLink>
+                <ArticleLink href="/leagues/iuen">Unified Registration</ArticleLink>
               </li>
               <li>
                 GuardianProline coach jersey offer: details coming by coach

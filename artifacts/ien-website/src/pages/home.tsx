@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { socialLinks, ONBOARDING_URL } from "@/lib/socialLinks";
 import { SchoolCharterButton } from "@/components/schools/SchoolCharterButton";
+import { RegistrationExtensionNotice } from "@/components/registration/RegistrationExtensionNotice";
 import { trackAnalyticsEvent } from "@/lib/analytics";
 import { getSchoolNetworkStat, schoolCharterConfig } from "@/lib/schoolCharter";
 import heroDesktop from "@assets/state-finals/01-greencastle-hero-2400.jpg";
@@ -48,6 +49,8 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto"
           >
+            <RegistrationExtensionNotice variant="hero" className="mb-6" />
+
             <div className="inline-block mb-6 px-4 py-1 border border-primary/50 bg-primary/10 text-primary text-sm font-bold tracking-widest rounded-full uppercase">
               Indiana's Official Scholastic League
             </div>
@@ -341,38 +344,7 @@ export default function Home() {
       </div>
 
       <section className="py-16 container mx-auto px-4 mb-20">
-        <div className="relative overflow-hidden rounded-xl border border-primary/30 bg-card p-8 md:p-12 text-center shadow-[0_0_30px_rgba(212,175,55,0.08)]">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.08)_1px,transparent_1px)] bg-[size:48px_48px] opacity-40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
-          <div className="relative z-10 max-w-3xl mx-auto">
-            <div className="inline-block mb-4 px-3 py-1 bg-primary/15 border border-primary/40 text-primary text-xs font-heading font-bold tracking-widest rounded-full uppercase">
-              Registration Updates
-            </div>
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
-              Upcoming Event Registration
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              Registration links for upcoming IEN events will be posted as soon
-              as events are announced. Check the Events page for tickets,
-              schedules, venue details, and public attendee registration.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                asChild
-                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
-              >
-                <Link href="/events">VIEW EVENTS & REGISTRATION</Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-8"
-              >
-                <Link href="/schedule">VIEW SEASON SCHEDULE</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
+        <RegistrationExtensionNotice />
       </section>
     </Layout>
   );

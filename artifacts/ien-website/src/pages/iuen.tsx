@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
+import { RegistrationExtensionNotice } from "@/components/registration/RegistrationExtensionNotice";
 import { motion } from "framer-motion";
 import {
   Heart,
@@ -26,12 +27,12 @@ import { getRulesetGame, type RulesTab, type RulesetGame } from "@/data/gameRule
 import iuenLogo from "@assets/IEN_IUEN White Text.png";
 import { CHAMPIONS, type Champion } from "@/data/champions";
 import { findSchoolLogo } from "@/lib/schoolLogos";
+import { REGISTRATION_EXTENSION } from "@/lib/registration";
 
 const IUEN_CHAMPIONS: Champion[] = CHAMPIONS.filter((c) => c.league === "IUEN")
   .sort((a, b) => b.season.localeCompare(a.season));
 
-const UNIFIED_REGISTRATION_URL =
-  "https://soindiana.formstack.com/forms/unifiedesportsregistration_2025_26";
+const UNIFIED_REGISTRATION_URL = REGISTRATION_EXTENSION.unifiedUrl;
 
 const STORIES: Array<{
   eyebrow: string;
@@ -198,6 +199,12 @@ export default function IUEN() {
               </Button>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      <section className="py-8 border-b border-primary/10 bg-background">
+        <div className="container mx-auto px-4">
+          <RegistrationExtensionNotice showFormsLink={false} />
         </div>
       </section>
 

@@ -6,6 +6,7 @@ import { InteractiveScheduleCalendar } from "@/components/schedule/InteractiveSc
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
+import { RegistrationExtensionNotice } from "@/components/registration/RegistrationExtensionNotice";
 
 export default function Schedule() {
   return (
@@ -75,6 +76,10 @@ export default function Schedule() {
       </section>
 
       <main>
+        <section className="container mx-auto px-4 pt-8">
+          <RegistrationExtensionNotice />
+        </section>
+
         <section className="container mx-auto px-4 py-8">
           <InteractiveScheduleCalendar />
         </section>
