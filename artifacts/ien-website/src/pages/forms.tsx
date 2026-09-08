@@ -30,7 +30,7 @@ type FormCard = {
 const formCards: FormCard[] = [
   {
     title: "Registration",
-    desc: "Start here for school chartering, team entry, rosters, and student eligibility.",
+    desc: "Complete the annual school charter, then use LeagueOS for competition team entry, rosters, and student eligibility.",
     icon: ClipboardCheck,
     featured: true,
     links: [
@@ -48,7 +48,7 @@ const formCards: FormCard[] = [
       },
     ],
     footer:
-      "Deadlines: Sept. 18 for Middle School and Unified. Oct. 19 for High School.",
+      "Competition deadlines: Sept. 18 for Middle School and Unified. Oct. 19 for High School.",
   },
   {
     title: "Competition",
@@ -164,15 +164,13 @@ export default function Forms() {
             </h1>
             <p className="text-muted-foreground leading-relaxed">
               The highest-priority forms are school chartering and LeagueOS
-              registration. Competition and billing links sit underneath for the
-              next steps coaches need after setup.
+              competition registration. Chartering opens access for your school;
+              teams and rosters still need to be entered in LeagueOS before the
+              division deadline.
             </p>
           </div>
 
-          <RegistrationExtensionNotice
-            className="mb-8"
-            showFormsLink={false}
-          />
+          <RegistrationExtensionNotice className="mb-8" showFormsLink={false} />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {formCards.map((card) => {

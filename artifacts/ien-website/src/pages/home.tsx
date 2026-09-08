@@ -3,11 +3,20 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  CalendarDays,
+  ExternalLink,
+  FileText,
+  LifeBuoy,
+  Newspaper,
+} from "lucide-react";
 import { socialLinks, ONBOARDING_URL } from "@/lib/socialLinks";
 import { SchoolCharterButton } from "@/components/schools/SchoolCharterButton";
 import { RegistrationExtensionNotice } from "@/components/registration/RegistrationExtensionNotice";
 import { trackAnalyticsEvent } from "@/lib/analytics";
 import { getSchoolNetworkStat, schoolCharterConfig } from "@/lib/schoolCharter";
+import { REGISTRATION_EXTENSION } from "@/lib/registration";
 import heroDesktop from "@assets/state-finals/01-greencastle-hero-2400.jpg";
 import heroMobile from "@assets/state-finals/01-greencastle-hero-1280.jpg";
 import gridCentralHs from "@assets/state-finals/02-central-hs-1200.jpg";
@@ -18,6 +27,30 @@ const stats = [
   getSchoolNetworkStat(),
   { value: "7,000+", label: "Student Athletes" },
   { value: "12", label: "Game Titles" },
+];
+
+const septemberStories = [
+  {
+    eyebrow: "Registration Update",
+    title: "Middle School & Unified Registration Closes September 18",
+    desc: "Competition registration for IMSEN and IUEN teams must be completed in LeagueOS after school chartering.",
+    href: "/news/middle-school-unified-registration-closes-september-18",
+    cta: "Registration Information",
+  },
+  {
+    eyebrow: "LOS Premier",
+    title: "National ranked play returns for 2026-27",
+    desc: "High schools can review titles, team limits, annual fees, Roku broadcast exposure, and the Hamilton Southeastern example.",
+    href: "/news/los-premier-returns-national-ranked-play-2026-27",
+    cta: "Learn About LOS Premier",
+  },
+  {
+    eyebrow: "High School Only",
+    title: "Spartan Showdown returns November 7",
+    desc: "The external Super Smash Bros. event includes free entry, lunch, ladder matches, prizes, and scholarships.",
+    href: "/news/spartan-showdown-returns-november-7",
+    cta: "Spartan Showdown 2026",
+  },
 ];
 
 export default function Home() {
@@ -171,6 +204,182 @@ export default function Home() {
         </section>
       )}
 
+      <section
+        id="september-coach-update"
+        className="border-b border-primary/20 bg-card/35 py-10 md:py-12"
+      >
+        <div className="container mx-auto px-4">
+          <div className="mb-7 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="mb-2 inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-[0.22em] text-primary">
+                <Newspaper className="h-4 w-4" aria-hidden="true" />
+                September Coach &amp; School Update
+              </p>
+              <h2 className="font-heading text-3xl font-bold uppercase tracking-tight text-white md:text-4xl">
+                Current Links For Coaches
+              </h2>
+            </div>
+            <Link
+              href="/news"
+              className="inline-flex items-center gap-2 self-start font-heading text-xs font-bold uppercase tracking-[0.18em] text-primary hover:text-primary/80 md:self-auto"
+            >
+              All News <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
+
+          <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+            <article className="rounded-lg border-2 border-primary bg-background p-5 md:p-7">
+              <div className="mb-4 inline-flex rounded-sm bg-primary px-3 py-1 font-heading text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground">
+                Deadline Extended
+              </div>
+              <h3 className="font-heading text-3xl font-bold uppercase leading-tight text-white md:text-5xl">
+                {REGISTRATION_EXTENSION.title}
+              </h3>
+              <p className="mt-4 text-sm leading-6 text-muted-foreground md:text-base">
+                {REGISTRATION_EXTENSION.message}
+              </p>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+                {REGISTRATION_EXTENSION.clarification}
+              </p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <Button
+                  asChild
+                  className="h-11 bg-primary px-5 font-heading uppercase tracking-widest text-primary-foreground hover:bg-primary/90"
+                >
+                  <a
+                    href={REGISTRATION_EXTENSION.leagueOsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                    Register In LeagueOS
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="h-11 border-primary/50 px-5 font-heading uppercase tracking-widest text-primary hover:bg-primary hover:text-primary-foreground"
+                >
+                  <Link href={septemberStories[0].href}>
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                    Registration Information
+                  </Link>
+                </Button>
+              </div>
+            </article>
+
+            <div className="grid gap-5">
+              {septemberStories.slice(1).map((story) => (
+                <Link
+                  key={story.href}
+                  href={story.href}
+                  className="group rounded-lg border border-primary/20 bg-background p-5 transition-colors hover:border-primary/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  <p className="mb-2 font-heading text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                    {story.eyebrow}
+                  </p>
+                  <h3 className="font-heading text-2xl font-bold uppercase leading-tight text-white transition-colors group-hover:text-primary">
+                    {story.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                    {story.desc}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-2 font-heading text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                    {story.cta}
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-5 grid gap-5 md:grid-cols-2">
+            <article className="rounded-lg border border-primary/15 bg-background/80 p-5">
+              <p className="mb-2 inline-flex items-center gap-2 font-heading text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                <CalendarDays className="h-4 w-4" aria-hidden="true" />
+                Competition
+              </p>
+              <h3 className="font-heading text-2xl font-bold uppercase text-white">
+                Season calendar and rules
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                IHSEN will compete in 1A and 2A divisions this season with a
+                10-week regular season running November through February.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <Button
+                  asChild
+                  size="sm"
+                  variant="outline"
+                  className="border-primary/40 font-heading uppercase text-primary hover:bg-primary hover:text-primary-foreground"
+                >
+                  <Link href="/schedule">
+                    <CalendarDays className="h-4 w-4" aria-hidden="true" />
+                    2026-27 Calendar
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="sm"
+                  variant="outline"
+                  className="border-primary/40 font-heading uppercase text-primary hover:bg-primary hover:text-primary-foreground"
+                >
+                  <Link href="/rules-policies#ruleset-library">
+                    <FileText className="h-4 w-4" aria-hidden="true" />
+                    2026-27 Ruleset
+                  </Link>
+                </Button>
+              </div>
+            </article>
+
+            <article className="rounded-lg border border-primary/15 bg-background/80 p-5">
+              <p className="mb-2 inline-flex items-center gap-2 font-heading text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                <LifeBuoy className="h-4 w-4" aria-hidden="true" />
+                Operations
+              </p>
+              <h3 className="font-heading text-2xl font-bold uppercase text-white">
+                Forms and support
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Use the forms hub for invoice requests and administrative forms.
+                General coach and school support now runs through{" "}
+                <a
+                  href="mailto:support@indianaesportsnetwork.org"
+                  className="font-semibold text-primary underline decoration-primary/40 underline-offset-4 hover:text-primary/80"
+                >
+                  support@indianaesportsnetwork.org
+                </a>
+                .
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <Button
+                  asChild
+                  size="sm"
+                  variant="outline"
+                  className="border-primary/40 font-heading uppercase text-primary hover:bg-primary hover:text-primary-foreground"
+                >
+                  <Link href="/forms">
+                    <FileText className="h-4 w-4" aria-hidden="true" />
+                    Forms Hub
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="sm"
+                  variant="outline"
+                  className="border-primary/40 font-heading uppercase text-primary hover:bg-primary hover:text-primary-foreground"
+                >
+                  <a href="mailto:support@indianaesportsnetwork.org">
+                    <LifeBuoy className="h-4 w-4" aria-hidden="true" />
+                    Email Support
+                  </a>
+                </Button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <div className="flex items-center justify-center my-12 container mx-auto px-4">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
         <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
@@ -209,7 +418,7 @@ export default function Home() {
               alt: "Drew Rhoda accepting the IEN Coach of the Year trophy",
               caption: "Coach of the Year",
               sub: "Drew Rhoda named 2025–26 IEN Coach of the Year",
-              href: "/news#post-3",
+              href: "/news/drew-rhoda-named-first-ever-ien-coach-of-year",
             },
           ].map((tile, i) => {
             const card = (
@@ -333,18 +542,6 @@ export default function Home() {
             </Link>
           </Button>
         </div>
-      </section>
-
-      <div className="flex items-center justify-center my-12 container mx-auto px-4">
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
-        <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
-          Upcoming Events & Registration
-        </span>
-        <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
-      </div>
-
-      <section className="py-16 container mx-auto px-4 mb-20">
-        <RegistrationExtensionNotice />
       </section>
     </Layout>
   );

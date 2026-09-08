@@ -22,17 +22,25 @@ import {
   ExternalLink,
   FileText,
 } from "lucide-react";
-import { RulesDialog, defaultTabForGame } from "@/components/rulesets/RulesetQuickView";
-import { getRulesetGame, type RulesTab, type RulesetGame } from "@/data/gameRules";
+import {
+  RulesDialog,
+  defaultTabForGame,
+} from "@/components/rulesets/RulesetQuickView";
+import {
+  getRulesetGame,
+  type RulesTab,
+  type RulesetGame,
+} from "@/data/gameRules";
 import iuenLogo from "@assets/IEN_IUEN White Text.png";
 import { CHAMPIONS, type Champion } from "@/data/champions";
 import { findSchoolLogo } from "@/lib/schoolLogos";
 import { REGISTRATION_EXTENSION } from "@/lib/registration";
 
-const IUEN_CHAMPIONS: Champion[] = CHAMPIONS.filter((c) => c.league === "IUEN")
-  .sort((a, b) => b.season.localeCompare(a.season));
+const IUEN_CHAMPIONS: Champion[] = CHAMPIONS.filter(
+  (c) => c.league === "IUEN",
+).sort((a, b) => b.season.localeCompare(a.season));
 
-const UNIFIED_REGISTRATION_URL = REGISTRATION_EXTENSION.unifiedUrl;
+const UNIFIED_REGISTRATION_URL = REGISTRATION_EXTENSION.leagueOsUrl;
 
 const STORIES: Array<{
   eyebrow: string;
@@ -45,13 +53,13 @@ const STORIES: Array<{
     title: "“One of the Coolest Things About Esports”",
     body: (
       <>
-        The self-contained classroom teacher shared that students regularly talked
-        about Unified Esports and looked forward to playing with their friends after
-        school. One of Wabash&rsquo;s Unified athletes, Noah, is deaf. Throughout the
-        season, students watched him improve, compete, and grow as a player.
-        According to Coach James Burns, a senior varsity esports player approached
-        him and said watching Noah succeed was one of the coolest parts of the
-        entire esports program.
+        The self-contained classroom teacher shared that students regularly
+        talked about Unified Esports and looked forward to playing with their
+        friends after school. One of Wabash&rsquo;s Unified athletes, Noah, is
+        deaf. Throughout the season, students watched him improve, compete, and
+        grow as a player. According to Coach James Burns, a senior varsity
+        esports player approached him and said watching Noah succeed was one of
+        the coolest parts of the entire esports program.
       </>
     ),
     quote: {
@@ -64,10 +72,10 @@ const STORIES: Array<{
     title: "From Helping Out to Loving the Team",
     body: (
       <>
-        Wabash awards a yearly &ldquo;Gamer of the Year&rdquo; recognition. This year&rsquo;s
-        recipient originally joined Unified Esports simply to help. By the end of
-        the season, he shared that he sometimes enjoyed playing with the Unified
-        team more than the varsity team.
+        Wabash awards a yearly &ldquo;Gamer of the Year&rdquo; recognition. This
+        year&rsquo;s recipient originally joined Unified Esports simply to help.
+        By the end of the season, he shared that he sometimes enjoyed playing
+        with the Unified team more than the varsity team.
       </>
     ),
     quote: {
@@ -80,30 +88,82 @@ const STORIES: Array<{
     title: "Friendships Outside the Game",
     body: (
       <>
-        Coach Burns reported that Unified Esports helped students develop empathy
-        and understanding for classmates they would not normally interact with
-        during the school day. Partners and athletes form connections that carry
-        from the practice room into the hallways.
+        Coach Burns reported that Unified Esports helped students develop
+        empathy and understanding for classmates they would not normally
+        interact with during the school day. Partners and athletes form
+        connections that carry from the practice room into the hallways.
       </>
     ),
   },
 ];
 
-const HOW_UNIFIED_WORKS: Array<{ title: string; desc: string; icon: React.ReactNode }> = [
-  { title: "Build a Team",       desc: "Pair Unified Athletes with Unified Partners on a single roster — full teammates, not helpers.", icon: <Users className="w-5 h-5" /> },
-  { title: "Practice Together",  desc: "Train weekly with your coach. One playbook for everyone, one team identity.",                  icon: <Lightbulb className="w-5 h-5" /> },
-  { title: "Compete Together",   desc: "Play official IEN matches against other Unified rosters across Indiana.",                       icon: <Gamepad2 className="w-5 h-5" /> },
-  { title: "State Finals",       desc: "Fall Super Smash Bros. finalists compete Dec. 12; spring Rocket League finalists compete Apr. 24.", icon: <Trophy className="w-5 h-5" /> },
-  { title: "Celebrate Success",  desc: "Every Unified athlete and partner is recognized at season end. Wins and growth both count.",  icon: <Crown className="w-5 h-5" /> },
+const HOW_UNIFIED_WORKS: Array<{
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+}> = [
+  {
+    title: "Build a Team",
+    desc: "Pair Unified Athletes with Unified Partners on a single roster — full teammates, not helpers.",
+    icon: <Users className="w-5 h-5" />,
+  },
+  {
+    title: "Practice Together",
+    desc: "Train weekly with your coach. One playbook for everyone, one team identity.",
+    icon: <Lightbulb className="w-5 h-5" />,
+  },
+  {
+    title: "Compete Together",
+    desc: "Play official IEN matches against other Unified rosters across Indiana.",
+    icon: <Gamepad2 className="w-5 h-5" />,
+  },
+  {
+    title: "State Finals",
+    desc: "Fall Super Smash Bros. finalists compete Dec. 12; spring Rocket League finalists compete Apr. 24.",
+    icon: <Trophy className="w-5 h-5" />,
+  },
+  {
+    title: "Celebrate Success",
+    desc: "Every Unified athlete and partner is recognized at season end. Wins and growth both count.",
+    icon: <Crown className="w-5 h-5" />,
+  },
 ];
 
-const ADMIN_VALUE_PROPS: Array<{ title: string; desc: string; icon: React.ReactNode }> = [
-  { title: "Supports Inclusion Initiatives",         desc: "Aligns with district inclusion priorities and gives self-contained programs a meaningful extracurricular pathway.", icon: <Heart className="w-6 h-6" /> },
-  { title: "Builds School Culture",                  desc: "Creates moments of shared celebration that visibly connect student populations.",                                  icon: <Users className="w-6 h-6" /> },
-  { title: "Develops Student Leaders",               desc: "Partners build empathy, patience, and communication skills you can&rsquo;t teach in a classroom.",                  icon: <GraduationCap className="w-6 h-6" /> },
-  { title: "Expands Participation",                  desc: "Reaches students who don&rsquo;t see themselves in traditional athletics.",                                         icon: <TrendingUp className="w-6 h-6" /> },
-  { title: "Low Barrier to Entry",                   desc: "Free for IHSEN and IMSEN schools. Two accessible titles, two-player team minimum, existing coach.",                icon: <CheckCircle2 className="w-6 h-6" /> },
-  { title: "Supports Unified Champion Schools Goals", desc: "Counts toward Special Olympics Unified Champion Schools recognition and reporting.",                              icon: <Star className="w-6 h-6" /> },
+const ADMIN_VALUE_PROPS: Array<{
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+}> = [
+  {
+    title: "Supports Inclusion Initiatives",
+    desc: "Aligns with district inclusion priorities and gives self-contained programs a meaningful extracurricular pathway.",
+    icon: <Heart className="w-6 h-6" />,
+  },
+  {
+    title: "Builds School Culture",
+    desc: "Creates moments of shared celebration that visibly connect student populations.",
+    icon: <Users className="w-6 h-6" />,
+  },
+  {
+    title: "Develops Student Leaders",
+    desc: "Partners build empathy, patience, and communication skills you can&rsquo;t teach in a classroom.",
+    icon: <GraduationCap className="w-6 h-6" />,
+  },
+  {
+    title: "Expands Participation",
+    desc: "Reaches students who don&rsquo;t see themselves in traditional athletics.",
+    icon: <TrendingUp className="w-6 h-6" />,
+  },
+  {
+    title: "Low Barrier to Entry",
+    desc: "Free for IHSEN and IMSEN schools. Two accessible titles, two-player team minimum, existing coach.",
+    icon: <CheckCircle2 className="w-6 h-6" />,
+  },
+  {
+    title: "Supports Unified Champion Schools Goals",
+    desc: "Counts toward Special Olympics Unified Champion Schools recognition and reporting.",
+    icon: <Star className="w-6 h-6" />,
+  },
 ];
 
 const IUEN_SEASONS: Array<{ phase: string; dates: string; desc: string }> = [
@@ -125,7 +185,9 @@ const IUEN_SEASONS: Array<{ phase: string; dates: string; desc: string }> = [
 ];
 
 export default function IUEN() {
-  const [selectedRuleset, setSelectedRuleset] = useState<RulesetGame | null>(null);
+  const [selectedRuleset, setSelectedRuleset] = useState<RulesetGame | null>(
+    null,
+  );
   const [activeRulesTab, setActiveRulesTab] = useState<RulesTab>("quick");
   const openRuleset = (gameName: string) => {
     const game = getRulesetGame(gameName, "iuen");
@@ -172,11 +234,11 @@ export default function IUEN() {
               INDIANA UNIFIED ESPORTS NETWORK
             </p>
             <p className="text-lg text-gray-200 max-w-2xl mx-auto font-light leading-relaxed">
-              In partnership with Indiana Special Olympics, IUEN creates competitive
-              esports opportunities where students with and without intellectual
-              disabilities compete side by side. The league follows the middle school
-              season format, with Super Smash Bros. in the fall and Rocket League in
-              the spring.
+              In partnership with Indiana Special Olympics, IUEN creates
+              competitive esports opportunities where students with and without
+              intellectual disabilities compete side by side. The league follows
+              the middle school season format, with Super Smash Bros. in the
+              fall and Rocket League in the spring.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
               <Button
@@ -184,8 +246,12 @@ export default function IUEN() {
                 className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-14 px-8 shadow-[0_0_20px_rgba(212,175,55,0.3)]"
                 asChild
               >
-                <a href={UNIFIED_REGISTRATION_URL} target="_blank" rel="noopener noreferrer">
-                  REGISTER UNIFIED TEAM
+                <a
+                  href={UNIFIED_REGISTRATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  REGISTER IN LEAGUEOS
                   <ExternalLink className="ml-2 w-4 h-4" aria-hidden />
                 </a>
               </Button>
@@ -217,9 +283,9 @@ export default function IUEN() {
             Indiana Esports Network × Indiana Special Olympics
           </h2>
           <p className="text-muted-foreground mt-3 max-w-2xl mx-auto">
-            Together, we&rsquo;re bringing inclusive competitive gaming to Indiana
-            schools, creating an esports environment where every student has a
-            place to compete, grow, and belong.
+            Together, we&rsquo;re bringing inclusive competitive gaming to
+            Indiana schools, creating an esports environment where every student
+            has a place to compete, grow, and belong.
           </p>
 
           <a
@@ -234,7 +300,10 @@ export default function IUEN() {
         </div>
       </section>
 
-      <section id="unified-quick-start" className="py-10 border-b border-primary/10 bg-background scroll-mt-24">
+      <section
+        id="unified-quick-start"
+        className="py-10 border-b border-primary/10 bg-background scroll-mt-24"
+      >
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-[0.75fr_1.25fr] gap-6 max-w-6xl mx-auto items-center">
             <div>
@@ -252,12 +321,15 @@ export default function IUEN() {
                 rel="noopener noreferrer"
                 className="bg-card border border-primary/25 rounded-lg p-5 hover:border-primary transition-colors"
               >
-                <CheckCircle2 className="w-5 h-5 text-primary mb-3" aria-hidden />
+                <CheckCircle2
+                  className="w-5 h-5 text-primary mb-3"
+                  aria-hidden
+                />
                 <span className="block font-heading font-bold text-white">
                   Register Unified
                 </span>
                 <span className="mt-1 block text-xs text-muted-foreground leading-relaxed">
-                  Complete the Special Olympics Indiana registration form.
+                  Complete IUEN competition registration in LeagueOS.
                 </span>
               </a>
               <a
@@ -320,7 +392,10 @@ export default function IUEN() {
                 </p>
                 {story.quote && (
                   <blockquote className="mt-auto pt-5 border-t border-primary/15 relative">
-                    <Quote className="absolute -top-2 left-0 w-5 h-5 text-primary/40" aria-hidden />
+                    <Quote
+                      className="absolute -top-2 left-0 w-5 h-5 text-primary/40"
+                      aria-hidden
+                    />
                     <p className="text-[0.95rem] text-white italic leading-relaxed pl-7">
                       &ldquo;{story.quote.text}&rdquo;
                     </p>
@@ -335,7 +410,10 @@ export default function IUEN() {
         </div>
       </section>
 
-      <section id="how-unified-works" className="py-16 container mx-auto px-4 scroll-mt-24">
+      <section
+        id="how-unified-works"
+        className="py-16 container mx-auto px-4 scroll-mt-24"
+      >
         <div className="flex items-center justify-center mb-12">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
           <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
@@ -365,13 +443,18 @@ export default function IUEN() {
               <h3 className="font-heading font-bold text-base text-white mb-1.5 tracking-wide">
                 {step.title}
               </h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">{step.desc}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                {step.desc}
+              </p>
             </motion.li>
           ))}
         </ol>
       </section>
 
-      <section id="athletes-partners" className="py-14 bg-card border-y border-primary/20 scroll-mt-24">
+      <section
+        id="athletes-partners"
+        className="py-14 bg-card border-y border-primary/20 scroll-mt-24"
+      >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center mb-12">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
@@ -392,13 +475,15 @@ export default function IUEN() {
                 <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
                   <Star className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="font-heading font-bold text-xl text-white">Unified Athletes</h3>
+                <h3 className="font-heading font-bold text-xl text-white">
+                  Unified Athletes
+                </h3>
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                A Unified Athlete is a student with an intellectual disability who
-                actively participates in training and competition. Athletes are full
-                competitors, not spectators, and are placed on rosters just like any
-                other player.
+                A Unified Athlete is a student with an intellectual disability
+                who actively participates in training and competition. Athletes
+                are full competitors, not spectators, and are placed on rosters
+                just like any other player.
               </p>
             </motion.div>
 
@@ -413,20 +498,25 @@ export default function IUEN() {
                 <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
                   <Users className="w-7 h-7 text-primary" />
                 </div>
-                <h3 className="font-heading font-bold text-xl text-white">Unified Partners</h3>
+                <h3 className="font-heading font-bold text-xl text-white">
+                  Unified Partners
+                </h3>
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                A Unified Partner is a student without an intellectual disability who
-                competes alongside athletes in a meaningful, supportive way. Partners
-                are not coaches or helpers — they are teammates competing in official
-                matches.
+                A Unified Partner is a student without an intellectual
+                disability who competes alongside athletes in a meaningful,
+                supportive way. Partners are not coaches or helpers — they are
+                teammates competing in official matches.
               </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section id="unified-game-titles" className="py-14 container mx-auto px-4 scroll-mt-24">
+      <section
+        id="unified-game-titles"
+        className="py-14 container mx-auto px-4 scroll-mt-24"
+      >
         <div className="flex items-center justify-center mb-10">
           <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/50" />
           <span className="px-4 font-heading text-primary font-bold tracking-widest uppercase text-3xl">
@@ -437,7 +527,9 @@ export default function IUEN() {
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-stretch max-w-2xl mx-auto">
           <div className="bg-card border border-pink-500/40 p-8 rounded-xl text-center flex-1 hover:border-pink-400 transition-colors shadow-lg">
             <Gamepad2 className="w-10 h-10 text-pink-400 mx-auto mb-3" />
-            <h4 className="font-heading font-bold text-xl text-pink-300 mb-1">Super Smash Bros.</h4>
+            <h4 className="font-heading font-bold text-xl text-pink-300 mb-1">
+              Super Smash Bros.
+            </h4>
             <p className="text-xs text-muted-foreground">Fall Season</p>
             <p className="text-xs text-primary mt-2">Finals Dec. 12</p>
             <button
@@ -452,7 +544,9 @@ export default function IUEN() {
           </div>
           <div className="bg-card border border-blue-500/40 p-8 rounded-xl text-center flex-1 hover:border-blue-400 transition-colors shadow-lg">
             <Gamepad2 className="w-10 h-10 text-blue-400 mx-auto mb-3" />
-            <h4 className="font-heading font-bold text-xl text-blue-300 mb-1">Rocket League</h4>
+            <h4 className="font-heading font-bold text-xl text-blue-300 mb-1">
+              Rocket League
+            </h4>
             <p className="text-xs text-muted-foreground">Starts in January</p>
             <p className="text-xs text-primary mt-2">Finals Apr. 24</p>
             <button
@@ -505,10 +599,26 @@ export default function IUEN() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {[
-            { icon: Heart,    title: "True Inclusion",     desc: "Athletes compete as equals, not observers. Unified teams play in official IEN matches with the same rules as every other team." },
-            { icon: Users,    title: "Community Building", desc: "Unified programs bring together students from different backgrounds, building friendships that extend well beyond the game." },
-            { icon: Star,     title: "Student Leadership", desc: "Partners develop empathy, patience, and leadership skills that can&rsquo;t be taught in a classroom. Athletes gain confidence and competitive drive." },
-            { icon: Gamepad2, title: "Accessible Gaming",  desc: "Game titles are chosen specifically for their accessibility — fun and competitive for athletes and partners alike." },
+            {
+              icon: Heart,
+              title: "True Inclusion",
+              desc: "Athletes compete as equals, not observers. Unified teams play in official IEN matches with the same rules as every other team.",
+            },
+            {
+              icon: Users,
+              title: "Community Building",
+              desc: "Unified programs bring together students from different backgrounds, building friendships that extend well beyond the game.",
+            },
+            {
+              icon: Star,
+              title: "Student Leadership",
+              desc: "Partners develop empathy, patience, and leadership skills that can&rsquo;t be taught in a classroom. Athletes gain confidence and competitive drive.",
+            },
+            {
+              icon: Gamepad2,
+              title: "Accessible Gaming",
+              desc: "Game titles are chosen specifically for their accessibility — fun and competitive for athletes and partners alike.",
+            },
           ].map((c, i) => {
             const Icon = c.icon;
             return (
@@ -521,7 +631,9 @@ export default function IUEN() {
                 className="bg-card border border-primary/20 p-6 rounded-xl text-center hover:border-primary hover:-translate-y-1 transition-all"
               >
                 <Icon className="w-10 h-10 text-primary mx-auto mb-4" />
-                <h4 className="font-heading font-bold text-lg text-white mb-2">{c.title}</h4>
+                <h4 className="font-heading font-bold text-lg text-white mb-2">
+                  {c.title}
+                </h4>
                 <p
                   className="text-xs text-muted-foreground"
                   dangerouslySetInnerHTML={{ __html: c.desc }}
@@ -554,11 +666,15 @@ export default function IUEN() {
                 <div className="flex items-center gap-3 mb-3">
                   <Calendar className="w-5 h-5 text-primary shrink-0" />
                   <div>
-                    <h4 className="font-heading font-bold text-white">{s.phase}</h4>
+                    <h4 className="font-heading font-bold text-white">
+                      {s.phase}
+                    </h4>
                     <span className="text-xs text-primary">{s.dates}</span>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {s.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -574,8 +690,9 @@ export default function IUEN() {
           <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/50" />
         </div>
         <p className="text-center text-muted-foreground text-sm max-w-2xl mx-auto mb-10">
-          A focused look at IUEN through an administrator&rsquo;s lens — what districts,
-          principals, and athletic directors gain by adding a Unified team.
+          A focused look at IUEN through an administrator&rsquo;s lens — what
+          districts, principals, and athletic directors gain by adding a Unified
+          team.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
           {ADMIN_VALUE_PROPS.map((v, i) => (
@@ -609,9 +726,10 @@ export default function IUEN() {
           Every Student Deserves a Team
         </h2>
         <p className="text-muted-foreground mb-8 leading-relaxed">
-          Any school already participating in IHSEN or IMSEN can add a Unified team
-          at no extra cost. All you need is a coach, willing students, and a desire
-          to compete inclusively. Contact IEN to learn how to get started.
+          Any school already participating in IHSEN or IMSEN can add a Unified
+          team at no extra cost. All you need is a coach, willing students, and
+          a desire to compete inclusively. Contact IEN to learn how to get
+          started.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Button
@@ -645,14 +763,15 @@ export default function IUEN() {
 function ChampionCard({ champion }: { champion: Champion }) {
   const seasonYear = champion.season.split("-").pop() ?? champion.season;
   const logoUrl = champion.logoUrl ?? findSchoolLogo(champion.school);
-  const initials = champion.school
-    .split(/\s+/)
-    .filter(Boolean)
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase()
-    .replace(/[^A-Z]/g, "")
-    .slice(0, 3) || "—";
+  const initials =
+    champion.school
+      .split(/\s+/)
+      .filter(Boolean)
+      .map((w) => w[0])
+      .join("")
+      .toUpperCase()
+      .replace(/[^A-Z]/g, "")
+      .slice(0, 3) || "—";
 
   return (
     <motion.div
@@ -663,8 +782,14 @@ function ChampionCard({ champion }: { champion: Champion }) {
       className="group bg-background border border-primary/25 rounded-xl overflow-hidden hover:border-primary hover:-translate-y-1 hover:shadow-[0_20px_45px_-15px_rgba(212,175,55,0.4)] transition-all flex flex-col"
     >
       <div className="relative aspect-[5/3] flex items-center justify-center bg-[radial-gradient(circle_at_50%_45%,rgba(212,175,55,0.08),transparent_70%)] border-b border-primary/15 p-5 overflow-hidden">
-        <Shield aria-hidden className="absolute top-3 left-3 w-3.5 h-3.5 text-primary/30" />
-        <Shield aria-hidden className="absolute top-3 right-3 w-3.5 h-3.5 text-primary/30" />
+        <Shield
+          aria-hidden
+          className="absolute top-3 left-3 w-3.5 h-3.5 text-primary/30"
+        />
+        <Shield
+          aria-hidden
+          className="absolute top-3 right-3 w-3.5 h-3.5 text-primary/30"
+        />
 
         {logoUrl ? (
           <img
@@ -675,7 +800,11 @@ function ChampionCard({ champion }: { champion: Champion }) {
           />
         ) : (
           <div className="relative z-10 flex items-center justify-center w-16 h-20 group-hover:scale-105 transition-transform duration-500">
-            <svg viewBox="0 0 100 110" className="absolute inset-0 w-full h-full" aria-hidden>
+            <svg
+              viewBox="0 0 100 110"
+              className="absolute inset-0 w-full h-full"
+              aria-hidden
+            >
               <path
                 d="M50 4 L92 18 L92 60 Q92 92 50 106 Q8 92 8 60 L8 18 Z"
                 fill="rgba(8,15,30,0.9)"
@@ -704,7 +833,8 @@ function ChampionCard({ champion }: { champion: Champion }) {
         </div>
         {champion.runnerUp && (
           <div className="mt-1 text-[0.65rem] tracking-[0.18em] uppercase text-muted-foreground/80">
-            Runner-up: <span className="text-muted-foreground">{champion.runnerUp}</span>
+            Runner-up:{" "}
+            <span className="text-muted-foreground">{champion.runnerUp}</span>
           </div>
         )}
       </div>

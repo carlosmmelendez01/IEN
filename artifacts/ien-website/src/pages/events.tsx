@@ -101,18 +101,14 @@ export default function Events() {
                 <p className="text-xs font-heading font-bold uppercase tracking-[0.18em] text-[#ef4343] mb-1">
                   Time
                 </p>
-                <p className="text-sm text-white font-semibold">
-                  Time TBA
-                </p>
+                <p className="text-sm text-white font-semibold">Time TBA</p>
               </div>
               <div className="rounded-lg border border-[#ef4343]/35 bg-background/70 p-4">
                 <Video className="w-5 h-5 text-[#ef4343] mb-3" />
                 <p className="text-xs font-heading font-bold uppercase tracking-[0.18em] text-[#ef4343] mb-1">
                   Location
                 </p>
-                <p className="text-sm text-white font-semibold">
-                  Google Meet
-                </p>
+                <p className="text-sm text-white font-semibold">Google Meet</p>
               </div>
             </div>
             <Button
@@ -226,10 +222,11 @@ export default function Events() {
                 Congratulations to Drew Rhoda and the entire coaching community.
               </p>
               <Link
-                href="/news#post-3"
+                href="/news/drew-rhoda-named-first-ever-ien-coach-of-year"
                 className="inline-flex items-center gap-2 self-center md:self-start mt-2 px-5 py-2.5 border border-primary text-primary font-heading tracking-widest text-sm uppercase rounded-lg hover:bg-primary hover:text-primary-foreground transition-all"
               >
-                Read the Story <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                Read the Story{" "}
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
             </div>
           </motion.div>
@@ -270,8 +267,8 @@ export default function Events() {
                 IEN ESPORTS NIGHT WITH THE INDIANA PACERS
               </h3>
               <p className="text-sm text-muted-foreground">
-                Gainbridge Fieldhouse · NBA 2K Final Four · Pacers vs Miami
-                Heat · Career Fair
+                Gainbridge Fieldhouse · NBA 2K Final Four · Pacers vs Miami Heat
+                · Career Fair
               </p>
             </div>
           </a>

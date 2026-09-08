@@ -1,5 +1,3 @@
-
-
 import { createServer } from "node:http";
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
@@ -19,6 +17,9 @@ const ROUTES = [
   "/schedule",
   "/events",
   "/news",
+  "/news/middle-school-unified-registration-closes-september-18",
+  "/news/los-premier-returns-national-ranked-play-2026-27",
+  "/news/spartan-showdown-returns-november-7",
   "/hall-of-champions",
   "/schools",
   "/partners",
@@ -126,7 +127,9 @@ async function prerenderRoute(browser: Browser, route: string): Promise<void> {
     await mkdir(dirname(outPath), { recursive: true });
     await writeFile(outPath, html, "utf8");
 
-    process.stdout.write(`  ✓ ${route.padEnd(24)} → ${outPath.replace(DIST + "/", "")}\n`);
+    process.stdout.write(
+      `  ✓ ${route.padEnd(24)} → ${outPath.replace(DIST + "/", "")}\n`,
+    );
   } finally {
     await page.close();
   }

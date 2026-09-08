@@ -62,6 +62,7 @@ function Router() {
       <Route path="/why-esports" component={WhyEsports} />
       <Route path="/schedule" component={Schedule} />
       <Route path="/contact" component={Contact} />
+      <Route path="/news/:slug" component={News} />
       <Route path="/news" component={News} />
       <Route path="/hall-of-champions" component={HallOfChampions} />
       <Route path="/brand-kit" component={BrandKit} />

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { ComponentType, ReactNode } from "react";
+import { Link, useRoute } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
@@ -26,6 +27,8 @@ import {
 import drewRhodaPhoto from "@assets/state-finals/04-drew-rhoda-1200.jpg";
 import brandIdentityImage from "@assets/IEN_Horizontal Logo Transparent.png";
 import registrationExtensionImage from "@assets/registration-extension-ms-unified.png";
+import liveCompetitionImage from "@assets/state-finals/02-central-hs-1200.jpg";
+import trophiesImage from "@assets/state-finals/03-marvel-rivals-1200.jpg";
 import { GAME_RULESET_LIBRARY_HREF, RULEBOOK_HREF } from "@/data/gameRules";
 import { REGISTRATION_EXTENSION } from "@/lib/registration";
 
@@ -38,6 +41,7 @@ type Category =
   | "Website Update"
   | "Press Release"
   | "Community"
+  | "Event Announcement"
   | "Event Recap"
   | "Program Spotlight"
   | "Hiring";
@@ -57,6 +61,7 @@ const CATEGORY_STYLES: Record<
   "Website Update": { icon: Monitor, tone: "outline" },
   "Press Release": { icon: Newspaper, tone: "solid" },
   Community: { icon: Users, tone: "outline" },
+  "Event Announcement": { icon: Calendar, tone: "solid" },
   "Event Recap": { icon: Trophy, tone: "solid" },
   "Program Spotlight": { icon: Sparkles, tone: "outline" },
   Hiring: { icon: Briefcase, tone: "outline" },
@@ -93,6 +98,7 @@ function CategoryBadge({
 
 interface NewsPost {
   id: number;
+  slug: string;
   date: string;
   author: string;
   category: Category;
@@ -102,6 +108,12 @@ interface NewsPost {
   content?: ReactNode;
   image: string;
   imageFocal?: string;
+  hubCtaLabel?: string;
+  cta?: {
+    label: string;
+    href: string;
+  };
+  ctaNote?: string;
   featured?: boolean;
 }
 
@@ -121,7 +133,7 @@ FIVE THINGS ARE DIFFERENT THIS SEASON
 
 DIVISION CHANGES
 IHSEN High School splits into 1A and 2A with a ten-week regular season from November through February.
-IUEN now spans middle school and high school, with Unified registration run jointly by IEN and Special Olympics Indiana.
+IUEN now spans middle school and high school, with competition registration in LeagueOS and program coordination through IEN and Special Olympics Indiana.
 IMSEN Middle School remains grades 6-8 with the same overall structure.
 
 RULES
@@ -146,11 +158,42 @@ General questions go to support@indianaesportsnetwork.org.
 
 Education First. Esports Always.`;
 
-const REGISTRATION_EXTENSION_BODY = `We've heard from several schools that there have been some challenges getting teams registered, and we understand that the start of the school year can be hectic.
+const REGISTRATION_EXTENSION_BODY = `Middle School and Unified competition registration now closes September 18, 2026.
 
-To give everyone a little more time, Middle School and Unified registration is extended through September 18, 2026.
+Middle School (IMSEN) and Unified (IUEN) programs have until September 18 to complete competition registration in LeagueOS.
 
-Middle school teams should register in LeagueOS. Unified teams should complete the Special Olympics Indiana Unified Esports registration form.`;
+Completing the annual IEN School Census & Charter does not register teams for competition. Schools must complete the chartering process and register their teams and rosters through LeagueOS.
+
+High School registration currently remains October 19, 2026.`;
+
+const LOS_PREMIER_BODY = `LOS Premier is returning for the 2026-27 school year with national ranked competition for high school esports programs.
+
+Titles currently include Overwatch, Rocket League, VALORANT, League of Legends, Marvel Rivals, and Super Smash Bros. Ultimate. Additional titles may also be offered.
+
+PROGRAM STRUCTURE
+Each high school may enter one Premier team per title. Premier participation is $96 per Premier team for the year, with a maximum fee of $384 per high school. Once a school reaches the $384 maximum, it may participate in as many available Premier titles as applicable without exceeding that school maximum.
+
+MEDIA AND NATIONAL EXPOSURE
+LOS Premier national ranked play will air live each week on Roku as part of a weekly live high school esports telecast. Throughout the year, similarly ranked Premier teams may also be invited to participate in additional online and in-person competitions.
+
+INDIANA EXAMPLE
+Hamilton Southeastern participated in LOS Premier last spring. Its VALORANT team reached #3 in the national rankings and earned an opportunity to travel to San Antonio for competition.
+
+REGISTRATION
+LeagueOS will provide registration instructions through its Dashboard. No separate LOS Premier registration deadline has been announced.`;
+
+const SPARTAN_SHOWDOWN_BODY = `Spartan Showdown returns Saturday, November 7, 2026, as a high school only Super Smash Bros. opportunity.
+
+Spartan Showdown is a major Indiana youth Super Smash Bros. event that brings together high school competitors from across the Midwest.
+
+EVENT HIGHLIGHTS
+Free entry, free lunch, arcade games, ladder matches, a costume contest, prizes, and $35,000 in scholarships awarded. The event expects 200+ high school players from across the Midwest.
+
+WHO CAN PARTICIPATE
+This opportunity is for high school students only.
+
+REGISTRATION
+Registration and event details are handled externally through start.gg. IEN is sharing this opportunity for Indiana schools; this announcement does not list IEN as the event operator.`;
 
 const BRAND_RELEASE_BODY = `INDIANA — July 17, 2026 — The Indiana Esports Network (IEN), a volunteer-driven, educator-led nonprofit serving scholastic esports programs across Indiana, has officially adopted a new brand identity and launched a redesigned website.
 
@@ -251,7 +294,7 @@ ROLLOUT TIMELINE
 • August 2026: Registration opens with Apex as a default IHSEN title
 • October 2026: Inaugural Apex Legends season begins
 
-Coaches with questions about transitioning Fortnite rosters into Apex teams can reach out at ienboard@indianaesportsnetwork.org.`;
+Coaches with questions about transitioning Fortnite rosters into Apex teams can reach out at support@indianaesportsnetwork.org.`;
 
 const COACH_BODY = `The Indiana Esports Network is proud to recognize Drew Rhoda as its first-ever Coach of the Year, honoring his leadership, mentorship, and lasting impact on the student competitors who pass through his program.
 
@@ -294,7 +337,7 @@ WHAT'S NEXT
 • September 2026: Per-title 1A/2A placements published
 • October 2026: First competitive matches under the new structure
 
-Coaches with questions about how their program will be placed under the new model can reach out at ienboard@indianaesportsnetwork.org.`;
+Coaches with questions about how their program will be placed under the new model can reach out at support@indianaesportsnetwork.org.`;
 
 const REGISTRATION_BODY = `Registration for the 2026–27 season will move to a redesigned, Google Forms-based intake process — a streamlined experience built around the realities of how Indiana schools, coaches, and athletic departments actually work.
 
@@ -335,7 +378,7 @@ The Hall of Champions deserves a special call-out. For the first time, every IEN
 ROLLOUT
 The new IEN website goes live this summer ahead of the 2026–27 registration window. All existing URLs will redirect to their new homes; coaches and schools should not need to update bookmarks.
 
-Feedback is welcome. Coaches and partners noticing anything that should be improved can reach out at ienboard@indianaesportsnetwork.org.`;
+Feedback is welcome. Coaches and partners noticing anything that should be improved can reach out at support@indianaesportsnetwork.org.`;
 
 const HECC_BODY = `The Indiana Esports Network is returning to the HECC Conference this year with a permanent booth presence, expanded community programming, and a possible Apex Legends live demonstration.
 
@@ -356,19 +399,65 @@ More information — booth location, daily schedule, demo windows — will be pu
 const POSTS: NewsPost[] = [
   {
     id: 10,
-    date: "September 7, 2026",
+    slug: "middle-school-unified-registration-closes-september-18",
+    date: "September 8, 2026",
     author: "IEN Staff",
     category: "Registration Update",
     headline: REGISTRATION_EXTENSION.title,
     excerpt:
-      "Middle School and Unified teams now have until September 18, 2026 to complete registration.",
+      "Middle School and Unified teams have until September 18, 2026 to complete competition registration in LeagueOS.",
     body: REGISTRATION_EXTENSION_BODY,
     content: <RegistrationExtensionContent />,
     image: registrationExtensionImage,
+    hubCtaLabel: "Registration Information",
+    cta: {
+      label: "Register in LeagueOS",
+      href: REGISTRATION_EXTENSION.leagueOsUrl,
+    },
+    ctaNote:
+      "School chartering and LeagueOS competition registration are both required.",
     featured: true,
   },
   {
+    id: 11,
+    slug: "los-premier-returns-national-ranked-play-2026-27",
+    date: "September 8, 2026",
+    author: "IEN Staff",
+    category: "Program Spotlight",
+    headline: "LOS Premier Returns With National Ranked Play For 2026-27",
+    excerpt:
+      "LOS Premier returns with national ranked competition, Roku broadcasts, and a high school fee cap for participating titles.",
+    body: LOS_PREMIER_BODY,
+    content: <LosPremierContent />,
+    image: liveCompetitionImage,
+    imageFocal: "45% 45%",
+    hubCtaLabel: "Learn About LOS Premier",
+    ctaNote:
+      "LeagueOS will provide registration instructions through its Dashboard.",
+  },
+  {
+    id: 12,
+    slug: "spartan-showdown-returns-november-7",
+    date: "September 8, 2026",
+    author: "IEN Staff",
+    category: "Event Announcement",
+    headline: "Spartan Showdown Returns November 7",
+    excerpt:
+      "The high school only Super Smash Bros. event returns November 7 with free entry, lunch, ladder matches, prizes, and scholarships.",
+    body: SPARTAN_SHOWDOWN_BODY,
+    content: <SpartanShowdownContent />,
+    image: trophiesImage,
+    imageFocal: "35% 50%",
+    hubCtaLabel: "Spartan Showdown 2026",
+    cta: {
+      label: "Spartan Showdown 2026",
+      href: "https://www.start.gg/tournament/spartan-showdown-2026/details",
+    },
+    ctaNote: "External event registration and details on start.gg.",
+  },
+  {
     id: 9,
+    slug: "2026-27-season-kickoff-for-coaches",
     date: "August 13, 2026",
     author: "IEN Staff",
     category: "Event Recap",
@@ -382,6 +471,7 @@ const POSTS: NewsPost[] = [
   },
   {
     id: 8,
+    slug: "indiana-esports-network-new-brand-identity-website",
     date: "July 17, 2026",
     author: "Indiana Esports Network",
     category: "Press Release",
@@ -393,6 +483,7 @@ const POSTS: NewsPost[] = [
   },
   {
     id: 1,
+    slug: "ien-announces-major-changes-for-2026-27-season",
     date: "May 2026",
     author: "IEN Staff",
     category: "Season Announcement",
@@ -405,6 +496,7 @@ const POSTS: NewsPost[] = [
   },
   {
     id: 2,
+    slug: "apex-legends-coming-to-ihsen",
     date: "May 2026",
     author: "IEN Staff",
     category: "Game Announcement",
@@ -417,6 +509,7 @@ const POSTS: NewsPost[] = [
   },
   {
     id: 3,
+    slug: "drew-rhoda-named-first-ever-ien-coach-of-year",
     date: "April 2026",
     author: "IEN Staff",
     category: "Coach Spotlight",
@@ -429,6 +522,7 @@ const POSTS: NewsPost[] = [
   },
   {
     id: 4,
+    slug: "ihsen-new-1a-2a-division-structure-2026-27",
     date: "May 2026",
     author: "IEN Staff",
     category: "League Operations",
@@ -441,6 +535,7 @@ const POSTS: NewsPost[] = [
   },
   {
     id: 5,
+    slug: "registration-system-overhaul-coming-this-fall",
     date: "May 2026",
     author: "IEN Staff",
     category: "Registration Update",
@@ -453,6 +548,7 @@ const POSTS: NewsPost[] = [
   },
   {
     id: 6,
+    slug: "inside-the-new-ien-website-redesign",
     date: "May 2026",
     author: "IEN Staff",
     category: "Website Update",
@@ -465,6 +561,7 @@ const POSTS: NewsPost[] = [
   },
   {
     id: 7,
+    slug: "ien-returning-to-hecc-conference",
     date: "May 2026",
     author: "IEN Staff",
     category: "Community",
@@ -486,6 +583,21 @@ function readTime(body: string): string {
 const ALL = "All Stories";
 
 export default function News() {
+  const [isStoryRoute, params] = useRoute<{ slug: string }>("/news/:slug");
+
+  if (isStoryRoute) {
+    const post = POSTS.find((p) => p.slug === params?.slug);
+    return post ? <NewsStoryPage post={post} /> : <NewsStoryNotFound />;
+  }
+
+  return <NewsIndex />;
+}
+
+function postPath(post: NewsPost) {
+  return `/news/${post.slug}`;
+}
+
+function NewsIndex() {
   const [activePost, setActivePost] = useState<NewsPost | null>(null);
   const [filter, setFilter] = useState<string>(ALL);
 
@@ -616,10 +728,7 @@ export default function News() {
 
       {featured && (filter === ALL || filter === featured.category) && (
         <section className="py-12 md:py-16 container mx-auto px-4">
-          <FeaturedCard
-            post={featured}
-            onOpen={() => setActivePost(featured)}
-          />
+          <FeaturedCard post={featured} />
         </section>
       )}
 
@@ -641,11 +750,7 @@ export default function News() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {visible.map((post) => (
-              <NewsCard
-                key={post.id}
-                post={post}
-                onOpen={() => setActivePost(post)}
-              />
+              <NewsCard key={post.id} post={post} />
             ))}
           </div>
         )}
@@ -677,7 +782,7 @@ export default function News() {
               asChild
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-6"
             >
-              <a href="mailto:ienboard@indianaesportsnetwork.org">EMAIL US</a>
+              <a href="mailto:support@indianaesportsnetwork.org">EMAIL US</a>
             </Button>
           </div>
         </div>
@@ -686,121 +791,123 @@ export default function News() {
   );
 }
 
-function FeaturedCard({
-  post,
-  onOpen,
-}: {
-  post: NewsPost;
-  onOpen: () => void;
-}) {
+function FeaturedCard({ post }: { post: NewsPost }) {
   return (
-    <motion.button
-      type="button"
-      onClick={onOpen}
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="group relative w-full text-left overflow-hidden rounded-2xl border border-primary/30 hover:border-primary/70 transition-all duration-300 hover:shadow-[0_25px_60px_-20px_rgba(212,175,55,0.4)] bg-card focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
     >
-      <div className="relative h-[26rem] md:h-[32rem] overflow-hidden">
-        <img
-          src={post.image}
-          alt={post.headline}
-          style={{ objectPosition: post.imageFocal ?? "center" }}
-          className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-55 group-hover:scale-[1.03] transition-all duration-700 mix-blend-luminosity"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent" />
+      <Link
+        href={postPath(post)}
+        className="group relative block w-full text-left overflow-hidden rounded-2xl border border-primary/30 bg-card transition-all duration-300 hover:border-primary/70 hover:shadow-[0_25px_60px_-20px_rgba(212,175,55,0.4)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      >
+        <div className="relative h-[26rem] md:h-[32rem] overflow-hidden">
+          <img
+            src={post.image}
+            alt={post.headline}
+            style={{ objectPosition: post.imageFocal ?? "center" }}
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-55 group-hover:scale-[1.03] transition-all duration-700 mix-blend-luminosity"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent" />
 
-        <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-12 max-w-3xl">
-          <div className="flex flex-wrap items-center gap-3 mb-5">
-            <span className="inline-flex items-center gap-1.5 h-7 px-3 rounded-full bg-primary text-primary-foreground text-[0.65rem] font-heading font-bold tracking-[0.25em] uppercase">
-              <Sparkles className="w-3 h-3" /> Featured
-            </span>
-            <CategoryBadge category={post.category} size="sm" />
-          </div>
+          <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-12 max-w-3xl">
+            <div className="flex flex-wrap items-center gap-3 mb-5">
+              <span className="inline-flex items-center gap-1.5 h-7 px-3 rounded-full bg-primary text-primary-foreground text-[0.65rem] font-heading font-bold tracking-[0.25em] uppercase">
+                <Sparkles className="w-3 h-3" /> Featured
+              </span>
+              <CategoryBadge category={post.category} size="sm" />
+            </div>
 
-          <h2 className="font-heading font-bold text-white tracking-tight leading-[1.05] text-3xl md:text-5xl lg:text-6xl mb-4">
-            {post.headline}
-          </h2>
-          <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6 max-w-2xl line-clamp-3">
-            {post.excerpt}
-          </p>
+            <h2 className="font-heading font-bold text-white tracking-tight leading-[1.05] text-3xl md:text-5xl lg:text-6xl mb-4">
+              {post.headline}
+            </h2>
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6 max-w-2xl line-clamp-3">
+              {post.excerpt}
+            </p>
 
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs md:text-sm text-muted-foreground mb-6">
-            <Meta
-              icon={<Calendar className="w-3.5 h-3.5" />}
-              label={post.date}
-            />
-            <Meta icon={<User className="w-3.5 h-3.5" />} label={post.author} />
-            <Meta
-              icon={<Clock className="w-3.5 h-3.5" />}
-              label={readTime(post.body)}
-            />
-          </div>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs md:text-sm text-muted-foreground mb-6">
+              <Meta
+                icon={<Calendar className="w-3.5 h-3.5" />}
+                label={post.date}
+              />
+              <Meta
+                icon={<User className="w-3.5 h-3.5" />}
+                label={post.author}
+              />
+              <Meta
+                icon={<Clock className="w-3.5 h-3.5" />}
+                label={readTime(post.body)}
+              />
+            </div>
 
-          <div className="inline-flex items-center gap-2 self-start h-12 px-6 rounded-md bg-primary text-primary-foreground font-heading font-bold tracking-[0.2em] text-sm uppercase group-hover:bg-primary/90 transition-colors">
-            Read Story{" "}
-            <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            <div className="inline-flex items-center gap-2 self-start h-12 px-6 rounded-md bg-primary text-primary-foreground font-heading font-bold tracking-[0.2em] text-sm uppercase group-hover:bg-primary/90 transition-colors">
+              {post.hubCtaLabel ?? "Read Story"}{" "}
+              <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.18),transparent_55%)]" />
-    </motion.button>
+        <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.18),transparent_55%)]" />
+      </Link>
+    </motion.div>
   );
 }
 
-function NewsCard({ post, onOpen }: { post: NewsPost; onOpen: () => void }) {
+function NewsCard({ post }: { post: NewsPost }) {
   return (
-    <motion.button
-      type="button"
-      onClick={onOpen}
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5 }}
-      className="group bg-card border border-primary/15 rounded-xl overflow-hidden hover:border-primary/60 hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.3)] transition-all duration-300 flex flex-col text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
     >
-      <div className="relative h-48 overflow-hidden shrink-0">
-        <img
-          src={post.image}
-          alt={post.headline}
-          style={{ objectPosition: post.imageFocal ?? "center" }}
-          className="absolute inset-0 w-full h-full object-cover opacity-45 group-hover:opacity-65 group-hover:scale-110 transition-all duration-700 mix-blend-luminosity"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-card/10" />
-        <div className="absolute top-3 left-3">
-          <CategoryBadge category={post.category} size="xs" />
-        </div>
-      </div>
-
-      <div className="p-5 flex flex-col flex-grow">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground mb-3">
-          <Meta
-            icon={<Calendar className="w-3 h-3" />}
-            label={post.date}
-            small
+      <Link
+        href={postPath(post)}
+        className="group flex h-full flex-col overflow-hidden rounded-xl border border-primary/15 bg-card text-left transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.3)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      >
+        <div className="relative h-48 overflow-hidden shrink-0">
+          <img
+            src={post.image}
+            alt={post.headline}
+            style={{ objectPosition: post.imageFocal ?? "center" }}
+            className="absolute inset-0 w-full h-full object-cover opacity-45 group-hover:opacity-65 group-hover:scale-110 transition-all duration-700 mix-blend-luminosity"
           />
-          <Meta
-            icon={<Clock className="w-3 h-3" />}
-            label={readTime(post.body)}
-            small
-          />
+          <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-card/10" />
+          <div className="absolute top-3 left-3">
+            <CategoryBadge category={post.category} size="xs" />
+          </div>
         </div>
 
-        <h3 className="font-heading font-bold text-lg md:text-xl text-white leading-snug mb-2 tracking-tight group-hover:text-primary transition-colors line-clamp-2">
-          {post.headline}
-        </h3>
-        <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-grow line-clamp-3">
-          {post.excerpt}
-        </p>
+        <div className="p-5 flex flex-col flex-grow">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground mb-3">
+            <Meta
+              icon={<Calendar className="w-3 h-3" />}
+              label={post.date}
+              small
+            />
+            <Meta
+              icon={<Clock className="w-3 h-3" />}
+              label={readTime(post.body)}
+              small
+            />
+          </div>
 
-        <div className="mt-auto inline-flex items-center gap-1.5 text-primary text-xs font-heading font-bold tracking-[0.2em] uppercase group-hover:gap-2.5 transition-all">
-          Read Story <ChevronRight className="w-4 h-4" />
+          <h3 className="font-heading font-bold text-lg md:text-xl text-white leading-snug mb-2 tracking-tight group-hover:text-primary transition-colors line-clamp-2">
+            {post.headline}
+          </h3>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-grow line-clamp-3">
+            {post.excerpt}
+          </p>
+
+          <div className="mt-auto inline-flex items-center gap-1.5 text-primary text-xs font-heading font-bold tracking-[0.2em] uppercase group-hover:gap-2.5 transition-all">
+            {post.hubCtaLabel ?? "Read Story"}{" "}
+            <ChevronRight className="w-4 h-4" />
+          </div>
         </div>
-      </div>
-    </motion.button>
+      </Link>
+    </motion.div>
   );
 }
 
@@ -844,39 +951,66 @@ function ArticleLink({
   );
 }
 
+function ArticleCta({ href, children }: { href: string; children: ReactNode }) {
+  const opensNewTab = /^https?:\/\//.test(href);
+  const mailto = href.startsWith("mailto:");
+  const content = (
+    <>
+      {children}
+      {(opensNewTab || mailto) && (
+        <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+      )}
+    </>
+  );
+
+  if (!opensNewTab && !mailto) {
+    return (
+      <Button asChild className="font-heading uppercase tracking-widest">
+        <Link href={href}>{content}</Link>
+      </Button>
+    );
+  }
+
+  return (
+    <Button asChild className="font-heading uppercase tracking-widest">
+      <a
+        href={href}
+        target={opensNewTab ? "_blank" : undefined}
+        rel={opensNewTab ? "noopener noreferrer" : undefined}
+      >
+        {content}
+      </a>
+    </Button>
+  );
+}
+
 function RegistrationExtensionContent() {
   return (
     <div className="space-y-6">
       <section className="border-l-2 border-primary pl-4">
         <p className="font-heading text-lg font-bold uppercase text-white">
-          {REGISTRATION_EXTENSION.shortTitle}
+          {REGISTRATION_EXTENSION.title}
         </p>
-        <p className="mt-2">
-          Middle School and Unified registration is open through{" "}
-          <strong>{REGISTRATION_EXTENSION.deadline}</strong>.
-        </p>
+        <p className="mt-2">{REGISTRATION_EXTENSION.message}</p>
       </section>
 
-      <p>
-        We have heard from several schools that getting teams registered has
-        been challenging during the start of the school year. To give everyone a
-        little more time, the deadline for Middle School and Unified teams has
-        been extended.
-      </p>
+      <p>{REGISTRATION_EXTENSION.clarification}</p>
 
       <section className="space-y-3">
         <h3 className="font-heading text-xl font-bold uppercase text-white">
           Register Now
         </h3>
-        <div className="not-prose grid gap-3 sm:grid-cols-2">
-          <ArticleLink href={REGISTRATION_EXTENSION.middleSchoolUrl}>
-            {REGISTRATION_EXTENSION.middleSchoolLabel}
-          </ArticleLink>
-          <ArticleLink href={REGISTRATION_EXTENSION.unifiedUrl}>
-            {REGISTRATION_EXTENSION.unifiedLabel}
-          </ArticleLink>
+        <div className="not-prose">
+          <ArticleCta href={REGISTRATION_EXTENSION.leagueOsUrl}>
+            {REGISTRATION_EXTENSION.leagueOsLabel}
+          </ArticleCta>
         </div>
       </section>
+
+      <p>
+        High School registration currently remains{" "}
+        <strong>October 19, 2026</strong>.
+      </p>
 
       <p>
         Coaches who run into account or registration issues can contact{" "}
@@ -885,6 +1019,159 @@ function RegistrationExtensionContent() {
         </ArticleLink>
         .
       </p>
+    </div>
+  );
+}
+
+function LosPremierContent() {
+  const titles = [
+    "Overwatch",
+    "Rocket League",
+    "VALORANT",
+    "League of Legends",
+    "Marvel Rivals",
+    "Super Smash Bros. Ultimate",
+    "Additional titles may also be offered",
+  ];
+
+  return (
+    <div className="space-y-7">
+      <section className="border-l-2 border-primary pl-4">
+        <p className="font-heading text-lg font-bold uppercase text-white">
+          National ranked play returns for 2026-27
+        </p>
+        <p className="mt-2">
+          LOS Premier is returning with national ranked competition for high
+          school esports programs.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Titles
+        </h3>
+        <ul className="grid gap-2 sm:grid-cols-2">
+          {titles.map((title) => (
+            <li key={title}>{title}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Program Structure
+        </h3>
+        <ul className="space-y-2">
+          <li>One Premier team per title per high school.</li>
+          <li>$96 per Premier team for the year.</li>
+          <li>Maximum fee of $384 per high school.</li>
+          <li>
+            Once a school reaches the $384 maximum, it may participate in as
+            many available Premier titles as applicable without exceeding that
+            school maximum.
+          </li>
+        </ul>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Media And National Exposure
+        </h3>
+        <p>
+          LOS Premier national ranked play will air live each week on Roku as
+          part of a weekly live high school esports telecast.
+        </p>
+        <p>
+          Throughout the year, similarly ranked Premier teams may also be
+          invited to participate in additional online and in-person
+          competitions.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Indiana Example
+        </h3>
+        <p>
+          Hamilton Southeastern participated in LOS Premier last spring. Their
+          VALORANT team reached #3 in the national rankings and earned an
+          opportunity to travel to San Antonio for competition.
+        </p>
+      </section>
+
+      <section className="border-l-2 border-primary pl-4">
+        <p className="font-heading text-lg font-bold uppercase text-white">
+          Registration
+        </p>
+        <p className="mt-2">
+          LeagueOS will provide registration instructions through its Dashboard.
+          No separate LOS Premier registration deadline has been announced.
+        </p>
+      </section>
+    </div>
+  );
+}
+
+function SpartanShowdownContent() {
+  const highlights = [
+    "Free entry",
+    "Free lunch",
+    "Arcade games",
+    "Ladder matches",
+    "$35,000 in scholarships awarded",
+    "200+ high school players from across the Midwest",
+    "Costume contest",
+    "Prizes",
+    "High school students only",
+  ];
+
+  return (
+    <div className="space-y-7">
+      <section className="border-l-2 border-primary pl-4">
+        <p className="font-heading text-lg font-bold uppercase text-white">
+          High school only
+        </p>
+        <p className="mt-2">
+          Spartan Showdown returns Saturday, November 7, 2026, as a high school
+          only Super Smash Bros. event.
+        </p>
+      </section>
+
+      <div className="not-prose">
+        <ArticleCta href="https://www.start.gg/tournament/spartan-showdown-2026/details">
+          Spartan Showdown 2026
+        </ArticleCta>
+        <p className="mt-3 text-sm leading-6 text-muted-foreground">
+          External event registration and details are hosted on start.gg.
+        </p>
+      </div>
+
+      <p>
+        Spartan Showdown is a major Indiana youth Super Smash Bros. event and
+        brings together high school competitors from across the Midwest.
+      </p>
+
+      <section className="space-y-3">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Event Highlights
+        </h3>
+        <ul className="grid gap-2 sm:grid-cols-2">
+          {highlights.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="border-l-2 border-primary pl-4">
+        <p className="font-heading text-lg font-bold uppercase text-white">
+          External Registration
+        </p>
+        <p className="mt-2">
+          Registration is handled externally. This announcement shares the
+          opportunity with Indiana schools and does not list IEN as the event
+          operator.
+        </p>
+      </section>
     </div>
   );
 }
@@ -988,8 +1275,8 @@ function KickoffContent() {
           </li>
           <li>
             <strong>IUEN Unified:</strong> now spans middle school and high
-            school, with registration run jointly by IEN and Special Olympics
-            Indiana.
+            school, with competition registration in LeagueOS and program
+            coordination through IEN and Special Olympics Indiana.
           </li>
           <li>
             <strong>IMSEN Middle School:</strong> grades 6-8, unchanged in
@@ -1158,7 +1445,9 @@ function KickoffContent() {
                 </ArticleLink>
               </li>
               <li>
-                <ArticleLink href="/leagues/iuen">Unified Registration</ArticleLink>
+                <ArticleLink href="/leagues/iuen">
+                  Unified Registration
+                </ArticleLink>
               </li>
               <li>
                 GuardianProline coach jersey offer: details coming by coach
@@ -1212,6 +1501,183 @@ function KickoffContent() {
         </p>
       </section>
     </div>
+  );
+}
+
+function NewsStoryPage({ post }: { post: NewsPost }) {
+  const related = POSTS.filter((p) => p.id !== post.id).slice(0, 3);
+  const storyCta =
+    post.cta && post.cta.href !== postPath(post) ? post.cta : undefined;
+
+  return (
+    <Layout>
+      <SEO
+        title={post.headline}
+        description={post.excerpt}
+        path={postPath(post)}
+        image={post.image}
+        type={post.category === "Event Announcement" ? "event" : "article"}
+      />
+
+      <article>
+        <section className="relative overflow-hidden border-b border-primary/20 bg-card">
+          <img
+            src={post.image}
+            alt=""
+            style={{ objectPosition: post.imageFocal ?? "center" }}
+            className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-luminosity"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/85 to-background/30" />
+          <div className="container relative z-10 mx-auto px-4 py-12 md:py-20">
+            <Link
+              href="/news"
+              className="mb-8 inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-[0.2em] text-primary hover:text-primary/80"
+            >
+              <ChevronRight className="h-3.5 w-3.5 rotate-180" />
+              News
+            </Link>
+
+            <div className="max-w-4xl">
+              <div className="mb-5 flex flex-wrap items-center gap-2">
+                {post.featured && (
+                  <span className="inline-flex items-center gap-1.5 h-7 px-3 rounded-full bg-primary text-primary-foreground text-[0.65rem] font-heading font-bold tracking-[0.25em] uppercase">
+                    <Sparkles className="w-3 h-3" /> Featured
+                  </span>
+                )}
+                <CategoryBadge category={post.category} size="sm" />
+              </div>
+
+              <h1 className="font-heading font-bold text-white tracking-tight leading-[1.02] text-4xl md:text-6xl lg:text-7xl">
+                {post.headline}
+              </h1>
+              <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground md:text-xl">
+                {post.excerpt}
+              </p>
+
+              <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+                <Meta
+                  icon={<Calendar className="w-4 h-4" />}
+                  label={post.date}
+                />
+                <Meta icon={<User className="w-4 h-4" />} label={post.author} />
+                <Meta
+                  icon={<Clock className="w-4 h-4" />}
+                  label={readTime(post.body)}
+                />
+              </div>
+
+              {(storyCta || post.ctaNote) && (
+                <div className="mt-8 flex flex-col items-start gap-3">
+                  {storyCta && (
+                    <ArticleCta href={storyCta.href}>
+                      {storyCta.label}
+                    </ArticleCta>
+                  )}
+                  {post.ctaNote && (
+                    <p className="max-w-2xl text-sm leading-6 text-muted-foreground">
+                      {post.ctaNote}
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        <section className="container mx-auto px-4 py-10 md:py-14">
+          <div className="mx-auto max-w-3xl">
+            <div
+              className={`prose prose-invert max-w-none text-base leading-[1.75] text-muted-foreground md:text-[1.05rem] ${
+                post.content ? "" : "whitespace-pre-line [&_p]:my-4"
+              }`}
+            >
+              {post.content ?? post.body}
+            </div>
+          </div>
+        </section>
+      </article>
+
+      {related.length > 0 && (
+        <section className="border-t border-primary/15 bg-card/40">
+          <div className="container mx-auto px-4 py-12 md:py-14">
+            <div className="mb-6 flex items-end justify-between gap-4">
+              <h2 className="font-heading font-bold text-2xl md:text-3xl text-white tracking-tight">
+                Related Stories
+              </h2>
+              <Link
+                href="/news"
+                className="hidden text-xs font-heading font-bold uppercase tracking-[0.2em] text-primary hover:text-primary/80 md:inline-flex"
+              >
+                All News
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+              {related.map((item) => (
+                <RelatedStoryCard key={item.id} post={item} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+    </Layout>
+  );
+}
+
+function RelatedStoryCard({ post }: { post: NewsPost }) {
+  return (
+    <Link
+      href={postPath(post)}
+      className="group overflow-hidden rounded-lg border border-primary/15 bg-background/70 transition-colors hover:border-primary/55 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    >
+      <div className="relative h-32 overflow-hidden">
+        <img
+          src={post.image}
+          alt=""
+          style={{ objectPosition: post.imageFocal ?? "center" }}
+          className="absolute inset-0 h-full w-full object-cover opacity-45 mix-blend-luminosity transition-transform duration-500 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+        <div className="absolute left-3 top-3">
+          <CategoryBadge category={post.category} size="xs" />
+        </div>
+      </div>
+      <div className="p-4">
+        <h3 className="font-heading text-lg font-bold leading-snug text-white transition-colors group-hover:text-primary">
+          {post.headline}
+        </h3>
+        <p className="mt-2 text-sm leading-6 text-muted-foreground line-clamp-2">
+          {post.excerpt}
+        </p>
+      </div>
+    </Link>
+  );
+}
+
+function NewsStoryNotFound() {
+  return (
+    <Layout>
+      <SEO
+        title="News Story Not Found"
+        description="The requested Indiana Esports Network news story could not be found."
+        path="/news"
+        noindex
+      />
+      <section className="container mx-auto px-4 py-20 text-center">
+        <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary mb-3">
+          News
+        </p>
+        <h1 className="font-heading text-white font-bold tracking-tight uppercase text-4xl md:text-6xl mb-4">
+          Story Not Found
+        </h1>
+        <p className="mx-auto mb-8 max-w-xl text-muted-foreground">
+          The story link may have changed. The latest IEN updates are available
+          in the news hub.
+        </p>
+        <Button asChild className="font-heading uppercase tracking-widest">
+          <Link href="/news">Back To News</Link>
+        </Button>
+      </section>
+    </Layout>
   );
 }
 

@@ -40,33 +40,22 @@ export function RegistrationExtensionNotice({
                 : REGISTRATION_EXTENSION.title}
             </h2>
             <p className="mt-2 text-sm leading-6 text-muted-foreground md:text-base">
-              {REGISTRATION_EXTENSION.message} Middle School and Unified
-              registration is open through{" "}
-              <strong className="font-bold text-primary">
-                {REGISTRATION_EXTENSION.deadline}
-              </strong>
-              .
+              {REGISTRATION_EXTENSION.message}
+            </p>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground md:text-base">
+              {REGISTRATION_EXTENSION.clarification}
             </p>
           </div>
         </div>
 
         <div className="flex shrink-0 flex-col gap-2 sm:flex-row lg:flex-col xl:flex-row">
           <a
-            href={REGISTRATION_EXTENSION.middleSchoolUrl}
+            href={REGISTRATION_EXTENSION.leagueOsUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-center font-heading text-xs font-bold uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
-            Middle School
-            <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-          </a>
-          <a
-            href={REGISTRATION_EXTENSION.unifiedUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-primary/50 px-4 py-2 text-center font-heading text-xs font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-          >
-            Unified
+            {REGISTRATION_EXTENSION.leagueOsLabel}
             <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
           </a>
           {showFormsLink && (
