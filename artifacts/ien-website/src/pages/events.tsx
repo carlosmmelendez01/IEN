@@ -101,7 +101,9 @@ export default function Events() {
                 <p className="text-xs font-heading font-bold uppercase tracking-[0.18em] text-[#ef4343] mb-1">
                   Time
                 </p>
-                <p className="text-sm text-white font-semibold">Time TBA</p>
+                <p className="text-sm text-white font-semibold">
+                  7 PM CT / 8 PM ET
+                </p>
               </div>
               <div className="rounded-lg border border-[#ef4343]/35 bg-background/70 p-4">
                 <Video className="w-5 h-5 text-[#ef4343] mb-3" />

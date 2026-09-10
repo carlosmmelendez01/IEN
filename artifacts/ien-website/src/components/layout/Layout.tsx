@@ -15,7 +15,7 @@ function CoachesMeetingBanner() {
       href={SEPTEMBER_COACHES_MEET_URL}
       target="_blank"
       rel="noreferrer"
-      aria-label="Join the September Coaches Meeting Google Meet on Thursday, September 10, 2026"
+      aria-label="Join the September Coaches Meeting Google Meet on Thursday, September 10, 2026 at 7 PM Central, 8 PM Eastern"
       className="group relative isolate block overflow-hidden border-b-2 border-[#0d1623] bg-[#ef4343] text-[#0d1623] shadow-[0_8px_24px_rgba(239,67,67,0.28)] transition-colors hover:bg-[#f05a5a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ef4343] focus-visible:ring-offset-2 focus-visible:ring-offset-background before:absolute before:inset-y-0 before:left-[-35%] before:z-[-1] before:w-1/3 before:skew-x-[-18deg] before:bg-white/20 before:transition-transform before:duration-700 hover:before:translate-x-[420%] focus-visible:before:translate-x-[420%]"
     >
       <div className="container mx-auto flex min-h-[3.75rem] flex-col items-center justify-center gap-2 px-4 py-3 text-center sm:min-h-14 sm:flex-row sm:gap-4 sm:py-2">
@@ -29,6 +29,10 @@ function CoachesMeetingBanner() {
             |
           </span>
           <span>Thursday, September 10, 2026</span>
+          <span className="hidden opacity-70 sm:inline" aria-hidden="true">
+            |
+          </span>
+          <span>7 PM CT / 8 PM ET</span>
           <span className="hidden opacity-70 sm:inline" aria-hidden="true">
             |
           </span>

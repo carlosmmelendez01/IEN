@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { socialLinks, ONBOARDING_URL } from "@/lib/socialLinks";
 import { SchoolCharterButton } from "@/components/schools/SchoolCharterButton";
-import { RegistrationExtensionNotice } from "@/components/registration/RegistrationExtensionNotice";
 import { trackAnalyticsEvent } from "@/lib/analytics";
 import { getSchoolNetworkStat, schoolCharterConfig } from "@/lib/schoolCharter";
 import { REGISTRATION_EXTENSION } from "@/lib/registration";
@@ -82,8 +81,6 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto"
           >
-            <RegistrationExtensionNotice variant="hero" className="mb-6" />
-
             <div className="inline-block mb-6 px-4 py-1 border border-primary/50 bg-primary/10 text-primary text-sm font-bold tracking-widest rounded-full uppercase">
               Indiana's Official Scholastic League
             </div>
