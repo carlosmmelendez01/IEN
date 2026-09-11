@@ -4,7 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { AlertCircle, Download, ExternalLink, FileText } from "lucide-react";
+import { AlertCircle, ArrowRight, Download, ExternalLink, FileText } from "lucide-react";
 import {
   RulesDialog,
   RulesetLibrary,
@@ -25,14 +25,21 @@ const resources = [
     title: "IEN Bylaws & General Rules",
     desc: "Official IEN bylaws, competition policies, and general league rules for the 2026-27 season.",
     href: RULEBOOK_HREF,
-    external: false,
+    kind: "download",
     available: RULES_DOCUMENTS_AVAILABLE,
+  },
+  {
+    title: "Esports IT Requirements",
+    desc: "Launcher, anti-cheat, streaming, ethernet, port, and allowlist guidance coaches can send to school IT.",
+    href: "/it-requirements",
+    kind: "internal",
+    available: true,
   },
   {
     title: "LeagueOS Platform Guide",
     desc: "How to manage rosters, report scores, and navigate the LeagueOS platform.",
     href: "https://leagueos.gg",
-    external: true,
+    kind: "external",
     available: true,
   },
 ];
@@ -122,24 +129,34 @@ export default function LeagueResources() {
               </div>
 
               {res.available ? (
-                <a
-                  href={res.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-flex w-fit items-center gap-2 text-sm font-heading font-bold text-primary tracking-[0.14em] hover:text-yellow-200 transition-colors"
-                >
-                  {res.external ? (
-                    <>
-                      <ExternalLink className="w-4 h-4" aria-hidden />
-                      OPEN PLATFORM
-                    </>
-                  ) : (
-                    <>
-                      <Download className="w-4 h-4" aria-hidden />
-                      DOWNLOAD PDF
-                    </>
-                  )}
-                </a>
+                res.kind === "internal" ? (
+                  <Link
+                    href={res.href}
+                    className="mt-auto inline-flex w-fit items-center gap-2 text-sm font-heading font-bold text-primary tracking-[0.14em] hover:text-yellow-200 transition-colors"
+                  >
+                    <ArrowRight className="w-4 h-4" aria-hidden />
+                    OPEN GUIDE
+                  </Link>
+                ) : (
+                  <a
+                    href={res.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto inline-flex w-fit items-center gap-2 text-sm font-heading font-bold text-primary tracking-[0.14em] hover:text-yellow-200 transition-colors"
+                  >
+                    {res.kind === "external" ? (
+                      <>
+                        <ExternalLink className="w-4 h-4" aria-hidden />
+                        OPEN PLATFORM
+                      </>
+                    ) : (
+                      <>
+                        <Download className="w-4 h-4" aria-hidden />
+                        DOWNLOAD PDF
+                      </>
+                    )}
+                  </a>
+                )
               ) : (
                 <div className="mt-auto inline-flex w-fit items-center gap-2 rounded-md border border-primary/30 px-4 py-3 text-xs font-heading font-bold uppercase tracking-[0.16em] text-muted-foreground">
                   <AlertCircle className="h-4 w-4 text-primary" aria-hidden />

@@ -11,6 +11,7 @@ const ROUTES = [
   "/leagues",
   "/rules-policies",
   "/league-resources",
+  "/it-requirements",
   "/leagues/ihsen",
   "/leagues/imsen",
   "/leagues/iuen",

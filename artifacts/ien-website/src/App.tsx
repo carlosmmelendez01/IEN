@@ -13,6 +13,7 @@ const About = lazy(() => import("@/pages/about"));
 const Leagues = lazy(() => import("@/pages/leagues"));
 const RulesPolicies = lazy(() => import("@/pages/rules-policies"));
 const Forms = lazy(() => import("@/pages/forms"));
+const ITRequirements = lazy(() => import("@/pages/it-requirements"));
 const IHSEN = lazy(() => import("@/pages/ihsen"));
 const IMSEN = lazy(() => import("@/pages/imsen"));
 const IUEN = lazy(() => import("@/pages/iuen"));
@@ -49,6 +50,7 @@ function Router() {
       <Route path="/rules-policies" component={RulesPolicies} />
       <Route path="/league-resources" component={RulesPolicies} />
       <Route path="/forms" component={Forms} />
+      <Route path="/it-requirements" component={ITRequirements} />
       <Route path="/leagues/ihsen" component={IHSEN} />
       <Route path="/leagues/imsen" component={IMSEN} />
       <Route path="/leagues/iuen" component={IUEN} />

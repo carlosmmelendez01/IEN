@@ -164,7 +164,15 @@ export default function StartAProgram() {
               </li>
               <li className="flex items-start gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></div>
-                <span>Prepare space and equipment</span>
+                <span>
+                  Prepare space, equipment, and{" "}
+                  <Link
+                    href="/it-requirements"
+                    className="text-primary hover:text-yellow-200 transition-colors"
+                  >
+                    IT requirements
+                  </Link>
+                </span>
               </li>
             </ul>
             <div className="mt-auto rounded-lg border border-primary/25 bg-primary/10 p-4 text-xs text-primary font-medium leading-relaxed">
@@ -250,11 +258,12 @@ export default function StartAProgram() {
                 packet with the links needed to officially prepare for the
                 season.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {[
                   "School Census & Charter",
                   "IEN Discord invite",
                   "Resource portal",
+                  "IT requirements guide",
                   "League calendars",
                   "Monthly coaches meeting",
                 ].map((item) => (

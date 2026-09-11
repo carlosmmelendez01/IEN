@@ -60,6 +60,10 @@ const formCards: FormCard[] = [
         href: "https://forms.gle/S5FWfho6DTNu5AyT7",
       },
       {
+        label: "IT Requirements",
+        href: "/it-requirements",
+      },
+      {
         label: "Verified Streaming Form",
         href: "https://docs.google.com/forms/d/e/1FAIpQLSdsBvpSzpFfoCxD1bsVrg0ypWiLIC5sSZlMUfCQFhQrV7lw4Q/viewform",
       },

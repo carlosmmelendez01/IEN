@@ -259,7 +259,7 @@ export default function Leagues() {
           ))}
         </div>
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
           <a
             href="#game-titles"
             className="rounded-xl border border-primary/30 bg-card p-5 text-center hover:border-primary transition-colors"
@@ -288,6 +288,21 @@ export default function Leagues() {
             <p className="text-sm text-muted-foreground">
               Use the official rules hub for rulebooks, policy documents,
               ruleset status, and LeagueOS guidance.
+            </p>
+          </Link>
+          <Link
+            href="/it-requirements"
+            className="rounded-xl border border-primary/30 bg-card p-5 text-center hover:border-primary transition-colors"
+          >
+            <p className="font-heading font-bold tracking-[0.18em] uppercase text-primary text-xs mb-2">
+              Coach Prep
+            </p>
+            <h3 className="font-heading font-bold text-2xl text-white mb-2">
+              Coordinate IT Requirements
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Share launcher, network, streaming, ethernet, port, and domain
+              requirements with school IT before match week.
             </p>
           </Link>
         </div>
