@@ -44,7 +44,7 @@ export const GAME_RULESET_LIBRARY_HREF = "/rules-policies#ruleset-library";
 export const RULES_DOCUMENTS_AVAILABLE = true;
 export const RULES_UPDATE_SHORT_LABEL = "Rules pending";
 export const RULES_UPDATE_NOTICE =
-  "Updated 2026-27 IEN bylaws and available title rulesets have been posted. Additional title documents will be added here as they are finalized.";
+  "Official 2026-27 IEN bylaws and available title rulesets are posted. The Schedule page and official league calendars are authoritative for each title's competition day; dates inside title rulesets describe the season window.";
 
 export const rulesetGames: RulesetGame[] = [
   {
@@ -124,7 +124,7 @@ export const rulesetGames: RulesetGame[] = [
     matchWindow: "IHSEN Wednesdays 5 PM ET / IMSEN Tuesdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
     ruleDocHref: "/documents/rulesets/super-smash-bros-ultimate-bylaws-game-rules-2026-27.pdf",
-    ruleDocVersion: "1.0",
+    ruleDocVersion: "1.01",
   },
   {
     id: "mario-kart-8-deluxe",
@@ -137,18 +137,20 @@ export const rulesetGames: RulesetGame[] = [
     matchWindow: "IHSEN Thursdays 5 PM ET / IMSEN Tuesdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
     ruleDocHref: "/documents/rulesets/mario-kart-8-deluxe-ruleset-2026-27.pdf",
-    ruleDocVersion: "1.0",
+    ruleDocVersion: "1.01",
   },
   {
     id: "minecraft",
     name: "Minecraft",
-    type: "Varsity 1A/2A",
+    type: "Varsity / Club",
     color: "#23d37b",
     platform: "PC",
-    roster: "Varies by format",
-    format: "Challenge-based scoring",
+    roster: "4 starters / 2 substitutes",
+    format: "Bo3 BedWars; points combined across all maps",
     matchWindow: "IHSEN Tuesdays 5 PM ET / IMSEN Wednesdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
+    ruleDocHref: "/documents/rulesets/minecraft-ruleset-2026-27.pdf",
+    ruleDocVersion: "1.0",
   },
   {
     id: "marvel-rivals",
@@ -161,7 +163,7 @@ export const rulesetGames: RulesetGame[] = [
     matchWindow: "IHSEN Tuesdays 5 PM ET / IMSEN Mondays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
     ruleDocHref: "/documents/rulesets/marvel-rivals-bylaws-game-rules-2026-27.pdf",
-    ruleDocVersion: "1.01",
+    ruleDocVersion: "1.02",
   },
   {
     id: "chess",
