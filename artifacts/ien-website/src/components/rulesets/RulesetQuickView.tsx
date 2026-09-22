@@ -369,7 +369,7 @@ export function RulesDialog({
   const rotation = rotationData[game.id];
   const tabs: Array<{ id: RulesTab; label: string }> = [
     { id: "quick", label: "Quick Guide" },
-    { id: "rotation", label: rotation ? `${rotation.tabLabel} of Week` : "Maps / Tracks" },
+    { id: "rotation", label: rotation ? rotation.navLabel ?? `${rotation.tabLabel} of Week` : "Maps / Tracks" },
     { id: "full", label: fullRulesLabel(game) },
   ];
 

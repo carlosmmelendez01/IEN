@@ -27,6 +27,7 @@ export type RotationRow = {
 
 export type RotationData = {
   tabLabel: string;
+  navLabel?: string;
   title: string;
   intro: string;
   currentWeek?: string;
@@ -273,19 +274,16 @@ export const rotationData: Record<string, RotationData> = {
   },
   "unified-super-smash-bros": {
     tabLabel: "Stages",
-    title: "Unified Weekly Starter Stages",
-    intro: "IUEN Super Smash Bros. uses the published starter stage for each fall match. Dates are shown as week-start dates from the Unified league calendar.",
-    headers: ["Week", "IUEN Week Starts", "Starter Stage"],
+    navLabel: "Stages by Window",
+    title: "Unified Starter Stage Rotation",
+    intro: "IUEN Super Smash Bros. uses four regular-season match windows. Teams have two weeks to complete the games assigned to each window.",
+    headers: ["Match Window", "Dates", "Starter Stage"],
     rows: [
-      { week: "Week 1", values: ["Sep 22", "Pokemon Stadium 2"] },
-      { week: "Week 2", values: ["Sep 29", "Battlefield"] },
-      { week: "Week 3", values: ["Oct 20", "Smashville"] },
-      { week: "Week 4", values: ["Oct 27", "Small Battlefield"] },
-      { week: "Week 5", values: ["Nov 3", "Final Destination"] },
-      { week: "Week 6", values: ["Nov 10", "Town & City"] },
-      { week: "Playoff 1", values: ["Nov 17", "Pokemon Stadium 2"] },
-      { week: "Playoff 2", values: ["Dec 1", "Town & City"] },
-      { week: "Playoff 3", values: ["Dec 7", "Small Battlefield"] },
+      { week: "Window 1", values: ["Sep 22-Oct 5", "Pokemon Stadium 2"] },
+      { week: "Window 2", values: ["Oct 20-Nov 2", "Battlefield"] },
+      { week: "Window 3", values: ["Nov 3-16", "Smashville"] },
+      { week: "Window 4", values: ["Nov 17-30", "Small Battlefield"] },
+      { week: "Playoff Week", values: ["Dec 1-7", "Pokemon Stadium 2"] },
       { week: "Finals", values: ["Dec 12", "Pokemon Stadium 2"] },
     ],
     secondaryTitle: "Set 2 & 3 Counterpick Stages",
