@@ -27,7 +27,7 @@ export const CHAMPIONS: Champion[] = [
   { season: "2025-2026", league: "IHSEN" as League, game: "Fortnite", tier: "AAA" as Tier, school: "Plainfield", runnerUp: "Indiana Digital Learning School" },
   { season: "2025-2026", league: "IHSEN" as League, game: "League of Legends", tier: "" as Tier, school: "Westfield", runnerUp: "Lawrenceburg" },
   { season: "2025-2026", league: "IHSEN" as League, game: "Mario Kart", tier: "A" as Tier, school: "Wes-Del", runnerUp: "Ben Davis University" },
-  { season: "2025-2026", league: "IHSEN" as League, game: "Mario Kart", tier: "AAA" as Tier, school: "William Henry Harrision High School", runnerUp: "Franklin Central" },
+  { season: "2025-2026", league: "IHSEN" as League, game: "Mario Kart", tier: "AAA" as Tier, school: "Franklin Central", runnerUp: "William Henry Harrison High School" },
   { season: "2025-2026", league: "IHSEN" as League, game: "Marvel Rivals", tier: "A/AA" as Tier, school: "Speedway", runnerUp: "Jennings County" },
   { season: "2025-2026", league: "IHSEN" as League, game: "Marvel Rivals", tier: "AAA" as Tier, school: "Ben Davis", runnerUp: "Indiana Digital Learning School" },
   { season: "2025-2026", league: "IHSEN" as League, game: "Minecraft Bedwars", tier: "" as Tier, school: "North Newton", runnerUp: "Shenandoah", third: "Fairfield", finalist: "William Henry Harrison High School" },

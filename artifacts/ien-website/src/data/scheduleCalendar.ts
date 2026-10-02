@@ -506,6 +506,12 @@ const keyDates: ScheduleEvent[] = [
     "2026-10-08",
     allDivisions,
     "Monthly coaches meeting listed on the official season calendars.",
+    "7–8 PM CT / 8–9 PM ET",
+    {
+      label: "Join Google Meet",
+      href: "https://meet.google.com/eif-aqto-oxv",
+      external: true,
+    },
   ),
   meetingEvent(
     "coaches-november",
