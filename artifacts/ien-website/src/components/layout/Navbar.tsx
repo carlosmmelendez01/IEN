@@ -9,6 +9,7 @@ import {
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import ienLogo from "@assets/IEN_Horizontal Logo Transparent.png";
+import { CoachesMeetingBanner } from "./CoachesMeetingBanner";
 
 type NavChild = {
   label: string;
@@ -137,6 +138,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-primary/20 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <CoachesMeetingBanner />
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center" aria-label="Indiana Esports Network home">
           <img
