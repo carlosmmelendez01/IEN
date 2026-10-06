@@ -7,6 +7,7 @@ import {
   ClipboardCheck,
   ExternalLink,
   FileText,
+  Mail,
   MapPinned,
   Monitor,
   ShieldCheck,
@@ -425,6 +426,17 @@ export function RulesDialog({
                 {game.note}
               </p>
             )}
+            {game.contact && (
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
+                Questions: {game.contact.name} at{" "}
+                <a
+                  href={`mailto:${game.contact.email}`}
+                  className="font-semibold text-primary underline decoration-primary/50 underline-offset-4 hover:text-yellow-200"
+                >
+                  {game.contact.email}
+                </a>
+              </p>
+            )}
           </div>
 
           <div className="flex shrink-0 items-center gap-2">
@@ -517,6 +529,15 @@ export function RulesetLibrary({
             </h3>
             <p className="mt-1 text-xs text-muted-foreground">{game.type}</p>
             {game.note && <p className="mt-2 text-xs font-semibold leading-5 text-primary">{game.note}</p>}
+            {game.contact && (
+              <a
+                href={`mailto:${game.contact.email}`}
+                className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground transition-colors hover:text-primary"
+              >
+                <Mail className="h-3.5 w-3.5 text-primary" aria-hidden />
+                Questions: {game.contact.name}
+              </a>
+            )}
           </div>
 
           <dl className="grid grid-cols-2 gap-3 text-xs">

@@ -18,6 +18,10 @@ export type RulesetGame = {
   ruleDocVersion?: string;
   note?: string;
   status?: string;
+  contact?: {
+    name: string;
+    email: string;
+  };
   quickGuide?: {
     setup: string[];
     scoring: string[];
@@ -208,6 +212,10 @@ export const rulesetGames: RulesetGame[] = [
     ruleDocHref: "/documents/rulesets/iracing-bylaws-game-rules-2026-27.pdf",
     ruleDocVersion: "1.0",
     note: "Individual season-points championship; the regular season extends through the first playoff week.",
+    contact: {
+      name: "Drew Rhoda",
+      email: "rhodad@wl.k12.in.us",
+    },
     quickGuide: {
       setup: [
         "Complete LeagueOS registration and the IEN iRacing Google Form, then have each driver request to join the IEN iRacing league.",
