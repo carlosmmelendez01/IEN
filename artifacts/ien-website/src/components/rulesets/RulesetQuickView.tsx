@@ -189,6 +189,10 @@ function RotationTable({
 }
 
 function QuickGuidePanel({ game }: { game: RulesetGame }) {
+  const setup = game.quickGuide?.setup ?? setupItems;
+  const scoring = game.quickGuide?.scoring ?? scoringItems;
+  const reminders = game.quickGuide?.reminders ?? coachReminderItems;
+
   return (
     <>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -198,9 +202,9 @@ function QuickGuidePanel({ game }: { game: RulesetGame }) {
       </div>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-3">
-        <BulletPanel icon={ShieldCheck} title="Match Setup" items={setupItems} />
-        <BulletPanel icon={FileText} title="Scoring" items={scoringItems} />
-        <BulletPanel icon={AlertCircle} title="Coach Reminders" items={coachReminderItems} />
+        <BulletPanel icon={ShieldCheck} title="Match Setup" items={setup} />
+        <BulletPanel icon={FileText} title="Scoring" items={scoring} />
+        <BulletPanel icon={AlertCircle} title="Coach Reminders" items={reminders} />
       </div>
     </>
   );

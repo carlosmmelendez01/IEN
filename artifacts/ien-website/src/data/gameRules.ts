@@ -18,6 +18,11 @@ export type RulesetGame = {
   ruleDocVersion?: string;
   note?: string;
   status?: string;
+  quickGuide?: {
+    setup: string[];
+    scoring: string[];
+    reminders: string[];
+  };
 };
 
 export type RotationRow = {
@@ -193,13 +198,33 @@ export const rulesetGames: RulesetGame[] = [
   {
     id: "iracing",
     name: "iRacing",
-    type: "Tournament",
+    type: "Varsity / JV",
     color: "#f0b323",
     platform: "PC",
-    roster: "Individual drivers",
-    format: "Race event scoring",
-    matchWindow: "Thursdays, 5 PM ET / 4 PM CT",
+    roster: "Up to 5 drivers per school / no substitutes",
+    format: "Weekly practice, qualifying, and 20-minute race; season points championship",
+    matchWindow: "Thursdays, 5 PM ET / 4 PM CT; drivers meeting at 4:40 PM ET / 3:40 PM CT",
     leagues: ["IHSEN"],
+    ruleDocHref: "/documents/rulesets/iracing-bylaws-game-rules-2026-27.pdf",
+    ruleDocVersion: "1.0",
+    note: "Individual season-points championship; the regular season extends through the first playoff week.",
+    quickGuide: {
+      setup: [
+        "Complete LeagueOS registration and the IEN iRacing Google Form, then have each driver request to join the IEN iRacing league.",
+        "Drivers must use their real name, keep their iRacing account in good standing, and use the week's Mazda MX-5 road or Street Stock oval content.",
+        "All drivers must attend the 4:40 PM ET / 3:40 PM CT Google Meet with cameras on to be eligible to race.",
+      ],
+      scoring: [
+        "Drivers earn qualifying points, race-finish points, and bonuses; iRacing handles scoring, so no LeagueOS score report is required.",
+        "Qualifying awards 15 points for 1st, 10 for 2nd, 5 for 3rd, then 4 through 1 points for 4th through 7th.",
+        "Bonus points: 5 for fastest lap, 5 for most laps led, and 1 for leading a lap; the maximum is 76 points per session.",
+      ],
+      reminders: [
+        "No substitutes are permitted. A driver who misses a race forfeits that week's possible points.",
+        "Submit approved road and oval liveries before the first regular-season race; first-season drivers must use the official yellow rookie stripe.",
+        "Incident points can trigger drive-through penalties at 8x and 12x, and automatic disqualification at 16x.",
+      ],
+    },
   },
   {
     id: "fortnite",
