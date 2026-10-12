@@ -3,7 +3,6 @@ import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { RegistrationExtensionNotice } from "@/components/registration/RegistrationExtensionNotice";
 import { motion } from "framer-motion";
 import {
   Heart,
@@ -265,12 +264,6 @@ export default function IUEN() {
               </Button>
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      <section className="py-8 border-b border-primary/10 bg-background">
-        <div className="container mx-auto px-4">
-          <RegistrationExtensionNotice showFormsLink={false} />
         </div>
       </section>
 

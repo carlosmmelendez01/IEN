@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import {
   ArrowRight,
   CalendarDays,
-  ExternalLink,
   FileText,
   LifeBuoy,
   Newspaper,
@@ -15,7 +14,6 @@ import { socialLinks, ONBOARDING_URL } from "@/lib/socialLinks";
 import { SchoolCharterButton } from "@/components/schools/SchoolCharterButton";
 import { trackAnalyticsEvent } from "@/lib/analytics";
 import { getSchoolNetworkStat, schoolCharterConfig } from "@/lib/schoolCharter";
-import { REGISTRATION_EXTENSION } from "@/lib/registration";
 import heroDesktop from "@assets/state-finals/01-greencastle-hero-2400.jpg";
 import heroMobile from "@assets/state-finals/01-greencastle-hero-1280.jpg";
 import gridCentralHs from "@assets/state-finals/02-central-hs-1200.jpg";
@@ -28,14 +26,7 @@ const stats = [
   { value: "12", label: "Game Titles" },
 ];
 
-const septemberStories = [
-  {
-    eyebrow: "Registration Update",
-    title: "Middle School & Unified Registration Closes September 18",
-    desc: "Competition registration for IMSEN and IUEN teams must be completed in LeagueOS after school chartering.",
-    href: "/news/middle-school-unified-registration-closes-september-18",
-    cta: "Registration Information",
-  },
+const coachUpdates = [
   {
     eyebrow: "LOS Premier",
     title: "National ranked play returns for 2026-27",
@@ -202,7 +193,7 @@ export default function Home() {
       )}
 
       <section
-        id="september-coach-update"
+        id="coach-update"
         className="border-b border-primary/20 bg-card/35 py-10 md:py-12"
       >
         <div className="container mx-auto px-4">
@@ -210,7 +201,7 @@ export default function Home() {
             <div>
               <p className="mb-2 inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-[0.22em] text-primary">
                 <Newspaper className="h-4 w-4" aria-hidden="true" />
-                September Coach &amp; School Update
+                Coach &amp; School Update
               </p>
               <h2 className="font-heading text-3xl font-bold uppercase tracking-tight text-white md:text-4xl">
                 Current Links For Coaches
@@ -224,70 +215,28 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-            <article className="rounded-lg border-2 border-primary bg-background p-5 md:p-7">
-              <div className="mb-4 inline-flex rounded-sm bg-primary px-3 py-1 font-heading text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground">
-                Deadline Extended
-              </div>
-              <h3 className="font-heading text-3xl font-bold uppercase leading-tight text-white md:text-5xl">
-                {REGISTRATION_EXTENSION.title}
-              </h3>
-              <p className="mt-4 text-sm leading-6 text-muted-foreground md:text-base">
-                {REGISTRATION_EXTENSION.message}
-              </p>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
-                {REGISTRATION_EXTENSION.clarification}
-              </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Button
-                  asChild
-                  className="h-11 bg-primary px-5 font-heading uppercase tracking-widest text-primary-foreground hover:bg-primary/90"
-                >
-                  <a
-                    href={REGISTRATION_EXTENSION.leagueOsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                    Register In LeagueOS
-                  </a>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="h-11 border-primary/50 px-5 font-heading uppercase tracking-widest text-primary hover:bg-primary hover:text-primary-foreground"
-                >
-                  <Link href={septemberStories[0].href}>
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    Registration Information
-                  </Link>
-                </Button>
-              </div>
-            </article>
-
-            <div className="grid gap-5">
-              {septemberStories.slice(1).map((story) => (
-                <Link
-                  key={story.href}
-                  href={story.href}
-                  className="group rounded-lg border border-primary/20 bg-background p-5 transition-colors hover:border-primary/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                >
-                  <p className="mb-2 font-heading text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                    {story.eyebrow}
-                  </p>
-                  <h3 className="font-heading text-2xl font-bold uppercase leading-tight text-white transition-colors group-hover:text-primary">
-                    {story.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                    {story.desc}
-                  </p>
-                  <span className="mt-4 inline-flex items-center gap-2 font-heading text-xs font-bold uppercase tracking-[0.18em] text-primary">
-                    {story.cta}
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </span>
-                </Link>
-              ))}
-            </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            {coachUpdates.map((story) => (
+              <Link
+                key={story.href}
+                href={story.href}
+                className="group rounded-lg border border-primary/20 bg-background p-5 transition-colors hover:border-primary/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                <p className="mb-2 font-heading text-xs font-bold uppercase tracking-[0.2em] text-primary">
+                  {story.eyebrow}
+                </p>
+                <h3 className="font-heading text-2xl font-bold uppercase leading-tight text-white transition-colors group-hover:text-primary">
+                  {story.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                  {story.desc}
+                </p>
+                <span className="mt-4 inline-flex items-center gap-2 font-heading text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                  {story.cta}
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </span>
+              </Link>
+            ))}
           </div>
 
           <div className="mt-5 grid gap-5 md:grid-cols-2">
