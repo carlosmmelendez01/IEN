@@ -1,8 +1,8 @@
-import { useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import type { School } from "@/data/schools";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -46,19 +46,19 @@ const createClusterIcon = (cluster: any) =>
     iconAnchor: [18, 18],
   });
 
-export interface School {
-  name: string;
-  city: string;
-  teams: number;
-  divisions: string[];
-  lat: number;
-  lng: number;
-}
-
 interface SchoolMapProps {
   schools: School[];
   selectedDivision: string;
 }
+
+const divisionLabelFor = (school: School) =>
+  school.divisions
+    .map((division) =>
+      division === "IHSEN"
+        ? `${division} · ${school.leagueDivision}`
+        : division,
+    )
+    .join(" · ");
 
 export default function SchoolMap({ schools, selectedDivision }: SchoolMapProps) {
   const selectedKey =
@@ -89,9 +89,9 @@ export default function SchoolMap({ schools, selectedDivision }: SchoolMapProps)
         iconCreateFunction={createClusterIcon}
         maxClusterRadius={50}
       >
-        {filtered.map((school, i) => (
+        {filtered.map((school) => (
           <Marker
-            key={i}
+            key={`${school.name}-${school.leagueDivision}`}
             position={[school.lat, school.lng]}
             icon={createCustomIcon(markerDivisionFor(school))}
             title={`${school.name} in ${school.city}`}
@@ -103,7 +103,11 @@ export default function SchoolMap({ schools, selectedDivision }: SchoolMapProps)
                 <span style={{ color: "#888", fontSize: 12 }}>{school.city}</span>
                 <br />
                 <span style={{ color: "#c9a227", fontSize: 12, fontWeight: "bold" }}>
-                  {school.divisions.join(" · ")}
+                  {divisionLabelFor(school)}
+                </span>
+                <br />
+                <span style={{ color: "#888", fontSize: 11 }}>
+                  {school.teams} registered {school.teams === 1 ? "team" : "teams"}
                 </span>
               </div>
             </Popup>

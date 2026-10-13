@@ -422,7 +422,9 @@ export default function Schools() {
                               key={d}
                               className={`text-xs font-bold ${divisionColor(d)}`}
                             >
-                              {d}
+                              {d === "IHSEN"
+                                ? `${d} · ${school.leagueDivision}`
+                                : d}
                             </span>
                           ))}
                         </div>
