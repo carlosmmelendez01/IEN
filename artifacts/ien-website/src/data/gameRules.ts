@@ -198,6 +198,8 @@ export const rulesetGames: RulesetGame[] = [
     format: "Head-to-head rounds",
     matchWindow: "IHSEN Wednesdays 5 PM ET / IMSEN Thursdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
+    ruleDocHref: "/documents/rulesets/tetris-ruleset-2026-27.pdf",
+    ruleDocVersion: "1.0",
   },
   {
     id: "iracing",
