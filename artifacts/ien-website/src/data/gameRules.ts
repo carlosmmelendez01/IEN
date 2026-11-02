@@ -173,7 +173,7 @@ export const rulesetGames: RulesetGame[] = [
     matchWindow: "IHSEN Tuesdays 5 PM ET / IMSEN Mondays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
     ruleDocHref: "/documents/rulesets/marvel-rivals-bylaws-game-rules-2026-27.pdf",
-    ruleDocVersion: "1.02",
+    ruleDocVersion: "1.03",
   },
   {
     id: "chess",
