@@ -519,6 +519,12 @@ const keyDates: ScheduleEvent[] = [
     "2026-11-12",
     allDivisions,
     "Monthly coaches meeting listed on the official season calendars.",
+    "7 PM CT / 8 PM ET",
+    {
+      label: "Join Google Meet",
+      href: "https://meet.google.com/sgp-kcsr-yoq",
+      external: true,
+    },
   ),
   meetingEvent(
     "coaches-december",

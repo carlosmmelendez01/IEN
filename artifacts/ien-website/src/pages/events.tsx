@@ -14,10 +14,7 @@ import {
 } from "lucide-react";
 import drewRhodaPhoto from "@assets/state-finals/04-drew-rhoda-1200.jpg";
 
-const OCTOBER_COACHES_MEET_URL = "https://meet.google.com/eif-aqto-oxv";
-const OCTOBER_COACHES_DIAL_IN = "tel:+13148330650,,179567581%23";
-const OCTOBER_COACHES_PHONE_NUMBERS_URL =
-  "https://tel.meet/eif-aqto-oxv?pin=6984136579753";
+const NOVEMBER_COACHES_MEET_URL = "https://meet.google.com/sgp-kcsr-yoq";
 
 export default function Events() {
   return (
@@ -54,7 +51,7 @@ export default function Events() {
                 className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
               >
                 <a
-                  href={OCTOBER_COACHES_MEET_URL}
+                  href={NOVEMBER_COACHES_MEET_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -84,7 +81,7 @@ export default function Events() {
               Upcoming
             </div>
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
-              October Coaches Meeting
+              November Coaches Meeting
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-6 max-w-2xl">
               Monthly coaches meeting for IHSEN, IMSEN, and IUEN coaches.
@@ -96,7 +93,7 @@ export default function Events() {
                   Date
                 </p>
                 <p className="text-sm text-white font-semibold">
-                  Thursday, October 8, 2026
+                  Thursday, November 12, 2026
                 </p>
               </div>
               <div className="rounded-lg border border-[#ef4343]/35 bg-background/70 p-4">
@@ -105,7 +102,7 @@ export default function Events() {
                   Time
                 </p>
                 <p className="text-sm text-white font-semibold">
-                  7–8 PM CT / 8–9 PM ET
+                  7 PM CT / 8 PM ET
                 </p>
               </div>
               <div className="rounded-lg border border-[#ef4343]/35 bg-background/70 p-4">
@@ -116,38 +113,18 @@ export default function Events() {
                 <p className="text-sm text-white font-semibold">Google Meet</p>
               </div>
             </div>
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button
-                asChild
-                className="w-full sm:w-auto bg-[#ef4343] text-[#0d1623] hover:bg-[#f05a5a] font-heading tracking-widest h-12 px-8"
-              >
-                <a
-                  href={OCTOBER_COACHES_MEET_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  JOIN GOOGLE MEET
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="w-full sm:w-auto border-[#ef4343] text-[#ef4343] hover:bg-[#ef4343] hover:text-[#0d1623] font-heading tracking-widest h-12 px-8"
-              >
-                <a href={OCTOBER_COACHES_DIAL_IN}>DIAL BY PHONE</a>
-              </Button>
-            </div>
-            <p className="mt-4 text-sm text-muted-foreground">
-              US: +1 314-833-0650 · PIN: 179 567 581# ·{" "}
+            <Button
+              asChild
+              className="w-full sm:w-auto bg-[#ef4343] text-[#0d1623] hover:bg-[#f05a5a] font-heading tracking-widest h-12 px-8"
+            >
               <a
-                href={OCTOBER_COACHES_PHONE_NUMBERS_URL}
+                href={NOVEMBER_COACHES_MEET_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-[#ef4343] underline decoration-[#ef4343]/50 underline-offset-4 hover:text-[#f05a5a]"
               >
-                More phone numbers
+                JOIN GOOGLE MEET
               </a>
-            </p>
+            </Button>
           </article>
 
           <article className="relative overflow-hidden rounded-xl border border-primary/30 bg-card p-6 md:p-8">
