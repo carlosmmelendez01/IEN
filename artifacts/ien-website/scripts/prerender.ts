@@ -18,6 +18,7 @@ const ROUTES = [
   "/schedule",
   "/events",
   "/news",
+  "/news/overwatch-hero-bans",
   "/news/middle-school-unified-registration-closes-september-18",
   "/news/los-premier-returns-national-ranked-play-2026-27",
   "/news/spartan-showdown-returns-november-7",

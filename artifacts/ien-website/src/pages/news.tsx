@@ -38,6 +38,7 @@ type Category =
   | "Coach Spotlight"
   | "League Operations"
   | "Registration Update"
+  | "Rules Update"
   | "Website Update"
   | "Press Release"
   | "Community"
@@ -58,6 +59,7 @@ const CATEGORY_STYLES: Record<
   "Coach Spotlight": { icon: Award, tone: "outline" },
   "League Operations": { icon: Layers, tone: "outline" },
   "Registration Update": { icon: ClipboardList, tone: "outline" },
+  "Rules Update": { icon: ClipboardList, tone: "solid" },
   "Website Update": { icon: Monitor, tone: "outline" },
   "Press Release": { icon: Newspaper, tone: "solid" },
   Community: { icon: Users, tone: "outline" },
@@ -157,6 +159,24 @@ Charter your school for 2026-27. Register teams in LeagueOS before the deadline.
 General questions go to support@indianaesportsnetwork.org.
 
 Education First. Esports Always.`;
+
+const OVERWATCH_HERO_BANS_BODY = `Each team bans one hero before every map. A banned hero can't be played by either team on that map.
+
+BEFORE EACH MAP
+1. Check who bans first. On Map 1, the home team bans first. On every map after that, the team that lost the last map bans first.
+2. The first team posts its ban in match chat.
+3. The second team posts its ban in match chat. It must be a hero from a different role than the first ban.
+4. Both bans must be posted before the scheduled start time.
+
+THREE THINGS TO REMEMBER
+• Match chat only. Bans posted in Discord, email, or anywhere else don't count.
+• New bans every map. Bans from the last map don't carry over.
+• No repeats. Your team can't ban the same hero twice in one match.
+
+QUICK EXAMPLE
+Map 1: The home team bans Mauga (tank). The other team must ban a damage or support hero.
+Map 2: The loser of Map 1 bans Tracer (damage). The other team must ban a tank or support hero.
+Map 3: The loser of Map 2 can't repeat its earlier ban. The other team's ban must be from a different role, and neither team can repeat one of its earlier bans.`;
 
 const REGISTRATION_EXTENSION_BODY = `Middle School and Unified competition registration now closes September 18, 2026.
 
@@ -397,6 +417,21 @@ Schools planning to attend with students are encouraged to reach out in advance.
 More information — booth location, daily schedule, demo windows — will be published as the convention date approaches.`;
 
 const POSTS: NewsPost[] = [
+  {
+    id: 13,
+    slug: "overwatch-hero-bans",
+    date: "November 3, 2026",
+    author: "IEN Staff",
+    category: "Rules Update",
+    headline: "Overwatch Hero Bans",
+    excerpt:
+      "Each team bans one hero before every map. Review who bans first, where bans must be posted, role restrictions, and the no-repeat rule.",
+    body: OVERWATCH_HERO_BANS_BODY,
+    content: <OverwatchHeroBansContent />,
+    image: liveCompetitionImage,
+    imageFocal: "45% 45%",
+    hubCtaLabel: "Review Hero Bans",
+  },
   {
     id: 10,
     slug: "middle-school-unified-registration-closes-september-18",
@@ -981,6 +1016,135 @@ function ArticleCta({ href, children }: { href: string; children: ReactNode }) {
         {content}
       </a>
     </Button>
+  );
+}
+
+function OverwatchHeroBansContent() {
+  const reminders = [
+    {
+      title: "Match chat only.",
+      copy: "Bans posted in Discord, email, or anywhere else don't count.",
+    },
+    {
+      title: "New bans every map.",
+      copy: "Bans from the last map don't carry over.",
+    },
+    {
+      title: "No repeats.",
+      copy: "Your team can't ban the same hero twice in one match.",
+    },
+  ];
+
+  const examples = [
+    ["1", "Home team", "Mauga (tank)", "Must be damage or support"],
+    ["2", "Loser of Map 1", "Tracer (damage)", "Must be tank or support"],
+    [
+      "3",
+      "Loser of Map 2",
+      "Can't repeat its earlier ban",
+      "Different role, and can't repeat its earlier ban",
+    ],
+  ];
+
+  return (
+    <div className="space-y-8">
+      <section className="border-l-2 border-primary pl-4">
+        <p className="font-heading text-lg font-bold uppercase text-white">
+          One ban per team, before every map
+        </p>
+        <p className="mt-2">
+          Each team bans one hero before every map. A banned hero can't be
+          played by either team on that map.
+        </p>
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Before Each Map
+        </h3>
+        <ol className="space-y-3">
+          <li>
+            <strong>Check who bans first.</strong> The home team bans first on
+            Map 1. On every map after that, the team that lost the last map bans
+            first.
+          </li>
+          <li>
+            <strong>The first team posts its ban</strong> in match chat.
+          </li>
+          <li>
+            <strong>The second team posts its ban</strong> in match chat. It
+            must be a hero from a <strong>different role</strong> than the first
+            ban.
+          </li>
+          <li>
+            <strong>Both bans must be posted</strong> before the scheduled start
+            time.
+          </li>
+        </ol>
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Three Things To Remember
+        </h3>
+        <ul className="not-prose space-y-3">
+          {reminders.map((item) => (
+            <li key={item.title} className="border-l-2 border-primary/70 pl-4">
+              <span className="block font-heading text-sm font-bold uppercase text-white">
+                {item.title}
+              </span>
+              <span className="mt-1 block text-sm leading-6 text-muted-foreground md:text-base">
+                {item.copy}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="font-heading text-xl font-bold uppercase text-white">
+          Quick Example
+        </h3>
+        <div className="not-prose overflow-x-auto border-y border-primary/20">
+          <table className="w-full min-w-[48rem] border-collapse text-left text-sm">
+            <caption className="sr-only">
+              Example Overwatch hero bans across three maps
+            </caption>
+            <thead>
+              <tr className="border-b border-primary/30 text-white">
+                <th className="px-3 py-3 font-heading text-xs font-bold uppercase tracking-wider">
+                  Map
+                </th>
+                <th className="px-3 py-3 font-heading text-xs font-bold uppercase tracking-wider">
+                  Bans First
+                </th>
+                <th className="px-3 py-3 font-heading text-xs font-bold uppercase tracking-wider">
+                  Their Ban
+                </th>
+                <th className="px-3 py-3 font-heading text-xs font-bold uppercase tracking-wider">
+                  Other Team's Ban
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {examples.map(([map, first, ban, other]) => (
+                <tr
+                  key={map}
+                  className="border-b border-primary/10 last:border-0"
+                >
+                  <th className="px-3 py-3 font-heading text-xs font-bold uppercase text-primary">
+                    {map}
+                  </th>
+                  <td className="px-3 py-3 text-muted-foreground">{first}</td>
+                  <td className="px-3 py-3 text-muted-foreground">{ban}</td>
+                  <td className="px-3 py-3 text-muted-foreground">{other}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
   );
 }
 
