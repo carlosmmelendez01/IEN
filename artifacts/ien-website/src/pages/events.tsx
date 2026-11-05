@@ -8,6 +8,7 @@ import {
   Calendar,
   Clock,
   FileText,
+  Gamepad2,
   MapPin,
   Trophy,
   Video,
@@ -50,20 +51,16 @@ export default function Events() {
                 asChild
                 className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
               >
-                <a
-                  href={NOVEMBER_COACHES_MEET_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  JOIN COACHES MEETING
-                </a>
+                <Link href="/events/pacers-esports-cup-qualifiers">
+                  PACERS CUP QUALIFIER
+                </Link>
               </Button>
               <Button
                 asChild
                 variant="outline"
                 className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest h-12 px-8"
               >
-                <a href="#past-events">VIEW PAST EVENTS</a>
+                <a href="#upcoming-events">VIEW UPCOMING EVENTS</a>
               </Button>
             </div>
           </motion.div>
@@ -74,6 +71,60 @@ export default function Events() {
         id="upcoming-events"
         className="py-12 md:py-16 container mx-auto px-4 scroll-mt-24"
       >
+        <article className="relative mb-6 overflow-hidden rounded-xl border-2 border-primary/60 bg-[#0b1524] p-6 shadow-[0_0_36px_rgba(212,175,55,0.12)] md:p-8 lg:p-10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_20%,rgba(212,175,55,0.19),transparent_28%),linear-gradient(135deg,transparent_70%,rgba(212,175,55,0.06)_70%)]" />
+          <div className="relative grid gap-8 lg:grid-cols-[1fr_22rem] lg:items-end">
+            <div>
+              <div className="mb-5 inline-flex items-center gap-2 rounded-sm bg-primary px-3 py-1 font-heading text-xs font-bold uppercase tracking-[0.18em] text-primary-foreground">
+                <Trophy className="h-3.5 w-3.5" aria-hidden="true" />
+                Featured event
+              </div>
+              <p className="text-xs font-heading font-bold uppercase tracking-[0.22em] text-primary">
+                IEN × Pacers Esports Cup 2027
+              </p>
+              <h2 className="mt-3 max-w-4xl text-4xl font-heading font-bold leading-tight text-white md:text-6xl">
+                Online Qualifier
+              </h2>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+                Compete in Super Smash Bros. Ultimate, Rocket League, or NBA 2K
+                for a place in the live finals at Gainbridge Fieldhouse.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm text-gray-300">
+                <span className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4 text-primary" aria-hidden="true" />
+                  Saturday, November 14, 2026
+                </span>
+                <span className="flex items-center gap-2">
+                  <Clock className="h-4 w-4 text-primary" aria-hidden="true" />
+                  Check-in: 8:30 AM CT / 9:30 AM ET
+                </span>
+                <span className="flex items-center gap-2">
+                  <Gamepad2 className="h-4 w-4 text-primary" aria-hidden="true" />
+                  Online on LeagueOS
+                </span>
+              </div>
+            </div>
+
+            <div className="rounded-lg border border-primary/25 bg-background/70 p-5">
+              <p className="text-xs font-heading font-bold uppercase tracking-[0.18em] text-primary">
+                Registration closes
+              </p>
+              <p className="mt-2 text-2xl font-heading font-bold text-white">
+                Wednesday, November 11
+              </p>
+              <Button
+                asChild
+                className="mt-5 h-12 w-full bg-primary font-heading tracking-widest text-primary-foreground hover:bg-primary/90"
+              >
+                <Link href="/events/pacers-esports-cup-qualifiers">
+                  EVENT DETAILS
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </article>
+
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6">
           <article className="rounded-xl border-2 border-[#ef4343]/70 bg-[#ef4343]/10 p-6 md:p-8 shadow-[0_0_28px_rgba(239,67,67,0.12)]">
             <div className="inline-flex items-center gap-2 rounded-sm bg-[#ef4343] px-3 py-1 font-heading text-xs font-bold uppercase tracking-[0.18em] text-[#0d1623] mb-5">

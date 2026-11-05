@@ -17,6 +17,7 @@ const ROUTES = [
   "/leagues/iuen",
   "/schedule",
   "/events",
+  "/events/pacers-esports-cup-qualifiers",
   "/news",
   "/news/overwatch-hero-bans",
   "/news/middle-school-unified-registration-closes-september-18",

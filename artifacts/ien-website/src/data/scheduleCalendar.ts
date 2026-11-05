@@ -11,6 +11,7 @@ export type ScheduleDivision = "IHSEN" | "IMSEN" | "IUEN";
 export type ScheduleEventType =
   | "registration"
   | "meeting"
+  | "tournament"
   | "game-week"
   | "playoffs"
   | "finals"
@@ -99,6 +100,7 @@ export const scheduleDivisions: Array<{
 export const eventTypeLabels: Record<ScheduleEventType, string> = {
   registration: "Registration",
   meeting: "Coach meeting",
+  tournament: "Tournament",
   "game-week": "Game week",
   playoffs: "Playoffs",
   finals: "Finals",
@@ -432,6 +434,51 @@ const iuenSpringPlayoffs: ScheduleEvent[] = [
 );
 
 const keyDates: ScheduleEvent[] = [
+  {
+    id: "pacers-cup-registration-closes",
+    title: "Pacers Esports Cup registration closes",
+    type: "registration",
+    divisions: allDivisions,
+    start: "2026-11-11",
+    time: "All day",
+    location: "LeagueOS",
+    description:
+      "Registration closes for the Pacers Esports Cup online qualifier in Super Smash Bros. Ultimate, Rocket League, and NBA 2K.",
+    action: {
+      label: "Qualifier details",
+      href: "/events/pacers-esports-cup-qualifiers",
+    },
+  },
+  {
+    id: "pacers-cup-online-qualifier",
+    title: "Pacers Esports Cup online qualifier",
+    type: "tournament",
+    divisions: allDivisions,
+    start: "2026-11-14",
+    time: "8:30 AM CT / 9:30 AM ET check-in",
+    location: "Online via LeagueOS",
+    description:
+      "School teams compete in Super Smash Bros. Ultimate, Rocket League, and NBA 2K for a place in the live finals at Gainbridge Fieldhouse.",
+    action: {
+      label: "Qualifier details",
+      href: "/events/pacers-esports-cup-qualifiers",
+    },
+  },
+  {
+    id: "pacers-cup-finals",
+    title: "Pacers Esports Cup finals",
+    type: "tournament",
+    divisions: allDivisions,
+    start: "2027-01-30",
+    time: "Finals schedule TBA | Pacers game at 7:00 PM ET",
+    location: "Gainbridge Fieldhouse, Indianapolis",
+    description:
+      "Qualifying Smash, Rocket League, and NBA 2K competitors play live before Pacers vs. Wizards.",
+    action: {
+      label: "Finals details",
+      href: "/events/pacers-esports-cup-qualifiers",
+    },
+  },
   registrationEvent(
     "fall-registration-opens",
     "Fall registration opens",

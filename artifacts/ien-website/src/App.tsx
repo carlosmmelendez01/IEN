@@ -18,6 +18,9 @@ const IHSEN = lazy(() => import("@/pages/ihsen"));
 const IMSEN = lazy(() => import("@/pages/imsen"));
 const IUEN = lazy(() => import("@/pages/iuen"));
 const Events = lazy(() => import("@/pages/events"));
+const PacersEsportsCupQualifiers = lazy(
+  () => import("@/pages/pacers-esports-cup-qualifiers"),
+);
 const Schools = lazy(() => import("@/pages/schools"));
 const Partners = lazy(() => import("@/pages/partners"));
 const Sponsor = lazy(() => import("@/pages/sponsor"));
@@ -54,6 +57,10 @@ function Router() {
       <Route path="/leagues/ihsen" component={IHSEN} />
       <Route path="/leagues/imsen" component={IMSEN} />
       <Route path="/leagues/iuen" component={IUEN} />
+      <Route
+        path="/events/pacers-esports-cup-qualifiers"
+        component={PacersEsportsCupQualifiers}
+      />
       <Route path="/events" component={Events} />
       <Route path="/schools" component={Schools} />
       <Route path="/partners" component={Partners} />

@@ -28,6 +28,7 @@ import {
 const eventTypeOptions: ScheduleEventType[] = [
   "registration",
   "meeting",
+  "tournament",
   "game-week",
   "playoffs",
   "finals",
@@ -57,6 +58,11 @@ const eventTypeStyles: Record<
     dot: "bg-[#ef4343]",
     chip: "border-[#ef4343]/45 bg-[#ef4343]/12 text-red-100",
     label: "text-red-200",
+  },
+  tournament: {
+    dot: "bg-primary",
+    chip: "border-primary/45 bg-primary/12 text-primary",
+    label: "text-primary",
   },
   "game-week": {
     dot: "bg-sky-300",
@@ -240,10 +246,11 @@ function eventsForDate(events: ScheduleEvent[], iso: string): ScheduleEvent[] {
       const typeWeight: Record<ScheduleEventType, number> = {
         meeting: 0,
         registration: 1,
-        "game-week": 2,
-        playoffs: 3,
-        finals: 4,
-        break: 5,
+        tournament: 2,
+        "game-week": 3,
+        playoffs: 4,
+        finals: 5,
+        break: 6,
       };
 
       return (

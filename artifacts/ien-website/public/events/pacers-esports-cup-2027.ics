@@ -1,0 +1,35 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Indiana Esports Network//Pacers Esports Cup 2027//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:pacers-cup-registration-20261111@indianaesportsnetwork.org
+DTSTAMP:20261105T150000Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:Pacers Esports Cup registration closes
+DESCRIPTION:Registration closes for the Pacers Esports Cup 2027 online qualifier.
+URL:https://indianaesportsnetwork.org/events/pacers-esports-cup-qualifiers
+END:VEVENT
+BEGIN:VEVENT
+UID:pacers-cup-qualifier-20261114@indianaesportsnetwork.org
+DTSTAMP:20261105T150000Z
+DTSTART;TZID=America/New_York:20261114T093000
+DTEND;TZID=America/New_York:20261114T133000
+SUMMARY:Pacers Esports Cup 2027 Online Qualifier
+LOCATION:Online via LeagueOS
+DESCRIPTION:Check-in opens at 9:30 AM ET / 8:30 AM CT. Competition includes Super Smash Bros. Ultimate\, Rocket League\, and NBA 2K.
+URL:https://indianaesportsnetwork.org/events/pacers-esports-cup-qualifiers
+END:VEVENT
+BEGIN:VEVENT
+UID:pacers-cup-finals-20270130@indianaesportsnetwork.org
+DTSTAMP:20261105T150000Z
+DTSTART;VALUE=DATE:20270130
+DTEND;VALUE=DATE:20270131
+SUMMARY:Pacers Esports Cup 2027 Finals
+LOCATION:Gainbridge Fieldhouse\, Indianapolis\, Indiana
+DESCRIPTION:Live finals for qualifying Smash\, Rocket League\, and NBA 2K competitors. Pacers vs. Wizards begins at 7:00 PM.
+URL:https://indianaesportsnetwork.org/events/pacers-esports-cup-qualifiers
+END:VEVENT
+END:VCALENDAR

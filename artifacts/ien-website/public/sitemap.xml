@@ -12,6 +12,7 @@
   <url><loc>https://indianaesportsnetwork.org/leagues/iuen</loc>      <changefreq>monthly</changefreq> <priority>0.9</priority></url>
   <url><loc>https://indianaesportsnetwork.org/schedule</loc>          <changefreq>weekly</changefreq>  <priority>0.9</priority></url>
   <url><loc>https://indianaesportsnetwork.org/events</loc>            <changefreq>weekly</changefreq>  <priority>0.8</priority></url>
+  <url><loc>https://indianaesportsnetwork.org/events/pacers-esports-cup-qualifiers</loc> <changefreq>weekly</changefreq> <priority>0.9</priority></url>
   <url><loc>https://indianaesportsnetwork.org/news</loc>              <changefreq>weekly</changefreq>  <priority>0.8</priority></url>
   <url><loc>https://indianaesportsnetwork.org/news/overwatch-hero-bans</loc>                                      <changefreq>monthly</changefreq> <priority>0.8</priority></url>
   <url><loc>https://indianaesportsnetwork.org/news/middle-school-unified-registration-closes-september-18</loc> <changefreq>weekly</changefreq>  <priority>0.8</priority></url>
