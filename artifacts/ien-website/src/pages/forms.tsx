@@ -59,6 +59,10 @@ const formCards: FormCard[] = [
         href: "https://forms.gle/S5FWfho6DTNu5AyT7",
       },
       {
+        label: "Nintendo Code Request",
+        href: "https://docs.google.com/forms/d/e/1FAIpQLScwf6N1H8oniuWSpaqMgcD1UHtVH759GNoijvh90Gk97UUJbw/viewform?usp=header",
+      },
+      {
         label: "IT Requirements",
         href: "/it-requirements",
       },
@@ -152,7 +156,7 @@ export default function Forms() {
     <Layout>
       <SEO
         title="IEN Forms"
-        description="Official Indiana Esports Network forms for school chartering, LeagueOS registration, streaming verification, Nintendo Ethernet verification, invoices, Unified registration, and coach support."
+        description="Official Indiana Esports Network forms for school chartering, LeagueOS registration, streaming verification, Nintendo Ethernet verification and code requests, invoices, Unified registration, and coach support."
         path="/forms"
       />
 
