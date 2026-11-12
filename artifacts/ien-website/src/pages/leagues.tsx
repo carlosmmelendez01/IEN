@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { FileText } from "lucide-react";
 import {
+  QuickGuideStatus,
   RulesDialog,
   defaultTabForGame,
 } from "@/components/rulesets/RulesetQuickView";
@@ -64,6 +65,7 @@ function GameTile({
   color,
   index,
   onRulesClick,
+  ruleset,
 }: {
   name: string;
   displayName?: string;
@@ -71,8 +73,11 @@ function GameTile({
   color: string;
   index: number;
   onRulesClick?: () => void;
+  ruleset?: RulesetGame;
 }) {
   const [borderClass, textClass] = color.split(" ");
+  const shownName = ruleset?.displayName ?? ruleset?.name ?? displayName ?? name;
+  const shownType = ruleset?.type ?? type;
 
   return (
     <motion.div
@@ -83,9 +88,10 @@ function GameTile({
       className={`bg-card border ${borderClass} p-4 rounded-xl flex flex-col items-center justify-between text-center shadow-lg hover:bg-background transition-colors gap-2`}
     >
       <div className="flex flex-col items-center gap-1">
-        <span className={`font-heading font-bold text-base md:text-lg ${textClass} leading-tight`}>{displayName ?? name}</span>
-        {type && <span className="text-sm text-muted-foreground">{type}</span>}
+        <span className={`font-heading font-bold text-base md:text-lg ${textClass} leading-tight`}>{shownName}</span>
+        {shownType && <span className="text-sm text-muted-foreground">{shownType}</span>}
       </div>
+      {ruleset && <QuickGuideStatus game={ruleset} compact />}
       {onRulesClick && (
         <button
           type="button"
@@ -407,6 +413,7 @@ export default function Leagues() {
               displayName={game.displayName}
               type={game.type}
               color={game.color}
+              ruleset={getRulesetGame(game.name, "ihsen")}
               onRulesClick={() => openRuleset(game.name, "ihsen")}
             />
           ))}
@@ -436,6 +443,7 @@ export default function Leagues() {
               displayName={game.displayName}
               type={game.type}
               color={game.color}
+              ruleset={getRulesetGame(game.name, "imsen")}
               onRulesClick={() => openRuleset(game.name, "imsen")}
             />
           ))}
@@ -477,6 +485,7 @@ export default function Leagues() {
                       name={game.name}
                       displayName={game.displayName}
                       color={game.color}
+                      ruleset={getRulesetGame(game.name, "iuen")}
                       onRulesClick={() => openRuleset(game.name, "iuen")}
                     />
                   ))}

@@ -22,6 +22,7 @@ import {
   FileText,
 } from "lucide-react";
 import {
+  QuickGuideStatus,
   RulesDialog,
   defaultTabForGame,
 } from "@/components/rulesets/RulesetQuickView";
@@ -193,6 +194,8 @@ export default function IUEN() {
     setSelectedRuleset(game);
     setActiveRulesTab(defaultTabForGame(game));
   };
+  const unifiedSmash = getRulesetGame("Super Smash Bros.", "iuen");
+  const unifiedRocketLeague = getRulesetGame("Rocket League", "iuen");
 
   return (
     <Layout>
@@ -521,10 +524,23 @@ export default function IUEN() {
           <div className="bg-card border border-pink-500/40 p-8 rounded-xl text-center flex-1 hover:border-pink-400 transition-colors shadow-lg">
             <Gamepad2 className="w-10 h-10 text-pink-400 mx-auto mb-3" />
             <h4 className="font-heading font-bold text-xl text-pink-300 mb-1">
-              Super Smash Bros.
+              {unifiedSmash.displayName ?? unifiedSmash.name}
             </h4>
-            <p className="text-xs text-muted-foreground">Fall Season</p>
+            <p className="text-xs text-muted-foreground">{unifiedSmash.type}</p>
             <p className="text-xs text-primary mt-2">Finals Dec. 12</p>
+            <dl className="mt-4 grid gap-2 text-left text-xs text-muted-foreground">
+              <div>
+                <dt className="font-heading font-bold uppercase tracking-[0.14em]">Roster</dt>
+                <dd className="mt-0.5 leading-snug text-white/80">{unifiedSmash.roster}</dd>
+              </div>
+              <div>
+                <dt className="font-heading font-bold uppercase tracking-[0.14em]">Format</dt>
+                <dd className="mt-0.5 leading-snug text-white/80">{unifiedSmash.format}</dd>
+              </div>
+            </dl>
+            <div className="mt-4">
+              <QuickGuideStatus game={unifiedSmash} compact />
+            </div>
             <button
               type="button"
               onClick={() => openRuleset("Super Smash Bros.")}
@@ -538,10 +554,23 @@ export default function IUEN() {
           <div className="bg-card border border-blue-500/40 p-8 rounded-xl text-center flex-1 hover:border-blue-400 transition-colors shadow-lg">
             <Gamepad2 className="w-10 h-10 text-blue-400 mx-auto mb-3" />
             <h4 className="font-heading font-bold text-xl text-blue-300 mb-1">
-              Rocket League
+              {unifiedRocketLeague.displayName ?? unifiedRocketLeague.name}
             </h4>
-            <p className="text-xs text-muted-foreground">Starts in January</p>
+            <p className="text-xs text-muted-foreground">{unifiedRocketLeague.type}</p>
             <p className="text-xs text-primary mt-2">Finals Apr. 24</p>
+            <dl className="mt-4 grid gap-2 text-left text-xs text-muted-foreground">
+              <div>
+                <dt className="font-heading font-bold uppercase tracking-[0.14em]">Roster</dt>
+                <dd className="mt-0.5 leading-snug text-white/80">{unifiedRocketLeague.roster}</dd>
+              </div>
+              <div>
+                <dt className="font-heading font-bold uppercase tracking-[0.14em]">Format</dt>
+                <dd className="mt-0.5 leading-snug text-white/80">{unifiedRocketLeague.format}</dd>
+              </div>
+            </dl>
+            <div className="mt-4">
+              <QuickGuideStatus game={unifiedRocketLeague} compact />
+            </div>
             <button
               type="button"
               onClick={() => openRuleset("Rocket League")}

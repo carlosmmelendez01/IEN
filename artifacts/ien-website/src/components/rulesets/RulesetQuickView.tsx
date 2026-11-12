@@ -2,15 +2,17 @@ import { useEffect, type ReactNode } from "react";
 import {
   AlertCircle,
   BookOpen,
-  CalendarDays,
   CheckCircle2,
   ClipboardCheck,
+  Clock3,
   ExternalLink,
   FileText,
+  Gamepad2,
   Mail,
   MapPinned,
   Monitor,
   ShieldCheck,
+  Trophy,
   Users,
   X,
 } from "lucide-react";
@@ -34,16 +36,25 @@ const fullRulesLabel = (game: RulesetGame) =>
       ? `Full Rules - ${game.ruleDocLabel}`
       : "Full Rules";
 
-export function defaultTabForGame(game: RulesetGame): RulesTab {
-  return rotationData[game.id] ? "rotation" : "quick";
+export function defaultTabForGame(_game: RulesetGame): RulesTab {
+  return "quick";
 }
 
-const quickFacts = (game: RulesetGame) => [
-  { label: "Platform", value: game.platform, icon: Monitor },
-  { label: "Roster", value: game.roster, icon: Users },
-  { label: "Match format", value: game.format, icon: ClipboardCheck },
-  { label: "Match window", value: game.matchWindow, icon: CalendarDays },
-];
+const factIcons = [Monitor, Users, ClipboardCheck, Clock3, Trophy, Gamepad2];
+
+const quickFacts = (game: RulesetGame) => {
+  const facts = game.quickGuide?.facts ?? [
+    { label: "Platform", value: game.platform },
+    { label: "Roster", value: game.roster },
+    { label: "Match format", value: game.format },
+    { label: "Match window", value: game.matchWindow },
+  ];
+
+  return facts.map((fact, index) => ({
+    ...fact,
+    icon: factIcons[index % factIcons.length],
+  }));
+};
 
 const setupItems = [
   "Home team creates the match lobby and shares match details in LeagueOS.",
@@ -85,10 +96,12 @@ function FactCard({
 
 function BulletPanel({
   icon: Icon,
+  eyebrow,
   title,
   items,
 }: {
   icon: typeof ShieldCheck;
+  eyebrow?: string;
   title: string;
   items: string[];
 }) {
@@ -96,7 +109,14 @@ function BulletPanel({
     <section className="rounded-lg border border-primary/20 bg-background p-5">
       <div className="mb-4 flex items-center gap-2">
         <Icon className="h-5 w-5 text-primary" aria-hidden />
-        <h3 className="font-heading text-lg font-bold text-white">{title}</h3>
+        <div>
+          {eyebrow && (
+            <p className="text-[0.62rem] font-heading font-bold uppercase tracking-[0.16em] text-muted-foreground">
+              {eyebrow}
+            </p>
+          )}
+          <h3 className="font-heading text-lg font-bold text-white">{title}</h3>
+        </div>
       </div>
       <ul className="space-y-3">
         {items.map((item) => (
@@ -107,6 +127,31 @@ function BulletPanel({
         ))}
       </ul>
     </section>
+  );
+}
+
+export function QuickGuideStatus({
+  game,
+  compact = false,
+}: {
+  game: RulesetGame;
+  compact?: boolean;
+}) {
+  const verified = game.quickGuide?.status === "verified";
+  const Icon = verified ? CheckCircle2 : AlertCircle;
+  const label = game.quickGuide?.statusLabel ?? "Guide pending";
+
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full border font-heading font-bold uppercase tracking-[0.12em] ${
+        verified
+          ? "border-emerald-400/35 bg-emerald-400/10 text-emerald-300"
+          : "border-amber-300/35 bg-amber-300/10 text-amber-200"
+      } ${compact ? "px-2 py-1 text-[0.58rem]" : "px-3 py-1.5 text-[0.68rem]"}`}
+    >
+      <Icon className={compact ? "h-3 w-3" : "h-3.5 w-3.5"} aria-hidden />
+      {label}
+    </span>
   );
 }
 
@@ -190,22 +235,38 @@ function RotationTable({
 }
 
 function QuickGuidePanel({ game }: { game: RulesetGame }) {
-  const setup = game.quickGuide?.setup ?? setupItems;
-  const scoring = game.quickGuide?.scoring ?? scoringItems;
-  const reminders = game.quickGuide?.reminders ?? coachReminderItems;
+  const sections = game.quickGuide?.sections ?? [
+    { eyebrow: "Lobby checklist", title: "Match Setup", items: setupItems },
+    { eyebrow: "Result handling", title: "Scoring", items: scoringItems },
+    { eyebrow: "Eligibility & conduct", title: "Coach Reminders", items: coachReminderItems },
+  ];
+  const sectionIcons = [ShieldCheck, FileText, AlertCircle];
 
   return (
     <>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {game.quickGuide?.note && (
+        <div className="mb-5 flex items-start gap-3 rounded-lg border border-amber-300/35 bg-amber-300/10 px-4 py-3 text-sm leading-6 text-amber-100">
+          <AlertCircle className="mt-1 h-4 w-4 shrink-0 text-amber-300" aria-hidden />
+          <p>{game.quickGuide.note}</p>
+        </div>
+      )}
+
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {quickFacts(game).map((fact) => (
           <FactCard key={fact.label} {...fact} />
         ))}
       </div>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-3">
-        <BulletPanel icon={ShieldCheck} title="Match Setup" items={setup} />
-        <BulletPanel icon={FileText} title="Scoring" items={scoring} />
-        <BulletPanel icon={AlertCircle} title="Coach Reminders" items={reminders} />
+        {sections.map((section, index) => (
+          <BulletPanel
+            key={`${section.eyebrow}-${section.title}`}
+            icon={sectionIcons[index % sectionIcons.length]}
+            eyebrow={section.eyebrow}
+            title={section.title}
+            items={section.items}
+          />
+        ))}
       </div>
     </>
   );
@@ -411,9 +472,13 @@ export function RulesDialog({
                   {league}
                 </span>
               ))}
+              <span className="rounded-full border border-primary/20 px-2.5 py-1 text-xs font-heading font-bold tracking-[0.12em] text-muted-foreground">
+                {game.type.toUpperCase()}
+              </span>
               <span className="rounded-full border border-primary/20 px-2.5 py-1 text-xs font-heading font-bold tracking-[0.14em] text-muted-foreground">
                 2026-27 QUICK GUIDE
               </span>
+              <QuickGuideStatus game={game} compact />
             </div>
             <h2 id="rules-dialog-title" className="font-heading text-3xl font-bold text-white sm:text-4xl">
               {displayNameForGame(game)} Rules
@@ -424,6 +489,11 @@ export function RulesDialog({
             {game.note && (
               <p className="mt-2 max-w-2xl text-sm font-semibold leading-6 text-primary">
                 {game.note}
+              </p>
+            )}
+            {game.quickGuide?.sourceLabel && (
+              <p className="mt-2 text-xs font-heading font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                Quick-guide source: {game.quickGuide.sourceLabel}
               </p>
             )}
             {game.contact && (
@@ -452,7 +522,7 @@ export function RulesDialog({
               </a>
             ) : (
               <span className="inline-flex min-h-10 items-center rounded-md border border-primary/20 px-4 text-xs font-heading font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                {RULES_UPDATE_SHORT_LABEL}
+                {game.quickGuide?.status === "verified" ? "Full PDF pending" : RULES_UPDATE_SHORT_LABEL}
               </span>
             )}
             <button
@@ -521,6 +591,7 @@ export function RulesetLibrary({
                 {league}
               </span>
             ))}
+            <QuickGuideStatus game={game} compact />
           </div>
 
           <div>
@@ -574,7 +645,9 @@ export function RulesetLibrary({
             ) : (
               <span className="inline-flex min-h-10 items-center rounded-md border border-primary/20 px-3 text-[0.65rem] font-heading font-bold uppercase tracking-[0.14em] text-muted-foreground">
                 {RULES_DOCUMENTS_AVAILABLE
-                  ? game.status ?? "Pending"
+                  ? game.quickGuide?.status === "verified"
+                    ? "Full PDF pending"
+                    : game.status ?? "Pending"
                   : RULES_UPDATE_SHORT_LABEL}
               </span>
             )}

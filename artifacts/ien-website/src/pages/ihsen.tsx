@@ -5,7 +5,7 @@ import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Trophy, Users, Gamepad2, Star, Calendar, FileText } from "lucide-react";
-import { RulesDialog, defaultTabForGame } from "@/components/rulesets/RulesetQuickView";
+import { QuickGuideStatus, RulesDialog, defaultTabForGame } from "@/components/rulesets/RulesetQuickView";
 import { getRulesetGame, type RulesTab, type RulesetGame } from "@/data/gameRules";
 import ihsenLogo from "@assets/IEN_IHSEN White Text.png";
 
@@ -257,6 +257,9 @@ export default function IHSEN() {
                     <dd className="mt-0.5 text-white/80 leading-snug">{ruleset.platform}</dd>
                   </div>
                 </dl>
+                <div className="mt-4">
+                  <QuickGuideStatus game={ruleset} compact />
+                </div>
                 <button
                   type="button"
                   onClick={() => openRuleset(game.name)}

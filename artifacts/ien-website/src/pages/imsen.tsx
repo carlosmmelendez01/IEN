@@ -5,7 +5,7 @@ import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Trophy, Users, Gamepad2, Star, Calendar, FileText } from "lucide-react";
-import { RulesDialog, defaultTabForGame } from "@/components/rulesets/RulesetQuickView";
+import { QuickGuideStatus, RulesDialog, defaultTabForGame } from "@/components/rulesets/RulesetQuickView";
 import { getRulesetGame, type RulesTab, type RulesetGame } from "@/data/gameRules";
 import imsenLogo from "@assets/IEN_IMSEN White Text .png";
 
@@ -231,8 +231,10 @@ export default function IMSEN() {
                 className={`bg-card border ${game.border} p-5 rounded-xl hover:bg-background transition-colors`}
               >
                 <div className="mb-3">
-                  <h4 className={`font-heading font-bold text-base ${game.color}`}>{game.name}</h4>
-                  <span className="text-xs text-muted-foreground">{game.type}</span>
+                  <h4 className={`font-heading font-bold text-base ${game.color}`}>
+                    {ruleset.displayName ?? ruleset.name}
+                  </h4>
+                  <span className="text-xs text-muted-foreground">{ruleset.type}</span>
                 </div>
                 <dl className="grid gap-2 text-xs text-muted-foreground">
                   <div>
@@ -244,6 +246,9 @@ export default function IMSEN() {
                     <dd className="mt-0.5 text-white/80 leading-snug">{ruleset.platform}</dd>
                   </div>
                 </dl>
+                <div className="mt-4">
+                  <QuickGuideStatus game={ruleset} compact />
+                </div>
                 <button
                   type="button"
                   onClick={() => openRuleset(game.name)}

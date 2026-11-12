@@ -1,3 +1,5 @@
+import { quickGuides, type QuickGuide } from "@/data/quickGuides";
+
 export type LeagueKey = "ihsen" | "imsen" | "iuen";
 
 export type RulesTab = "quick" | "rotation" | "full";
@@ -22,11 +24,7 @@ export type RulesetGame = {
     name: string;
     email: string;
   };
-  quickGuide?: {
-    setup: string[];
-    scoring: string[];
-    reminders: string[];
-  };
+  quickGuide?: QuickGuide;
 };
 
 export type RotationRow = {
@@ -69,6 +67,7 @@ export const rulesetGames: RulesetGame[] = [
     leagues: ["IHSEN"],
     ruleDocHref: "/documents/rulesets/valorant-bylaws-game-rules-2026-27.pdf",
     ruleDocVersion: "1.0",
+    quickGuide: quickGuides.valorant,
   },
   {
     id: "apex-legends",
@@ -82,6 +81,7 @@ export const rulesetGames: RulesetGame[] = [
     leagues: ["IHSEN"],
     ruleDocHref: "/documents/rulesets/apex-legends-ruleset-2026-27.pdf",
     ruleDocVersion: "1.0",
+    quickGuide: quickGuides["apex-legends"],
   },
   {
     id: "rocket-league",
@@ -95,6 +95,7 @@ export const rulesetGames: RulesetGame[] = [
     leagues: ["IHSEN", "IMSEN"],
     ruleDocHref: "/documents/rulesets/rocket-league-bylaws-game-rules-2026-27.pdf",
     ruleDocVersion: "1.0",
+    quickGuide: quickGuides["rocket-league"],
   },
   {
     id: "league-of-legends",
@@ -109,6 +110,7 @@ export const rulesetGames: RulesetGame[] = [
     ruleDocHref: "/documents/rulesets/league-of-legends-trials-rule-book.pdf",
     ruleDocLabel: "Trials Rule Book",
     note: "Cross-state ISEA Trials competition.",
+    quickGuide: quickGuides["league-of-legends"],
   },
   {
     id: "overwatch-2",
@@ -122,19 +124,22 @@ export const rulesetGames: RulesetGame[] = [
     leagues: ["IHSEN"],
     ruleDocHref: "/documents/rulesets/overwatch-2-ruleset-2026-27.pdf",
     ruleDocVersion: "1.0",
+    quickGuide: quickGuides["overwatch-2"],
   },
   {
     id: "super-smash-bros",
     name: "Super Smash Bros.",
+    displayName: "Super Smash Bros. Ultimate",
     type: "Varsity 1A/2A + Club",
     color: "#ff5eb8",
     platform: "Nintendo Switch",
     roster: "4 starters / 2 substitutes",
-    format: "4v4 crew battles; playoffs Bo3",
+    format: "Bo3 4v4 crew-battle rounds; 12 stocks per team per round",
     matchWindow: "IHSEN Wednesdays 5 PM ET / IMSEN Tuesdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
     ruleDocHref: "/documents/rulesets/super-smash-bros-ultimate-bylaws-game-rules-2026-27.pdf",
     ruleDocVersion: "1.01",
+    quickGuide: quickGuides["super-smash-bros"],
   },
   {
     id: "mario-kart-8-deluxe",
@@ -148,6 +153,7 @@ export const rulesetGames: RulesetGame[] = [
     leagues: ["IHSEN", "IMSEN"],
     ruleDocHref: "/documents/rulesets/mario-kart-8-deluxe-ruleset-2026-27.pdf",
     ruleDocVersion: "1.01",
+    quickGuide: quickGuides["mario-kart-8-deluxe"],
   },
   {
     id: "minecraft",
@@ -161,6 +167,7 @@ export const rulesetGames: RulesetGame[] = [
     leagues: ["IHSEN", "IMSEN"],
     ruleDocHref: "/documents/rulesets/minecraft-ruleset-2026-27.pdf",
     ruleDocVersion: "1.1",
+    quickGuide: quickGuides.minecraft,
   },
   {
     id: "marvel-rivals",
@@ -174,6 +181,7 @@ export const rulesetGames: RulesetGame[] = [
     leagues: ["IHSEN", "IMSEN"],
     ruleDocHref: "/documents/rulesets/marvel-rivals-bylaws-game-rules-2026-27.pdf",
     ruleDocVersion: "1.03",
+    quickGuide: quickGuides["marvel-rivals"],
   },
   {
     id: "chess",
@@ -187,6 +195,7 @@ export const rulesetGames: RulesetGame[] = [
     leagues: ["IHSEN", "IMSEN"],
     ruleDocHref: "/documents/rulesets/chess-ruleset-2026-27.pdf",
     ruleDocVersion: "1.0",
+    quickGuide: quickGuides.chess,
   },
   {
     id: "tetris",
@@ -200,6 +209,7 @@ export const rulesetGames: RulesetGame[] = [
     leagues: ["IHSEN", "IMSEN"],
     ruleDocHref: "/documents/rulesets/tetris-ruleset-2026-27.pdf",
     ruleDocVersion: "1.0",
+    quickGuide: quickGuides.tetris,
   },
   {
     id: "iracing",
@@ -218,23 +228,7 @@ export const rulesetGames: RulesetGame[] = [
       name: "Drew Rhoda",
       email: "rhodad@wl.k12.in.us",
     },
-    quickGuide: {
-      setup: [
-        "Complete LeagueOS registration and the IEN iRacing Google Form, then have each driver request to join the IEN iRacing league.",
-        "Drivers must use their real name, keep their iRacing account in good standing, and use the week's Mazda MX-5 road or Street Stock oval content.",
-        "All drivers must attend the 4:40 PM ET / 3:40 PM CT Google Meet with cameras on to be eligible to race.",
-      ],
-      scoring: [
-        "Drivers earn qualifying points, race-finish points, and bonuses; iRacing handles scoring, so no LeagueOS score report is required.",
-        "Qualifying awards 15 points for 1st, 10 for 2nd, 5 for 3rd, then 4 through 1 points for 4th through 7th.",
-        "Bonus points: 5 for fastest lap, 5 for most laps led, and 1 for leading a lap; the maximum is 76 points per session.",
-      ],
-      reminders: [
-        "No substitutes are permitted. A driver who misses a race forfeits that week's possible points.",
-        "Submit approved road and oval liveries before the first regular-season race; first-season drivers must use the official yellow rookie stripe.",
-        "Incident points can trigger drive-through penalties at 8x and 12x, and automatic disqualification at 16x.",
-      ],
-    },
+    quickGuide: quickGuides.iracing,
   },
   {
     id: "fortnite",
@@ -246,10 +240,13 @@ export const rulesetGames: RulesetGame[] = [
     format: "Custom match scoring",
     matchWindow: "Mondays, 4:30 PM ET / 3:30 PM CT",
     leagues: ["IMSEN"],
+    status: "Quick guide verified from the latest IEN update; official PDF not posted.",
+    quickGuide: quickGuides.fortnite,
   },
   {
     id: "unified-rocket-league",
     name: "Rocket League",
+    displayName: "Unified Rocket League",
     type: "Unified Spring",
     color: "#4da0ff",
     platform: "PC, Xbox, PlayStation, Nintendo Switch",
@@ -259,19 +256,22 @@ export const rulesetGames: RulesetGame[] = [
     leagues: ["IUEN"],
     ruleDocHref: "/documents/rulesets/unified-rocket-league-bylaws-game-rules-2026-27.pdf",
     ruleDocVersion: "1.0",
+    quickGuide: quickGuides["unified-rocket-league"],
   },
   {
     id: "unified-super-smash-bros",
     name: "Super Smash Bros.",
+    displayName: "Unified Super Smash Bros. Ultimate",
     type: "Unified Fall",
     color: "#ff5eb8",
     platform: "Nintendo Switch",
     roster: "4 starters (2 athletes / 2 partners) / 2 substitutes",
-    format: "4v4 crew battles; playoffs Bo3",
+    format: "Bo3 4v4 crew-battle rounds; 12 stocks per team per round",
     matchWindow: "Tuesdays, 4:30 PM ET / 3:30 PM CT",
     leagues: ["IUEN"],
     ruleDocHref: "/documents/rulesets/unified-super-smash-bros-ultimate-bylaws-game-rules-2026-27.pdf",
     ruleDocVersion: "1.0",
+    quickGuide: quickGuides["unified-super-smash-bros"],
   },
 ];
 
