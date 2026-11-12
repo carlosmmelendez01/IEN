@@ -13,7 +13,7 @@ const games = [
   { name: "Rocket League",       type: "Varsity + Club", color: "text-blue-400",   border: "border-blue-500/50",   roster: "3 starters | 2 subs",  platform: "Cross-platform" },
   { name: "Super Smash Bros.",   type: "Varsity + Club", color: "text-pink-400",   border: "border-pink-500/50",   roster: "4 starters | 2 subs",  platform: "Nintendo Switch" },
   { name: "Fortnite",            type: "Varsity + Club", color: "text-purple-400", border: "border-purple-500/50", roster: "3 starters | 2 subs",  platform: "Cross-platform" },
-  { name: "Minecraft",           type: "Varsity",        color: "text-green-400",  border: "border-green-500/50",  roster: "Varies by format",     platform: "PC" },
+  { name: "Minecraft",           type: "Varsity",        color: "text-green-400",  border: "border-green-500/50",  roster: "4 starters | 2 subs",  platform: "PC, Java Edition" },
   { name: "Marvel Rivals",       type: "Varsity + Club", color: "text-rose-400",   border: "border-rose-500/50",   roster: "6 starters | 2 subs",  platform: "PC" },
   { name: "Mario Kart 8 Deluxe", type: "Club",           color: "text-red-300",    border: "border-red-600/50",    roster: "4 starters | 2 subs",  platform: "Nintendo Switch" },
   { name: "Chess",               type: "Tournament",     color: "text-gray-300",   border: "border-gray-400/50",   roster: "Board-style format",   platform: "Chess.com" },
