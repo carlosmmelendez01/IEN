@@ -70,6 +70,10 @@ const formCards: FormCard[] = [
         label: "Verified Streaming Form",
         href: "https://docs.google.com/forms/d/e/1FAIpQLSdsBvpSzpFfoCxD1bsVrg0ypWiLIC5sSZlMUfCQFhQrV7lw4Q/viewform",
       },
+      {
+        label: "Infraction Reporting",
+        href: "https://forms.gle/PYn4TL3gJxaLDrDN6",
+      },
     ],
     footer: "If your school account blocks a form, email support.",
   },
