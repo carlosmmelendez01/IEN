@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
+import { IEN_RALLYCRY_URL } from "@/lib/registration";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
@@ -160,6 +161,14 @@ export default function IHSEN() {
       </section>
 
       <section className="py-16 container mx-auto px-4">
+        <p className="mx-auto mb-6 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground">
+          Chess and Tetris coaches join their school in RallyCry and register
+          each student as a one-player team. RallyCry play begins in Week 3 with
+          fresh standings for both titles.{" "}
+          <a href={IEN_RALLYCRY_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-primary hover:underline">
+            Open IEN RallyCry
+          </a>
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {highlights.map((h, i) => {
             const Icon = h.icon;

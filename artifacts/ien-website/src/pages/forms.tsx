@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
+import { IEN_RALLYCRY_URL } from "@/lib/registration";
 import { schoolCharterConfig } from "@/lib/schoolCharter";
 import {
   ArrowRight,
@@ -29,7 +30,7 @@ type FormCard = {
 const formCards: FormCard[] = [
   {
     title: "Registration",
-    desc: "Complete the annual school charter, then use LeagueOS for competition team entry, rosters, and student eligibility.",
+    desc: "Complete the annual school charter, then register for competition through the platform for your title.",
     icon: ClipboardCheck,
     featured: true,
     links: [
@@ -40,6 +41,14 @@ const formCards: FormCard[] = [
       {
         label: "LeagueOS Registration",
         href: "https://leagueos.gg",
+      },
+      {
+        label: "Register high school Chess and Tetris in RallyCry",
+        href: IEN_RALLYCRY_URL,
+      },
+      {
+        label: "RallyCry Coach Registration Guide",
+        href: "https://library.rally.gg/p/guides/registration-guide",
       },
       {
         label: "Student Eligibility",
@@ -160,11 +169,11 @@ export default function Forms() {
     <Layout>
       <SEO
         title="IEN Forms"
-        description="Official Indiana Esports Network forms for school chartering, LeagueOS registration, streaming verification, Nintendo Ethernet verification and code requests, invoices, Unified registration, and coach support."
+        description="Official Indiana Esports Network forms for school chartering, RallyCry registration for Chess and Tetris, LeagueOS registration, streaming verification, Nintendo Ethernet verification and code requests, invoices, Unified registration, and coach support."
         path="/forms"
       />
 
-      <section className="py-16 bg-card border-y border-primary/20">
+      <section id="registration" className="scroll-mt-24 py-16 bg-card border-y border-primary/20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-10">
             <p className="text-xs font-heading font-bold tracking-[0.22em] uppercase text-primary mb-3">
@@ -174,10 +183,10 @@ export default function Forms() {
               Start with Registration
             </h1>
             <p className="text-muted-foreground leading-relaxed">
-              The highest-priority forms are school chartering and LeagueOS
-              competition registration. Chartering opens access for your school;
-              teams and rosters still need to be entered in LeagueOS before the
-              division deadline.
+              Start with the annual school charter. For high school Chess and Tetris, create a coach account and join your
+              school in RallyCry. Create a one-player team for each student and
+              register it for the competition. Students add their Chess.com or
+              TETR.IO username to their RallyCry profile.
             </p>
           </div>
 

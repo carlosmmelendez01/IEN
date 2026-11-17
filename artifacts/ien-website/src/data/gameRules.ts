@@ -1,3 +1,4 @@
+import { IEN_RALLYCRY_RULEBOOK } from "@/lib/registration";
 import { quickGuides, type QuickGuide } from "@/data/quickGuides";
 
 export type LeagueKey = "ihsen" | "imsen" | "iuen";
@@ -190,11 +191,11 @@ export const rulesetGames: RulesetGame[] = [
     color: "#9ba7b7",
     platform: "Chess.com",
     roster: "1 active player / unlimited roster",
-    format: "Swiss splits; Bo3 10+3 games",
+    format: "IHSEN: Bo3, unrated 10+3",
     matchWindow: "IHSEN Tuesdays 5 PM ET / IMSEN Thursdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
-    ruleDocHref: "/documents/rulesets/chess-ruleset-2026-27.pdf",
-    ruleDocVersion: "1.0",
+    ruleDocHref: `${IEN_RALLYCRY_RULEBOOK}#chess`,
+    ruleDocLabel: "IHSEN Chess",
     quickGuide: quickGuides.chess,
   },
   {
@@ -204,11 +205,11 @@ export const rulesetGames: RulesetGame[] = [
     color: "#14c8df",
     platform: "TETR.IO",
     roster: "Individual competitors",
-    format: "Head-to-head rounds",
+    format: "IHSEN: multiple Bo5 rounds per night",
     matchWindow: "IHSEN Wednesdays 5 PM ET / IMSEN Thursdays 4:30 PM ET",
     leagues: ["IHSEN", "IMSEN"],
-    ruleDocHref: "/documents/rulesets/tetris-ruleset-2026-27.pdf",
-    ruleDocVersion: "1.0",
+    ruleDocHref: `${IEN_RALLYCRY_RULEBOOK}#tetris`,
+    ruleDocLabel: "IHSEN Tetris",
     quickGuide: quickGuides.tetris,
   },
   {

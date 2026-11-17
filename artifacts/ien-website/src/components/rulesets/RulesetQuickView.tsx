@@ -16,6 +16,7 @@ import {
   Users,
   X,
 } from "lucide-react";
+import { IEN_RALLYCRY_URL } from "@/lib/registration";
 import {
   GAME_RULESET_LIBRARY_HREF,
   RULEBOOK_HREF,
@@ -349,6 +350,8 @@ function RotationPanel({ game }: { game: RulesetGame }) {
 }
 
 function FullRulesPanel({ game }: { game: RulesetGame }) {
+  const usesRallyCry = game.id === "chess" || game.id === "tetris";
+
   return (
     <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
       <section className="rounded-lg border border-primary/20 bg-background p-6">
@@ -407,14 +410,25 @@ function FullRulesPanel({ game }: { game: RulesetGame }) {
             </div>
           )}
           <a
-            href="https://leagueos.gg"
+            href={usesRallyCry ? IEN_RALLYCRY_URL : "https://leagueos.gg"}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-between gap-3 rounded-md border border-primary/20 px-3 py-2 text-sm font-semibold text-muted-foreground transition hover:bg-primary/10 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
-            LeagueOS
+            {usesRallyCry ? "IEN RallyCry · high school" : "LeagueOS"}
             <ExternalLink className="h-3.5 w-3.5" aria-hidden />
           </a>
+          {usesRallyCry && (
+            <a
+              href={`/documents/rulesets/${game.id}-ruleset-2026-27.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between gap-3 rounded-md border border-primary/20 px-3 py-2 text-sm font-semibold text-muted-foreground hover:text-primary"
+            >
+              Middle school ruleset
+              <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+            </a>
+          )}
         </div>
       </section>
     </div>

@@ -246,18 +246,32 @@ export default function IMSEN() {
                     <dd className="mt-0.5 text-white/80 leading-snug">{ruleset.platform}</dd>
                   </div>
                 </dl>
-                <div className="mt-4">
-                  <QuickGuideStatus game={ruleset} compact />
-                </div>
-                <button
-                  type="button"
-                  onClick={() => openRuleset(game.name)}
-                  className="mt-4 inline-flex items-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
-                  aria-haspopup="dialog"
-                >
-                  <FileText className="w-3.5 h-3.5" aria-hidden />
-                  VIEW RULESET
-                </button>
+                {ruleset.id === "chess" || ruleset.id === "tetris" ? (
+                  <a
+                    href={`/documents/rulesets/${ruleset.id}-ruleset-2026-27.pdf`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200"
+                  >
+                    <FileText className="w-3.5 h-3.5" aria-hidden />
+                    VIEW MIDDLE SCHOOL RULESET
+                  </a>
+                ) : (
+                  <>
+                    <div className="mt-4">
+                      <QuickGuideStatus game={ruleset} compact />
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => openRuleset(game.name)}
+                      className="mt-4 inline-flex items-center gap-1.5 text-xs font-heading font-bold tracking-[0.16em] text-primary hover:text-yellow-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+                      aria-haspopup="dialog"
+                    >
+                      <FileText className="w-3.5 h-3.5" aria-hidden />
+                      VIEW RULESET
+                    </button>
+                  </>
+                )}
               </motion.div>
             );
           })}

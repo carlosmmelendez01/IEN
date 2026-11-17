@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/Layout";
+import { PACERS_CUP_FINALS_DATE, PACERS_CUP_PATH } from "@/data/pacersCup";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -8,7 +9,6 @@ import {
   Calendar,
   Clock,
   FileText,
-  Gamepad2,
   MapPin,
   Trophy,
   Video,
@@ -51,8 +51,8 @@ export default function Events() {
                 asChild
                 className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-heading tracking-widest h-12 px-8"
               >
-                <Link href="/events/pacers-esports-cup-qualifiers">
-                  PACERS CUP QUALIFIER
+                <Link href={PACERS_CUP_PATH}>
+                  PACERS CUP FINALS
                 </Link>
               </Button>
               <Button
@@ -83,41 +83,31 @@ export default function Events() {
                 IEN × Pacers Esports Cup 2027
               </p>
               <h2 className="mt-3 max-w-4xl text-4xl font-heading font-bold leading-tight text-white md:text-6xl">
-                Online Qualifier
+                Road to Gainbridge
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-                Compete in Super Smash Bros. Ultimate, Rocket League, or NBA 2K
-                for a place in the live finals at Gainbridge Fieldhouse.
+                Meet the teams and players competing for the 2027 Pacers Esports Cup
+                championships in NBA 2K26, Rocket League, and Super Smash Bros. Ultimate.
               </p>
               <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm text-gray-300">
                 <span className="flex items-center gap-2">
                   <Calendar className="h-4 w-4 text-primary" aria-hidden="true" />
-                  Saturday, November 14, 2026
+                  {PACERS_CUP_FINALS_DATE}
                 </span>
                 <span className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-primary" aria-hidden="true" />
-                  Check-in: 8:30 AM CT / 9:30 AM ET
-                </span>
-                <span className="flex items-center gap-2">
-                  <Gamepad2 className="h-4 w-4 text-primary" aria-hidden="true" />
-                  Online on LeagueOS
+                  <MapPin className="h-4 w-4 text-primary" aria-hidden="true" />
+                  Gainbridge Fieldhouse
                 </span>
               </div>
             </div>
 
             <div className="rounded-lg border border-primary/25 bg-background/70 p-5">
-              <p className="text-xs font-heading font-bold uppercase tracking-[0.18em] text-primary">
-                Registration closes
-              </p>
-              <p className="mt-2 text-2xl font-heading font-bold text-white">
-                Wednesday, November 11
-              </p>
               <Button
                 asChild
-                className="mt-5 h-12 w-full bg-primary font-heading tracking-widest text-primary-foreground hover:bg-primary/90"
+                className="h-12 w-full bg-primary font-heading tracking-widest text-primary-foreground hover:bg-primary/90"
               >
-                <Link href="/events/pacers-esports-cup-qualifiers">
-                  EVENT DETAILS
+                <Link href={PACERS_CUP_PATH}>
+                  VIEW BRACKETS
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>

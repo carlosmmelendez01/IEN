@@ -1,3 +1,6 @@
+export const IEN_RALLYCRY_URL = "https://ien.rally.gg/";
+export const IEN_RALLYCRY_RULEBOOK = "https://library.rally.gg/p/ien-competition-rulebook";
+
 export const REGISTRATION_EXTENSION = {
   label: "Deadline Extended",
   title: "Middle School & Unified Registration Closes September 18",

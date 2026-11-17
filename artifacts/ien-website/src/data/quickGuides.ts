@@ -406,93 +406,74 @@ export const quickGuides: Record<string, QuickGuide> = {
     ],
   ),
 
-  chess: {
-    status: "in-progress",
-    statusLabel: "Update in progress",
-    sourceLabel: "v1.0",
-    note: "Chess is currently being updated; the existing guide remains available during revision.",
-    facts: [
-      { label: "Platform", value: "Chess.com" },
-      { label: "Roster", value: "1 active / unlimited roster" },
-      { label: "Regular season", value: "Swiss splits, Best-of-3" },
-      { label: "Time control", value: "10+3, unranked" },
-      { label: "Playoffs", value: "Top 32, single elimination Bo3" },
-      { label: "Finals / third", value: "Best-of-5" },
+  chess: verified(
+    "IHSEN RallyCry rulebook v1.2",
+    [
+      { label: "Game", value: "Chess.com" },
+      { label: "Entry", value: "One player, no substitutes" },
+      { label: "Match night", value: "Tuesday, 5 PM ET / 4 PM CT" },
+      { label: "Time control", value: "Unrated 10+3, standard chess" },
+      { label: "Regular season / playoffs", value: "Best-of-3" },
+      { label: "Final / third place", value: "Best-of-5" },
     ],
-    sections: [
+    [
       {
-        eyebrow: "Challenge setup",
+        eyebrow: "RallyCry check-in",
         title: "Before the match",
         items: [
-          "Create an unranked custom Chess.com challenge with 10+3 time control.",
-          "Use LeagueOS Match Chat for the invitation, coordination, and result verification.",
-          "Respond within five minutes; failure to communicate may result in a round forfeit.",
+          "Add your Chess.com username to your RallyCry profile. Join the queue from the competition’s Bracket tab between 3:00 and 4:45 PM ET (2:00 to 3:45 PM CT).",
+          "The home player sends an unrated 10+3 friend challenge with Standard rules and random colors. Confirm you are ready in RallyCry Match Chat.",
         ],
       },
       {
-        eyebrow: "Swiss match",
-        title: "How it plays",
+        eyebrow: "Match play",
+        title: "Play the series",
         items: [
-          "Regular-season splits use at least six Swiss rounds; records reset between splits.",
-          "Each pairing is Best-of-3; the first player to two game wins takes the match.",
-          "Chess.com assigns colors automatically and standard platform rules govern play.",
+          "Replay drawn games at the same time control and record only wins. The regular season provides up to one match each Tuesday.",
+          "A win or bye earns two points. The top 32 eligible players advance to single-elimination playoffs.",
         ],
       },
       {
-        eyebrow: "Draws & standings",
-        title: "Win & report",
+        eyebrow: "RallyCry results",
+        title: "Report the score",
         items: [
-          "Draws are allowed; at 1.5-1.5, play additional 10+3 games until there is a winner.",
-          "Standings points are awarded from placement at the end of each split.",
-          "The top 32 advance to Bo3 playoffs; finals and the third-place match are Bo5.",
+          "The winner reports the score on the RallyCry Match page and attaches a screenshot of the final result.",
+          "The opponent can accept or dispute the result. RallyCry accepts it automatically after 24 hours without a response.",
         ],
       },
     ],
-  },
+  ),
 
-  tetris: {
-    status: "in-progress",
-    statusLabel: "Update in progress",
-    sourceLabel: "v1.0",
-    note: "Tetris is currently being updated; the existing guide remains available during revision.",
-    facts: [
-      { label: "Platform", value: "TETR.IO" },
-      { label: "Roster", value: "1 active / unlimited roster" },
-      { label: "Regular season", value: "Swiss, Best-of-5" },
-      { label: "Match length", value: "10-20 minutes" },
-      { label: "Early playoffs", value: "Best-of-5" },
-      { label: "Semis / finals", value: "Best-of-7" },
+  tetris: verified(
+    "IHSEN RallyCry rulebook v1.2",
+    [
+      { label: "Game", value: "TETR.IO" },
+      { label: "Entry", value: "One player, no substitutes" },
+      { label: "First round", value: "Wednesday, 5 PM ET / 4 PM CT" },
+      { label: "Regular season / through quarterfinals", value: "Best-of-5" },
+      { label: "Semifinals / final", value: "Best-of-7" },
+      { label: "Playoffs", value: "Top 16, single elimination" },
     ],
-    sections: [
+    [
       {
-        eyebrow: "Room setup",
-        title: "Before the match",
+        eyebrow: "RallyCry check-in",
+        title: "Join the first round",
         items: [
-          "Create a Multiplayer → Custom Game → Private Room and share its Room ID in LeagueOS.",
-          "Use unranked 1v1 with default rotation and scoring settings.",
-          "Disable ALL-MINI+ and enable T-SPINS+ before saving the room configuration.",
+          "Add your TETR.IO username to your RallyCry profile. For the first round, join the queue from the Bracket tab between 3:00 and 5:00 PM ET (2:00 to 4:00 PM CT).",
+          "The home player creates an unranked 1v1 private room, sets Allowed Spins to T-SPINS+, leaves other settings at their defaults, and shares the room ID in RallyCry Match Chat.",
         ],
       },
       {
-        eyebrow: "Swiss match",
-        title: "How it plays",
+        eyebrow: "RallyCry results",
+        title: "Report and rejoin",
         items: [
-          "Regular season and early playoffs are Best-of-5; first to three game wins takes the match.",
-          "Semifinals and finals are Best-of-7; first to four game wins takes the match.",
-          "Weekly Swiss pairings match players with similar records while every competitor continues playing.",
-        ],
-      },
-      {
-        eyebrow: "Standings",
-        title: "Win & report",
-        items: [
-          "Report the result on the LeagueOS Match Page using Match Chat for coordination.",
-          "Placement at the end of the competition determines standings points.",
-          "Streaming is permitted without an additional game-specific restriction.",
+          "The winner reports the result on the RallyCry Match page with a screenshot. The opponent should confirm immediately. RallyCry accepts an unanswered report after 10 minutes.",
+          "Once the previous match closes, rejoin the queue to play another best-of-five. The queue closes at 6:00 PM ET / 5:00 PM CT. The last round can start at 5:45 PM ET / 4:45 PM CT.",
+          "Each match counts toward standings. A win or an admin-awarded bye earns two points.",
         ],
       },
     ],
-  },
+  ),
 
   iracing: verified(
     "v1.0",

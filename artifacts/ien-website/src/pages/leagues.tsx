@@ -293,7 +293,7 @@ export default function Leagues() {
             </h3>
             <p className="text-sm text-muted-foreground">
               Use the official rules hub for rulebooks, policy documents,
-              ruleset status, and LeagueOS guidance.
+              ruleset status, and competition platform guidance.
             </p>
           </Link>
           <Link
@@ -368,8 +368,8 @@ export default function Leagues() {
             <div className="bg-background border border-primary/30 p-8 rounded-xl">
               <h3 className="font-heading font-bold text-2xl text-white mb-4">Tournament</h3>
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                Individual head-to-head titles with weekly match days. Players check in on LeagueOS during
-                the match window and are paired with an available opponent. No fixed team rosters required.
+                Individual head-to-head titles with weekly match days. High school Chess and Tetris use RallyCry for
+                registration, match queues, communication, and results.
               </p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex gap-2">
@@ -379,7 +379,7 @@ export default function Leagues() {
                   <span className="text-primary">✓</span> Weekly match days throughout the season
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-primary">✓</span> LeagueOS check-in pairs you with an opponent
+                  <span className="text-primary">✓</span> IHSEN iRacing uses LeagueOS
                 </li>
                 <li className="flex gap-2">
                   <span className="text-primary">✓</span> IHSEN: Chess · Tetris · iRacing
@@ -388,6 +388,9 @@ export default function Leagues() {
                   <span className="text-primary">✓</span> IMSEN: Chess · Tetris
                 </li>
               </ul>
+              <Link href="/forms#registration" className="mt-4 inline-block text-sm font-semibold text-primary hover:underline">
+                View registration requirements
+              </Link>
             </div>
           </div>
         </div>

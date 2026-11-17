@@ -193,7 +193,7 @@ export default function StartAProgram() {
               3
             </div>
             <h3 className="font-heading font-bold text-xl text-white text-center mb-6">
-              REGISTER TEAMS FOR COMPETITION
+              REGISTER FOR COMPETITION
             </h3>
             <p className="text-sm text-muted-foreground mb-4">
               After chartering, team and game registration are completed
@@ -202,11 +202,11 @@ export default function StartAProgram() {
             <ul className="space-y-3 text-sm text-muted-foreground mb-8 flex-grow">
               <li className="flex items-start gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></div>
-                <span>Submit your team and game registrations</span>
+                <span>For high school Chess and Tetris, join your school in RallyCry and register each student as a one-player team.</span>
               </li>
               <li className="flex items-start gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></div>
-                <span>Select competitive titles for each team</span>
+                <span>Use LeagueOS to register teams and rosters for other titles.</span>
               </li>
               <li className="flex items-start gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0"></div>
@@ -224,13 +224,7 @@ export default function StartAProgram() {
               asChild
               className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground font-heading tracking-widest mt-auto"
             >
-              <a
-                href="https://leagueos.gg"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                REGISTER TEAMS
-              </a>
+              <Link href="/forms#registration">VIEW REGISTRATION</Link>
             </Button>
             <p className="text-xs text-muted-foreground text-center mt-2">
               Available after your onboarding meeting and annual charter are
