@@ -198,7 +198,7 @@ export const quickGuides: Record<string, QuickGuide> = {
   ),
 
   "overwatch-2": verified(
-    "v1.0 + Nov. 3 update",
+    "v2.0 · effective November 20, 2026",
     [
       { label: "Platform", value: "PC, Xbox, PlayStation, Switch" },
       { label: "Roster", value: "5 starters / 3 substitutes" },
@@ -233,8 +233,10 @@ export const quickGuides: Record<string, QuickGuide> = {
         items: [
           "Each team bans one hero; neither team may play either banned hero on that map.",
           "The home team bans first on Map 1. After that, the team that lost the previous map bans first.",
-          "Post both bans in Match Chat before the scheduled start. The second ban must be from a different role.",
-          "Choose new bans each map, and do not repeat a hero your team already banned during the match.",
+          "Post bans in order in Match Chat before each map begins. On Map 1, both bans are due by the scheduled match start time.",
+          "The second team must ban a hero from a different role than the first ban. For example, after a Tank ban, the second ban must be Damage or Support.",
+          "Bans reset after each map. Each team selects a ban again, and may not repeat a hero it has already banned during that match.",
+          "Only bans posted in Match Chat count. Discord messages and email do not count.",
         ],
       },
     ],
